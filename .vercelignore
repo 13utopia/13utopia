@@ -1,0 +1,15 @@
+# Local-only / migration debris — never upload to Vercel builds
+.planning
+13utopiaaaaaaaa
+docs/pixel-diff
+docs/scrapes-full
+docs/design-refs
+docs/live-snapshots
+scripts
+src
+dist
+*.pre-live.bak
+*.react.bak
+tsconfig.tsbuildinfo
+index.html
+style.css

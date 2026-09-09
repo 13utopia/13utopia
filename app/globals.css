@@ -1,0 +1,276 @@
+/* Disable auto scan — nest dump / scrapes must never be crawled by Tailwind */
+@import "tailwindcss" source(none);
+@source "../app";
+@source "../components";
+@source "../lib";
+
+@layer base {
+  :root {
+    --primary-color: #000000;
+    --secondary-color: #54595F;
+    --text-color: #7A7A7A;
+    --accent-color: #C8F31D;
+    --bg-color: #000000;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #000000;
+    color: #FFFFFF;
+    color-scheme: dark;
+  }
+
+  /* Lenis owns scrolling — native smooth fights the lerp */
+  html.has-lenis,
+  html.lenis {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    background-color: #000000;
+    color: #FFFFFF;
+    line-height: 1.6;
+    overflow-x: hidden;
+    font-family: var(--font-roboto), system-ui, -apple-system, sans-serif;
+  }
+
+  ::selection {
+    background-color: #C8F31D;
+    color: #000000;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #222222;
+    border-radius: 4px;
+    border: 1px solid rgba(200, 243, 29, 0.2);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C8F31D;
+  }
+}
+
+/* --- Container & Utilities --- */
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.font-teko {
+  font-family: var(--font-teko), sans-serif;
+}
+
+.font-roboto {
+  font-family: var(--font-roboto), sans-serif;
+}
+
+.font-titan {
+  font-family: var(--font-titan), sans-serif;
+}
+
+.text-accent {
+  color: #C8F31D;
+}
+
+.bg-accent {
+  background-color: #C8F31D;
+}
+
+.border-accent {
+  border-color: #C8F31D;
+}
+
+/* --- Glow & Glassmorphism --- */
+.glass-panel {
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(200, 243, 29, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(200, 243, 29, 0.15);
+  transform: translateY(-6px);
+}
+
+.neon-glow {
+  box-shadow: 0 0 20px rgba(200, 243, 29, 0.3);
+}
+
+.neon-glow-lg {
+  box-shadow: 0 0 35px rgba(200, 243, 29, 0.4);
+}
+
+/* --- Buttons --- */
+.btn-neon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-neon:hover {
+  background-color: #C8F31D;
+  color: #000000;
+  border-color: #C8F31D;
+  box-shadow: 0 0 20px rgba(200, 243, 29, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-solid-neon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #C8F31D;
+  color: #000000;
+  border: 1px solid #C8F31D;
+  border-radius: 9999px;
+  padding: 12px 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-solid-neon:hover {
+  background-color: transparent;
+  color: #C8F31D;
+  box-shadow: 0 0 20px rgba(200, 243, 29, 0.4);
+  transform: translateY(-2px);
+}
+
+/* --- Marquee Animation --- */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* --- Mobile Menu Scroll Lock --- */
+body.utopia-menu-open {
+  overflow: hidden !important;
+}
+
+/* ========== Motion layer (Lenis + soft page fade) ==========
+   NEVER put transform / will-change:transform on wrappers that contain
+   Elementor fixed headers — that creates a containing block and causes
+   scroll jitter (header drifts with the page). Opacity-only only. */
+.pixel-page-enter {
+  min-height: 100%;
+}
+
+/* Soft crossfade — keep the pinned header fully opaque so the WCF hamburger
+   square never flashes mid-route while the page body remounts. */
+html.pixel-route-exit .pixel-main,
+html.pixel-route-exit main {
+  opacity: 0.42;
+  transition: opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+html.pixel-route-enter .pixel-main,
+html.pixel-route-enter main {
+  animation: pixel-route-in 0.62s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+html.pixel-route-exit .pixel-header-pinned,
+html.pixel-route-enter .pixel-header-pinned,
+html.pixel-route-exit .elementor-element-01ec82b.pixel-header-pinned,
+html.pixel-route-enter .elementor-element-01ec82b.pixel-header-pinned {
+  opacity: 1 !important;
+  filter: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+@keyframes pixel-route-in {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Soft image awaken — doesn't fight Elementor lazy once decoded */
+html.pixel-exact img {
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Nav / CTA hover polish without restyling layout */
+html.pixel-exact .elementor-nav-menu a,
+html.pixel-exact a.elementor-button-link,
+html.pixel-exact .elementor-button {
+  transition:
+    color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    letter-spacing 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+html.pixel-exact .elementor-button:hover {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel-page-enter,
+  html.pixel-route-exit .pixel-main,
+  html.pixel-route-enter .pixel-main,
+  html.pixel-exact img {
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

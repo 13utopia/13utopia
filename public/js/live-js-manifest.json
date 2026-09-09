@@ -1,0 +1,597 @@
+{
+  "builtAt": "2026-09-08T11:28:05.234Z",
+  "cascadeSteps": 41,
+  "ok": 40,
+  "skipped": 48,
+  "failed": [],
+  "sheets": [
+    {
+      "i": 0,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 74
+    },
+    {
+      "i": 1,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 32
+    },
+    {
+      "i": 2,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 3506
+    },
+    {
+      "i": 3,
+      "id": "jquery-core-js",
+      "url": "https://c0.wp.com/c/7.1/wp-includes/js/jquery/jquery.min.js",
+      "status": "ok",
+      "file": "001-jquery.min.js",
+      "bytes": 87553
+    },
+    {
+      "i": 4,
+      "id": "jquery-migrate-js",
+      "url": "https://c0.wp.com/c/7.1/wp-includes/js/jquery/jquery-migrate.min.js",
+      "status": "ok",
+      "file": "002-jquery-migrate.min.js",
+      "bytes": 13577
+    },
+    {
+      "i": 5,
+      "id": "jquery-js-after",
+      "status": "inline-skipped",
+      "len": 703
+    },
+    {
+      "i": 6,
+      "id": "wc-jquery-blockui-js",
+      "url": "https://c0.wp.com/p/woocommerce/11.0.1/assets/js/jquery-blockui/jquery.blockUI.min.js",
+      "status": "skipped"
+    },
+    {
+      "i": 7,
+      "id": "wc-add-to-cart-js-extra",
+      "status": "inline-skipped",
+      "len": 258
+    },
+    {
+      "i": 8,
+      "id": "wc-add-to-cart-js",
+      "url": "https://c0.wp.com/p/woocommerce/11.0.1/assets/js/frontend/add-to-cart.min.js",
+      "status": "skipped"
+    },
+    {
+      "i": 9,
+      "id": "wc-js-cookie-js",
+      "url": "https://c0.wp.com/p/woocommerce/11.0.1/assets/js/js-cookie/js.cookie.min.js",
+      "status": "skipped"
+    },
+    {
+      "i": 10,
+      "id": "woocommerce-js-extra",
+      "status": "inline-skipped",
+      "len": 213
+    },
+    {
+      "i": 11,
+      "id": "woocommerce-js",
+      "url": "https://c0.wp.com/p/woocommerce/11.0.1/assets/js/frontend/woocommerce.min.js",
+      "status": "skipped"
+    },
+    {
+      "i": 12,
+      "id": "wcf--addons-js-extra",
+      "status": "inline-ok",
+      "len": 368
+    },
+    {
+      "i": 13,
+      "id": "wcf--addons-js",
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/js/wcf-addons.min.js?ver=7.1",
+      "status": "ok",
+      "file": "004-wcf-addons.min.js",
+      "bytes": 0
+    },
+    {
+      "i": 14,
+      "id": "woocommerce-analytics-js",
+      "url": "https://stats.wp.com/s-202637.js",
+      "status": "skipped"
+    },
+    {
+      "i": 15,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 346
+    },
+    {
+      "i": 16,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 147
+    },
+    {
+      "i": 17,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 336
+    },
+    {
+      "i": 18,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 359
+    },
+    {
+      "i": 19,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 765
+    },
+    {
+      "i": 20,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 765
+    },
+    {
+      "i": 21,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 445
+    },
+    {
+      "i": 22,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 602
+    },
+    {
+      "i": 23,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 410
+    },
+    {
+      "i": 24,
+      "id": "",
+      "status": "inline-ok",
+      "len": 962
+    },
+    {
+      "i": 25,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 359
+    },
+    {
+      "i": 26,
+      "id": "",
+      "status": "inline-ok",
+      "len": 147
+    },
+    {
+      "i": 27,
+      "id": "ht_ctc_app_js-js-extra",
+      "status": "inline-skipped",
+      "len": 2057
+    },
+    {
+      "i": 28,
+      "id": "ht_ctc_app_js-js",
+      "url": "https://13utopia.com/wp-content/plugins/click-to-chat-for-whatsapp/new/inc/assets/js/app.js?ver=4.43",
+      "status": "skipped"
+    },
+    {
+      "i": 29,
+      "id": "aae-starter-animations-js",
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/js/starter-animations.js?ver=2.7.4",
+      "status": "ok",
+      "file": "007-starter-animations.js",
+      "bytes": 5220
+    },
+    {
+      "i": 30,
+      "id": "arolax-essential--global-core-js-extra",
+      "status": "inline-ok",
+      "len": 159
+    },
+    {
+      "i": 31,
+      "id": "arolax-essential--global-core-js",
+      "url": "https://13utopia.com/wp-content/plugins/arolax-essential/assets/js/wcf--global-core.min.js?ver=7.1",
+      "status": "ok",
+      "file": "009-wcf--global-core.min.js",
+      "bytes": 10007
+    },
+    {
+      "i": 32,
+      "id": "wapf-frontend-js-js-extra",
+      "status": "inline-skipped",
+      "len": 80
+    },
+    {
+      "i": 33,
+      "id": "wapf-frontend-js-js",
+      "url": "https://13utopia.com/wp-content/plugins/advanced-product-fields-for-woocommerce/assets/js/frontend.min.js?ver=1.7.1",
+      "status": "skipped"
+    },
+    {
+      "i": 34,
+      "id": "elementor-webpack-runtime-js",
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=4.2.3",
+      "status": "ok",
+      "file": "010-webpack.runtime.min.js",
+      "bytes": 5819
+    },
+    {
+      "i": 35,
+      "id": "elementor-frontend-modules-js",
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=4.2.3",
+      "status": "ok",
+      "file": "011-frontend-modules.min.js",
+      "bytes": 50602
+    },
+    {
+      "i": 36,
+      "id": "jquery-ui-core-js-before",
+      "status": "inline-ok",
+      "len": 66
+    },
+    {
+      "i": 37,
+      "id": "jquery-ui-core-js",
+      "url": "https://c0.wp.com/c/7.1/wp-includes/js/jquery/ui/core.min.js",
+      "status": "ok",
+      "file": "013-core.min.js",
+      "bytes": 18674
+    },
+    {
+      "i": 38,
+      "id": "elementor-frontend-js-before",
+      "status": "inline-ok",
+      "len": 2928
+    },
+    {
+      "i": 39,
+      "id": "elementor-frontend-js",
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=4.2.3",
+      "status": "ok",
+      "file": "015-frontend.min.js",
+      "bytes": 32098
+    },
+    {
+      "i": 40,
+      "id": "swiper-js",
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js?ver=8.4.5",
+      "status": "ok",
+      "file": "016-swiper.min.js",
+      "bytes": 143709
+    },
+    {
+      "i": 41,
+      "id": "wcf--addons-pro-js",
+      "url": "https://13utopia.com/wp-content/plugins/wcf-addons-pro/assets/js/wcf-addons-pro.js?ver=7.1",
+      "status": "ok",
+      "file": "017-wcf-addons-pro.js",
+      "bytes": 26261
+    },
+    {
+      "i": 42,
+      "id": "bootstrap-js",
+      "url": "https://13utopia.com/wp-content/themes/arolax/assets/js/bootstrap.bundle.min.js?ver=2",
+      "status": "ok",
+      "file": "018-bootstrap.bundle.min.js",
+      "bytes": 22382
+    },
+    {
+      "i": 43,
+      "id": "meanmenu-js",
+      "url": "https://13utopia.com/wp-content/plugins/arolax-essential/assets/js/jquery.meanmenu.min.js?ver=7.1",
+      "status": "ok",
+      "file": "019-jquery.meanmenu.min.js",
+      "bytes": 4880
+    },
+    {
+      "i": 44,
+      "id": "magnific-popup-js",
+      "url": "https://13utopia.com/wp-content/themes/arolax/assets/js/jquery.magnific-popup.min.js?ver=2",
+      "status": "ok",
+      "file": "020-jquery.magnific-popup.min.js",
+      "bytes": 20219
+    },
+    {
+      "i": 45,
+      "id": "arolax-script-js-extra",
+      "status": "inline-ok",
+      "len": 142
+    },
+    {
+      "i": 46,
+      "id": "arolax-script-js",
+      "url": "https://13utopia.com/wp-content/themes/arolax/assets/js/script.js?ver=2",
+      "status": "ok",
+      "file": "022-script.js",
+      "bytes": 6762
+    },
+    {
+      "i": 47,
+      "id": "woocommerce-analytics-client-js",
+      "url": "https://13utopia.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&#038;ver=8d8bb846cc19ac858460",
+      "status": "skipped"
+    },
+    {
+      "i": 48,
+      "id": "sourcebuster-js-js",
+      "url": "https://c0.wp.com/p/woocommerce/11.0.1/assets/js/sourcebuster/sourcebuster.min.js",
+      "status": "skipped"
+    },
+    {
+      "i": 49,
+      "id": "wc-order-attribution-js-extra",
+      "status": "inline-skipped",
+      "len": 729
+    },
+    {
+      "i": 50,
+      "id": "wc-order-attribution-js",
+      "url": "https://c0.wp.com/p/woocommerce/11.0.1/assets/js/frontend/order-attribution.min.js",
+      "status": "skipped"
+    },
+    {
+      "i": 51,
+      "id": "wcf--slider-js",
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/js/widgets/slider.min.js?ver=2.7.4",
+      "status": "ok",
+      "file": "023-slider.min.js",
+      "bytes": 2315
+    },
+    {
+      "i": 52,
+      "id": "jquery-numerator-js",
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/jquery-numerator/jquery-numerator.min.js?ver=0.2.1",
+      "status": "ok",
+      "file": "024-jquery-numerator.min.js",
+      "bytes": 1801
+    },
+    {
+      "i": 53,
+      "id": "wcf--counter-js",
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/js/widgets/counter.min.js?ver=2.7.4",
+      "status": "ok",
+      "file": "025-counter.min.js",
+      "bytes": 505
+    },
+    {
+      "i": 54,
+      "id": "aae--switcher-toggle-js",
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/js/widgets/toggle-switch.min.js?ver=2.7.4",
+      "status": "ok",
+      "file": "026-toggle-switch.min.js",
+      "bytes": 423
+    },
+    {
+      "i": 55,
+      "id": "jetpack-stats-js-before",
+      "status": "inline-skipped",
+      "len": 235
+    },
+    {
+      "i": 56,
+      "id": "jetpack-stats-js",
+      "url": "https://stats.wp.com/e-202637.js",
+      "status": "skipped"
+    },
+    {
+      "i": 57,
+      "id": "smartmenus-js",
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.min.js?ver=1.2.1",
+      "status": "ok",
+      "file": "027-jquery.smartmenus.min.js",
+      "bytes": 24109
+    },
+    {
+      "i": 58,
+      "id": "wcf--nav-menu-js",
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/js/widgets/nav-menu.min.js?ver=2.7.4",
+      "status": "ok",
+      "file": "028-nav-menu.min.js",
+      "bytes": 3159
+    },
+    {
+      "i": 59,
+      "id": "e-sticky-js",
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js?ver=3.35.1",
+      "status": "ok",
+      "file": "029-jquery.sticky.min.js",
+      "bytes": 3721
+    },
+    {
+      "i": 60,
+      "id": "arolax-testimonial-js",
+      "url": "https://13utopia.com/wp-content/plugins/arolax-essential/assets//js/widgets/arolax-testimonial.js?ver=7.1",
+      "status": "ok",
+      "file": "030-arolax-testimonial.js",
+      "bytes": 830
+    },
+    {
+      "i": 61,
+      "id": "elementor-pro-webpack-runtime-js",
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js?ver=3.35.1",
+      "status": "ok",
+      "file": "031-webpack-pro.runtime.min.js",
+      "bytes": 6248
+    },
+    {
+      "i": 62,
+      "id": "wp-hooks-js",
+      "url": "https://c0.wp.com/c/7.1/wp-includes/js/dist/hooks.min.js",
+      "status": "ok",
+      "file": "032-hooks.min.js",
+      "bytes": 5107
+    },
+    {
+      "i": 63,
+      "id": "wp-i18n-js",
+      "url": "https://c0.wp.com/c/7.1/wp-includes/js/dist/i18n.min.js",
+      "status": "ok",
+      "file": "033-i18n.min.js",
+      "bytes": 5791
+    },
+    {
+      "i": 64,
+      "id": "wp-i18n-js-after",
+      "status": "inline-ok",
+      "len": 97
+    },
+    {
+      "i": 65,
+      "id": "elementor-pro-frontend-js-before",
+      "status": "inline-ok",
+      "len": 1493
+    },
+    {
+      "i": 66,
+      "id": "elementor-pro-frontend-js",
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=3.35.1",
+      "status": "ok",
+      "file": "036-frontend.min.js",
+      "bytes": 24047
+    },
+    {
+      "i": 67,
+      "id": "pro-elements-handlers-js",
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js?ver=3.35.1",
+      "status": "ok",
+      "file": "037-elements-handlers.min.js",
+      "bytes": 44258
+    },
+    {
+      "i": 68,
+      "id": "underscore-js",
+      "url": "https://c0.wp.com/c/7.1/wp-includes/js/underscore.min.js",
+      "status": "ok",
+      "file": "038-underscore.min.js",
+      "bytes": 19012
+    },
+    {
+      "i": 69,
+      "id": "wp-util-js-extra",
+      "status": "inline-ok",
+      "len": 97
+    },
+    {
+      "i": 70,
+      "id": "wp-util-js",
+      "url": "https://c0.wp.com/c/7.1/wp-includes/js/wp-util.min.js",
+      "status": "ok",
+      "file": "040-wp-util.min.js",
+      "bytes": 1431
+    },
+    {
+      "i": 71,
+      "id": "wpforms-js",
+      "url": "https://13utopia.com/wp-content/plugins/wpforms-lite/assets/js/frontend/wpforms.min.js?ver=2.0.1.1",
+      "status": "skipped"
+    },
+    {
+      "i": 72,
+      "id": "wpforms-elementor-js-extra",
+      "status": "inline-skipped",
+      "len": 122
+    },
+    {
+      "i": 73,
+      "id": "wpforms-elementor-js",
+      "url": "https://13utopia.com/wp-content/plugins/wpforms-lite/assets/js/integrations/elementor/frontend.min.js?ver=2.0.1.1",
+      "status": "skipped"
+    },
+    {
+      "i": 74,
+      "id": "wpforms-validation-js",
+      "url": "https://13utopia.com/wp-content/plugins/wpforms-lite/assets/lib/jquery.validate.min.js?ver=1.21.0",
+      "status": "skipped"
+    },
+    {
+      "i": 75,
+      "id": "wpforms-mailcheck-js",
+      "url": "https://13utopia.com/wp-content/plugins/wpforms-lite/assets/lib/mailcheck.min.js?ver=1.1.2",
+      "status": "skipped"
+    },
+    {
+      "i": 76,
+      "id": "wpforms-punycode-js",
+      "url": "https://13utopia.com/wp-content/plugins/wpforms-lite/assets/lib/punycode.min.js?ver=1.0.0",
+      "status": "skipped"
+    },
+    {
+      "i": 77,
+      "id": "wpforms-generic-utils-js",
+      "url": "https://13utopia.com/wp-content/plugins/wpforms-lite/assets/js/share/utils.min.js?ver=2.0.1.1",
+      "status": "skipped"
+    },
+    {
+      "i": 78,
+      "id": "wpforms-modern-js",
+      "url": "https://13utopia.com/wp-content/plugins/wpforms-lite/assets/js/frontend/wpforms-modern.min.js?ver=2.0.1.1",
+      "status": "skipped"
+    },
+    {
+      "i": 79,
+      "id": "wpforms-recaptcha-js",
+      "url": "https://hcaptcha.com/1/api.js?onload=wpformsRecaptchaLoad&#038;render=explicit&#038;recaptchacompat=off",
+      "status": "skipped"
+    },
+    {
+      "i": 80,
+      "id": "wpforms-recaptcha-js-after",
+      "status": "inline-skipped",
+      "len": 1049
+    },
+    {
+      "i": 81,
+      "id": "wpforms-analytics-js",
+      "url": "https://13utopia.com/wp-content/plugins/wpforms-lite/assets/js/frontend/analytics.min.js?ver=2.0.1.1",
+      "status": "skipped"
+    },
+    {
+      "i": 82,
+      "id": "wpforms-address-field-js",
+      "url": "https://13utopia.com/wp-content/plugins/wpforms-lite/assets/js/frontend/fields/address.min.js?ver=2.0.1.1",
+      "status": "skipped"
+    },
+    {
+      "i": 83,
+      "id": "wp-emoji-settings",
+      "status": "inline-skipped",
+      "len": 242
+    },
+    {
+      "i": 84,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 3050
+    },
+    {
+      "i": 85,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 3562
+    },
+    {
+      "i": 86,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 26980
+    },
+    {
+      "i": 87,
+      "id": "",
+      "status": "inline-skipped",
+      "len": 1118
+    }
+  ]
+}

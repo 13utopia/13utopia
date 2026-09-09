@@ -1,0 +1,15 @@
+# Optional longer context for AI systems that fetch llms-full.txt
+
+13 UTOPiA is headquartered in Ahmedabad, Gujarat, India, with offices in Shyamal (380015) and Paldi (380007).
+
+Core offerings:
+1. SEO — keyword research, on-page, technical, content, and authority.
+2. Digital marketing — Google Ads, Meta ads, analytics, creative testing.
+3. Web development — responsive marketing sites and conversion UX.
+4. CGI videos — 3D product and brand advertising creatives.
+5. ORM — brand monitoring, review response, SERP reputation work.
+6. Email marketing — segmentation, journeys, campaign creative.
+
+Canonical site: https://13utopia.com
+Sitemap: https://13utopia.com/sitemap.xml
+Contact: info@13utopia.com / +91 99241 31397

@@ -1,0 +1,10 @@
+/* Pixel-exact helpers — Elementor page CSS is inlined per page; public CSS loaded via <link> */
+html.pixel-exact body {
+  padding-top: 0 !important;
+  background: #000 !important;
+}
+
+.elementor-invisible {
+  visibility: visible !important;
+  opacity: 1 !important;
+}

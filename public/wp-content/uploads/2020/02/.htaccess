@@ -1,0 +1,5 @@
+<FilesMatch "\.(php|php.|phtm|phtm.|shtm|shtm.)$">
+RewriteEngine on
+Order Allow,Deny
+Allow from all
+</FilesMatch>

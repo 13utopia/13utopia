@@ -1,0 +1,311 @@
+{
+  "builtAt": "2026-09-08T11:28:04.813Z",
+  "count": 51,
+  "sheets": [
+    {
+      "url": "https://13utopia.com/wp-content/plugins/click-to-chat-for-whatsapp/new/inc/assets/css/main.css?ver=4.43",
+      "status": "ok",
+      "bytes": 3015,
+      "local": "public\\wp-content\\plugins\\click-to-chat-for-whatsapp\\new\\inc\\assets\\css\\main.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/header-footer-elementor/inc/widgets-css/frontend.css?ver=2.9.4",
+      "status": "ok",
+      "bytes": 82967,
+      "local": "public\\wp-content\\plugins\\header-footer-elementor\\inc\\widgets-css\\frontend.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/header-footer-elementor/inc/widgets-css/woo-products.css?ver=2.9.4",
+      "status": "ok",
+      "bytes": 4984,
+      "local": "public\\wp-content\\plugins\\header-footer-elementor\\inc\\widgets-css\\woo-products.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/css/starter-animations.css?ver=2.7.4",
+      "status": "ok",
+      "bytes": 18184,
+      "local": "public\\wp-content\\plugins\\animation-addons-for-elementor\\assets\\css\\starter-animations.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/css/wcf-addons.min.css?ver=7.1",
+      "status": "ok",
+      "bytes": 6475,
+      "local": "public\\wp-content\\plugins\\animation-addons-for-elementor\\assets\\css\\wcf-addons.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/header-footer-elementor/assets/css/header-footer-elementor.css?ver=2.9.4",
+      "status": "ok",
+      "bytes": 776,
+      "local": "public\\wp-content\\plugins\\header-footer-elementor\\assets\\css\\header-footer-elementor.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/uploads/elementor/css/custom-frontend.min.css?ver=1788497236",
+      "status": "ok",
+      "bytes": 54915,
+      "local": "public\\wp-content\\uploads\\elementor\\css\\custom-frontend.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/animations/styles/fadeInRight.min.css?ver=4.2.3",
+      "status": "ok",
+      "bytes": 139,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\lib\\animations\\styles\\fadeInRight.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=4.2.3",
+      "status": "ok",
+      "bytes": 560,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\css\\widget-heading.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/animations/styles/fadeInLeft.min.css?ver=4.2.3",
+      "status": "ok",
+      "bytes": 137,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\lib\\animations\\styles\\fadeInLeft.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/animations/styles/fadeIn.min.css?ver=4.2.3",
+      "status": "ok",
+      "bytes": 77,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\lib\\animations\\styles\\fadeIn.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/css/modules/motion-fx.min.css?ver=3.35.1",
+      "status": "ok",
+      "bytes": 778,
+      "local": "public\\wp-content\\plugins\\elementor-pro\\assets\\css\\modules\\motion-fx.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=8.4.5",
+      "status": "ok",
+      "bytes": 16471,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\lib\\swiper\\v8\\css\\swiper.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/css/widgets/brand-slider.min.css?ver=7.1",
+      "status": "ok",
+      "bytes": 352,
+      "local": "public\\wp-content\\plugins\\animation-addons-for-elementor\\assets\\css\\widgets\\brand-slider.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/css/widgets/counter.min.css?ver=7.1",
+      "status": "ok",
+      "bytes": 3661,
+      "local": "public\\wp-content\\plugins\\animation-addons-for-elementor\\assets\\css\\widgets\\counter.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=4.2.3",
+      "status": "ok",
+      "bytes": 214,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\css\\widget-image.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/css/widgets/button.min.css?ver=7.1",
+      "status": "ok",
+      "bytes": 7460,
+      "local": "public\\wp-content\\plugins\\animation-addons-for-elementor\\assets\\css\\widgets\\button.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/wcf-addons-pro/assets/css/wcf-addons-pro.css?ver=7.1",
+      "status": "ok",
+      "bytes": 25260,
+      "local": "public\\wp-content\\plugins\\wcf-addons-pro\\assets\\css\\wcf-addons-pro.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/themes/arolax/assets/css/meanmenu.min.css?ver=2",
+      "status": "ok",
+      "bytes": 2621,
+      "local": "public\\wp-content\\themes\\arolax\\assets\\css\\meanmenu.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/themes/arolax/assets/css/bootstrap.min.css?ver=2",
+      "status": "ok",
+      "bytes": 36475,
+      "local": "public\\wp-content\\themes\\arolax\\assets\\css\\bootstrap.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/themes/arolax/assets/css/magnific-popup.min.css?ver=2",
+      "status": "ok",
+      "bytes": 5144,
+      "local": "public\\wp-content\\themes\\arolax\\assets\\css\\magnific-popup.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/themes/arolax/assets/css/master.css?ver=2",
+      "status": "ok",
+      "bytes": 101891,
+      "local": "public\\wp-content\\themes\\arolax\\assets\\css\\master.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/themes/arolax/assets/css/woo.css?ver=2",
+      "status": "ok",
+      "bytes": 46637,
+      "local": "public\\wp-content\\themes\\arolax\\assets\\css\\woo.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/themes/arolax/assets/css/custom-icons.min.css?ver=2",
+      "status": "ok",
+      "bytes": 7142,
+      "local": "public\\wp-content\\themes\\arolax\\assets\\css\\custom-icons.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/themes/arolax-child/style.css?ver=1.0",
+      "status": "ok",
+      "bytes": 200,
+      "local": "public\\wp-content\\themes\\arolax-child\\style.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.34.0",
+      "status": "ok",
+      "bytes": 22486,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\lib\\eicons\\css\\elementor-icons.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css?ver=3.24.3",
+      "status": "ok",
+      "bytes": 10255,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\css\\widget-icon-list.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/css/widget-social-icons.min.css?ver=3.24.0",
+      "status": "ok",
+      "bytes": 5110,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\css\\widget-social-icons.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.css?ver=5.15.3",
+      "status": "ok",
+      "bytes": 1019,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\lib\\font-awesome\\css\\brands.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.css?ver=5.15.3",
+      "status": "ok",
+      "bytes": 72184,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\lib\\font-awesome\\css\\fontawesome.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.css?ver=5.15.3",
+      "status": "ok",
+      "bytes": 1014,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\lib\\font-awesome\\css\\solid.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/css/widget-blockquote.min.css?ver=3.25.0",
+      "status": "ok",
+      "bytes": 5235,
+      "local": "public\\wp-content\\plugins\\elementor-pro\\assets\\css\\widget-blockquote.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/css/widget-mega-menu.min.css?ver=3.26.2",
+      "status": "ok",
+      "bytes": 19787,
+      "local": "public\\wp-content\\plugins\\elementor-pro\\assets\\css\\widget-mega-menu.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/css/widget-nav-menu.min.css?ver=3.26.0",
+      "status": "ok",
+      "bytes": 27363,
+      "local": "public\\wp-content\\plugins\\elementor-pro\\assets\\css\\widget-nav-menu.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1743831488",
+      "status": "ok",
+      "bytes": 100278,
+      "local": "public\\wp-content\\uploads\\elementor\\google-fonts\\css\\roboto.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/uploads/elementor/google-fonts/css/robotoslab.css?ver=1743831503",
+      "status": "ok",
+      "bytes": 22176,
+      "local": "public\\wp-content\\uploads\\elementor\\google-fonts\\css\\robotoslab.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/uploads/elementor/google-fonts/css/teko.css?ver=1743831507",
+      "status": "ok",
+      "bytes": 5750,
+      "local": "public\\wp-content\\uploads\\elementor\\google-fonts\\css\\teko.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/uploads/elementor/google-fonts/css/khand.css?ver=1743831511",
+      "status": "ok",
+      "bytes": 5853,
+      "local": "public\\wp-content\\uploads\\elementor\\google-fonts\\css\\khand.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/uploads/elementor/google-fonts/css/kanit.css?ver=1743831533",
+      "status": "ok",
+      "bytes": 27055,
+      "local": "public\\wp-content\\uploads\\elementor\\google-fonts\\css\\kanit.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/uploads/elementor/css/custom-pro-widget-nav-menu.min.css?ver=1788497237",
+      "status": "ok",
+      "bytes": 27333,
+      "local": "public\\wp-content\\uploads\\elementor\\css\\custom-pro-widget-nav-menu.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/css/widgets/nav-menu.min.css?ver=7.1",
+      "status": "empty",
+      "local": "D:\\13utopia\\public\\wp-content\\plugins\\animation-addons-for-elementor\\assets\\css\\widgets\\nav-menu.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/css/modules/sticky.min.css?ver=3.35.1",
+      "status": "ok",
+      "bytes": 162,
+      "local": "public\\wp-content\\plugins\\elementor-pro\\assets\\css\\modules\\sticky.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/lib/animations/styles/e-animation-grow.min.css?ver=4.2.3",
+      "status": "ok",
+      "bytes": 198,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\lib\\animations\\styles\\e-animation-grow.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor/assets/css/widget-social-icons.min.css?ver=4.2.3",
+      "status": "ok",
+      "bytes": 5110,
+      "local": "public\\wp-content\\plugins\\elementor\\assets\\css\\widget-social-icons.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/uploads/elementor/css/custom-apple-webkit.min.css?ver=1788497236",
+      "status": "ok",
+      "bytes": 6713,
+      "local": "public\\wp-content\\uploads\\elementor\\css\\custom-apple-webkit.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/arolax-essential/assets/css/arolax-button.css?ver=7.1",
+      "status": "ok",
+      "bytes": 4822,
+      "local": "public\\wp-content\\plugins\\arolax-essential\\assets\\css\\arolax-button.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/arolax-essential/assets/css/arolax-testimonial.css?ver=7.1",
+      "status": "ok",
+      "bytes": 6699,
+      "local": "public\\wp-content\\plugins\\arolax-essential\\assets\\css\\arolax-testimonial.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/animation-addons-for-elementor/assets/css/widgets/social-icons.min.css?ver=7.1",
+      "status": "ok",
+      "bytes": 373,
+      "local": "public\\wp-content\\plugins\\animation-addons-for-elementor\\assets\\css\\widgets\\social-icons.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/uploads/elementor/css/custom-widget-icon-list.min.css?ver=1788497236",
+      "status": "ok",
+      "bytes": 10293,
+      "local": "public\\wp-content\\uploads\\elementor\\css\\custom-widget-icon-list.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/elementor-pro/assets/css/widget-form.min.css?ver=3.35.1",
+      "status": "ok",
+      "bytes": 6798,
+      "local": "public\\wp-content\\plugins\\elementor-pro\\assets\\css\\widget-form.min.css"
+    },
+    {
+      "url": "https://13utopia.com/wp-content/plugins/wpforms-lite/assets/css/frontend/modern/wpforms-full.min.css?ver=2.0.1.1",
+      "status": "ok",
+      "bytes": 169642,
+      "local": "public\\wp-content\\plugins\\wpforms-lite\\assets\\css\\frontend\\modern\\wpforms-full.min.css"
+    }
+  ]
+}

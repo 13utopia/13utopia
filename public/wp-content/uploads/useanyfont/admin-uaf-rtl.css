@@ -1,0 +1,12 @@
+				@font-face {
+					font-family: 'titan';
+					src: url('/wp-content/uploads/useanyfont/6945Titan.woff2') format('woff2'),
+						url('/wp-content/uploads/useanyfont/6945Titan.woff') format('woff');
+						  font-display: auto;
+				}
+
+				.titan{font-family: 'titan' !important;}
+
+				.et_gf_titan{background:none !important;font-family:titan;text-indent:0 !important;font-size:25px;}
+
+		

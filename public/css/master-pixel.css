@@ -1,0 +1,811 @@
+/**
+ * master-pixel.css — local-only overrides for live Elementor scrapes.
+ * Keep this file lean. Never force width:auto on brand Swiper slides.
+ */
+
+/* Hide WCF / starter animation trigger chrome */
+.wcf-trigger-btn,
+.wcf-custom-trigger,
+[class*="wcf-trigger-"],
+div[class*="wcf-starter-animations-trigger"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Preloader UI gone; unlock scroll (WP class locks body forever without plugin JS) */
+.wcf-preloader,
+.preloader-orbit-loading,
+.container-preloader,
+.arolax-preloader-active .container-preloader,
+#arolax-preloader,
+.animation-preloader {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+html.pixel-exact,
+html.pixel-exact body,
+body.wcf-preloader-active,
+body.arolax-preloader-active {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* Hero Zeus VR bust — only force the image URL (scrape may leave AirLift SVG stub).
+   Do NOT lock height to 729px — live uses Elementor --min-height:81vh so Zeus
+   scales with the viewport. Locking height breaks hero composition at ≠900px. */
+.elementor-element-4526561:not(.elementor-motion-effects-element-type-background),
+.elementor-element-4526561 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-image: url('/wp-content/uploads/2024/09/Zeus-With-Search-Engine-Optimization-1.webp') !important;
+  background-position: 50% 50% !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+/* Mobile hero container uses the non -1 filename on live + fixed 424px size */
+.elementor-element-dddd85c:not(.elementor-motion-effects-element-type-background),
+.elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-image: url('/wp-content/uploads/2024/09/Zeus-With-Search-Engine-Optimization.webp') !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: 424px !important;
+}
+@media (min-width: 1025px) {
+  .elementor-element-dddd85c:not(.elementor-motion-effects-element-type-background),
+  .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+    background-size: contain !important;
+  }
+}
+
+/* Click-to-Chat FAB — plugin JS is excluded from the cascade; scrape ships display:none */
+#ht-ctc-chat {
+  display: block !important;
+  position: fixed !important;
+  bottom: 50px !important;
+  right: 20px !important;
+  z-index: 99999999 !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+#ht-ctc-chat img.own-img,
+#ht-ctc-chat #style-99 {
+  display: block !important;
+  height: 50px !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* Who We Are Zeus — live desktop uses object-fit:fill at ~505×729 */
+@media (min-width: 1025px) {
+  .elementor-element-da7f073,
+  .elementor-element-da7f073 .elementor-widget-container,
+  .elementor-element-da7f073 img {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .elementor-element-da7f073 img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 729px !important;
+    object-fit: fill !important;
+  }
+}
+
+/* Brand logos: Swiper owns slide width — never width:auto !important */
+.wcf--brand-slider-wrapper,
+.elementor-widget-wcf--brand-slider .wcf__slider-wrapper {
+  overflow: hidden !important;
+  width: 100% !important;
+}
+.wcf--brand-slider-wrapper .swiper-wrapper {
+  animation: none !important;
+  gap: 0 !important;
+}
+.wcf--brand-slider-wrapper .swiper-slide {
+  opacity: 1 !important;
+  visibility: visible !important;
+  box-sizing: border-box !important;
+}
+.wcf--brand-slider-wrapper .swiper-slide img,
+.elementor-widget-wcf--brand-slider img {
+  display: block !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+}
+
+/* Desktop: never flash the WCF hamburger (empty bordered square) while
+   Elementor/WCF JS hasn't added .desktop-menu-active yet on SPA navigations. */
+@media (min-width: 768px) {
+  .wcf__nav-menu .wcf-menu-hamburger,
+  .wcf__nav-menu .wcf-menu-close,
+  .wcf__nav-menu .wcf-menu-overlay {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    border: 0 !important;
+  }
+  .wcf__nav-menu .wcf-nav-menu-nav,
+  .wcf__nav-menu .wcf-nav-menu-container {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* Kill persistent nav underlines / pointer bars under menu labels */
+html.pixel-exact .wcf__nav-menu .menu-item > a::before,
+html.pixel-exact .wcf__nav-menu .menu-item > a::after,
+html.pixel-exact .wcf__nav-menu a.wcf-nav-item::before,
+html.pixel-exact .wcf__nav-menu a.wcf-nav-item::after,
+html.pixel-exact .elementor-nav-menu--main .elementor-item::before,
+html.pixel-exact .elementor-nav-menu--main .elementor-item::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  transform: none !important;
+}
+
+/* No hairline under the pinned header */
+html.pixel-exact .elementor-element-01ec82b,
+html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned,
+html.pixel-exact .elementor-location-header,
+html.pixel-exact .ehf-header {
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+html.pixel-exact .elementor-element-01ec82b::before,
+html.pixel-exact .elementor-element-01ec82b::after,
+html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned::before,
+html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Desktop header nav — force readable white on black (all header variants) */
+@media (min-width: 768px) {
+  .ehf-header .elementor-nav-menu--main,
+  .elementor-location-header .elementor-nav-menu--main,
+  .elementor-element-01ec82b .elementor-nav-menu--main {
+    display: flex !important;
+  }
+  .ehf-header .elementor-nav-menu--main > ul.elementor-nav-menu,
+  .elementor-location-header .elementor-nav-menu--main > ul.elementor-nav-menu,
+  .elementor-element-01ec82b .elementor-nav-menu--main > ul.elementor-nav-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 28px !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .ehf-header .elementor-nav-menu--main a.elementor-item,
+  .elementor-location-header .elementor-nav-menu--main a.elementor-item,
+  .elementor-element-01ec82b .elementor-nav-menu--main a.elementor-item,
+  html.pixel-exact .elementor-nav-menu--main > ul > li > a.elementor-item {
+    font-family: var(--font-roboto), sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    text-transform: uppercase !important;
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    letter-spacing: 0.5px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+  html.pixel-exact .elementor-nav-menu--main > ul > li > a.elementor-item:hover,
+  html.pixel-exact .elementor-nav-menu--main > ul > li > a.elementor-item.elementor-item-active,
+  html.pixel-exact .elementor-nav-menu--main > ul > li > a.elementor-item.highlighted {
+    color: #c8f31d !important;
+    fill: #c8f31d !important;
+    -webkit-text-fill-color: #c8f31d !important;
+  }
+  .ehf-header .elementor-nav-menu--main a.elementor-item:hover {
+    color: #c8f31d !important;
+  }
+  .wcf__nav-menu.desktop-menu-active .wcf-menu {
+    display: flex !important;
+  }
+  /* Social icons stay white */
+  html.pixel-exact .elementor-element-01ec82b .elementor-social-icon,
+  html.pixel-exact .elementor-element-01ec82b .elementor-social-icon i,
+  html.pixel-exact .elementor-element-01ec82b .elementor-social-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    opacity: 1 !important;
+  }
+}
+@media (max-width: 767px) {
+  .ehf-header .elementor-nav-menu--main {
+    display: none !important;
+  }
+}
+
+/* Counters — live Elementor uses white, not lime; only ensure visibility */
+.wcf--counter .count,
+.wcf--counter-number,
+.wcf--counter-number-prefix,
+.wcf--counter-number-suffix {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.wcf--counter .title {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Site logo — live ~136×54 on desktop; mobile uses Elementor width:83%/40% — do not override */
+@media (min-width: 768px) {
+  img.wp-image-8655,
+  img[src*='13-utopia-logo'] {
+    max-height: 54px !important;
+    height: auto !important;
+    width: auto !important;
+    max-width: 140px !important;
+  }
+}
+
+/* Tiny Elementor icon SVGs (nav chevrons etc.) — do NOT clamp menu-toggle /
+   social brand icons; live hamburger SVG is 1em (~27px) → 40.5px toggle. */
+.elementor-widget-heading svg[viewBox='0 0 1000 1000'],
+.elementor-widget-icon-list svg[viewBox='0 0 1000 1000'],
+.elementor-widget-icon svg[viewBox='0 0 1000 1000'].e-font-icon-svg {
+  width: 24px !important;
+  height: 24px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+}
+.elementor-menu-toggle .e-font-icon-svg,
+.elementor-menu-toggle svg {
+  width: 1em !important;
+  height: 1em !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+/* Testimonials — live: feedback is #555 on #f9f9f9 cards; do NOT force white on .feedback */
+.arolax_testimonial_wrapper .feedback,
+.arolax__testimonial-4 .feedback {
+  color: #555555 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.arolax_testimonial_wrapper .name,
+.arolax_testimonial_wrapper .designation,
+.arolax__testimonial-4 .name,
+.arolax__testimonial-4 .designation {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+/* Quote glyph — match live arolax (text-align:right; img 40×30, object-fit:cover, display:inline) */
+.arolax__testimonial-4 .quote,
+.arolax_testimonial_wrapper .quote {
+  text-align: right !important;
+}
+.arolax__testimonial-4 .quote img,
+.arolax_testimonial_wrapper .quote img {
+  display: inline !important;
+  width: 40px !important;
+  height: 30px !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+}
+/* Cards stack — keep overflow visible so deck peeks like live */
+.arolax_testimonial_slider.swiper-cards {
+  overflow: visible !important;
+}
+
+/* Flexible Plans CTA — circle graphic (Elementor lazy-bg strips until e-lazyloaded) */
+.elementor-16636 .e-con.e-parent .elementor-element-b149d74:not(.elementor-motion-effects-element-type-background),
+.elementor-16636 .e-con.e-parent.e-lazyloaded .elementor-element-b149d74:not(.elementor-motion-effects-element-type-background),
+.elementor-element-b149d74:not(.elementor-motion-effects-element-type-background),
+.elementor-element-b149d74 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-color: #121212 !important;
+  background-image: url('/wp-content/uploads/2024/10/bg_shape.png') !important;
+  background-position: center right !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+
+/* Newsletter / wpforms — match live white email field; hide honeypot + its label */
+.wpforms-field-text:has(#wpforms-23882-field_1),
+.wpforms-field:has(#wpforms-23882-field_1) {
+  position: absolute !important;
+  left: -99999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+label[for='wpforms-23882-field_1'],
+#wpforms-23882-field_1-container .wpforms-field-label {
+  display: none !important;
+}
+#wpforms-23882-field_1,
+.wpforms-field-text input#wpforms-23882-field_1 {
+  position: absolute !important;
+  left: -99999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Contact form honeypot (field_8) — live WPForms hides container as 1×1 absolute */
+#wpforms-16813-field_8-container,
+.wpforms-field:has(#wpforms-16813-field_8) {
+  position: absolute !important;
+  left: -99999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+label[for='wpforms-16813-field_8'],
+#wpforms-16813-field_8-container .wpforms-field-label {
+  display: none !important;
+}
+#wpforms-16813-field_8 {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+#wpforms-23882-field_2 {
+  display: block !important;
+  width: 100% !important;
+  min-height: 43px !important;
+  border: 1px solid rgba(0, 0, 0, 0.25) !important;
+  background: #ffffff !important;
+  color: #111111 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.wpforms-container input[type='email'],
+.wpforms-field-email input,
+.elementor-field-textual[type='email'] {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+/* hCaptcha — show container like live (86px); real widget replaced by pixel-hcaptcha-boot stub */
+.wpforms-recaptcha-container.wpforms-is-hcaptcha {
+  display: block !important;
+  height: auto !important;
+  min-height: 86px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.wpforms-recaptcha-container .h-captcha {
+  display: block !important;
+  min-height: 78px !important;
+}
+.pixel-hcaptcha-stub {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 302px !important;
+  max-width: 100% !important;
+  height: 76px !important;
+  box-sizing: border-box !important;
+  padding: 0 12px !important;
+  background: #fafafa !important;
+  border: 1px solid #d7d7d7 !important;
+  border-radius: 2px !important;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif !important;
+  color: #555 !important;
+  user-select: none !important;
+  pointer-events: none !important;
+}
+/* Real hCaptcha iframe present — kill stub so container stays ~86px like live */
+.wpforms-recaptcha-container:has(iframe) .pixel-hcaptcha-stub,
+.h-captcha:has(iframe) .pixel-hcaptcha-stub {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.wpforms-recaptcha-container:has(iframe),
+.wpforms-recaptcha-container.pixel-hcaptcha-ready:has(iframe) {
+  min-height: 0 !important;
+}
+.pixel-hcaptcha-check {
+  width: 28px !important;
+  height: 28px !important;
+  flex: 0 0 28px !important;
+  border: 2px solid #c3c3c3 !important;
+  border-radius: 3px !important;
+  background: #fff !important;
+  box-sizing: border-box !important;
+}
+.pixel-hcaptcha-label {
+  flex: 1 1 auto !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  color: #333 !important;
+}
+.pixel-hcaptcha-brand {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 1px !important;
+  flex: 0 0 auto !important;
+  font-size: 8px !important;
+  line-height: 1.1 !important;
+  color: #555 !important;
+  text-align: center !important;
+}
+.pixel-hcaptcha-brand svg {
+  display: block !important;
+  width: 30px !important;
+  height: 32px !important;
+}
+.pixel-hcaptcha-links {
+  font-size: 7px !important;
+  color: #7a7a7a !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Testimonials — let stacked cards peek left of the active slide (live cards effect) */
+.elementor-element-ce87f17,
+.elementor-element-fa5fed6,
+.arolax_testimonial_wrapper,
+.arolax_testimonial_wrapper .swiper,
+.arolax_testimonial_wrapper .swiper-wrapper {
+  overflow: visible !important;
+}
+
+/* Progress bars — live shows title above + % on the fill; avoid double paint */
+html.pixel-exact .elementor-progress-wrapper {
+  overflow: hidden !important;
+}
+html.pixel-exact .elementor-progress-bar {
+  max-width: 100% !important;
+}
+html.pixel-exact .elementor-progress-percentage {
+  color: #ffffff !important;
+  white-space: nowrap;
+}
+
+/* Sticky header must keep 3-column flex (logo | nav | social) — DESKTOP ONLY.
+   On mobile Elementor hides .01ec82b (elementor-hidden-mobile) and shows .9e2c1c7.
+   Forcing display:flex here was un-hiding the desktop header and adding ~140px. */
+@media (min-width: 1025px) {
+  .elementor-element-01ec82b.elementor-sticky--active,
+  .elementor-element-01ec82b.elementor-sticky,
+  .elementor-element-01ec82b.pixel-header-pinned {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: auto !important;
+    inset: 0 auto auto 0 !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+    filter: none !important;
+    perspective: none !important;
+  }
+  .elementor-element-01ec82b.pixel-header-pinned {
+    position: fixed !important;
+    z-index: 10000 !important;
+    /* Solid bar while pinned — Elementor's fade-to-transparent gradient lets
+       service rows (CGI VIDEOS etc.) show through the nav and look "stuck". */
+    background-color: #000000 !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    isolation: isolate;
+  }
+  html.pixel-exact .elementor-17959 .elementor-element.elementor-element-01ec82b.pixel-header-pinned,
+  html.pixel-exact .elementor-17959 .elementor-element.elementor-element-01ec82b.pixel-header-pinned:not(.elementor-motion-effects-element-type-background) {
+    background-color: #000000 !important;
+    background-image: none !important;
+  }
+  html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned > .elementor-motion-effects-container,
+  html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+    background-image: none !important;
+    background-color: #000000 !important;
+    opacity: 1 !important;
+  }
+  html.pixel-exact .service-box,
+  html.pixel-exact .elementor-element-b0617ee {
+    z-index: 1 !important;
+  }
+  .elementor-element-01ec82b > .elementor-element-11563fa {
+    flex: 0 0 auto !important;
+    /* Keep Elementor --width (≈14%); width:auto shrinks to the img and shifts socials */
+    width: var(--width, auto) !important;
+    max-width: none !important;
+  }
+  .elementor-element-01ec82b > .elementor-element-143806d {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+  .elementor-element-01ec82b > .elementor-element-c54568d {
+    flex: 0 0 auto !important;
+    width: var(--width, auto) !important;
+    margin-left: auto !important;
+  }
+  .pixel-sticky-spacer {
+    display: block !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/* Never override Elementor responsive visibility for the DESKTOP header only.
+   Do NOT blanket-hide .elementor-hidden-mobile_extra — that class means
+   "hide between 768–880px", and those sections must show on phones. */
+@media (max-width: 1024px) {
+  .elementor-element-01ec82b.elementor-hidden-mobile,
+  .elementor-element-01ec82b.elementor-hidden-mobile_extra {
+    display: none !important;
+  }
+  .pixel-sticky-spacer {
+    display: none !important;
+    height: 0 !important;
+  }
+}
+
+/* Nested UL sub-menus stay closed without theme hover JS.
+   Do NOT force-hide .elementor-nav-menu--dropdown — live keeps it display:block
+   with max-height:0 + scaleY(0); display:none shrinks the mobile header ~3–5px
+   and can break Elementor's hamburger toggle. */
+.elementor-nav-menu .sub-menu,
+ul.elementor-nav-menu ul {
+  display: none !important;
+}
+.wcf__nav-menu.desktop-menu-active .menu-item-has-children > .sub-menu {
+  display: none !important;
+}
+.wcf__nav-menu.desktop-menu-active .menu-item-has-children:hover > .sub-menu {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Live WP content was pasted with ChatGPT/Gizmo wrappers. Without Tailwind those
+   classes are inert; our Next layout loads Tailwind so h-8/w-8 crush text to 32px. */
+html.pixel-exact .elementor .gizmo-bot-avatar,
+html.pixel-exact .elementor .gizmo-bot-avatar > div,
+html.pixel-exact .elementor div.flex-shrink-0.flex.flex-col.relative.items-end,
+html.pixel-exact .elementor div.flex-shrink-0.flex.flex-col.relative.items-end > .pt-0,
+html.pixel-exact .elementor [class*='bg-token-main-surface'] {
+  display: contents !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+html.pixel-exact .elementor .gizmo-bot-avatar p,
+html.pixel-exact .elementor [class*='bg-token-main-surface'] p {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Cube Poseidon / image-box sliders — clip faces; hide loop duplicates */
+html.pixel-exact .swiper-cube,
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube {
+  overflow: visible !important;
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider,
+html.pixel-exact .img-box-wrap-center.elementor-widget-wcf--image-box-slider {
+  overflow: visible !important;
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper:not(.swiper-initialized),
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube:not(.swiper-initialized) {
+  overflow: hidden !important;
+  max-height: min(81vh, 740px);
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper:not(.swiper-initialized) .swiper-wrapper {
+  display: block !important;
+  transform: none !important;
+  height: auto !important;
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper:not(.swiper-initialized) .swiper-slide {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper:not(.swiper-initialized) .swiper-slide:first-child {
+  position: relative !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  inset: auto !important;
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf--image-box .thumb img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: min(81vh, 740px);
+  object-fit: contain !important;
+}
+@media (min-width: 1025px) {
+  html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper,
+  html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf--image-box {
+    max-width: 100%;
+  }
+  html.pixel-exact .elementor-widget-wcf--image-box-slider .thumb {
+    max-height: min(81vh, 740px);
+    overflow: hidden;
+  }
+  html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-slide-image,
+  html.pixel-exact .elementor-widget-wcf--image-box-slider img.swiper-slide-image {
+    width: 100% !important;
+    height: auto !important;
+    max-height: min(81vh, 740px) !important;
+    object-fit: contain !important;
+  }
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube .swiper-slide {
+  margin-right: 0 !important;
+}
+html.pixel-exact .swiper-cube .swiper-slide {
+  visibility: hidden !important;
+  backface-visibility: hidden;
+}
+html.pixel-exact .swiper-cube .swiper-slide-active,
+html.pixel-exact .swiper-cube .swiper-slide-next,
+html.pixel-exact .swiper-cube .swiper-slide-prev {
+  visibility: visible !important;
+}
+html.pixel-exact .swiper-cube .swiper-slide-duplicate,
+html.pixel-exact .swiper-cube .swiper-slide-duplicate-active,
+html.pixel-exact .swiper-cube .swiper-slide-duplicate-next,
+html.pixel-exact .swiper-cube .swiper-slide-duplicate-prev {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube:not(.swiper-initialized) .swiper-slide:not(:first-child) {
+  visibility: hidden !important;
+}
+/* Advance posters — before EffectPoster boots, don't let slides sit in a row */
+html.pixel-exact .advance_slider_wrapper .swiper-poster:not(.swiper-initialized) {
+  overflow: hidden !important;
+}
+html.pixel-exact .advance_slider_wrapper .swiper-poster:not(.swiper-initialized) .swiper-wrapper {
+  display: block !important;
+}
+html.pixel-exact .advance_slider_wrapper .swiper-poster:not(.swiper-initialized) .swiper-slide {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+html.pixel-exact .advance_slider_wrapper .swiper-poster:not(.swiper-initialized) .swiper-slide:first-child {
+  opacity: 1 !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+/* Posters: full card under fixed header; mousewheel owns the section.
+   No position:sticky + no JS scrollBy (those caused jitter / stuck scroll). */
+html.pixel-exact .advance_slider_wrapper[slider-type="posters"],
+html.pixel-exact .advance_slider_wrapper.pixel-poster-full {
+  scroll-margin-top: 120px;
+  position: relative;
+  z-index: 1;
+}
+html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-poster,
+html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide {
+  max-height: min(680px, calc(100vh - 120px));
+  height: var(--pixel-poster-h, 680px);
+}
+html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-poster {
+  overflow: visible !important;
+}
+/* Soften creative-effect shadows so stack reads as intentional cards */
+html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide-shadow,
+html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide-shadow-left,
+html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide-shadow-right {
+  background: rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Tailwind preflight sets img/svg { display:block }. Live Elementor keeps
+   replaced elements inline-block — critical for RTL timeline thumbs (odd items)
+   where block+rtl right-shifts the image ~104px inside .thumb. */
+html.pixel-exact .elementor img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+html.pixel-exact .wcf--timeline .thumb img {
+  display: inline !important;
+}
+
+/* Portfolio timeline — clamp icon SVG if widget CSS loads late */
+html.pixel-exact .wcf--timeline .step-box .icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: calc(var(--icon-size, 25px) + 2 * var(--icon-padding, 1px)) !important;
+  height: calc(var(--icon-size, 25px) + 2 * var(--icon-padding, 1px)) !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  flex: 0 0 auto !important;
+  overflow: hidden !important;
+}
+html.pixel-exact .wcf--timeline .step-box .icon svg,
+html.pixel-exact .wcf--timeline .step-box .icon .e-font-icon-svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+/* Elementor spacer — page CSS sets --spacer-size; base height rule often missing from scrapes */
+html.pixel-exact .elementor-spacer-inner {
+  height: var(--spacer-size, 0px);
+}
+
+/* Pixel scrapes inherit theme --font-primary (DM Sans). Next layout applies .font-roboto
+   on body which overrides Elementor typography and shifts line wraps / scroll height. */
+html.pixel-exact body.font-roboto,
+html.pixel-exact body {
+  font-family: var(--font-primary, "DM Sans", sans-serif) !important;
+}
+
+/* Do NOT globally force .elementor-invisible — let Elementor animate; JS fallback reveals stuck ones */

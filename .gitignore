@@ -1,0 +1,95 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Next.js
+.next/
+out/
+tsconfig.tsbuildinfo
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# WordPress — never ship runtime WP code or caches
+public/wp-content/plugins/
+public/wp-content/themes/
+public/wp-content/mu-plugins/
+public/wp-content/wflogs/
+public/wp-content/jetpack-waf/
+public/wp-content/upgrade/
+public/wp-content/upgrade-temp-backup/
+public/wp-content/uploads/al_opt_content/
+public/wp-content/uploads-webpc/
+public/wp-content/optimized-*.css
+public/wp-content/debug.log
+public/wp-content/**/debug.log
+public/wp-content/litespeed/
+
+# Legacy Vite / static scrape leftovers (repo root only)
+/src/
+/style.css
+/index.html
+/about-us/
+/blog/
+/cgi-videos/
+/contact-us/
+/digital-marketing/
+/email-marketing/
+/online-reputation-management/
+/portfolio/
+/privacy-policy/
+/refund-and-return/
+/search-engine-optimization/
+/terms-and-condition/
+/web-development/
+/scraped.html
+/vite.config.js
+/vite.config.js.legacy
+/vite.config.*
+*.pre-live.bak
+*.react.bak
+*.bak.jpg
+*.bak.jpeg
+*.bak.webp
+*.bak.png
+/paths.txt
+/extract.cjs
+/PROJECT_CONTEXT.md
+
+# Nested scrape dump + planning + audit dumps
+/13utopiaaaaaaaa/
+/.planning/
+/docs/pixel-diff/
+/docs/scrapes-full/
+/docs/design-refs/
+/docs/live-snapshots/
+/docs/hero-diff.png
+/docs/zeus-*.webp
+/docs/PARITY-AUDIT*
+/docs/NEST-HARVEST.md
+
+# Migration / probe scripts (keep none in production repo)
+/scripts/
