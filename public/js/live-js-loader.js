@@ -31,23 +31,52 @@
       window.elementorDevTools = window.elementorDevTools || {
         deprecation: { deprecated: function () {} },
       };
+      // Register WCF/Arolax widget hooks BEFORE runReadyTrigger — otherwise
+      // image-box cube / brand / nav handlers never attach on first paint.
+      if (window.jQuery) {
+        window.jQuery(window).trigger('elementor/frontend/init');
+      }
       if (window.elementorFrontend && typeof window.elementorFrontend.init === 'function') {
         if (!window.elementorFrontend.elements) {
           window.elementorFrontend.init();
         } else if (window.elementorFrontend.elementsHandler && window.jQuery) {
           window.jQuery('.elementor').each(function () {
-            try { window.elementorFrontend.elementsHandler.runReadyTrigger(this); } catch (e) {}
+            try {
+              window.elementorFrontend.elementsHandler.runReadyTrigger(this);
+            } catch (e) {}
           });
         }
       }
       // Sticky is on e-con containers — re-trigger those with sticky in data-settings
       if (window.elementorFrontend && window.elementorFrontend.elementsHandler && window.jQuery) {
         window.jQuery('.elementor-element[data-settings*="sticky"]').each(function () {
-          try { window.elementorFrontend.elementsHandler.runReadyTrigger(this); } catch (e) {}
+          try {
+            window.elementorFrontend.elementsHandler.runReadyTrigger(this);
+          } catch (e) {}
+        });
+      }
+      // Explicit WCF slider widgets (cube hero, brand reel, etc.)
+      if (window.elementorFrontend && window.elementorFrontend.hooks && window.jQuery) {
+        var widgetHooks = [
+          ['wcf--image-box-slider.default', '.elementor-widget-wcf--image-box-slider'],
+          ['wcf--brand-slider.default', '.elementor-widget-wcf--brand-slider'],
+          ['wcf--slider.default', '.elementor-widget-wcf--slider'],
+          ['image-carousel.default', '.elementor-widget-image-carousel'],
+          ['arolax--testimonial.default', '.elementor-widget-arolax--testimonial'],
+        ];
+        widgetHooks.forEach(function (pair) {
+          try {
+            window.jQuery(pair[1]).each(function () {
+              window.elementorFrontend.hooks.doAction(
+                'frontend/element_ready/' + pair[0],
+                window.jQuery(this),
+                window.jQuery
+              );
+            });
+          } catch (e2) {}
         });
       }
       if (window.jQuery) {
-        window.jQuery(window).trigger('elementor/frontend/init');
         window.jQuery(window).trigger('resize');
       }
       window.dispatchEvent(new Event('resize'));

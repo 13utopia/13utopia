@@ -229,7 +229,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[data-pixel-swiper-boot]')) {
       const s2 = document.createElement('script');
-      s2.src = '/js/pixel-swiper-boot.js?v=swiper-2';
+      s2.src = '/js/pixel-swiper-boot.js?v=swiper-3';
       s2.async = false;
       s2.dataset.pixelSwiperBoot = '1';
       document.head.appendChild(s2);
@@ -278,7 +278,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[src*="pixel-advance-slider-boot"]')) {
       const sAdv = document.createElement('script');
-      sAdv.src = '/js/pixel-advance-slider-boot.js?v=poster-orch-8';
+      sAdv.src = '/js/pixel-advance-slider-boot.js?v=poster-orch-10';
       sAdv.async = false;
       sAdv.dataset.pixelAdvanceSliderBoot = '1';
       document.head.appendChild(sAdv);

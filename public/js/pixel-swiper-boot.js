@@ -283,9 +283,11 @@
     if (root.classList.contains('swiper-initialized') || root.__pixelSwiper || root.swiper) {
       return false;
     }
-    // Skip advance/poster/cube — other boots own those
+    // Skip advance/poster/cube / image-box — other boots own those
     if (
       root.closest('.advance_slider_wrapper') ||
+      root.closest('.wcf__image-box-slider') ||
+      root.closest('.elementor-widget-wcf--image-box-slider') ||
       root.classList.contains('swiper-cube') ||
       root.classList.contains('advance_slider') ||
       root.classList.contains('swiper-poster')

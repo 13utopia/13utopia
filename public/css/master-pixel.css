@@ -709,9 +709,12 @@ html.pixel-exact .swiper-cube .swiper-slide {
   visibility: hidden !important;
   backface-visibility: hidden;
 }
-html.pixel-exact .swiper-cube .swiper-slide-active,
-html.pixel-exact .swiper-cube .swiper-slide-next,
-html.pixel-exact .swiper-cube .swiper-slide-prev {
+/* Only the active face when idle — next/prev show during cube spin */
+html.pixel-exact .swiper-cube .swiper-slide-active {
+  visibility: visible !important;
+}
+html.pixel-exact .swiper-cube.swiper-animating .swiper-slide-next,
+html.pixel-exact .swiper-cube.swiper-animating .swiper-slide-prev {
   visibility: visible !important;
 }
 html.pixel-exact .swiper-cube .swiper-slide-duplicate,
