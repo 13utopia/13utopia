@@ -22,6 +22,18 @@
     return url;
   }
 
+  function fixLogo(chat) {
+    var img = chat.querySelector('img.own-img, img#style-99, img[alt="whatsapp-logo"]');
+    if (!img) return;
+    var src = img.getAttribute('src') || '';
+    if (src.indexOf('/img/whatsapp-logo.svg') === 0) return;
+    // Plugin path was removed from public/ — use local asset for visual parity
+    img.setAttribute('src', '/img/whatsapp-logo.svg');
+    img.removeAttribute('srcset');
+    img.removeAttribute('data-src');
+    img.removeAttribute('data-lazy-src');
+  }
+
   function boot() {
     var chat = document.getElementById('ht-ctc-chat');
     if (!chat) return;
@@ -38,6 +50,7 @@
     chat.setAttribute('role', 'link');
     chat.setAttribute('aria-label', 'WhatsApp us');
     chat.setAttribute('title', 'WhatsApp us');
+    fixLogo(chat);
 
     if (chat.dataset.pixelCtcBound === '1') return;
     chat.dataset.pixelCtcBound = '1';

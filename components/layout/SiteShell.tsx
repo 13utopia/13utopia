@@ -49,7 +49,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!usePixelChrome) return;
     ensurePixelSheets();
-    loadScriptOnce('/js/pixel-ctc-boot.js', 'pixel-ctc-boot');
+    loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-2', 'pixel-ctc-boot-v2');
     loadScriptOnce('/js/pixel-lazy-boot.js', 'pixel-lazy-boot');
     loadScriptOnce('/js/pixel-hcaptcha-boot.js', 'pixel-hcaptcha-boot');
     // Bump data-key when sticky/poster boots change so SPA sessions pick up new logic

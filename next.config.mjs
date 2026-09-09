@@ -51,6 +51,15 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    // Scrape HTML still points CTC / WPForms assets at deleted plugin paths
+    return [
+      {
+        source: '/wp-content/plugins/click-to-chat-for-whatsapp/:path*',
+        destination: '/img/whatsapp-logo.svg',
+      },
+    ];
+  },
   // Used when running `next dev --webpack`
   webpack: (config) => {
     config.watchOptions = {
