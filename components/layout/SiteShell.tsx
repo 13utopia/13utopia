@@ -49,17 +49,20 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!usePixelChrome) return;
     ensurePixelSheets();
-    loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-2', 'pixel-ctc-boot-v2');
-    loadScriptOnce('/js/pixel-lazy-boot.js?v=lazy-2', 'pixel-lazy-boot-v2');
+    loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-2', 'pixel-ctc-boot-v2', ['data-pixel-ctc-boot']);
+    loadScriptOnce('/js/pixel-lazy-boot.js?v=lazy-2', 'pixel-lazy-boot-v2', ['data-pixel-lazy-boot']);
     loadScriptOnce('/js/pixel-hcaptcha-boot.js', 'pixel-hcaptcha-boot');
-    // Bump data-key when sticky/poster boots change so SPA sessions pick up new logic
-    loadScriptOnce('/js/pixel-sticky-boot.js?v=sticky-pin-6', 'pixel-sticky-boot-v6');
+    loadScriptOnce('/js/pixel-sticky-boot.js?v=sticky-pin-7', 'pixel-sticky-boot-v7', [
+      'data-pixel-sticky-boot',
+    ]);
     loadScriptOnce('/js/pixel-counter-boot.js?v=counter-4', 'pixel-counter-boot-v4', [
       'data-pixel-counter-boot',
     ]);
-    loadScriptOnce('/js/pixel-progress-boot.js?v=progress-3', 'pixel-progress-boot-v3');
+    loadScriptOnce('/js/pixel-progress-boot.js?v=progress-3', 'pixel-progress-boot-v3', [
+      'data-pixel-progress-boot',
+    ]);
     loadScriptOnce('/js/pixel-posts-boot.js', 'pixel-posts-boot');
-    loadScriptOnce('/js/pixel-advance-slider-boot.js?v=poster-orch-11', 'pixel-advance-slider-boot-v11', [
+    loadScriptOnce('/js/pixel-advance-slider-boot.js?v=poster-orch-12', 'pixel-advance-slider-boot-v12', [
       'data-pixel-advance-slider-boot',
     ]);
     loadScriptOnce('/js/pixel-swiper-boot.js?v=swiper-3', 'pixel-swiper-boot-v3', [

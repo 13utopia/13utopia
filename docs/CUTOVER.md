@@ -10,10 +10,11 @@ Ship only this Next.js app. Keep any compromised WordPress host offline.
    - `CONTACT_FROM_EMAIL` (verified Resend sender)
    - `NEXT_PUBLIC_SITE_URL=https://13utopia.com`
 2. Confirm Framework Preset is **Next.js** (see `vercel.json`).
-3. Deploy preview → smoke-test routes, contact, newsletter, WhatsApp.
-4. Confirm `/wp-content/plugins` and themes are absent from the deployment.
-5. Verify security headers on any HTML response.
-6. Check `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and rich results (Organization / LocalBusiness).
+3. Soften or disable **Vercel Attack Challenge** so Googlebot / SEO crawlers are not blocked with 403.
+4. Deploy preview → smoke-test routes, contact, newsletter, WhatsApp, favicon tab icon.
+5. Confirm `/wp-content/plugins` and themes are absent from the deployment.
+6. Verify security headers on any HTML response.
+7. Check `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and rich results (Organization / LocalBusiness).
 
 ## DNS
 

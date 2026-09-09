@@ -52,15 +52,23 @@ const nextConfig = {
     ];
   },
   async rewrites() {
-    // Scrape HTML still points CTC / WPForms assets at deleted plugin paths
+    // Scrape CSS/HTML still points at deleted plugin paths
     return [
       {
         source: '/wp-content/plugins/click-to-chat-for-whatsapp/:path*',
         destination: '/img/whatsapp-logo.svg',
       },
       {
-        source: '/favicon.ico',
-        destination: '/favicon.png',
+        source: '/wp-content/plugins/elementor/assets/lib/eicons/fonts/:file*',
+        destination: '/fonts/eicons/:file*',
+      },
+      {
+        source: '/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/:file*',
+        destination: '/fonts/font-awesome/:file*',
+      },
+      {
+        source: '/wp-content/plugins/arolax-essential/assets/images/btn-image.webp',
+        destination: '/img/arolax/btn-image.webp',
       },
     ];
   },

@@ -1,37 +1,11 @@
-/*! Boot WCF advance-slider (poster fade carousel) + harden cube/image-box transitions.
-   Re-runnable via window.__PIXEL_ADVANCE_RUN after SPA navigations. */
+/*! Boot poster fade carousel + harden cube/image-box transitions.
+   Re-runnable via window.__PIXEL_ADVANCE_RUN after SPA navigations.
+   Does NOT load deleted wcf-addons-pro plugin assets — Swiper-only. */
 (function () {
-  var EFFECTS_SRC = '/wp-content/plugins/wcf-addons-pro/assets/js/advance-slider-effects.js';
-  var CSS_HREF = '/wp-content/plugins/wcf-addons-pro/assets/css/widgets/advance-slider.css';
   var started = false;
 
   function ensureCss() {
-    if (document.querySelector('link[data-pixel-advance-slider-css]')) return;
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = CSS_HREF;
-    link.setAttribute('data-pixel-advance-slider-css', '1');
-    document.head.appendChild(link);
-  }
-
-  function loadScript(src) {
-    return new Promise(function (resolve, reject) {
-      if (document.querySelector('script[data-pixel-src="' + src + '"]')) {
-        resolve();
-        return;
-      }
-      var s = document.createElement('script');
-      s.src = src;
-      s.async = false;
-      s.dataset.pixelSrc = src;
-      s.onload = function () {
-        resolve();
-      };
-      s.onerror = function () {
-        reject(new Error('failed ' + src));
-      };
-      document.head.appendChild(s);
-    });
+    /* Poster/cube styles live in master-pixel.css — no plugin CSS required. */
   }
 
   function parseSettings(el) {
@@ -50,14 +24,7 @@
     }
   }
 
-  function moduleForType(type) {
-    if (type === 'posters' && typeof EffectPoster === 'function') return EffectPoster;
-    if (type === 'material' && typeof EffectMaterial === 'function') return EffectMaterial;
-    if (type === 'carousel' && typeof EffectCarousel === 'function') return EffectCarousel;
-    if (type === 'fashion' && typeof EffectFashion === 'function') return EffectFashion;
-    if (type === 'spring' && typeof EffectSpring === 'function') return EffectSpring;
-    if (type === 'shutters' && typeof EffectShutters === 'function') return EffectShutters;
-    if (type === 'slicer' && typeof EffectSlicer === 'function') return EffectSlicer;
+  function moduleForType() {
     return null;
   }
 
@@ -517,35 +484,17 @@
       return;
     }
     started = true;
-    ensureCss();
-    var chain = Promise.resolve();
-    if (typeof EffectPoster !== 'function') {
-      chain = chain.then(function () {
-        return loadScript(EFFECTS_SRC);
-      });
-    }
-    chain
-      .then(function () {
-        return loadScript('/wp-content/plugins/wcf-addons-pro/assets/js/advance-slider.js').catch(function () {});
-      })
-      .then(function () {
-        run();
-        runReadyHooks();
-        // Re-assert poster carousel after any WCF advance hooks
-        document.querySelectorAll('.advance_slider_wrapper[slider-type="posters"]').forEach(bootAdvance);
-        unlockLenisScroll();
-        setTimeout(run, 400);
-        setTimeout(run, 1200);
-        setTimeout(function () {
-          run();
-          hardenCubeSliders();
-          unlockLenisScroll();
-        }, 2500);
-      })
-      .catch(function (e) {
-        console.warn('[pixel-advance-slider]', e);
-        run();
-      });
+    run();
+    runReadyHooks();
+    document.querySelectorAll('.advance_slider_wrapper[slider-type="posters"]').forEach(bootAdvance);
+    unlockLenisScroll();
+    setTimeout(run, 400);
+    setTimeout(run, 1200);
+    setTimeout(function () {
+      run();
+      hardenCubeSliders();
+      unlockLenisScroll();
+    }, 2500);
   }
 
   if (window.__PIXEL_LIVE_JS_READY) start();

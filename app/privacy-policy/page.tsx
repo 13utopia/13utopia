@@ -243,7 +243,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[data-pixel-ctc-boot]')) {
       const s4 = document.createElement('script');
-      s4.src = '/js/pixel-ctc-boot.js';
+      s4.src = '/js/pixel-ctc-boot.js?v=ctc-2';
       s4.async = false;
       s4.dataset.pixelCtcBoot = '1';
       document.head.appendChild(s4);
@@ -264,7 +264,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[data-pixel-sticky-boot]')) {
       const s7 = document.createElement('script');
-      s7.src = '/js/pixel-sticky-boot.js';
+      s7.src = '/js/pixel-sticky-boot.js?v=sticky-pin-7';
       s7.async = false;
       s7.dataset.pixelStickyBoot = '1';
       document.head.appendChild(s7);
@@ -278,7 +278,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[src*="pixel-advance-slider-boot"]')) {
       const sAdv = document.createElement('script');
-      sAdv.src = '/js/pixel-advance-slider-boot.js?v=poster-orch-11';
+      sAdv.src = '/js/pixel-advance-slider-boot.js?v=poster-orch-12';
       sAdv.async = false;
       sAdv.dataset.pixelAdvanceSliderBoot = '1';
       document.head.appendChild(sAdv);

@@ -90,6 +90,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       {
         url: '/wp-content/uploads/2025/11/cropped-13-1-32x32.png',
         sizes: '32x32',
@@ -117,7 +118,7 @@ export const metadata: Metadata = {
         type: 'image/png',
       },
     ],
-    shortcut: '/wp-content/uploads/2025/11/cropped-13-1-32x32.png',
+    shortcut: '/favicon.ico',
   },
   other: {
     'geo.region': 'IN-GJ',

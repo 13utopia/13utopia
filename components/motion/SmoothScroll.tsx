@@ -73,8 +73,8 @@ function LenisGuards() {
 }
 
 /**
- * Lenis smooth scroll. Fixed header is portaled by pixel-sticky-boot so Lenis
- * never wraps it in a transform containing block.
+ * Lenis smooth scroll. Header stays in-tree (pixel-sticky-boot pins it);
+ * page wrappers must not use transform so position:fixed still works.
  */
 export default function SmoothScroll({ children }: Props) {
   useEffect(() => {

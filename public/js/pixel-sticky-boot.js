@@ -4,6 +4,9 @@
    (nav links go bootstrap-dark). Keep header in-tree; page wrappers must not use
    transform/will-change:transform (see PageEnter / globals.css). */
 (function () {
+  if (window.__PIXEL_STICKY_BOOT_V7) return;
+  window.__PIXEL_STICKY_BOOT_V7 = true;
+
   function parseSettings(el) {
     try {
       return JSON.parse((el.getAttribute('data-settings') || '{}').replace(/&quot;/g, '"'));
