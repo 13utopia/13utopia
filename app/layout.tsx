@@ -88,6 +88,37 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      {
+        url: '/wp-content/uploads/2025/11/cropped-13-1-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+      {
+        url: '/wp-content/uploads/2025/11/cropped-13-1-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        url: '/wp-content/uploads/2025/11/cropped-13-1.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+      {
+        url: '/favicon.png',
+        type: 'image/png',
+      },
+    ],
+    apple: [
+      {
+        url: '/wp-content/uploads/2025/11/cropped-13-1-180x180.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+    shortcut: '/wp-content/uploads/2025/11/cropped-13-1-32x32.png',
+  },
   other: {
     'geo.region': 'IN-GJ',
     'geo.placename': 'Ahmedabad',

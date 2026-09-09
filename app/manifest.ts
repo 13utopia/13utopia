@@ -14,6 +14,18 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: 'en-IN',
     icons: [
       {
+        src: '/wp-content/uploads/2025/11/cropped-13-1-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/wp-content/uploads/2025/11/cropped-13-1.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
         src: OG_IMAGE,
         sizes: '1200x630',
         type: 'image/webp',

@@ -58,6 +58,10 @@ const nextConfig = {
         source: '/wp-content/plugins/click-to-chat-for-whatsapp/:path*',
         destination: '/img/whatsapp-logo.svg',
       },
+      {
+        source: '/favicon.ico',
+        destination: '/favicon.png',
+      },
     ];
   },
   // Used when running `next dev --webpack`
