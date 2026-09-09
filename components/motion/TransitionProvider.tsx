@@ -130,6 +130,9 @@ export default function TransitionProvider({ children }: { children: ReactNode }
       __PIXEL_COUNTER_RUN?: () => void;
       __PIXEL_PROGRESS_RUN?: () => void;
       __PIXEL_ADVANCE_RUN?: () => void;
+      __PIXEL_SWIPER_RUN?: () => void;
+      __PIXEL_LAZY_RUN?: () => void;
+      __PIXEL_ELEMENTOR_RERUN?: () => void;
     };
     const rerun = () => {
       document.querySelectorAll('.wcf__nav-menu').forEach((nav) => {
@@ -142,6 +145,9 @@ export default function TransitionProvider({ children }: { children: ReactNode }
       w.__PIXEL_COUNTER_RUN?.();
       w.__PIXEL_PROGRESS_RUN?.();
       w.__PIXEL_ADVANCE_RUN?.();
+      w.__PIXEL_LAZY_RUN?.();
+      w.__PIXEL_ELEMENTOR_RERUN?.();
+      w.__PIXEL_SWIPER_RUN?.();
     };
     rerun();
     const t1 = window.setTimeout(rerun, 120);

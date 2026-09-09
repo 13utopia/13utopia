@@ -229,7 +229,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[data-pixel-swiper-boot]')) {
       const s2 = document.createElement('script');
-      s2.src = '/js/pixel-swiper-boot.js';
+      s2.src = '/js/pixel-swiper-boot.js?v=swiper-2';
       s2.async = false;
       s2.dataset.pixelSwiperBoot = '1';
       document.head.appendChild(s2);
@@ -250,7 +250,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[data-pixel-lazy-boot]')) {
       const s5 = document.createElement('script');
-      s5.src = '/js/pixel-lazy-boot.js';
+      s5.src = '/js/pixel-lazy-boot.js?v=lazy-2';
       s5.async = false;
       s5.dataset.pixelLazyBoot = '1';
       document.head.appendChild(s5);

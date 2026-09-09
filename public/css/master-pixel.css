@@ -111,6 +111,8 @@ body.arolax-preloader-active {
 .wcf--brand-slider-wrapper .swiper-wrapper {
   animation: none !important;
   gap: 0 !important;
+  /* Continuous logo reel (matches live WCF brand slider) */
+  transition-timing-function: linear !important;
 }
 .wcf--brand-slider-wrapper .swiper-slide {
   opacity: 1 !important;
@@ -483,12 +485,15 @@ label[for='wpforms-16813-field_8'],
   letter-spacing: 0.01em !important;
 }
 
-/* Testimonials — let stacked cards peek left of the active slide (live cards effect) */
+/* Testimonials — let stacked cards peek (live cards effect); include service-page ids */
 .elementor-element-ce87f17,
 .elementor-element-fa5fed6,
+.elementor-element-f9f21d5,
+.elementor-widget-arolax--testimonial,
 .arolax_testimonial_wrapper,
 .arolax_testimonial_wrapper .swiper,
-.arolax_testimonial_wrapper .swiper-wrapper {
+.arolax_testimonial_wrapper .swiper-wrapper,
+.arolax_testimonial_slider {
   overflow: visible !important;
 }
 

@@ -92,6 +92,7 @@
     setTimeout(revealStuckInvisible, 10000);
     window.__PIXEL_LIVE_JS_READY = true;
     window.__PIXEL_LIVE_JS_LOADING = false;
+    window.__PIXEL_ELEMENTOR_RERUN = triggerElementor;
     window.dispatchEvent(new CustomEvent('pixel-live-js-ready'));
   }
 
