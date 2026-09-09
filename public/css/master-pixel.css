@@ -748,27 +748,60 @@ html.pixel-exact .advance_slider_wrapper .swiper-poster:not(.swiper-initialized)
   pointer-events: auto !important;
 }
 
-/* Posters: full card under fixed header; mousewheel owns the section.
-   No position:sticky + no JS scrollBy (those caused jitter / stuck scroll). */
+/* Posters: fade/slide autoplay carousel — no mousewheel sticky / no scroll trap */
 html.pixel-exact .advance_slider_wrapper[slider-type="posters"],
-html.pixel-exact .advance_slider_wrapper.pixel-poster-full {
-  scroll-margin-top: 120px;
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel {
   position: relative;
   z-index: 1;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 2.5rem;
 }
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-poster,
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-slide {
+  max-height: min(560px, calc(100vh - 160px));
+  height: auto;
+  min-height: 320px;
+}
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-poster {
+  overflow: hidden !important;
+  border-radius: 4px;
+}
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-slide {
+  opacity: 0 !important;
+  transition-property: opacity;
+}
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-slide-active {
+  opacity: 1 !important;
+}
+html.pixel-exact .pixel-poster-pagination.swiper-pagination,
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-pagination {
+  position: relative !important;
+  bottom: auto !important;
+  margin-top: 1.25rem;
+  display: flex !important;
+  justify-content: center;
+  gap: 8px;
+}
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.35);
+  opacity: 1;
+  margin: 0 !important;
+  border-radius: 50%;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-pagination-bullet-active {
+  background: #ffffff;
+  transform: scale(1.15);
+}
+/* Legacy sticky-stack class — neutralize if still present */
 html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-poster,
 html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide {
-  max-height: min(680px, calc(100vh - 120px));
-  height: var(--pixel-poster-h, 680px);
-}
-html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-poster {
-  overflow: visible !important;
-}
-/* Soften creative-effect shadows so stack reads as intentional cards */
-html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide-shadow,
-html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide-shadow-left,
-html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide-shadow-right {
-  background: rgba(0, 0, 0, 0.35) !important;
+  max-height: min(560px, calc(100vh - 160px));
+  height: auto;
 }
 
 /* Tailwind preflight sets img/svg { display:block }. Live Elementor keeps

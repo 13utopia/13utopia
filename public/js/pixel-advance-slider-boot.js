@@ -1,4 +1,4 @@
-/*! Boot WCF advance-slider (posters sticky-scroll) + harden cube/image-box transitions.
+/*! Boot WCF advance-slider (poster fade carousel) + harden cube/image-box transitions.
    Re-runnable via window.__PIXEL_ADVANCE_RUN after SPA navigations. */
 (function () {
   var EFFECTS_SRC = '/wp-content/plugins/wcf-addons-pro/assets/js/advance-slider-effects.js';
@@ -61,162 +61,171 @@
     return null;
   }
 
-  function currentScrollY() {
+  function unlockLenisScroll() {
+    document
+      .querySelectorAll(
+        '.advance_slider_wrapper[data-lenis-prevent], .swiper-poster[data-lenis-prevent], .swiper-cube[data-lenis-prevent]'
+      )
+      .forEach(function (el) {
+        // Cubes may briefly hold prevent during drag — only strip posters here
+        if (el.classList.contains('swiper-cube')) return;
+        el.removeAttribute('data-lenis-prevent');
+      });
+    document.querySelectorAll('.advance_slider_wrapper, .swiper-poster').forEach(function (el) {
+      el.removeAttribute('data-lenis-prevent');
+    });
     try {
-      if (window.__lenis && typeof window.__lenis.scroll === 'number') {
-        return window.__lenis.scroll;
-      }
+      if (window.__lenis && typeof window.__lenis.start === 'function') window.__lenis.start();
     } catch (e) {}
-    return window.scrollY || document.documentElement.scrollTop || 0;
   }
 
-  function scrollPageBy(delta) {
-    try {
-      if (window.__lenis) {
-        window.__lenis.start();
-        // Always use Lenis' own scroll — native scrollY can desync after
-        // scrollIntoView / Swiper updates and jump the page near the top.
-        var target = currentScrollY() + delta;
-        window.__lenis.scrollTo(target, { duration: 0.85, force: true });
-        return;
-      }
-    } catch (e) {}
-    window.scrollBy({ top: delta, behavior: 'smooth' });
+  function ensurePosterPagination(wrapper, slider) {
+    var pag = wrapper.querySelector('.swiper-pagination') || slider.querySelector('.swiper-pagination');
+    if (pag) return pag;
+    pag = document.createElement('div');
+    pag.className = 'swiper-pagination pixel-poster-pagination';
+    wrapper.appendChild(pag);
+    return pag;
   }
 
-  /** Poster polish: mousewheel stack + ALWAYS unlock page scroll at edges. */
+  /** Posters → fade/slide autoplay carousel (no mousewheel / no lenis-prevent). */
   function enhancePosters(wrapper) {
     if (!wrapper || wrapper.getAttribute('slider-type') !== 'posters') return;
-    wrapper.classList.add('pixel-poster-full');
+    wrapper.classList.add('pixel-poster-carousel');
+    wrapper.classList.remove('pixel-poster-full');
+    wrapper.removeAttribute('data-lenis-prevent');
 
-    var headerH = 110;
-    var pinned = document.querySelector('.pixel-header-pinned');
-    if (pinned) headerH = Math.max(pinned.getBoundingClientRect().height, 90) + 16;
-    var avail = window.innerHeight - headerH;
-    if (avail > 280) {
-      wrapper.style.setProperty('--pixel-poster-h', Math.min(680, Math.floor(avail)) + 'px');
-    }
+    var slider = wrapper.querySelector('.swiper-poster, .advance_slider');
+    if (!slider) return;
+    slider.removeAttribute('data-lenis-prevent');
 
-    var bindSwiper = function () {
-      var slider = wrapper.querySelector('.swiper-poster, .advance_slider');
-      if (!slider) return;
-      // data-lenis-prevent only while NOT at an outward edge (managed below)
-      slider.setAttribute('data-lenis-prevent', '');
-      wrapper.setAttribute('data-lenis-prevent', '');
+    var sw = slider.swiper || slider.__pixelAdvance;
+    if (!sw) return;
 
-      var sw = slider.swiper;
-      if (!sw) return;
-
-      if (sw.__pixelPosterWheel !== 5) {
-        sw.__pixelPosterWheel = 5;
-        sw.params.mousewheel = {
-          releaseOnEdges: true,
-          sensitivity: 1,
-          eventsTarget: 'container',
-        };
-        sw.params.speed = Math.max(sw.params.speed || 0, 650);
-        try {
-          if (sw.mousewheel) {
-            if (typeof sw.mousewheel.disable === 'function') sw.mousewheel.disable();
-            if (typeof sw.mousewheel.enable === 'function') sw.mousewheel.enable();
-          }
-        } catch (e) {}
-        if (typeof sw.update === 'function') sw.update();
+    try {
+      if (sw.mousewheel && typeof sw.mousewheel.disable === 'function') sw.mousewheel.disable();
+      sw.params.mousewheel = false;
+      if (typeof sw.params.autoplay === 'object' && sw.params.autoplay) {
+        sw.params.autoplay.disableOnInteraction = false;
+        sw.params.autoplay.pauseOnMouseEnter = false;
+        if (!sw.params.autoplay.delay) sw.params.autoplay.delay = 4500;
+      } else {
+        sw.params.autoplay = { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: false };
       }
+      if (sw.autoplay && typeof sw.autoplay.start === 'function') sw.autoplay.start();
+    } catch (e) {}
+    unlockLenisScroll();
+  }
 
-      // Edge unlock — never leave Lenis stopped / wheel trapped on last/first slide
-      if (!sw.__pixelPosterEdgeUnlock) {
-        sw.__pixelPosterEdgeUnlock = true;
-        var edgeCooldown = 0;
-
-        var syncPrevent = function () {
-          // Keep prevent while mid-stack; drop at edges so page can continue
-          if (sw.isBeginning || sw.isEnd) {
-            slider.removeAttribute('data-lenis-prevent');
-            wrapper.removeAttribute('data-lenis-prevent');
-            try {
-              if (window.__lenis) window.__lenis.start();
-            } catch (e) {}
-          } else {
-            slider.setAttribute('data-lenis-prevent', '');
-            wrapper.setAttribute('data-lenis-prevent', '');
-          }
-        };
-
-        sw.on('slideChange', syncPrevent);
-        sw.on('reachBeginning', syncPrevent);
-        sw.on('reachEnd', syncPrevent);
-        sw.on('fromEdge', function () {
-          slider.setAttribute('data-lenis-prevent', '');
-          wrapper.setAttribute('data-lenis-prevent', '');
-        });
-        syncPrevent();
-
-        // Hard escape: if user wheels past last/first, force page scroll
-        slider.addEventListener(
-          'wheel',
-          function (e) {
-            var now = Date.now();
-            if (now < edgeCooldown) return;
-            var dy = e.deltaY;
-            if (Math.abs(dy) < 8) return;
-
-            if (sw.isEnd && dy > 0) {
-              edgeCooldown = now + 420;
-              try {
-                if (window.__lenis) window.__lenis.start();
-              } catch (err) {}
-              slider.removeAttribute('data-lenis-prevent');
-              wrapper.removeAttribute('data-lenis-prevent');
-              try {
-                e.preventDefault();
-                e.stopPropagation();
-              } catch (err2) {}
-              // Nudge page so user never feels locked on step 5
-              scrollPageBy(Math.min(Math.abs(dy) * 2.2, 520));
-              return;
-            }
-            if (sw.isBeginning && dy < 0) {
-              edgeCooldown = now + 420;
-              try {
-                if (window.__lenis) window.__lenis.start();
-              } catch (err) {}
-              slider.removeAttribute('data-lenis-prevent');
-              wrapper.removeAttribute('data-lenis-prevent');
-              try {
-                e.preventDefault();
-                e.stopPropagation();
-              } catch (err3) {}
-              scrollPageBy(-Math.min(Math.abs(dy) * 2.2, 520));
-            }
-          },
-          { passive: false, capture: true }
-        );
-      }
+  function posterCarouselOpts(wrapper, slider) {
+    var pag = ensurePosterPagination(wrapper, slider);
+    var nextEl = wrapper.querySelector('.wcf-arrow-next, .swiper-button-next');
+    var prevEl = wrapper.querySelector('.wcf-arrow-prev, .swiper-button-prev');
+    var opts = {
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+      loop: true,
+      speed: 800,
+      slidesPerView: 1,
+      spaceBetween: 0,
+      grabCursor: true,
+      allowTouchMove: true,
+      mousewheel: false,
+      autoplay: {
+        delay: 4500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false,
+      },
+      pagination: {
+        el: pag,
+        clickable: true,
+      },
+      observer: true,
+      observeParents: true,
     };
+    if (nextEl && prevEl) {
+      opts.navigation = { nextEl: nextEl, prevEl: prevEl };
+    }
+    return opts;
+  }
 
-    bindSwiper();
-    setTimeout(bindSwiper, 500);
-    setTimeout(bindSwiper, 1400);
+  function destroyPosterSwiper(slider) {
+    if (!slider) return;
+    var sw = slider.swiper || slider.__pixelAdvance;
+    if (sw) {
+      try {
+        sw.destroy(true, true);
+      } catch (e) {}
+    }
+    slider.__pixelAdvance = null;
+    slider.classList.remove(
+      'swiper-initialized',
+      'swiper-horizontal',
+      'swiper-fade',
+      'swiper-pointer-events',
+      'swiper-watch-progress',
+      'swiper-backface-hidden',
+      'swiper-3d',
+      'swiper-cube'
+    );
   }
 
   function bootAdvance(wrapper) {
     if (!wrapper) return false;
     var type = wrapper.getAttribute('slider-type') || '';
     if (!window.Swiper) {
-      if (type === 'posters') enhancePosters(wrapper);
+      if (type === 'posters') unlockLenisScroll();
       return false;
     }
     var slider = wrapper.querySelector('.advance_slider, .swiper-poster, .swiper-container, .swiper');
     if (!slider) return false;
 
+    if (type === 'posters') {
+      wrapper.classList.add('pixel-poster-carousel');
+      wrapper.classList.remove('pixel-poster-full');
+      var existing = slider.swiper || slider.__pixelAdvance;
+      var needsCarousel =
+        !existing ||
+        !existing.params ||
+        existing.params.effect === 'creative' ||
+        existing.params.mousewheel ||
+        wrapper.dataset.pixelPosterMode !== 'carousel';
+
+      if (needsCarousel) {
+        destroyPosterSwiper(slider);
+        try {
+          var opts = posterCarouselOpts(wrapper, slider);
+          slider.__pixelAdvance = new window.Swiper(slider, opts);
+          wrapper.dataset.pixelAdvanceBound = '1';
+          wrapper.dataset.pixelPosterMode = 'carousel';
+          enhancePosters(wrapper);
+          return true;
+        } catch (eFade) {
+          console.warn('[pixel-advance-slider] poster carousel failed', eFade);
+          // Fallback without fade module
+          try {
+            var opts2 = posterCarouselOpts(wrapper, slider);
+            delete opts2.effect;
+            delete opts2.fadeEffect;
+            slider.__pixelAdvance = new window.Swiper(slider, opts2);
+            wrapper.dataset.pixelAdvanceBound = '1';
+            wrapper.dataset.pixelPosterMode = 'carousel';
+            enhancePosters(wrapper);
+            return true;
+          } catch (e2) {
+            return false;
+          }
+        }
+      }
+      enhancePosters(wrapper);
+      return false;
+    }
+
     if (slider.swiper || slider.classList.contains('swiper-initialized')) {
       wrapper.dataset.pixelAdvanceBound = '1';
-      if (type === 'posters') enhancePosters(wrapper);
       return false;
     }
     if (wrapper.dataset.pixelAdvanceBound === '1') {
-      if (type === 'posters') enhancePosters(wrapper);
       return false;
     }
 
@@ -226,23 +235,6 @@
     var mod = moduleForType(type);
     if (mod) settings.modules = [mod];
 
-    if (type === 'posters') {
-      if (!settings.effect) settings.effect = 'creative';
-      if (!settings.mousewheel) settings.mousewheel = { releaseOnEdges: true };
-      if (!settings.creativeEffect) {
-        settings.creativeEffect = {
-          limitProgress: 3,
-          perspective: true,
-          shadowPerProgress: true,
-          prev: { shadow: true, translate: ['-15%', 0, -200] },
-          next: { translate: [1500, 0, 0] },
-        };
-      }
-      settings.grabCursor = settings.grabCursor !== false;
-      settings.resistanceRatio = settings.resistanceRatio != null ? settings.resistanceRatio : 0;
-      settings.parallax = settings.parallax !== false;
-    }
-
     try {
       if (
         window.elementorFrontend &&
@@ -251,15 +243,12 @@
       ) {
         new window.elementorFrontend.utils.swiper(window.jQuery(slider), settings).then(function () {
           wrapper.dataset.pixelAdvanceBound = '1';
-          if (type === 'posters') enhancePosters(wrapper);
         });
         wrapper.dataset.pixelAdvanceBound = '1';
-        if (type === 'posters') enhancePosters(wrapper);
         return true;
       }
       slider.__pixelAdvance = new window.Swiper(slider, settings);
       wrapper.dataset.pixelAdvanceBound = '1';
-      if (type === 'posters') enhancePosters(wrapper);
       return true;
     } catch (e) {
       console.warn('[pixel-advance-slider] init failed', type, e);
@@ -340,8 +329,12 @@
       var sw = root.swiper || root.__pixelCube;
       var hasSettings = !!host.querySelector('[data-settings]');
 
-      // Tear down wrong slide-effect boots that produce the broken two-face seam
-      if (sw && sw.params && sw.params.effect !== 'cube') {
+      // Tear down wrong boots (slide effect OR spaceBetween>0 → shard/seam look)
+      if (
+        sw &&
+        sw.params &&
+        (sw.params.effect !== 'cube' || Number(sw.params.spaceBetween) > 0)
+      ) {
         try {
           sw.destroy(true, true);
         } catch (eD) {}
@@ -487,6 +480,8 @@
     if (!window.elementorFrontend || !window.elementorFrontend.hooks || !window.jQuery) return;
     try {
       window.jQuery('.elementor-widget-wcf--advance-slider').each(function () {
+        // We own posters as fade carousel — don't let WCF re-attach mousewheel sticky
+        if (this.querySelector('[slider-type="posters"]')) return;
         window.elementorFrontend.hooks.doAction(
           'frontend/element_ready/wcf--advance-slider.default',
           window.jQuery(this),
@@ -505,13 +500,16 @@
 
   function run() {
     ensureCss();
+    unlockLenisScroll();
     // Allow re-bind on SPA remounts (new wrappers lack pixelAdvanceBound)
     document.querySelectorAll('.advance_slider_wrapper').forEach(bootAdvance);
     ensureImageBoxCubes();
     hardenCubeSliders();
+    unlockLenisScroll();
   }
 
   window.__PIXEL_ADVANCE_RUN = run;
+  window.__PIXEL_LENIS_UNLOCK = unlockLenisScroll;
 
   function start() {
     if (started) {
@@ -533,11 +531,15 @@
       .then(function () {
         run();
         runReadyHooks();
+        // Re-assert poster carousel after any WCF advance hooks
+        document.querySelectorAll('.advance_slider_wrapper[slider-type="posters"]').forEach(bootAdvance);
+        unlockLenisScroll();
         setTimeout(run, 400);
         setTimeout(run, 1200);
         setTimeout(function () {
           run();
           hardenCubeSliders();
+          unlockLenisScroll();
         }, 2500);
       })
       .catch(function (e) {
@@ -553,4 +555,6 @@
     window.addEventListener('load', function () {
       setTimeout(start, 300);
     });
+  // Safety: posters must never permanently trap Lenis
+  setInterval(unlockLenisScroll, 5000);
 })();

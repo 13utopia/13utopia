@@ -133,6 +133,8 @@ export default function TransitionProvider({ children }: { children: ReactNode }
       __PIXEL_SWIPER_RUN?: () => void;
       __PIXEL_LAZY_RUN?: () => void;
       __PIXEL_ELEMENTOR_RERUN?: () => void;
+      __PIXEL_LENIS_UNLOCK?: () => void;
+      __lenis?: { start: () => void; scrollTo: (v: number, o?: object) => void };
     };
     const rerun = () => {
       document.querySelectorAll('.wcf__nav-menu').forEach((nav) => {
@@ -141,6 +143,15 @@ export default function TransitionProvider({ children }: { children: ReactNode }
           nav.classList.remove('mobile-menu-active');
         }
       });
+      try {
+        w.__lenis?.start();
+      } catch {
+        /* ignore */
+      }
+      document.querySelectorAll('.advance_slider_wrapper, .swiper-poster').forEach((el) => {
+        el.removeAttribute('data-lenis-prevent');
+      });
+      w.__PIXEL_LENIS_UNLOCK?.();
       w.__PIXEL_STICKY_RUN?.();
       w.__PIXEL_COUNTER_RUN?.();
       w.__PIXEL_PROGRESS_RUN?.();
