@@ -277,6 +277,46 @@
   }
 
   /** If cube stays edge-on after snap, fall back to fade (never blank). */
+  function uncropImageBox(host, root) {
+    if (!host) return;
+    // Undo cube-era + Elementor --overflow / -4vw / height:% cropping
+    host.style.setProperty('overflow', 'visible', 'important');
+    host.style.setProperty('align-self', 'center', 'important');
+    if (root) {
+      root.style.setProperty('overflow', 'visible', 'important');
+      root.style.setProperty('max-height', 'none', 'important');
+      root.style.setProperty('height', 'auto', 'important');
+      root.style.setProperty('max-width', '100%', 'important');
+    }
+    var widgetBox = host.querySelector(':scope > .elementor-widget-container');
+    if (widgetBox) {
+      widgetBox.style.setProperty('margin', '0', 'important');
+      widgetBox.style.setProperty('overflow', 'visible', 'important');
+      widgetBox.style.setProperty('height', 'auto', 'important');
+    }
+    var node = host.parentElement;
+    var hops = 0;
+    while (node && hops < 6) {
+      if (node.classList && (node.classList.contains('e-con') || node.classList.contains('hero-section'))) {
+        node.style.setProperty('overflow', 'visible', 'important');
+        try {
+          node.style.setProperty('--overflow', 'visible', 'important');
+        } catch (eOv) {}
+      }
+      node = node.parentElement;
+      hops += 1;
+    }
+    host.querySelectorAll('.thumb, .wcf--image-box, .wcf__slider-wrapper, .elementor-widget-container, img').forEach(function (el) {
+      el.style.setProperty('overflow', 'visible', 'important');
+      el.style.setProperty('max-height', 'none', 'important');
+      if (el.tagName === 'IMG') {
+        el.style.setProperty('height', 'auto', 'important');
+        el.style.setProperty('width', '100%', 'important');
+        el.style.setProperty('object-fit', 'contain', 'important');
+      }
+    });
+  }
+
   function bootImageBoxFade(host) {
     if (!window.Swiper || !host || !host.isConnected) return false;
     if (isEffectivelyHidden(host)) return false;
@@ -312,6 +352,7 @@
         observeParents: true,
       });
       root.dataset.pixelCubeFade = '1';
+      uncropImageBox(host, root);
       try {
         wrapRemoveSettings(host);
       } catch (e0) {}
@@ -375,6 +416,7 @@
       }
 
       if (sw && sw.params && sw.params.effect === 'fade') {
+        uncropImageBox(host, root);
         return;
       }
 
@@ -389,7 +431,10 @@
         var root = host.querySelector('.swiper');
         if (!root) return;
         var sw = root.swiper || root.__pixelCube;
-        if (sw && sw.params && sw.params.effect === 'fade') return;
+        if (sw && sw.params && sw.params.effect === 'fade') {
+          uncropImageBox(host, root);
+          return;
+        }
         if (sw) {
           try {
             sw.destroy(true, true);
@@ -448,6 +493,11 @@
         sw.params.autoplay.pauseOnMouseEnter = false;
       }
       var host = el.closest('.elementor-widget-wcf--image-box-slider') || el.parentElement;
+      if (el.classList.contains('swiper-fade') || (sw.params && sw.params.effect === 'fade')) {
+        if (host) host.style.setProperty('overflow', 'visible', 'important');
+        el.style.setProperty('overflow', 'visible', 'important');
+        return;
+      }
       if (host) {
         // Clip neighboring cube faces so idle state isn't a glass wireframe box
         host.style.setProperty('overflow', 'hidden', 'important');

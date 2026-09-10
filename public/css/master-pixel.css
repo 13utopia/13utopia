@@ -644,14 +644,59 @@ html.pixel-exact .elementor [class*='bg-token-main-surface'] p {
   height: auto !important;
 }
 
-/* Cube Poseidon / image-box — clip edge faces; no glass wireframe when idle */
-html.pixel-exact .swiper-cube,
-html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube {
+/* Image-box gods — fade shows full figure; cube still clips neighboring faces */
+html.pixel-exact .swiper-cube {
   overflow: hidden !important;
+}
+/* Elementor e-con --overflow:hidden was cropping Poseidon/Zeus mid-figure */
+html.pixel-exact .e-con:has(> .elementor-widget-wcf--image-box-slider),
+html.pixel-exact .e-con:has(> .e-con .elementor-widget-wcf--image-box-slider),
+html.pixel-exact .e-con:has(.img-box-wrap-center),
+html.pixel-exact .hero-section:has(.elementor-widget-wcf--image-box-slider) {
+  --overflow: visible !important;
+  overflow: visible !important;
 }
 html.pixel-exact .elementor-widget-wcf--image-box-slider,
 html.pixel-exact .img-box-wrap-center.elementor-widget-wcf--image-box-slider {
-  overflow: hidden !important;
+  overflow: visible !important;
+  align-self: center !important;
+}
+/* Elementor pulls gods up with margin:-4vw and locks .wcf__slider to height:78% —
+   both crop trident/base against overflow:hidden parents. */
+html.pixel-exact .elementor-widget-wcf--image-box-slider > .elementor-widget-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  max-height: none !important;
+  height: auto !important;
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf__slider,
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper,
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade {
+  overflow: visible !important;
+  max-height: none !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .swiper-wrapper,
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .thumb,
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .wcf--image-box,
+html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf--image-box,
+html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf__slider-wrapper {
+  overflow: visible !important;
+  max-height: none !important;
+  height: auto !important;
+}
+/* Stack fade faces on one cell so loop duplicates don't peek below the god */
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .swiper-wrapper {
+  display: grid !important;
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .swiper-slide {
+  grid-area: 1 / 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  position: relative !important;
+  opacity: 0 !important;
 }
 /* Swiper's floor shadow makes a fake "glass box" under the god */
 html.pixel-exact .swiper-cube-shadow,
@@ -666,7 +711,7 @@ html.pixel-exact .swiper-slide-shadow-bottom {
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper:not(.swiper-initialized),
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube:not(.swiper-initialized) {
   overflow: hidden !important;
-  max-height: min(81vh, 740px);
+  max-height: min(90vh, 860px);
 }
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper:not(.swiper-initialized) .swiper-wrapper {
   display: block !important;
@@ -692,7 +737,7 @@ html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf--image-box .thumb 
   display: block !important;
   width: 100% !important;
   height: auto !important;
-  max-height: min(81vh, 740px);
+  max-height: none !important;
   object-fit: contain !important;
 }
 @media (min-width: 1025px) {
@@ -701,14 +746,14 @@ html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf--image-box .thumb 
     max-width: 100%;
   }
   html.pixel-exact .elementor-widget-wcf--image-box-slider .thumb {
-    max-height: min(81vh, 740px);
-    overflow: hidden;
+    max-height: none !important;
+    overflow: visible !important;
   }
   html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-slide-image,
   html.pixel-exact .elementor-widget-wcf--image-box-slider img.swiper-slide-image {
     width: 100% !important;
     height: auto !important;
-    max-height: min(81vh, 740px) !important;
+    max-height: none !important;
     object-fit: contain !important;
   }
 }
@@ -737,9 +782,9 @@ html.pixel-exact .swiper-cube.swiper-animating .swiper-slide-duplicate-prev {
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube:not(.swiper-initialized) .swiper-slide:not(:first-child) {
   visibility: hidden !important;
 }
-/* Fade fallback — full-bleed god, no 3D wireframe */
+/* Fade — only the live face; hide others so overflow:visible doesn't ghost */
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .swiper-slide {
-  visibility: visible !important;
+  visibility: hidden !important;
   pointer-events: none !important;
 }
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .swiper-slide-active,

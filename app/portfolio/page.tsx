@@ -278,7 +278,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[src*="pixel-advance-slider-boot"]')) {
       const sAdv = document.createElement('script');
-      sAdv.src = '/js/pixel-advance-slider-boot.js?v=poster-orch-18';
+      sAdv.src = '/js/pixel-advance-slider-boot.js?v=poster-orch-20';
       sAdv.async = false;
       sAdv.dataset.pixelAdvanceSliderBoot = '1';
       document.head.appendChild(sAdv);
