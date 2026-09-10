@@ -288,6 +288,34 @@ html.pixel-route-enter main {
   visibility: hidden !important;
 }
 
+/*
+ * Cold-load FOUC guards — apply before JS-injected live-cascade/original-styles.
+ * Search / hard refresh used to paint Elementor mobile nav (main+dropdown) twice
+ * and the theme “13 UTOPIA” .bhf-hidden title on black.
+ */
+.bhf-hidden {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .elementor-element-9e2c1c7,
+  .elementor .elementor-hidden-mobile_extra,
+  .elementor .elementor-hidden-tablet,
+  .elementor .elementor-hidden-tablet_extra,
+  .elementor .elementor-hidden-laptop,
+  .elementor .elementor-hidden-desktop,
+  .elementor .elementor-hidden-widescreen {
+    display: none !important;
+  }
+
+  .elementor-nav-menu__container.elementor-nav-menu--dropdown {
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transform: scaleY(0);
+    pointer-events: none;
+  }
+}
+
 .pixel-route-veil[data-mode='reveal'] ~ *,
 .pixel-route-veil[data-mode='idle'] ~ * {
   visibility: visible !important;

@@ -91,8 +91,9 @@ export default function TransitionProvider({ children }: { children: ReactNode }
   const pathname = usePathname() || '/';
   const navigating = useRef(false);
   const firstPaint = useRef(true);
-  const [veilMode, setVeilMode] = useState<VeilMode>('idle');
-  const veilModeRef = useRef<VeilMode>('idle');
+  // Start covered so SSR/first paint never flashes raw Elementor (double nav / 13 UTOPIA title)
+  const [veilMode, setVeilMode] = useState<VeilMode>('hold');
+  const veilModeRef = useRef<VeilMode>('hold');
 
   const setVeil = useCallback((mode: VeilMode) => {
     veilModeRef.current = mode;
@@ -299,7 +300,8 @@ export default function TransitionProvider({ children }: { children: ReactNode }
             alt=""
             width={768}
             height={305}
-            decoding="async"
+            decoding="sync"
+            fetchPriority="high"
             draggable={false}
             style={{ width: 'min(52vw, 340px)', maxWidth: 'min(52vw, 340px)', height: 'auto' }}
           />
