@@ -1,20 +1,16 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import '@/app/pixel.css';
 import { ensurePixelSheets } from '@/lib/ensurePixelSheets';
 
 export default function Page() {
-  const [ready, setReady] = useState(false);
-
   useEffect(() => {
     const classes = "home wp-singular page-template page-template-elementor_header_footer page page-id-16636 wp-theme-arolax wp-child-theme-arolax-child theme-arolax woocommerce-no-js ehf-header ehf-template-arolax ehf-stylesheet-arolax-child joya-gl-blog arolax-base elementor-default elementor-template-full-width elementor-kit-3 elementor-page elementor-page-16636".split(' ').filter(Boolean);
     classes.forEach((c) => document.body.classList.add(c));
     document.documentElement.classList.add('pixel-exact');
 
     ensurePixelSheets();
-
-    setReady(true);
 
     return () => {
       classes.forEach((c) => document.body.classList.remove(c));
@@ -23,7 +19,6 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    if (!ready) return;
     const t = window.setTimeout(() => { 
     // Unlock scroll — WP WCF leaves wcf-preloader-active which sets overflow:hidden
     document.body.classList.remove('wcf-preloader-active');
@@ -87,7 +82,7 @@ export default function Page() {
       img.src = '/wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png';
     });
 
-    // Let Elementor animate; late safety only for stuck in-view nodes
+    // Let Elementor / CSS own entrance; late safety only for stuck in-view nodes
     const revealStuck = () => {
       document.querySelectorAll<HTMLElement>('.elementor-invisible').forEach((el) => {
         const r = el.getBoundingClientRect();
@@ -222,7 +217,7 @@ export default function Page() {
     // Load live Elementor / WCF / Swiper stack for 1:1 interactions
     if (!document.querySelector('script[data-pixel-live-loader]')) {
       const s = document.createElement('script');
-      s.src = '/js/live-js-loader.js?v=live-js-7';
+      s.src = '/js/live-js-loader.js?v=live-js-9';
       s.async = false;
       s.dataset.pixelLiveLoader = '1';
       document.head.appendChild(s);
@@ -299,11 +294,7 @@ export default function Page() {
     window.setTimeout(afterLive, 2500);
  }, 0);
     return () => window.clearTimeout(t);
-  }, [ready]);
-
-  if (!ready) {
-    return <div className="min-h-screen bg-black" aria-hidden="true" />;
-  }
+  }, []);
 
   return (
     <>

@@ -156,12 +156,17 @@ body.arolax-preloader-active {
   filter: none !important;
 }
 
-/* Desktop: never flash the WCF hamburger (empty bordered square) while
-   Elementor/WCF JS hasn't added .desktop-menu-active yet on SPA navigations. */
+/* Desktop: never flash the WCF hamburger / white off-canvas drawer.
+   Our older rule forced .wcf-nav-menu-container visible while mobile-menu-active
+   still applied — that painted the 250px #fff drawer + item border-bottoms
+   (hairline under Home→Blog, not Contact). Neutralize drawer chrome fully. */
 @media (min-width: 768px) {
   .wcf__nav-menu .wcf-menu-hamburger,
   .wcf__nav-menu .wcf-menu-close,
-  .wcf__nav-menu .wcf-menu-overlay {
+  .wcf__nav-menu .wcf-menu-overlay,
+  .wcf__nav-menu.mobile-menu-active .wcf-menu-hamburger,
+  .wcf__nav-menu.mobile-menu-active .wcf-menu-close,
+  .wcf__nav-menu.mobile-menu-active .wcf-menu-overlay {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
@@ -169,12 +174,43 @@ body.arolax-preloader-active {
     border: 0 !important;
   }
   .wcf__nav-menu .wcf-nav-menu-nav,
-  .wcf__nav-menu .wcf-nav-menu-container {
+  .wcf__nav-menu .wcf-nav-menu-container,
+  .wcf__nav-menu.mobile-menu-active .wcf-nav-menu-container,
+  .wcf__nav-menu.mobile-menu-active.mobile-menu-right .wcf-nav-menu-container,
+  .wcf__nav-menu.mobile-menu-active.mobile-menu-left .wcf-nav-menu-container,
+  .wcf__nav-menu.mobile-menu-active.wcf-nav-is-toggled .wcf-nav-menu-container {
     display: flex !important;
+    flex-direction: row !important;
     visibility: visible !important;
     opacity: 1 !important;
     transform: none !important;
     pointer-events: auto !important;
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    z-index: auto !important;
+  }
+  /* Mobile item dividers must never paint on desktop horizontal nav */
+  .wcf__nav-menu.mobile-menu-active .menu-item:not(:last-child) a,
+  .wcf__nav-menu.mobile-menu-active .menu-item a,
+  .wcf__nav-menu .menu-item > a,
+  .wcf__nav-menu a.wcf-nav-item {
+    border: 0 !important;
+    border-bottom: 0 !important;
+    border-top: 0 !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
   }
 }
 
@@ -183,23 +219,39 @@ html.pixel-exact .wcf__nav-menu .menu-item > a::before,
 html.pixel-exact .wcf__nav-menu .menu-item > a::after,
 html.pixel-exact .wcf__nav-menu a.wcf-nav-item::before,
 html.pixel-exact .wcf__nav-menu a.wcf-nav-item::after,
+html.pixel-exact .wcf__nav-menu.desktop-menu-active .menu-item a::before,
+html.pixel-exact .wcf__nav-menu.desktop-menu-active .menu-item a::after,
+html.pixel-exact .wcf__nav-menu.desktop-menu-active.hover-pointer-underline a::after,
+html.pixel-exact .wcf__nav-menu.desktop-menu-active.hover-pointer-dot a::after,
+html.pixel-exact .wcf__nav-menu.desktop-menu-active.hover-pointer-overline a::after,
+html.pixel-exact .wcf__nav-menu.desktop-menu-active.hover-pointer-line-through a::after,
 html.pixel-exact .elementor-nav-menu--main .elementor-item::before,
-html.pixel-exact .elementor-nav-menu--main .elementor-item::after {
+html.pixel-exact .elementor-nav-menu--main .elementor-item::after,
+html.pixel-exact .hfe-nav-menu .menu-item a::before,
+html.pixel-exact .hfe-nav-menu .menu-item a::after,
+html.pixel-exact .hfe-nav-menu .current-menu-item::before,
+html.pixel-exact .hfe-nav-menu .current-menu-item::after {
   content: none !important;
   display: none !important;
   width: 0 !important;
   height: 0 !important;
   opacity: 0 !important;
+  visibility: hidden !important;
   background: none !important;
+  background-color: transparent !important;
   border: 0 !important;
   transform: none !important;
 }
 
-/* No hairline under the pinned header */
+/* No hairline under the pinned header / nav row */
 html.pixel-exact .elementor-element-01ec82b,
 html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned,
 html.pixel-exact .elementor-location-header,
-html.pixel-exact .ehf-header {
+html.pixel-exact .ehf-header,
+html.pixel-exact .elementor-element-143806d,
+html.pixel-exact .wcf__nav-menu,
+html.pixel-exact .wcf-nav-menu-container,
+html.pixel-exact .wcf-nav-menu-nav {
   border: 0 !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
@@ -208,9 +260,10 @@ html.pixel-exact .ehf-header {
 html.pixel-exact .elementor-element-01ec82b::before,
 html.pixel-exact .elementor-element-01ec82b::after,
 html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned::before,
-html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned::after {
-  content: none !important;
-  display: none !important;
+html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned::after,
+html.pixel-exact .elementor-element-143806d::before,
+html.pixel-exact .elementor-element-143806d::after {
+  /* Keep Elementor bg overlay if needed — only kill border/shadow hairlines */
   border: 0 !important;
   box-shadow: none !important;
 }
@@ -293,7 +346,7 @@ html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned::after {
 /* Site logo — live ~136×54 on desktop; mobile uses Elementor width:83%/40% — do not override */
 @media (min-width: 768px) {
   img.wp-image-8655,
-  img[src*='13-utopia-logo'] {
+  img[src*='13-utopia-logo']:not(.pixel-route-veil-logo) {
     max-height: 54px !important;
     height: auto !important;
     width: auto !important;

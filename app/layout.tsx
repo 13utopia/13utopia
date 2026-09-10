@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto, Teko, Titan_One, Kanit } from 'next/font/google';
 import './globals.css';
+import './veil-motion.css';
 import JsonLd from '@/components/seo/JsonLd';
 import SiteShell from '@/components/layout/SiteShell';
 import { OG_IMAGE, PAGE_SEO, SITE_NAME, SITE_URL } from '@/lib/seo';

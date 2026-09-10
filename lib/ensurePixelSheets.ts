@@ -1,5 +1,6 @@
 /** Shared Elementor pixel stylesheets — load once, never tear down on route change. */
 export const PIXEL_SHEETS = [
+  '/css/pixel-veil.css',
   '/css/live-cascade.css',
   '/css/original-styles.css',
   '/cdn/google-fonts/DM_Sans_3A300_2C400_3B500_2C600_2C700_2C800_2C900_7CPT_Serif_3A400_3B500_2C600_2C700.css',
@@ -11,7 +12,7 @@ export const PIXEL_SHEETS = [
   '/css/master-pixel.css',
 ] as const;
 
-const SHEET_VERSION = 'pixel-cube-22';
+const SHEET_VERSION = 'pixel-cube-33';
 
 export function ensurePixelSheets() {
   if (typeof document === 'undefined') return;

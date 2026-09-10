@@ -4,7 +4,78 @@ html.pixel-exact body {
   background: #000 !important;
 }
 
-.elementor-invisible {
+/*
+ * Keep most Elementor widgets painted (SPA entrance JS is flaky).
+ * Homepage hero titles stay exclusive so their post-curtain intro can own opacity.
+ */
+.elementor-invisible:not([data-id='479c805']):not([data-id='4b3ef8a']):not([data-id='b23dc44']):not([data-id='f61769e']) {
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+/* —— Homepage hero: wait hidden until curtain clears, then full on-screen intro —— */
+@keyframes pixel-hero-in-right {
+  from {
+    opacity: 0;
+    transform: translate3d(56px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pixel-hero-in-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-56px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html.pixel-exact .elementor-element-479c805,
+html.pixel-exact .elementor-element-b23dc44,
+html.pixel-exact .elementor-element-4b3ef8a,
+html.pixel-exact .elementor-element-f61769e {
+  visibility: visible !important;
+}
+
+html.pixel-exact .elementor-element-479c805.pixel-hero-wait,
+html.pixel-exact .elementor-element-b23dc44.pixel-hero-wait,
+html.pixel-exact .elementor-element-4b3ef8a.pixel-hero-wait,
+html.pixel-exact .elementor-element-f61769e.pixel-hero-wait {
+  opacity: 0 !important;
+  transform: none;
+  animation: none !important;
+}
+
+html.pixel-exact .elementor-element-479c805.pixel-hero-play,
+html.pixel-exact .elementor-element-b23dc44.pixel-hero-play {
+  animation: pixel-hero-in-right 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0ms;
+}
+
+html.pixel-exact .elementor-element-4b3ef8a.pixel-hero-play,
+html.pixel-exact .elementor-element-f61769e.pixel-hero-play {
+  animation: pixel-hero-in-left 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.22s;
+}
+
+/* Hero stage: parent --overflow:hidden clips the slide — open while playing */
+html.pixel-exact .pixel-hero-stage {
+  overflow: visible !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.pixel-exact .elementor-element-479c805,
+  html.pixel-exact .elementor-element-b23dc44,
+  html.pixel-exact .elementor-element-4b3ef8a,
+  html.pixel-exact .elementor-element-f61769e {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
 }

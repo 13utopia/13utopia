@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import '@/app/pixel.css';
 import { ensurePixelSheets } from '@/lib/ensurePixelSheets';
 
 export default function Page() {
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const classes = "wp-singular page-template page-template-elementor_header_footer page page-id-13403 wp-theme-arolax wp-child-theme-arolax-child theme-arolax woocommerce-no-js ehf-header ehf-template-arolax ehf-stylesheet-arolax-child joya-gl-blog arolax-base elementor-default elementor-template-full-width elementor-kit-3 elementor-page elementor-page-13403".split(' ').filter(Boolean);
@@ -14,7 +13,6 @@ export default function Page() {
 
     ensurePixelSheets();
 
-    setReady(true);
 
     return () => {
       classes.forEach((c) => document.body.classList.remove(c));
@@ -23,7 +21,6 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
-    if (!ready) return;
     const t = window.setTimeout(() => { 
     // Unlock scroll — WP WCF leaves wcf-preloader-active which sets overflow:hidden
     document.body.classList.remove('wcf-preloader-active');
@@ -299,11 +296,7 @@ export default function Page() {
     window.setTimeout(afterLive, 2500);
  }, 0);
     return () => window.clearTimeout(t);
-  }, [ready]);
-
-  if (!ready) {
-    return <div className="min-h-screen bg-black" aria-hidden="true" />;
-  }
+  }, []);
 
   return (
     <>
