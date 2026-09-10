@@ -27,23 +27,40 @@ const PIXEL_ROUTES = new Set([
   '/refund-and-return',
 ]);
 
-function loadScriptOnce(src: string, datasetKey: string, legacyAttrs: string[] = []) {
+const SERVICE_SLIDER_ROUTES = new Set([
+  '/digital-marketing',
+  '/search-engine-optimization',
+  '/web-development',
+  '/email-marketing',
+  '/cgi-videos',
+  '/online-reputation-management',
+]);
+
+function loadScriptOnce(
+  src: string,
+  datasetKey: string,
+  legacyAttrs: string[] = [],
+  opts: { async?: boolean } = {}
+) {
   if (typeof document === 'undefined') return;
   const attr = `data-${datasetKey}`;
   if (document.querySelector(`script[${attr}]`)) return;
-  // Skip if a page-level boot already injected the same file
   const file = src.split('?')[0];
   if (document.querySelector(`script[src*="${file}"]`)) return;
   const s = document.createElement('script');
   s.src = src;
-  s.async = false;
+  s.async = opts.async ?? false;
   s.setAttribute(attr, '1');
   legacyAttrs.forEach((a) => s.setAttribute(a, '1'));
   document.head.appendChild(s);
 }
 
-/** Replace an older boot script when the cache-bust version changes. */
-function loadScriptVersioned(src: string, datasetKey: string, legacyAttrs: string[] = []) {
+function loadScriptVersioned(
+  src: string,
+  datasetKey: string,
+  legacyAttrs: string[] = [],
+  opts: { async?: boolean } = {}
+) {
   if (typeof document === 'undefined') return;
   const attr = `data-${datasetKey}`;
   if (document.querySelector(`script[${attr}]`)) return;
@@ -57,10 +74,18 @@ function loadScriptVersioned(src: string, datasetKey: string, legacyAttrs: strin
   });
   const s = document.createElement('script');
   s.src = src;
-  s.async = false;
+  s.async = opts.async ?? false;
   s.setAttribute(attr, '1');
   legacyAttrs.forEach((a) => s.setAttribute(a, '1'));
   document.head.appendChild(s);
+}
+
+function whenIdle(run: () => void, timeoutMs = 1800) {
+  const w = window as Window & {
+    requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+  };
+  if (w.requestIdleCallback) return w.requestIdleCallback(run, { timeout: timeoutMs });
+  return window.setTimeout(run, Math.min(1200, timeoutMs));
 }
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
@@ -70,26 +95,43 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!usePixelChrome) return;
     ensurePixelSheets();
-    loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-2', 'pixel-ctc-boot-v2', ['data-pixel-ctc-boot']);
-    loadScriptVersioned('/js/pixel-lazy-boot.js?v=lazy-3', 'pixel-lazy-boot-v3', ['data-pixel-lazy-boot']);
-    loadScriptOnce('/js/pixel-hcaptcha-boot.js', 'pixel-hcaptcha-boot');
+
+    // Above-fold / chrome — keep early
+    loadScriptVersioned('/js/pixel-lazy-boot.js?v=lazy-3', 'pixel-lazy-boot-v3', [
+      'data-pixel-lazy-boot',
+    ]);
     loadScriptOnce('/js/pixel-sticky-boot.js?v=sticky-pin-7', 'pixel-sticky-boot-v7', [
       'data-pixel-sticky-boot',
-    ]);
-    loadScriptOnce('/js/pixel-counter-boot.js?v=counter-4', 'pixel-counter-boot-v4', [
-      'data-pixel-counter-boot',
-    ]);
-    loadScriptOnce('/js/pixel-progress-boot.js?v=progress-3', 'pixel-progress-boot-v3', [
-      'data-pixel-progress-boot',
-    ]);
-    loadScriptOnce('/js/pixel-posts-boot.js', 'pixel-posts-boot');
-    loadScriptOnce('/js/pixel-advance-slider-boot.js?v=poster-orch-25', 'pixel-advance-slider-boot-v25', [
-      'data-pixel-advance-slider-boot',
     ]);
     loadScriptOnce('/js/pixel-swiper-boot.js?v=swiper-4', 'pixel-swiper-boot-v4', [
       'data-pixel-swiper-boot',
     ]);
-    // Soft-nav: script already loaded — still re-hydrate images every route
+
+    if (SERVICE_SLIDER_ROUTES.has(pathname)) {
+      loadScriptOnce('/js/pixel-advance-slider-boot.js?v=poster-orch-25', 'pixel-advance-slider-boot-v25', [
+        'data-pixel-advance-slider-boot',
+      ]);
+    }
+
+    // Below-fold / third-party — after idle so LCP/TBT improve
+    const idleId = whenIdle(() => {
+      loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-2', 'pixel-ctc-boot-v2', ['data-pixel-ctc-boot'], {
+        async: true,
+      });
+      loadScriptOnce('/js/pixel-counter-boot.js?v=counter-4', 'pixel-counter-boot-v4', [
+        'data-pixel-counter-boot',
+      ], { async: true });
+      loadScriptOnce('/js/pixel-progress-boot.js?v=progress-3', 'pixel-progress-boot-v3', [
+        'data-pixel-progress-boot',
+      ], { async: true });
+      if (pathname === '/blog' || pathname.startsWith('/blog/')) {
+        loadScriptOnce('/js/pixel-posts-boot.js', 'pixel-posts-boot', [], { async: true });
+      }
+      if (pathname === '/contact-us') {
+        loadScriptOnce('/js/pixel-hcaptcha-boot.js', 'pixel-hcaptcha-boot', [], { async: true });
+      }
+    });
+
     const w = window as Window & { __PIXEL_LAZY_RUN?: () => void };
     const run = () => w.__PIXEL_LAZY_RUN?.();
     run();
@@ -100,43 +142,46 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
       window.clearTimeout(t3);
+      const cancel = (window as Window & { cancelIdleCallback?: (id: number) => void })
+        .cancelIdleCallback;
+      if (cancel) cancel(idleId as number);
+      else window.clearTimeout(idleId as number);
     };
   }, [usePixelChrome, pathname]);
 
-  // Prefetch sibling service routes after idle for snappier curtain nav
+  // Prefetch only a few high-traffic routes; skip on slow connections
   useEffect(() => {
-    const routes = [
-      '/',
-      '/about-us',
-      '/digital-marketing',
-      '/search-engine-optimization',
-      '/web-development',
-      '/contact-us',
-      '/portfolio',
-    ];
+    const nav = navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string };
+    };
+    if (nav.connection?.saveData) return;
+    if (nav.connection?.effectiveType && /2g/.test(nav.connection.effectiveType)) return;
+
+    const routes = ['/', '/digital-marketing', '/contact-us', '/about-us'];
     let cancelled = false;
     const run = () => {
       if (cancelled) return;
       routes.forEach((r) => {
         if (r === pathname) return;
         try {
+          if (document.querySelector(`link[rel="prefetch"][href="${r}"]`)) return;
           const link = document.createElement('link');
           link.rel = 'prefetch';
           link.href = r;
           link.as = 'document';
-          if (!document.querySelector(`link[rel="prefetch"][href="${r}"]`)) {
-            document.head.appendChild(link);
-          }
+          document.head.appendChild(link);
         } catch {
           /* ignore */
         }
       });
     };
-    const ric = (window as Window & { requestIdleCallback?: (cb: () => void) => number }).requestIdleCallback;
-    const id = ric ? ric(run) : window.setTimeout(run, 1200);
+    const id = whenIdle(run, 2500);
     return () => {
       cancelled = true;
-      if (!ric) window.clearTimeout(id as number);
+      const cancel = (window as Window & { cancelIdleCallback?: (id: number) => void })
+        .cancelIdleCallback;
+      if (cancel) cancel(id as number);
+      else window.clearTimeout(id as number);
     };
   }, [pathname]);
 

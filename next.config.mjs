@@ -62,11 +62,29 @@ const nextConfig = {
     ],
   },
   async headers() {
+    const longCache = [
+      {
+        key: 'Cache-Control',
+        value: 'public, max-age=31536000, immutable',
+      },
+    ];
+    const monthCache = [
+      {
+        key: 'Cache-Control',
+        value: 'public, max-age=2592000, stale-while-revalidate=86400',
+      },
+    ];
     return [
       {
         source: '/:path*',
         headers: securityHeaders,
       },
+      { source: '/css/:path*', headers: longCache },
+      { source: '/js/:path*', headers: longCache },
+      { source: '/cdn/:path*', headers: longCache },
+      { source: '/fonts/:path*', headers: longCache },
+      { source: '/img/:path*', headers: monthCache },
+      { source: '/wp-content/uploads/:path*', headers: monthCache },
     ];
   },
   async redirects() {
