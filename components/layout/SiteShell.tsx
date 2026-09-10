@@ -42,6 +42,27 @@ function loadScriptOnce(src: string, datasetKey: string, legacyAttrs: string[] =
   document.head.appendChild(s);
 }
 
+/** Replace an older boot script when the cache-bust version changes. */
+function loadScriptVersioned(src: string, datasetKey: string, legacyAttrs: string[] = []) {
+  if (typeof document === 'undefined') return;
+  const attr = `data-${datasetKey}`;
+  if (document.querySelector(`script[${attr}]`)) return;
+  const file = src.split('?')[0];
+  document.querySelectorAll(`script[src*="${file}"]`).forEach((el) => el.remove());
+  legacyAttrs.forEach((a) => {
+    document.querySelectorAll(`script[${a}]`).forEach((el) => {
+      const s = el.getAttribute('src') || '';
+      if (s.includes(file)) el.remove();
+    });
+  });
+  const s = document.createElement('script');
+  s.src = src;
+  s.async = false;
+  s.setAttribute(attr, '1');
+  legacyAttrs.forEach((a) => s.setAttribute(a, '1'));
+  document.head.appendChild(s);
+}
+
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() || '/';
   const usePixelChrome = PIXEL_ROUTES.has(pathname);
@@ -50,7 +71,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     if (!usePixelChrome) return;
     ensurePixelSheets();
     loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-2', 'pixel-ctc-boot-v2', ['data-pixel-ctc-boot']);
-    loadScriptOnce('/js/pixel-lazy-boot.js?v=lazy-2', 'pixel-lazy-boot-v2', ['data-pixel-lazy-boot']);
+    loadScriptVersioned('/js/pixel-lazy-boot.js?v=lazy-3', 'pixel-lazy-boot-v3', ['data-pixel-lazy-boot']);
     loadScriptOnce('/js/pixel-hcaptcha-boot.js', 'pixel-hcaptcha-boot');
     loadScriptOnce('/js/pixel-sticky-boot.js?v=sticky-pin-7', 'pixel-sticky-boot-v7', [
       'data-pixel-sticky-boot',
@@ -68,6 +89,18 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     loadScriptOnce('/js/pixel-swiper-boot.js?v=swiper-3', 'pixel-swiper-boot-v3', [
       'data-pixel-swiper-boot',
     ]);
+    // Soft-nav: script already loaded — still re-hydrate images every route
+    const w = window as Window & { __PIXEL_LAZY_RUN?: () => void };
+    const run = () => w.__PIXEL_LAZY_RUN?.();
+    run();
+    const t1 = window.setTimeout(run, 100);
+    const t2 = window.setTimeout(run, 600);
+    const t3 = window.setTimeout(run, 1800);
+    return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      window.clearTimeout(t3);
+    };
   }, [usePixelChrome, pathname]);
 
   // Prefetch sibling service routes after idle for snappier curtain nav

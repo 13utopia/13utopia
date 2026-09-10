@@ -17,6 +17,31 @@ div[class*="wcf-starter-animations-trigger"] {
   pointer-events: none !important;
 }
 
+/* Permanent: never leave Elementor/WCF images stuck at opacity:0
+   (starter-animations + Lenis IO races left benefit icons blank). */
+html.pixel-exact .elementor-widget-wcf--image,
+html.pixel-exact .elementor-widget-image,
+html.pixel-exact .elementor-widget-wcf--image .elementor-widget-container,
+html.pixel-exact .elementor-widget-image .elementor-widget-container,
+html.pixel-exact .elementor-widget-wcf--image .wcf--image,
+html.pixel-exact .elementor-widget-wcf--image img,
+html.pixel-exact .elementor-widget-image img,
+html.pixel-exact .elementor-widget-image-box img,
+html.pixel-exact .wcf--image img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html.pixel-exact .elementor-widget-wcf--image[class*='wcf-starter-animations-'] .elementor-widget-container > *,
+html.pixel-exact .elementor-widget-image[class*='wcf-starter-animations-'] .elementor-widget-container > *,
+html.pixel-exact .elementor-widget-wcf--image[class*='wcf-starter-animations-'] .wcf--image,
+html.pixel-exact .elementor-widget-wcf--image[class*='wcf-starter-animations-'] img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  clip-path: none !important;
+  animation: none !important;
+}
+
 /* Preloader UI gone; unlock scroll (WP class locks body forever without plugin JS) */
 .wcf-preloader,
 .preloader-orbit-loading,
