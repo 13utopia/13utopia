@@ -26,6 +26,50 @@
     });
   }
 
+  /** Kill Elementor/jQuery sticky — it fights Lenis + pixel-sticky-boot (css replace errors / scroll lock). */
+  function killElementorSticky() {
+    try {
+      if (window.jQuery) {
+        var $ = window.jQuery;
+        // Header + nested sticky containers only (2 per scrape page)
+        $('.elementor-element-01ec82b, .elementor-element[data-settings*="sticky"]').each(function () {
+          var $el = $(this);
+          try {
+            if ($el.data('sticky')) $el.sticky('destroy');
+          } catch (e0) {}
+          try {
+            $el.removeData('sticky');
+            $el.off('.sticky');
+          } catch (e1) {}
+          // Stop Elementor Pro from re-binding sticky on this node
+          var raw = this.getAttribute('data-settings');
+          if (raw && raw.indexOf('sticky') !== -1) {
+            try {
+              var s = JSON.parse(raw.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, '&'));
+              if (s.sticky) {
+                delete s.sticky;
+                delete s.sticky_on;
+                delete s.sticky_offset;
+                delete s.sticky_effects_offset;
+                delete s.sticky_anchor_link_offset;
+                this.setAttribute('data-settings', JSON.stringify(s).replace(/"/g, '&quot;'));
+              }
+            } catch (e2) {}
+          }
+        });
+        // Elementor sticky clones leave invisible spacers that desync Lenis scroll height
+        $('.elementor-sticky__spacer, .sticky-spacer').each(function () {
+          if (!this.classList.contains('pixel-sticky-spacer')) this.remove();
+        });
+      }
+    } catch (e) {}
+    if (typeof window.__PIXEL_STICKY_RUN === 'function') {
+      try {
+        window.__PIXEL_STICKY_RUN();
+      } catch (e3) {}
+    }
+  }
+
   function triggerElementor() {
     try {
       window.elementorDevTools = window.elementorDevTools || {
@@ -47,14 +91,8 @@
           });
         }
       }
-      // Sticky is on e-con containers — re-trigger those with sticky in data-settings
-      if (window.elementorFrontend && window.elementorFrontend.elementsHandler && window.jQuery) {
-        window.jQuery('.elementor-element[data-settings*="sticky"]').each(function () {
-          try {
-            window.elementorFrontend.elementsHandler.runReadyTrigger(this);
-          } catch (e) {}
-        });
-      }
+      // Do NOT re-trigger sticky handlers — pixel-sticky-boot owns the header.
+      killElementorSticky();
       // Explicit WCF slider widgets (cube hero, brand reel, etc.)
       if (window.elementorFrontend && window.elementorFrontend.hooks && window.jQuery) {
         var widgetHooks = [
@@ -76,10 +114,9 @@
           } catch (e2) {}
         });
       }
-      if (window.jQuery) {
-        window.jQuery(window).trigger('resize');
-      }
+      // Native resize only — jQuery(window).trigger('resize') re-enters sticky and throws
       window.dispatchEvent(new Event('resize'));
+      killElementorSticky();
       // Do NOT strip .elementor-invisible here — Elementor owns scroll entrance FX.
       document.querySelectorAll('.wcf__nav-menu').forEach(function (nav) {
         if (window.matchMedia('(min-width: 768px)').matches) {
@@ -87,6 +124,9 @@
           nav.classList.remove('mobile-menu-active');
         }
       });
+      try {
+        if (window.__lenis && typeof window.__lenis.start === 'function') window.__lenis.start();
+      } catch (eL) {}
     } catch (e) {
       console.warn('[pixel-live-js] trigger', e);
     }

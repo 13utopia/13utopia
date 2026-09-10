@@ -704,25 +704,22 @@ html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf--image-box .thumb 
 }
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube .swiper-slide {
   margin-right: 0 !important;
-}
-html.pixel-exact .swiper-cube .swiper-slide {
-  visibility: hidden !important;
   backface-visibility: hidden;
 }
-/* Only the active face when idle — next/prev show during cube spin */
-html.pixel-exact .swiper-cube .swiper-slide-active {
-  visibility: visible !important;
+/*
+  Loop mode marks the live face as .swiper-slide-duplicate-active.
+  Hiding ALL duplicates blanked the hero cube — keep active (+ neighbors) visible.
+*/
+html.pixel-exact .swiper-cube .swiper-slide {
+  visibility: hidden !important;
 }
-html.pixel-exact .swiper-cube.swiper-animating .swiper-slide-next,
-html.pixel-exact .swiper-cube.swiper-animating .swiper-slide-prev {
-  visibility: visible !important;
-}
-html.pixel-exact .swiper-cube .swiper-slide-duplicate,
+html.pixel-exact .swiper-cube .swiper-slide-active,
 html.pixel-exact .swiper-cube .swiper-slide-duplicate-active,
+html.pixel-exact .swiper-cube .swiper-slide-next,
+html.pixel-exact .swiper-cube .swiper-slide-prev,
 html.pixel-exact .swiper-cube .swiper-slide-duplicate-next,
 html.pixel-exact .swiper-cube .swiper-slide-duplicate-prev {
-  visibility: hidden !important;
-  pointer-events: none !important;
+  visibility: visible !important;
 }
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube:not(.swiper-initialized) .swiper-slide:not(:first-child) {
   visibility: hidden !important;

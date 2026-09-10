@@ -222,7 +222,7 @@ export default function Page() {
     // Load live Elementor / WCF / Swiper stack for 1:1 interactions
     if (!document.querySelector('script[data-pixel-live-loader]')) {
       const s = document.createElement('script');
-      s.src = '/js/live-js-loader.js';
+      s.src = '/js/live-js-loader.js?v=live-js-5';
       s.async = false;
       s.dataset.pixelLiveLoader = '1';
       document.head.appendChild(s);
@@ -278,7 +278,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[src*="pixel-advance-slider-boot"]')) {
       const sAdv = document.createElement('script');
-      sAdv.src = '/js/pixel-advance-slider-boot.js?v=poster-orch-12';
+      sAdv.src = '/js/pixel-advance-slider-boot.js?v=poster-orch-14';
       sAdv.async = false;
       sAdv.dataset.pixelAdvanceSliderBoot = '1';
       document.head.appendChild(sAdv);

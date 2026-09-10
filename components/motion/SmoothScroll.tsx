@@ -13,40 +13,47 @@ function LenisGuards() {
   useEffect(() => {
     if (!lenis) return;
 
-    const markPrevent = () => {
-      // Never stamp cubes or posters — those stole page wheel over the hero/STEPs.
-      // Testimonials keep prevent so horizontal swipe doesn't fight Lenis.
-      document.querySelectorAll('.swiper-cube, .advance_slider_wrapper, .swiper-poster').forEach((el) => {
-        el.removeAttribute('data-lenis-prevent');
-      });
+    const clearScrollTraps = () => {
+      // Never permanently trap Lenis — that caused scroll lock/jitter on home + service heroes.
       document
-        .querySelectorAll('.arolax_testimonial_slider, .arolax__testimonial-4 .swiper')
-        .forEach((el) => el.setAttribute('data-lenis-prevent', ''));
-    };
-    markPrevent();
-    const t1 = window.setTimeout(markPrevent, 800);
-    const t2 = window.setTimeout(markPrevent, 2500);
-    window.addEventListener('pixel-live-js-ready', markPrevent);
-
-    // Cube: only trap Lenis while the user is dragging the cube
-    const onCubePointerDown = (e: Event) => {
-      const t = e.target as Element | null;
-      const cube = t?.closest?.('.swiper-cube');
-      if (cube) cube.setAttribute('data-lenis-prevent', '');
-    };
-    const clearCubePrevent = () => {
-      document.querySelectorAll('.swiper-cube[data-lenis-prevent]').forEach((el) => {
-        el.removeAttribute('data-lenis-prevent');
-      });
+        .querySelectorAll(
+          '.swiper-cube, .advance_slider_wrapper, .swiper-poster, .arolax_testimonial_slider, .arolax__testimonial-4 .swiper'
+        )
+        .forEach((el) => el.removeAttribute('data-lenis-prevent'));
       try {
         lenis.start();
       } catch {
         /* ignore */
       }
     };
-    document.addEventListener('pointerdown', onCubePointerDown, true);
-    document.addEventListener('pointerup', clearCubePrevent, true);
-    document.addEventListener('pointercancel', clearCubePrevent, true);
+    clearScrollTraps();
+    const t1 = window.setTimeout(clearScrollTraps, 800);
+    const t2 = window.setTimeout(clearScrollTraps, 2500);
+    window.addEventListener('pixel-live-js-ready', clearScrollTraps);
+
+    // Only trap Lenis while the user is dragging cube / testimonial cards
+    const onPointerDown = (e: Event) => {
+      const t = e.target as Element | null;
+      const trap = t?.closest?.(
+        '.swiper-cube, .arolax_testimonial_slider, .arolax__testimonial-4 .swiper'
+      );
+      if (trap) trap.setAttribute('data-lenis-prevent', '');
+    };
+    const clearPointerPrevent = () => {
+      document
+        .querySelectorAll(
+          '.swiper-cube[data-lenis-prevent], .arolax_testimonial_slider[data-lenis-prevent], .arolax__testimonial-4 .swiper[data-lenis-prevent]'
+        )
+        .forEach((el) => el.removeAttribute('data-lenis-prevent'));
+      try {
+        lenis.start();
+      } catch {
+        /* ignore */
+      }
+    };
+    document.addEventListener('pointerdown', onPointerDown, true);
+    document.addEventListener('pointerup', clearPointerPrevent, true);
+    document.addEventListener('pointercancel', clearPointerPrevent, true);
 
     const stopNativeAnim = () => {
       try {
@@ -61,10 +68,10 @@ function LenisGuards() {
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
-      window.removeEventListener('pixel-live-js-ready', markPrevent);
-      document.removeEventListener('pointerdown', onCubePointerDown, true);
-      document.removeEventListener('pointerup', clearCubePrevent, true);
-      document.removeEventListener('pointercancel', clearCubePrevent, true);
+      window.removeEventListener('pixel-live-js-ready', clearScrollTraps);
+      document.removeEventListener('pointerdown', onPointerDown, true);
+      document.removeEventListener('pointerup', clearPointerPrevent, true);
+      document.removeEventListener('pointercancel', clearPointerPrevent, true);
       lenis.off('scroll', stopNativeAnim);
     };
   }, [lenis]);

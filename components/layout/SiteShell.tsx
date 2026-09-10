@@ -62,7 +62,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       'data-pixel-progress-boot',
     ]);
     loadScriptOnce('/js/pixel-posts-boot.js', 'pixel-posts-boot');
-    loadScriptOnce('/js/pixel-advance-slider-boot.js?v=poster-orch-12', 'pixel-advance-slider-boot-v12', [
+    loadScriptOnce('/js/pixel-advance-slider-boot.js?v=poster-orch-14', 'pixel-advance-slider-boot-v14', [
       'data-pixel-advance-slider-boot',
     ]);
     loadScriptOnce('/js/pixel-swiper-boot.js?v=swiper-3', 'pixel-swiper-boot-v3', [

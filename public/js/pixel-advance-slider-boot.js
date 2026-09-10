@@ -239,8 +239,32 @@
     }
   }
 
+  function isEffectivelyHidden(el) {
+    var n = el;
+    while (n && n !== document.documentElement) {
+      var cs = window.getComputedStyle(n);
+      if (cs.display === 'none' || cs.visibility === 'hidden') return true;
+      n = n.parentElement;
+    }
+    return false;
+  }
+
+  function snapCubeFace(sw) {
+    if (!sw) return;
+    try {
+      var idx = typeof sw.realIndex === 'number' ? sw.realIndex : sw.activeIndex || 0;
+      if (typeof sw.slideToLoop === 'function' && sw.params && sw.params.loop) {
+        sw.slideToLoop(idx, 0, false);
+      } else if (typeof sw.slideTo === 'function') {
+        sw.slideTo(sw.activeIndex || 0, 0, false);
+      }
+      if (typeof sw.update === 'function') sw.update();
+    } catch (e) {}
+  }
+
   function bootImageBoxCube(host) {
     if (!window.Swiper || !host || !host.isConnected) return false;
+    if (isEffectivelyHidden(host)) return false;
     var root = host.querySelector('.wcf__slider.swiper, .swiper');
     if (!root) return false;
     if (root.swiper || root.__pixelCube || root.classList.contains('swiper-initialized')) {
@@ -274,6 +298,7 @@
     };
     try {
       root.__pixelCube = new window.Swiper(root, opts);
+      snapCubeFace(root.__pixelCube);
       try {
         wrapRemoveSettings(host);
       } catch (e0) {}
@@ -291,6 +316,7 @@
 
   function ensureImageBoxCubes() {
     document.querySelectorAll('.elementor-widget-wcf--image-box-slider').forEach(function (host) {
+      if (isEffectivelyHidden(host)) return;
       var root = host.querySelector('.swiper');
       if (!root) return;
       var sw = root.swiper || root.__pixelCube;
@@ -318,9 +344,34 @@
         sw = null;
       }
 
+      // Blank / edge-on recovery: loop face hidden OR mid-rotate skinny face
       if (sw && sw.params && sw.params.effect === 'cube') {
-        hardenOneCube(root);
-        return;
+        var active = root.querySelector(
+          '.swiper-slide-active, .swiper-slide-duplicate-active'
+        );
+        var faceW = active ? active.getBoundingClientRect().width : 0;
+        var blank =
+          !active ||
+          (active.style && active.style.visibility === 'hidden') ||
+          faceW < 80 ||
+          (host.getBoundingClientRect().height < 40 && root.getBoundingClientRect().height < 40);
+        if (blank) {
+          snapCubeFace(sw);
+          revealCubeFaces(root);
+          faceW = active ? active.getBoundingClientRect().width : 0;
+        }
+        if (faceW < 80) {
+          try {
+            sw.destroy(true, true);
+          } catch (eB) {}
+          root.__pixelCube = null;
+          root.classList.remove('swiper-initialized', 'swiper-cube', 'swiper-3d');
+          revealCubeFaces(root);
+          sw = null;
+        } else {
+          hardenOneCube(root);
+          return;
+        }
       }
 
       // WCF removes data-settings on first hook — only call it when settings remain
@@ -343,10 +394,11 @@
     // After WCF async swiper resolves (or if settings were already stripped), force cube
     setTimeout(function () {
       document.querySelectorAll('.elementor-widget-wcf--image-box-slider').forEach(function (host) {
+        if (isEffectivelyHidden(host)) return;
         var root = host.querySelector('.swiper');
         if (!root) return;
         var sw = root.swiper || root.__pixelCube;
-        if (sw && sw.params && sw.params.effect === 'cube') {
+        if (sw && sw.params && sw.params.effect === 'cube' && Number(sw.params.spaceBetween) === 0) {
           hardenOneCube(root);
           return;
         }
@@ -356,11 +408,23 @@
           } catch (e2) {}
           root.__pixelCube = null;
           root.classList.remove('swiper-initialized', 'swiper-cube', 'swiper-3d');
+          revealCubeFaces(root);
         }
         bootImageBoxCube(host);
         hardenOneCube(host.querySelector('.swiper'));
       });
     }, 900);
+  }
+
+  function revealCubeFaces(el) {
+    if (!el) return;
+    // Clear inline visibility that previously blanked loop faces
+    el.querySelectorAll('.swiper-slide').forEach(function (slide) {
+      slide.style.removeProperty('visibility');
+      slide.style.removeProperty('opacity');
+      slide.style.removeProperty('pointer-events');
+      slide.style.marginRight = '0px';
+    });
   }
 
   function hardenOneCube(el) {
@@ -369,12 +433,7 @@
       return;
     }
     try {
-      el.querySelectorAll('.swiper-slide').forEach(function (slide) {
-        if (slide.style && (slide.style.visibility || slide.style.opacity)) {
-          slide.style.removeProperty('visibility');
-          slide.style.removeProperty('opacity');
-        }
-      });
+      revealCubeFaces(el);
       var sw = el.swiper || el.__pixelCube;
       if (!sw || !sw.params) return;
       // Cube faces break if spaceBetween > 0 (shows two panels meeting at a seam)
@@ -392,9 +451,6 @@
           }
         });
       }
-      el.querySelectorAll('.swiper-slide').forEach(function (slide) {
-        slide.style.marginRight = '0px';
-      });
       if (sw.params.cubeEffect) {
         sw.params.cubeEffect.shadow = false;
         sw.params.cubeEffect.slideShadows = false;
@@ -406,35 +462,30 @@
       var host = el.closest('.elementor-widget-wcf--image-box-slider') || el.parentElement;
       if (host) {
         host.style.setProperty('overflow', 'visible', 'important');
+        host.style.setProperty('visibility', 'visible', 'important');
+        host.style.setProperty('opacity', '1', 'important');
       }
       el.style.setProperty('overflow', 'visible', 'important');
-
-      el.querySelectorAll(
-        '.swiper-slide-duplicate, .swiper-slide-duplicate-active, .swiper-slide-duplicate-next, .swiper-slide-duplicate-prev'
-      ).forEach(function (slide) {
-        slide.style.setProperty('visibility', 'hidden', 'important');
-        slide.style.setProperty('pointer-events', 'none', 'important');
-      });
+      el.style.setProperty('visibility', 'visible', 'important');
+      el.style.setProperty('opacity', '1', 'important');
+      el.removeAttribute('data-lenis-prevent');
 
       if (typeof sw.update === 'function') sw.update();
+      snapCubeFace(sw);
       if (sw.autoplay && typeof sw.autoplay.start === 'function') {
         try {
           sw.autoplay.start();
         } catch (eA) {}
       }
+      revealCubeFaces(el);
 
-      if (!sw.__pixelCubeDupGuard) {
-        sw.__pixelCubeDupGuard = true;
-        var hideDups = function () {
-          el.querySelectorAll(
-            '.swiper-slide-duplicate, .swiper-slide-duplicate-active, .swiper-slide-duplicate-next, .swiper-slide-duplicate-prev'
-          ).forEach(function (slide) {
-            slide.style.setProperty('visibility', 'hidden', 'important');
-          });
-        };
-        sw.on('slideChange', hideDups);
-        sw.on('slideChangeTransitionStart', hideDups);
-        sw.on('slideChangeTransitionEnd', hideDups);
+      if (!sw.__pixelCubeSnapGuard) {
+        sw.__pixelCubeSnapGuard = true;
+        sw.on('slideChangeTransitionEnd', function () {
+          revealCubeFaces(el);
+          var face = el.querySelector('.swiper-slide-active, .swiper-slide-duplicate-active');
+          if (face && face.getBoundingClientRect().width < 80) snapCubeFace(sw);
+        });
       }
     } catch (e) {}
   }

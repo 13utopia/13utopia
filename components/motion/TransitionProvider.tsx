@@ -148,7 +148,7 @@ export default function TransitionProvider({ children }: { children: ReactNode }
       } catch {
         /* ignore */
       }
-      document.querySelectorAll('.advance_slider_wrapper, .swiper-poster').forEach((el) => {
+      document.querySelectorAll('.advance_slider_wrapper, .swiper-poster, .swiper-cube, .arolax_testimonial_slider').forEach((el) => {
         el.removeAttribute('data-lenis-prevent');
       });
       w.__PIXEL_LENIS_UNLOCK?.();
@@ -159,6 +159,17 @@ export default function TransitionProvider({ children }: { children: ReactNode }
       w.__PIXEL_LAZY_RUN?.();
       w.__PIXEL_ELEMENTOR_RERUN?.();
       w.__PIXEL_SWIPER_RUN?.();
+      // After Elementor rerun, re-assert our sticky (Elementor may have fought it)
+      window.setTimeout(() => {
+        try {
+          w.__lenis?.start();
+        } catch {
+          /* ignore */
+        }
+        w.__PIXEL_STICKY_RUN?.();
+        w.__PIXEL_ADVANCE_RUN?.();
+        w.__PIXEL_LENIS_UNLOCK?.();
+      }, 200);
     };
     rerun();
     const t1 = window.setTimeout(rerun, 120);
