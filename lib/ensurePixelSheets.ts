@@ -11,16 +11,24 @@ export const PIXEL_SHEETS = [
   '/css/master-pixel.css',
 ] as const;
 
-const SHEET_VERSION = 'pixel-nav-8';
+const SHEET_VERSION = 'pixel-cube-10';
 
 export function ensurePixelSheets() {
   if (typeof document === 'undefined') return;
   document.documentElement.classList.add('pixel-exact');
   for (const href of PIXEL_SHEETS) {
-    if (document.querySelector(`link[data-pixel-href="${href}"]`)) continue;
+    const want = `${href}${href.includes('?') ? '&' : '?'}v=${SHEET_VERSION}`;
+    const existing = document.querySelector(
+      `link[data-pixel-href="${href}"]`
+    ) as HTMLLinkElement | null;
+    if (existing) {
+      // Bump stylesheet URL when SHEET_VERSION changes (SPA keeps old link otherwise)
+      if (!existing.href.includes(`v=${SHEET_VERSION}`)) existing.href = want;
+      continue;
+    }
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = `${href}${href.includes('?') ? '&' : '?'}v=${SHEET_VERSION}`;
+    link.href = want;
     link.setAttribute('data-pixel-href', href);
     document.head.appendChild(link);
   }

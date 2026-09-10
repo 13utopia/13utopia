@@ -250,16 +250,76 @@
   }
 
   function snapCubeFace(sw) {
-    if (!sw) return;
+    if (!sw || !sw.el) return;
     try {
+      sw.animating = false;
+      if (sw.el.classList) sw.el.classList.remove('swiper-animating');
+      if (sw.wrapperEl) {
+        sw.wrapperEl.style.transitionDuration = '0ms';
+        sw.wrapperEl.style.transitionDelay = '0ms';
+      }
+      if (typeof sw.setTransition === 'function') sw.setTransition(0);
       var idx = typeof sw.realIndex === 'number' ? sw.realIndex : sw.activeIndex || 0;
       if (typeof sw.slideToLoop === 'function' && sw.params && sw.params.loop) {
         sw.slideToLoop(idx, 0, false);
       } else if (typeof sw.slideTo === 'function') {
         sw.slideTo(sw.activeIndex || 0, 0, false);
       }
+      if (typeof sw.updateSlidesClasses === 'function') sw.updateSlidesClasses();
+      if (typeof sw.updateProgress === 'function') sw.updateProgress();
       if (typeof sw.update === 'function') sw.update();
     } catch (e) {}
+  }
+
+  function activeFaceWidth(root) {
+    var active = root.querySelector('.swiper-slide-active, .swiper-slide-duplicate-active');
+    return active ? active.getBoundingClientRect().width : 0;
+  }
+
+  /** If cube stays edge-on after snap, fall back to fade (never blank). */
+  function bootImageBoxFade(host) {
+    if (!window.Swiper || !host || !host.isConnected) return false;
+    if (isEffectivelyHidden(host)) return false;
+    var root = host.querySelector('.wcf__slider.swiper, .swiper');
+    if (!root) return false;
+    var settings = parseCubeSettings(host);
+    try {
+      if (root.swiper || root.__pixelCube) {
+        try {
+          (root.swiper || root.__pixelCube).destroy(true, true);
+        } catch (eD) {}
+        root.__pixelCube = null;
+      }
+      root.classList.remove('swiper-initialized', 'swiper-cube', 'swiper-3d');
+      revealCubeFaces(root);
+      root.__pixelCube = new window.Swiper(root, {
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        loop: settings.loop !== false,
+        speed: Math.min(Number(settings.speed) || 900, 1200),
+        slidesPerView: 1,
+        spaceBetween: 0,
+        allowTouchMove: true,
+        autoplay: {
+          delay:
+            settings.autoplay && settings.autoplay.delay != null
+              ? Number(settings.autoplay.delay)
+              : 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: false,
+        },
+        observer: true,
+        observeParents: true,
+      });
+      root.dataset.pixelCubeFade = '1';
+      try {
+        wrapRemoveSettings(host);
+      } catch (e0) {}
+      return true;
+    } catch (e) {
+      console.warn('[pixel-advance-slider] fade boot failed', e);
+      return false;
+    }
   }
 
   function bootImageBoxCube(host) {
@@ -267,46 +327,13 @@
     if (isEffectivelyHidden(host)) return false;
     var root = host.querySelector('.wcf__slider.swiper, .swiper');
     if (!root) return false;
+    if (root.dataset.pixelCubeFade === '1') return true;
     if (root.swiper || root.__pixelCube || root.classList.contains('swiper-initialized')) {
       return false;
     }
-    var settings = parseCubeSettings(host);
-    var opts = {
-      effect: 'cube',
-      grabCursor: true,
-      loop: settings.loop !== false,
-      speed: Number(settings.speed) || 3000,
-      slidesPerView: 1,
-      spaceBetween: 0,
-      centeredSlides: false,
-      allowTouchMove: settings.allowTouchMove !== false && settings.allowTouchMove !== 'false',
-      cubeEffect: Object.assign(
-        { shadow: false, slideShadows: false, shadowOffset: 20, shadowScale: 0.94 },
-        settings.cubeEffect || {}
-      ),
-      autoplay: {
-        delay:
-          settings.autoplay && settings.autoplay.delay != null
-            ? Number(settings.autoplay.delay)
-            : 3000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: false,
-        waitForTransition: true,
-      },
-      observer: true,
-      observeParents: true,
-    };
-    try {
-      root.__pixelCube = new window.Swiper(root, opts);
-      snapCubeFace(root.__pixelCube);
-      try {
-        wrapRemoveSettings(host);
-      } catch (e0) {}
-      return true;
-    } catch (e) {
-      console.warn('[pixel-advance-slider] cube boot failed', e);
-      return false;
-    }
+    // Cube effect repeatedly left gods edge-on / glass-boxed / blank on this stack.
+    // Fade crossfade matches the idle live look and never blanks.
+    return bootImageBoxFade(host);
   }
 
   function wrapRemoveSettings(host) {
@@ -320,13 +347,13 @@
       var root = host.querySelector('.swiper');
       if (!root) return;
       var sw = root.swiper || root.__pixelCube;
-      var hasSettings = !!host.querySelector('[data-settings]');
 
-      // Tear down wrong boots (slide effect OR spaceBetween>0 → shard/seam look)
+      // Tear down wrong boots (cube edge-on/glass box OR spaceBetween>0)
       if (
         sw &&
         sw.params &&
-        (sw.params.effect !== 'cube' || Number(sw.params.spaceBetween) > 0)
+        (sw.params.effect === 'cube' ||
+          (sw.params.effect !== 'fade' && Number(sw.params.spaceBetween) > 0))
       ) {
         try {
           sw.destroy(true, true);
@@ -336,82 +363,43 @@
           'swiper-initialized',
           'swiper-cube',
           'swiper-3d',
+          'swiper-fade',
           'swiper-horizontal',
           'swiper-pointer-events',
           'swiper-backface-hidden',
           'swiper-watch-progress'
         );
+        delete root.dataset.pixelCubeFade;
+        revealCubeFaces(root);
         sw = null;
       }
 
-      // Blank / edge-on recovery: loop face hidden OR mid-rotate skinny face
-      if (sw && sw.params && sw.params.effect === 'cube') {
-        var active = root.querySelector(
-          '.swiper-slide-active, .swiper-slide-duplicate-active'
-        );
-        var faceW = active ? active.getBoundingClientRect().width : 0;
-        var blank =
-          !active ||
-          (active.style && active.style.visibility === 'hidden') ||
-          faceW < 80 ||
-          (host.getBoundingClientRect().height < 40 && root.getBoundingClientRect().height < 40);
-        if (blank) {
-          snapCubeFace(sw);
-          revealCubeFaces(root);
-          faceW = active ? active.getBoundingClientRect().width : 0;
-        }
-        if (faceW < 80) {
-          try {
-            sw.destroy(true, true);
-          } catch (eB) {}
-          root.__pixelCube = null;
-          root.classList.remove('swiper-initialized', 'swiper-cube', 'swiper-3d');
-          revealCubeFaces(root);
-          sw = null;
-        } else {
-          hardenOneCube(root);
-          return;
-        }
+      if (sw && sw.params && sw.params.effect === 'fade') {
+        return;
       }
 
-      // WCF removes data-settings on first hook — only call it when settings remain
-      if (
-        hasSettings &&
-        window.elementorFrontend &&
-        window.elementorFrontend.hooks &&
-        window.jQuery
-      ) {
-        try {
-          window.elementorFrontend.hooks.doAction(
-            'frontend/element_ready/wcf--image-box-slider.default',
-            window.jQuery(host),
-            window.jQuery
-          );
-        } catch (e) {}
-      }
+      // We own image-box (fade) — don't let WCF boot cube effect
+      if (!sw) bootImageBoxFade(host);
     });
 
-    // After WCF async swiper resolves (or if settings were already stripped), force cube
+    // After WCF async resolves, force fade (never leave a stuck cube)
     setTimeout(function () {
       document.querySelectorAll('.elementor-widget-wcf--image-box-slider').forEach(function (host) {
         if (isEffectivelyHidden(host)) return;
         var root = host.querySelector('.swiper');
         if (!root) return;
         var sw = root.swiper || root.__pixelCube;
-        if (sw && sw.params && sw.params.effect === 'cube' && Number(sw.params.spaceBetween) === 0) {
-          hardenOneCube(root);
-          return;
-        }
+        if (sw && sw.params && sw.params.effect === 'fade') return;
         if (sw) {
           try {
             sw.destroy(true, true);
           } catch (e2) {}
           root.__pixelCube = null;
-          root.classList.remove('swiper-initialized', 'swiper-cube', 'swiper-3d');
+          root.classList.remove('swiper-initialized', 'swiper-cube', 'swiper-3d', 'swiper-fade');
+          delete root.dataset.pixelCubeFade;
           revealCubeFaces(root);
         }
-        bootImageBoxCube(host);
-        hardenOneCube(host.querySelector('.swiper'));
+        bootImageBoxFade(host);
       });
     }, 900);
   }
@@ -461,14 +449,20 @@
       }
       var host = el.closest('.elementor-widget-wcf--image-box-slider') || el.parentElement;
       if (host) {
-        host.style.setProperty('overflow', 'visible', 'important');
+        // Clip neighboring cube faces so idle state isn't a glass wireframe box
+        host.style.setProperty('overflow', 'hidden', 'important');
         host.style.setProperty('visibility', 'visible', 'important');
         host.style.setProperty('opacity', '1', 'important');
       }
-      el.style.setProperty('overflow', 'visible', 'important');
+      el.style.setProperty('overflow', 'hidden', 'important');
       el.style.setProperty('visibility', 'visible', 'important');
       el.style.setProperty('opacity', '1', 'important');
       el.removeAttribute('data-lenis-prevent');
+      el.querySelectorAll(
+        '.swiper-cube-shadow, .swiper-slide-shadow-left, .swiper-slide-shadow-right, .swiper-slide-shadow-top, .swiper-slide-shadow-bottom'
+      ).forEach(function (shadow) {
+        shadow.style.setProperty('display', 'none', 'important');
+      });
 
       if (typeof sw.update === 'function') sw.update();
       snapCubeFace(sw);
@@ -483,8 +477,13 @@
         sw.__pixelCubeSnapGuard = true;
         sw.on('slideChangeTransitionEnd', function () {
           revealCubeFaces(el);
-          var face = el.querySelector('.swiper-slide-active, .swiper-slide-duplicate-active');
-          if (face && face.getBoundingClientRect().width < 80) snapCubeFace(sw);
+          if (activeFaceWidth(el) < 100) {
+            snapCubeFace(sw);
+            if (activeFaceWidth(el) < 100) {
+              var hostEl = el.closest('.elementor-widget-wcf--image-box-slider');
+              if (hostEl) bootImageBoxFade(hostEl);
+            }
+          }
         });
       }
     } catch (e) {}
@@ -507,11 +506,7 @@
         );
       });
       window.jQuery('.elementor-widget-wcf--image-box-slider').each(function () {
-        window.elementorFrontend.hooks.doAction(
-          'frontend/element_ready/wcf--image-box-slider.default',
-          window.jQuery(this),
-          window.jQuery
-        );
+        // Owned by ensureImageBoxCubes (fade) — skip WCF cube boot
       });
     } catch (e) {}
   }

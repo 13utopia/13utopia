@@ -644,14 +644,24 @@ html.pixel-exact .elementor [class*='bg-token-main-surface'] p {
   height: auto !important;
 }
 
-/* Cube Poseidon / image-box sliders — clip faces; hide loop duplicates */
+/* Cube Poseidon / image-box — clip edge faces; no glass wireframe when idle */
 html.pixel-exact .swiper-cube,
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube {
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 html.pixel-exact .elementor-widget-wcf--image-box-slider,
 html.pixel-exact .img-box-wrap-center.elementor-widget-wcf--image-box-slider {
-  overflow: visible !important;
+  overflow: hidden !important;
+}
+/* Swiper's floor shadow makes a fake "glass box" under the god */
+html.pixel-exact .swiper-cube-shadow,
+html.pixel-exact .swiper-slide-shadow-left,
+html.pixel-exact .swiper-slide-shadow-right,
+html.pixel-exact .swiper-slide-shadow-top,
+html.pixel-exact .swiper-slide-shadow-bottom {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper:not(.swiper-initialized),
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube:not(.swiper-initialized) {
@@ -705,24 +715,38 @@ html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf--image-box .thumb 
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube .swiper-slide {
   margin-right: 0 !important;
   backface-visibility: hidden;
+  background: transparent !important;
 }
 /*
-  Loop mode marks the live face as .swiper-slide-duplicate-active.
-  Hiding ALL duplicates blanked the hero cube — keep active (+ neighbors) visible.
+  Idle: only the live face (often .swiper-slide-duplicate-active with loop).
+  Animating: also neighbors. Always-visible next/prev = glass cube wireframe.
 */
 html.pixel-exact .swiper-cube .swiper-slide {
   visibility: hidden !important;
 }
 html.pixel-exact .swiper-cube .swiper-slide-active,
-html.pixel-exact .swiper-cube .swiper-slide-duplicate-active,
-html.pixel-exact .swiper-cube .swiper-slide-next,
-html.pixel-exact .swiper-cube .swiper-slide-prev,
-html.pixel-exact .swiper-cube .swiper-slide-duplicate-next,
-html.pixel-exact .swiper-cube .swiper-slide-duplicate-prev {
+html.pixel-exact .swiper-cube .swiper-slide-duplicate-active {
+  visibility: visible !important;
+}
+html.pixel-exact .swiper-cube.swiper-animating .swiper-slide-next,
+html.pixel-exact .swiper-cube.swiper-animating .swiper-slide-prev,
+html.pixel-exact .swiper-cube.swiper-animating .swiper-slide-duplicate-next,
+html.pixel-exact .swiper-cube.swiper-animating .swiper-slide-duplicate-prev {
   visibility: visible !important;
 }
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube:not(.swiper-initialized) .swiper-slide:not(:first-child) {
   visibility: hidden !important;
+}
+/* Fade fallback — full-bleed god, no 3D wireframe */
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .swiper-slide {
+  visibility: visible !important;
+  pointer-events: none !important;
+}
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .swiper-slide-active,
+html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .swiper-slide-duplicate-active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
 }
 /* Advance posters — before EffectPoster boots, don't let slides sit in a row */
 html.pixel-exact .advance_slider_wrapper .swiper-poster:not(.swiper-initialized) {

@@ -96,7 +96,6 @@
       // Explicit WCF slider widgets (cube hero, brand reel, etc.)
       if (window.elementorFrontend && window.elementorFrontend.hooks && window.jQuery) {
         var widgetHooks = [
-          ['wcf--image-box-slider.default', '.elementor-widget-wcf--image-box-slider'],
           ['wcf--brand-slider.default', '.elementor-widget-wcf--brand-slider'],
           ['wcf--slider.default', '.elementor-widget-wcf--slider'],
           ['image-carousel.default', '.elementor-widget-image-carousel'],
