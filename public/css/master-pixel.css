@@ -970,58 +970,15 @@ html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide {
   height: auto;
 }
 
-/* Service heroes: tighter copy column + full-figure god breathing room */
+/*
+  Service heroes: keep Elementor's live content placement (centered copy column,
+  original paddings/widths). Only prevent clipping of the god figure.
+*/
 @media (min-width: 1025px) {
-  /* Row that holds copy + god */
-  html.pixel-exact .e-con:has(> .e-con > .elementor-widget-wcf--image-box-slider) {
-    align-items: center !important;
-    gap: 1.25rem 2.5rem !important;
-    overflow: visible !important;
-  }
-  /* Outer hero shell — don't clip spear/shield/feet */
+  html.pixel-exact .e-con:has(> .e-con > .elementor-widget-wcf--image-box-slider),
+  html.pixel-exact .e-con:has(> .elementor-widget-wcf--image-box-slider),
   html.pixel-exact .e-con:has(.elementor-widget-wcf--image-box-slider) {
     overflow: visible !important;
-  }
-  /* Copy column (sibling before the god column) */
-  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) {
-    justify-content: center !important;
-    align-items: flex-start !important;
-    padding-top: 3rem !important;
-    padding-bottom: 2.5rem !important;
-    padding-right: 1rem !important;
-    max-width: 52% !important;
-  }
-  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .wcf--title,
-  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) h1,
-  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .elementor-heading-title,
-  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .elementor-widget-text-editor,
-  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .elementor-widget-text-editor * {
-    text-align: left !important;
-  }
-  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .elementor-button-wrapper {
-    text-align: left !important;
-    justify-content: flex-start !important;
-    display: flex !important;
-  }
-  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .elementor-widget-button {
-    margin-top: 0.35rem !important;
-  }
-  /* God column — keep full figure (shield + feet) inside the viewport */
-  html.pixel-exact .e-con:has(> .elementor-widget-wcf--image-box-slider) {
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: visible !important;
-    padding-top: 0.75rem !important;
-    padding-bottom: 1rem !important;
-    max-width: 46% !important;
-  }
-  html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf__slider,
-  html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper {
-    max-width: 70% !important;
-  }
-  html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf--image-box .thumb img,
-  html.pixel-exact .elementor-widget-wcf--image-box-slider img.swiper-slide-image {
-    max-height: min(68vh, 600px) !important;
   }
 }
 
