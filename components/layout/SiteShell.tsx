@@ -83,10 +83,10 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       'data-pixel-progress-boot',
     ]);
     loadScriptOnce('/js/pixel-posts-boot.js', 'pixel-posts-boot');
-    loadScriptOnce('/js/pixel-advance-slider-boot.js?v=poster-orch-22', 'pixel-advance-slider-boot-v22', [
+    loadScriptOnce('/js/pixel-advance-slider-boot.js?v=poster-orch-25', 'pixel-advance-slider-boot-v25', [
       'data-pixel-advance-slider-boot',
     ]);
-    loadScriptOnce('/js/pixel-swiper-boot.js?v=swiper-3', 'pixel-swiper-boot-v3', [
+    loadScriptOnce('/js/pixel-swiper-boot.js?v=swiper-4', 'pixel-swiper-boot-v4', [
       'data-pixel-swiper-boot',
     ]);
     // Soft-nav: script already loaded — still re-hydrate images every route

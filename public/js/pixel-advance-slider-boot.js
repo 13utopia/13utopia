@@ -46,6 +46,59 @@
     } catch (e) {}
   }
 
+  /** Kill creative+mousewheel in markup BEFORE WCF can boot sticky scroll-hijack. */
+  function sanitizePosterSettings(wrapper) {
+    if (!wrapper || wrapper.getAttribute('slider-type') !== 'posters') return;
+    wrapper.classList.add('pixel-poster-carousel');
+    wrapper.classList.remove('pixel-poster-full');
+    wrapper.removeAttribute('data-lenis-prevent');
+
+    // Kill leftover WCF parallax attrs that fight soft fade crossfades
+    wrapper.querySelectorAll('[data-swiper-parallax], [data-swiper-parallax-scale]').forEach(function (el) {
+      el.removeAttribute('data-swiper-parallax');
+      el.removeAttribute('data-swiper-parallax-scale');
+      if (el.style) {
+        el.style.removeProperty('transform');
+      }
+    });
+
+    var hosts = [wrapper];
+    var nested = wrapper.querySelector('[data-settings]');
+    if (nested) hosts.push(nested);
+    hosts.forEach(function (el) {
+      var raw = el.getAttribute('data-settings');
+      if (!raw) return;
+      try {
+        var s = parseSettings(el);
+        s.effect = 'fade';
+        s.fadeEffect = { crossFade: true };
+        s.speed = Math.max(Number(s.speed) || 0, 900);
+        delete s.creativeEffect;
+        delete s.mousewheel;
+        s.mousewheel = false;
+        s.parallax = false;
+        s.slidesPerView = 1;
+        s.spaceBetween = 0;
+        s.resistanceRatio = 0;
+        if (!s.autoplay || typeof s.autoplay !== 'object') {
+          s.autoplay = { delay: 4200, disableOnInteraction: false, pauseOnMouseEnter: true };
+        } else {
+          s.autoplay.disableOnInteraction = false;
+          s.autoplay.pauseOnMouseEnter = true;
+          if (!s.autoplay.delay) s.autoplay.delay = 4200;
+        }
+        el.setAttribute('data-settings', JSON.stringify(s));
+      } catch (eSan) {
+        el.removeAttribute('data-settings');
+      }
+    });
+  }
+
+  function sanitizeAllPosters() {
+    document.querySelectorAll('.advance_slider_wrapper[slider-type="posters"]').forEach(sanitizePosterSettings);
+    unlockLenisScroll();
+  }
+
   function ensurePosterPagination(wrapper, slider) {
     var pag = wrapper.querySelector('.swiper-pagination') || slider.querySelector('.swiper-pagination');
     if (pag) return pag;
@@ -92,20 +145,22 @@
       effect: 'fade',
       fadeEffect: { crossFade: true },
       loop: true,
-      speed: 800,
+      speed: 900,
       slidesPerView: 1,
       spaceBetween: 0,
       grabCursor: true,
       allowTouchMove: true,
       mousewheel: false,
+      watchSlidesProgress: true,
       autoplay: {
-        delay: 4500,
+        delay: 4200,
         disableOnInteraction: false,
-        pauseOnMouseEnter: false,
+        pauseOnMouseEnter: true,
       },
       pagination: {
         el: pag,
         clickable: true,
+        dynamicBullets: false,
       },
       observer: true,
       observeParents: true,
@@ -148,6 +203,7 @@
     if (!slider) return false;
 
     if (type === 'posters') {
+      sanitizePosterSettings(wrapper);
       wrapper.classList.add('pixel-poster-carousel');
       wrapper.classList.remove('pixel-poster-full');
       var existing = slider.swiper || slider.__pixelAdvance;
@@ -156,6 +212,7 @@
         !existing.params ||
         existing.params.effect === 'creative' ||
         existing.params.mousewheel ||
+        existing.params.effect !== 'fade' ||
         wrapper.dataset.pixelPosterMode !== 'carousel';
 
       if (needsCarousel) {
@@ -166,14 +223,21 @@
           wrapper.dataset.pixelAdvanceBound = '1';
           wrapper.dataset.pixelPosterMode = 'carousel';
           enhancePosters(wrapper);
+          // Strip settings so late WCF hooks cannot re-init creative/mousewheel
+          try {
+            wrapper.removeAttribute('data-settings');
+            var wrapInner = wrapper.querySelector('[data-settings]');
+            if (wrapInner) wrapInner.removeAttribute('data-settings');
+          } catch (eRm) {}
           return true;
         } catch (eFade) {
           console.warn('[pixel-advance-slider] poster carousel failed', eFade);
-          // Fallback without fade module
+          // Fallback without fade module — still no mousewheel
           try {
             var opts2 = posterCarouselOpts(wrapper, slider);
             delete opts2.effect;
             delete opts2.fadeEffect;
+            opts2.speed = 700;
             slider.__pixelAdvance = new window.Swiper(slider, opts2);
             wrapper.dataset.pixelAdvanceBound = '1';
             wrapper.dataset.pixelPosterMode = 'carousel';
@@ -570,6 +634,7 @@
 
   function run() {
     ensureCss();
+    sanitizeAllPosters();
     unlockLenisScroll();
     // Allow re-bind on SPA remounts (new wrappers lack pixelAdvanceBound)
     document.querySelectorAll('.advance_slider_wrapper').forEach(bootAdvance);
@@ -581,6 +646,11 @@
   window.__PIXEL_ADVANCE_RUN = run;
   window.__PIXEL_LENIS_UNLOCK = unlockLenisScroll;
 
+  // Sanitize ASAP — before WCF live cascade can attach creative+mousewheel
+  try {
+    sanitizeAllPosters();
+  } catch (eEarly) {}
+
   function start() {
     if (started) {
       run();
@@ -591,22 +661,28 @@
     runReadyHooks();
     document.querySelectorAll('.advance_slider_wrapper[slider-type="posters"]').forEach(bootAdvance);
     unlockLenisScroll();
-    setTimeout(run, 400);
-    setTimeout(run, 1200);
+    setTimeout(run, 300);
+    setTimeout(run, 900);
     setTimeout(function () {
       run();
       hardenCubeSliders();
       unlockLenisScroll();
-    }, 2500);
+    }, 2000);
   }
 
   if (window.__PIXEL_LIVE_JS_READY) start();
   else window.addEventListener('pixel-live-js-ready', start);
-  if (document.readyState === 'complete') setTimeout(start, 300);
-  else
-    window.addEventListener('load', function () {
-      setTimeout(start, 300);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      sanitizeAllPosters();
+      setTimeout(start, 200);
     });
-  // Safety: posters must never permanently trap Lenis
-  setInterval(unlockLenisScroll, 5000);
+  } else {
+    setTimeout(start, 200);
+  }
+  window.addEventListener('load', function () {
+    setTimeout(start, 200);
+  });
+  // Light safety net — posters must never permanently trap Lenis
+  setInterval(unlockLenisScroll, 8000);
 })();

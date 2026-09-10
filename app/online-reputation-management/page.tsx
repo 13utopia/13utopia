@@ -229,7 +229,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[data-pixel-swiper-boot]')) {
       const s2 = document.createElement('script');
-      s2.src = '/js/pixel-swiper-boot.js?v=swiper-3';
+      s2.src = '/js/pixel-swiper-boot.js?v=swiper-4';
       s2.async = false;
       s2.dataset.pixelSwiperBoot = '1';
       document.head.appendChild(s2);
@@ -278,7 +278,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[src*="pixel-advance-slider-boot"]')) {
       const sAdv = document.createElement('script');
-      sAdv.src = '/js/pixel-advance-slider-boot.js?v=poster-orch-22';
+      sAdv.src = '/js/pixel-advance-slider-boot.js?v=poster-orch-25';
       sAdv.async = false;
       sAdv.dataset.pixelAdvanceSliderBoot = '1';
       document.head.appendChild(sAdv);
@@ -2188,7 +2188,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="elementor-element elementor-element-2d3ceb70 e-con-full e-flex wcf-starter-animations-none e-con e-parent" data-id="2d3ceb70" data-element_type="container" data-e-type="container" data-settings="{&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
 				<div class="elementor-element elementor-element-29396e9c title-position-before elementor-widget__width-initial elementor-widget elementor-widget-wcf--advance-slider" data-id="29396e9c" data-element_type="widget" data-e-type="widget" data-widget_type="wcf--advance-slider.default">
 				<div class="elementor-widget-container">
-					        <div class="advance_slider_wrapper" slider-type="posters" data-settings="{&quot;effect&quot;:&quot;creative&quot;,&quot;speed&quot;:600,&quot;resistanceRatio&quot;:0,&quot;grabCursor&quot;:true,&quot;parallax&quot;:true,&quot;creativeEffect&quot;:{&quot;limitProgress&quot;:3,&quot;perspective&quot;:true,&quot;shadowPerProgress&quot;:true,&quot;prev&quot;:{&quot;shadow&quot;:true,&quot;translate&quot;:[&quot;-15%&quot;,0,-200]},&quot;next&quot;:{&quot;translate&quot;:[1500,0,0]}},&quot;mousewheel&quot;:{&quot;releaseOnEdges&quot;:true}}">
+					        <div class="advance_slider_wrapper" slider-type="posters" data-settings="{&quot;effect&quot;:&quot;fade&quot;,&quot;speed&quot;:600,&quot;resistanceRatio&quot;:0,&quot;grabCursor&quot;:true}">
             <div class="swiper-poster advance_slider swiper-container">
                 <div class="swiper-wrapper">
 					        <div class="swiper-slide">

@@ -251,8 +251,9 @@
     try {
       root.__pixelSwiper = new window.Swiper(root, opts);
       ensureAutoplay(root);
+      // Don't permanently trap Lenis — SmoothScroll sets prevent only while dragging
       try {
-        root.setAttribute('data-lenis-prevent', '');
+        root.removeAttribute('data-lenis-prevent');
       } catch (e2) {}
       return true;
     } catch (e) {
