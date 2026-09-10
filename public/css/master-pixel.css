@@ -855,25 +855,59 @@ html.pixel-exact .advance_slider_wrapper .swiper-poster:not(.swiper-initialized)
   pointer-events: auto !important;
 }
 
-/* Posters: polished fade carousel — no sticky scroll-hijack */
+/*
+  Posters are designed as portrait step-cards (~550×680).
+  Kill Elementor's sticky-layout offsets (margin-left 18–31%, padding-left 21–29vw)
+  that shoved the card to the right with a huge empty left void.
+*/
+html.pixel-exact .elementor-widget-wcf--advance-slider.title-position-before,
+html.pixel-exact .elementor-widget-wcf--advance-slider:has([slider-type='posters']),
+html.pixel-exact .elementor-widget-wcf--advance-slider:has(.pixel-poster-carousel) {
+  width: 100% !important;
+  max-width: 100% !important;
+  align-self: center !important;
+  --container-widget-width: 100% !important;
+}
+html.pixel-exact .elementor-widget-wcf--advance-slider.title-position-before > .elementor-widget-container,
+html.pixel-exact .elementor-widget-wcf--advance-slider:has([slider-type='posters']) > .elementor-widget-container,
+html.pixel-exact .elementor-widget-wcf--advance-slider:has(.pixel-poster-carousel) > .elementor-widget-container {
+  margin: 0 auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+html.pixel-exact .e-con:has(> .elementor-widget-wcf--advance-slider [slider-type='posters']),
+html.pixel-exact .e-con:has(> .elementor-widget-wcf--advance-slider .pixel-poster-carousel) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
 html.pixel-exact .advance_slider_wrapper[slider-type='posters'],
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel {
   position: relative;
   z-index: 1;
-  max-width: 920px;
+  max-width: min(560px, 92vw);
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 0.75rem;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-bottom: 0.25rem;
 }
-html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-poster {
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-poster,
+html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .advance_slider {
   overflow: hidden !important;
-  border-radius: 12px;
-  aspect-ratio: 16 / 9;
-  max-height: min(560px, 72vh);
-  height: auto;
-  background: linear-gradient(180deg, #121212 0%, #0a0a0a 100%);
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+  border-radius: 18px;
+  aspect-ratio: 4 / 5;
+  width: 100% !important;
+  max-width: 560px !important;
+  max-height: min(680px, 78vh) !important;
+  height: auto !important;
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 28px 64px rgba(0, 0, 0, 0.55);
 }
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-wrapper {
   height: 100% !important;
@@ -881,7 +915,6 @@ html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-wrapper {
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel.swiper-fade .swiper-slide,
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-fade .swiper-slide {
   height: 100% !important;
-  /* Soft crossfade — let Swiper control opacity */
   pointer-events: none;
 }
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-slide-active {
@@ -893,25 +926,25 @@ html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-slide pic
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-slide .elementor-swiper-slide {
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important;
-  object-position: center center !important;
+  object-fit: cover !important;
+  object-position: center top !important;
   display: block !important;
-  transform: none !important; /* kill leftover parallax scale */
+  transform: none !important;
 }
 html.pixel-exact .pixel-poster-pagination.swiper-pagination,
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-pagination {
   position: relative !important;
   bottom: auto !important;
-  margin-top: 1rem;
+  margin-top: 1.15rem;
   display: flex !important;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-pagination-bullet {
-  width: 7px;
-  height: 7px;
-  background: rgba(255, 255, 255, 0.32);
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.28);
   opacity: 1;
   margin: 0 !important;
   border-radius: 50%;
@@ -919,9 +952,9 @@ html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-paginatio
 }
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-pagination-bullet-active {
   background: #ffffff;
-  transform: scale(1.2);
-  width: 18px;
+  width: 22px;
   border-radius: 999px;
+  transform: none;
 }
 /* Hide leftover WCF arrows that fight the carousel chrome */
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .wcf-arrow-next,
@@ -933,8 +966,63 @@ html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-button-pr
 /* Legacy sticky-stack class — neutralize if still present */
 html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-poster,
 html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide {
-  max-height: min(520px, 70vh);
+  max-height: min(680px, 78vh);
   height: auto;
+}
+
+/* Service heroes: tighter copy column + full-figure god breathing room */
+@media (min-width: 1025px) {
+  /* Row that holds copy + god */
+  html.pixel-exact .e-con:has(> .e-con > .elementor-widget-wcf--image-box-slider) {
+    align-items: center !important;
+    gap: 1.25rem 2.5rem !important;
+    overflow: visible !important;
+  }
+  /* Outer hero shell — don't clip spear/shield/feet */
+  html.pixel-exact .e-con:has(.elementor-widget-wcf--image-box-slider) {
+    overflow: visible !important;
+  }
+  /* Copy column (sibling before the god column) */
+  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) {
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding-top: 3rem !important;
+    padding-bottom: 2.5rem !important;
+    padding-right: 1rem !important;
+    max-width: 52% !important;
+  }
+  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .wcf--title,
+  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) h1,
+  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .elementor-heading-title,
+  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .elementor-widget-text-editor,
+  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .elementor-widget-text-editor * {
+    text-align: left !important;
+  }
+  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .elementor-button-wrapper {
+    text-align: left !important;
+    justify-content: flex-start !important;
+    display: flex !important;
+  }
+  html.pixel-exact .e-con:has(+ .e-con .elementor-widget-wcf--image-box-slider) .elementor-widget-button {
+    margin-top: 0.35rem !important;
+  }
+  /* God column — keep full figure (shield + feet) inside the viewport */
+  html.pixel-exact .e-con:has(> .elementor-widget-wcf--image-box-slider) {
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 1rem !important;
+    max-width: 46% !important;
+  }
+  html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf__slider,
+  html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper {
+    max-width: 70% !important;
+  }
+  html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf--image-box .thumb img,
+  html.pixel-exact .elementor-widget-wcf--image-box-slider img.swiper-slide-image {
+    max-height: min(68vh, 600px) !important;
+  }
 }
 
 /* Tailwind preflight sets img/svg { display:block }. Live Elementor keeps

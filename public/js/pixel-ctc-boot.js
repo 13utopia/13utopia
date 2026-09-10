@@ -8,7 +8,12 @@
     var out = { number: '919924131397', pre_filled: '' };
     if (!data) return out;
     try {
-      var s = JSON.parse(data.getAttribute('data-settings') || '{}');
+      var s = JSON.parse(
+        (data.getAttribute('data-settings') || '{}')
+          .replace(/&quot;/g, '"')
+          .replace(/&#039;/g, "'")
+          .replace(/&amp;/g, '&')
+      );
       if (s.number) out.number = String(s.number);
       if (s.pre_filled) out.pre_filled = String(s.pre_filled);
     } catch (e) {}

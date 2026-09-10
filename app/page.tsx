@@ -222,7 +222,7 @@ export default function Page() {
     // Load live Elementor / WCF / Swiper stack for 1:1 interactions
     if (!document.querySelector('script[data-pixel-live-loader]')) {
       const s = document.createElement('script');
-      s.src = '/js/live-js-loader.js?v=live-js-6';
+      s.src = '/js/live-js-loader.js?v=live-js-7';
       s.async = false;
       s.dataset.pixelLiveLoader = '1';
       document.head.appendChild(s);

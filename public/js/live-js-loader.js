@@ -45,14 +45,18 @@
           var raw = this.getAttribute('data-settings');
           if (raw && raw.indexOf('sticky') !== -1) {
             try {
-              var s = JSON.parse(raw.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, '&'));
+              var s = JSON.parse(
+                raw.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, '&')
+              );
               if (s.sticky) {
                 delete s.sticky;
                 delete s.sticky_on;
                 delete s.sticky_offset;
                 delete s.sticky_effects_offset;
                 delete s.sticky_anchor_link_offset;
-                this.setAttribute('data-settings', JSON.stringify(s).replace(/"/g, '&quot;'));
+                // CRITICAL: never write literal &quot; into the attribute — Elementor
+                // JSON.parse()'s getAttribute() and throws SyntaxError at position 1.
+                this.setAttribute('data-settings', JSON.stringify(s));
               }
             } catch (e2) {}
           }
@@ -63,11 +67,50 @@
         });
       }
     } catch (e) {}
+    // Repair any attrs already poisoned with literal &quot; entities
+    repairEncodedSettings();
     if (typeof window.__PIXEL_STICKY_RUN === 'function') {
       try {
         window.__PIXEL_STICKY_RUN();
       } catch (e3) {}
     }
+  }
+
+  function repairEncodedSettings() {
+    try {
+      document.querySelectorAll('[data-settings]').forEach(function (el) {
+        var raw = el.getAttribute('data-settings');
+        if (!raw || raw.indexOf('&quot;') === -1) return;
+        try {
+          var s = JSON.parse(
+            raw.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, '&')
+          );
+          el.setAttribute('data-settings', JSON.stringify(s));
+        } catch (eRep) {
+          /* leave alone */
+        }
+      });
+    } catch (eAll) {}
+  }
+
+  // Soft-guard: decode HTML entities before parse if present (Elementor/WCF paths)
+  if (!window.__PIXEL_JSON_PARSE_PATCHED) {
+    window.__PIXEL_JSON_PARSE_PATCHED = true;
+    var _jsonParse = JSON.parse;
+    JSON.parse = function (text, reviver) {
+      if (typeof text === 'string' && text.indexOf('&quot;') !== -1) {
+        try {
+          return _jsonParse.call(
+            this,
+            text.replace(/&quot;/g, '"').replace(/&#039;/g, "'").replace(/&amp;/g, '&'),
+            reviver
+          );
+        } catch (eDec) {
+          /* fall through to original */
+        }
+      }
+      return _jsonParse.call(this, text, reviver);
+    };
   }
 
   function triggerElementor() {

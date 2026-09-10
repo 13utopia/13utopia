@@ -11,7 +11,7 @@ export const PIXEL_SHEETS = [
   '/css/master-pixel.css',
 ] as const;
 
-const SHEET_VERSION = 'pixel-cube-18';
+const SHEET_VERSION = 'pixel-cube-21';
 
 export function ensurePixelSheets() {
   if (typeof document === 'undefined') return;
