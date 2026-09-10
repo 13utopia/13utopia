@@ -96,6 +96,13 @@ export async function POST(req: Request) {
         service,
         company,
       });
+      // Production must fail loud so cutover smoke tests catch missing env
+      if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
+        return NextResponse.json(
+          { error: 'Email delivery is not configured. Set RESEND_API_KEY on Vercel.' },
+          { status: 503 }
+        );
+      }
       return NextResponse.json({
         ok: true,
         queued: false,

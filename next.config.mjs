@@ -14,6 +14,24 @@ const securityHeaders = [
   },
 ];
 
+/** Old WP blog post slugs still linked from /blog and indexed in GSC — park on /blog until posts are migrated. */
+const LEGACY_BLOG_SLUGS = [
+  'digital-marketing-experts-in-ahmedabad-transforming-businesses-with-strategy',
+  'e-commerce-website-development-ahmedabad-building-smarter-online-stores',
+  'how-cgi-videos-transform-brand-storytelling-in-the-digital-era',
+  'https-13utopia-com-email-marketing-ahmedabad-growth',
+  'innovative-brand-design-shaping-the-future-of-modern-branding',
+  'interactive-web-design-creating-engaging-digital-experiences-for-modern-users',
+  'local-seo-services-driving-visibility-for-local-businesses',
+  'ppc-services-in-ahmedabad-driving-results-with-targeted-advertising',
+  'seo-services-in-ahmedabad-proven-strategy-predictable-results',
+  'social-media-experts-in-gujarat-building-brands-with-digital-influence',
+  'the-future-of-advertising-why-brands-are-turning-to-cgi',
+  'the-role-of-email-marketing-in-building-lasting-customer-relationships',
+  'top-5-essential-tools-for-digital-marketing-success-in-2025',
+  'why-online-reputation-management-is-essential-for-modern-businesses',
+];
+
 const nextConfig = {
   reactStrictMode: true,
   // Hide the floating Next.js "N" dev indicator
@@ -49,6 +67,20 @@ const nextConfig = {
         source: '/:path*',
         headers: securityHeaders,
       },
+    ];
+  },
+  async redirects() {
+    const blogRedirects = LEGACY_BLOG_SLUGS.flatMap((slug) => [
+      { source: `/${slug}`, destination: '/blog', permanent: true },
+      { source: `/${slug}/`, destination: '/blog', permanent: true },
+    ]);
+    return [
+      ...blogRedirects,
+      { source: '/xmlrpc.php', destination: '/', permanent: true },
+      { source: '/feed', destination: '/blog', permanent: true },
+      { source: '/feed/', destination: '/blog', permanent: true },
+      { source: '/comments/feed', destination: '/blog', permanent: true },
+      { source: '/comments/feed/', destination: '/blog', permanent: true },
     ];
   },
   async rewrites() {
