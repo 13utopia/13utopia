@@ -279,18 +279,19 @@
   /** If cube stays edge-on after snap, fall back to fade (never blank). */
   function uncropImageBox(host, root) {
     if (!host) return;
-    // Undo cube-era + Elementor --overflow / -4vw / height:% cropping
+    // Match live framing: keep Elementor max-width (~73%), kill % height / overflow crop
     host.style.setProperty('overflow', 'visible', 'important');
     host.style.setProperty('align-self', 'center', 'important');
     if (root) {
       root.style.setProperty('overflow', 'visible', 'important');
-      root.style.setProperty('max-height', 'none', 'important');
       root.style.setProperty('height', 'auto', 'important');
-      root.style.setProperty('max-width', '100%', 'important');
+      root.style.setProperty('max-height', 'none', 'important');
+      root.style.setProperty('max-width', '73%', 'important');
+      root.style.setProperty('margin-left', 'auto', 'important');
+      root.style.setProperty('margin-right', 'auto', 'important');
     }
     var widgetBox = host.querySelector(':scope > .elementor-widget-container');
     if (widgetBox) {
-      widgetBox.style.setProperty('margin', '0', 'important');
       widgetBox.style.setProperty('overflow', 'visible', 'important');
       widgetBox.style.setProperty('height', 'auto', 'important');
     }
@@ -306,14 +307,20 @@
       node = node.parentElement;
       hops += 1;
     }
-    host.querySelectorAll('.thumb, .wcf--image-box, .wcf__slider-wrapper, .elementor-widget-container, img').forEach(function (el) {
+    host.querySelectorAll('.thumb, .wcf--image-box, .wcf__slider-wrapper').forEach(function (el) {
       el.style.setProperty('overflow', 'visible', 'important');
-      el.style.setProperty('max-height', 'none', 'important');
-      if (el.tagName === 'IMG') {
-        el.style.setProperty('height', 'auto', 'important');
-        el.style.setProperty('width', '100%', 'important');
-        el.style.setProperty('object-fit', 'contain', 'important');
-      }
+      el.style.setProperty('max-width', 'none', 'important');
+      el.style.setProperty('width', '100%', 'important');
+    });
+    host.querySelectorAll('img').forEach(function (el) {
+      el.style.setProperty('width', '100%', 'important');
+      el.style.setProperty('max-width', '100%', 'important');
+      el.style.setProperty('height', 'auto', 'important');
+      el.style.setProperty('max-height', 'min(78vh, 700px)', 'important');
+      el.style.setProperty('object-fit', 'contain', 'important');
+      el.style.setProperty('object-position', 'center center', 'important');
+      el.style.setProperty('margin-left', 'auto', 'important');
+      el.style.setProperty('margin-right', 'auto', 'important');
     });
   }
 
