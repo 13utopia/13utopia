@@ -97,7 +97,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     ensurePixelSheets();
 
     // Above-fold / chrome — keep early
-    loadScriptVersioned('/js/pixel-lazy-boot.js?v=lazy-3', 'pixel-lazy-boot-v3', [
+    loadScriptVersioned('/js/pixel-lazy-boot.js?v=lazy-4', 'pixel-lazy-boot-v4', [
       'data-pixel-lazy-boot',
     ]);
     loadScriptOnce('/js/pixel-sticky-boot.js?v=sticky-pin-7', 'pixel-sticky-boot-v7', [

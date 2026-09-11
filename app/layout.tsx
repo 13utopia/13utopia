@@ -143,6 +143,12 @@ export default function RootLayout({
     >
       <head>
         <PixelCriticalLinks />
+        <link
+          rel="preload"
+          as="image"
+          href="/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png"
+          fetchPriority="high"
+        />
       </head>
       <body
         className="antialiased bg-black text-white min-h-screen flex flex-col justify-between font-roboto"

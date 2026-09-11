@@ -81,7 +81,8 @@ export default function Page() {
     }
     // Ensure site logo
     document.querySelectorAll<HTMLImageElement>('img.wp-image-8655').forEach((img) => {
-      img.src = '/wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png';
+      img.src = '/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png';
+      img.setAttribute('sizes', '(max-width: 768px) 48vw, 220px');
     });
 
     // Let Elementor animate; late safety only for stuck in-view nodes
@@ -217,12 +218,19 @@ export default function Page() {
     });
 
     // Load live Elementor / WCF / Swiper stack for 1:1 interactions
-    if (!document.querySelector('script[data-pixel-live-loader]')) {
-      const s = document.createElement('script');
-      s.src = '/js/live-js-loader.js?v=live-js-7';
-      s.async = false;
-      s.dataset.pixelLiveLoader = '1';
-      document.head.appendChild(s);
+    const loadLiveJs = () => {
+      if (!document.querySelector('script[data-pixel-live-loader]')) {
+        const s = document.createElement('script');
+        s.src = '/js/live-js-loader.js?v=live-js-10';
+        s.async = true;
+        s.dataset.pixelLiveLoader = '1';
+        document.head.appendChild(s);
+      }
+    };
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(loadLiveJs, { timeout: 2000 });
+    } else {
+      window.setTimeout(loadLiveJs, 1200);
     }
     if (!document.querySelector('script[data-pixel-swiper-boot]')) {
       const s2 = document.createElement('script');
@@ -1367,7 +1375,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="elementor-element elementor-element-c0803bd elementor-widget-mobile__width-initial elementor-hidden-mobile_extra wcf-starter-animations-none elementor-widget elementor-widget-image" data-id="c0803bd" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="image.default">
 				<div class="elementor-widget-container">
 																<a href="/">
-							<img width="1024" height="406" class="attachment-large size-large wp-image-8655" alt="" srcset="/wp-content/uploads/2024/06/13-utopia-logo-012.png 1691w, /wp-content/uploads/2024/06/13-utopia-logo-012-350x139.png 350w, /wp-content/uploads/2024/06/13-utopia-logo-012-300x119.png 300w, /wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png 768w, /wp-content/uploads/2024/06/13-utopia-logo-012-1024x406.png 1024w, /wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png 1536w" sizes="(max-width: 1024px) 100vw, 1024px" src="/wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png">								</a>
+							<img width="768" height="305" class="attachment-large size-large wp-image-8655" alt="" srcset="/wp-content/uploads/2024/06/13-utopia-logo-012.png 1691w, /wp-content/uploads/2024/06/13-utopia-logo-012-350x139.png 350w, /wp-content/uploads/2024/06/13-utopia-logo-012-300x119.png 300w, /wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png 768w, /wp-content/uploads/2024/06/13-utopia-logo-012-1024x406.png 1024w, /wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png 1536w" sizes="(max-width: 768px) 48vw, 220px" src="/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png">								</a>
 															</div>
 				</div>
 				</div>
@@ -1418,7 +1426,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="elementor-element elementor-element-003b0ba e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="003b0ba" data-element_type="container" data-e-type="container" data-settings="{&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;}">
 				<div class="elementor-element elementor-element-4428926 elementor-widget-mobile__width-initial elementor-hidden-widescreen elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra elementor-hidden-tablet elementor-hidden-mobile wcf-starter-animations-none elementor-widget elementor-widget-image" data-id="4428926" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img width="1024" height="406" class="attachment-large size-large wp-image-8655" alt="" srcset="/wp-content/uploads/2024/06/13-utopia-logo-012.png 1691w, /wp-content/uploads/2024/06/13-utopia-logo-012-350x139.png 350w, /wp-content/uploads/2024/06/13-utopia-logo-012-300x119.png 300w, /wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png 768w, /wp-content/uploads/2024/06/13-utopia-logo-012-1024x406.png 1024w, /wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png 1536w" sizes="(max-width: 1024px) 100vw, 1024px" src="/wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png">															</div>
+															<img width="768" height="305" class="attachment-large size-large wp-image-8655" alt="" srcset="/wp-content/uploads/2024/06/13-utopia-logo-012.png 1691w, /wp-content/uploads/2024/06/13-utopia-logo-012-350x139.png 350w, /wp-content/uploads/2024/06/13-utopia-logo-012-300x119.png 300w, /wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png 768w, /wp-content/uploads/2024/06/13-utopia-logo-012-1024x406.png 1024w, /wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png 1536w" sizes="(max-width: 768px) 48vw, 220px" src="/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png">															</div>
 				</div>
 				</div>
 				</div>
@@ -1474,7 +1482,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="elementor-widget-container">
 										<div class="elementor-image">
 															<a href="/"						aria-label="Site Logo">
-										<img fetchpriority="high" width="1691" height="671" class="attachment-full size-full wp-image-8655" alt="" srcset="/wp-content/uploads/2024/06/13-utopia-logo-012.png 1691w, /wp-content/uploads/2024/06/13-utopia-logo-012-350x139.png 350w, /wp-content/uploads/2024/06/13-utopia-logo-012-300x119.png 300w, /wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png 768w, /wp-content/uploads/2024/06/13-utopia-logo-012-1024x406.png 1024w, /wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png 1536w" sizes="(max-width: 1691px) 100vw, 1691px" src="/wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png">										</a>
+										<img fetchpriority="high" width="768" height="305" class="attachment-full size-full wp-image-8655" alt="" srcset="/wp-content/uploads/2024/06/13-utopia-logo-012.png 1691w, /wp-content/uploads/2024/06/13-utopia-logo-012-350x139.png 350w, /wp-content/uploads/2024/06/13-utopia-logo-012-300x119.png 300w, /wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png 768w, /wp-content/uploads/2024/06/13-utopia-logo-012-1024x406.png 1024w, /wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png 1536w" sizes="(max-width: 768px) 48vw, 220px" src="/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png">										</a>
 																		</div>
 						</div>
 				</div>
@@ -2209,7 +2217,7 @@ ABOU<span class="highlight">T</span> <br>US</h1>				</div>
 				<div class="elementor-widget-container">
 										<div class="elementor-image">
 															<a href="/"						aria-label="Site Logo">
-										<img width="1691" height="671" class="attachment-full size-full wp-image-8655" alt="" srcset="/wp-content/uploads/2024/06/13-utopia-logo-012.png 1691w, /wp-content/uploads/2024/06/13-utopia-logo-012-350x139.png 350w, /wp-content/uploads/2024/06/13-utopia-logo-012-300x119.png 300w, /wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png 768w, /wp-content/uploads/2024/06/13-utopia-logo-012-1024x406.png 1024w, /wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png 1536w" sizes="(max-width: 1691px) 100vw, 1691px" src="/wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png">										</a>
+										<img width="768" height="305" class="attachment-full size-full wp-image-8655" alt="" srcset="/wp-content/uploads/2024/06/13-utopia-logo-012.png 1691w, /wp-content/uploads/2024/06/13-utopia-logo-012-350x139.png 350w, /wp-content/uploads/2024/06/13-utopia-logo-012-300x119.png 300w, /wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png 768w, /wp-content/uploads/2024/06/13-utopia-logo-012-1024x406.png 1024w, /wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png 1536w" sizes="(max-width: 768px) 48vw, 220px" src="/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png">										</a>
 																		</div>
 						</div>
 				</div>
@@ -2389,7 +2397,7 @@ ABOU<span class="highlight">T</span> <br>US</h1>				</div>
 				<div class="elementor-widget-container">
 										<div class="elementor-image">
 															<a href="/"						aria-label="Site Logo">
-										<img width="1691" height="671" class="attachment-full size-full wp-image-8655" alt="" srcset="/wp-content/uploads/2024/06/13-utopia-logo-012.png 1691w, /wp-content/uploads/2024/06/13-utopia-logo-012-350x139.png 350w, /wp-content/uploads/2024/06/13-utopia-logo-012-300x119.png 300w, /wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png 768w, /wp-content/uploads/2024/06/13-utopia-logo-012-1024x406.png 1024w, /wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png 1536w" sizes="(max-width: 1691px) 100vw, 1691px" src="/wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png">										</a>
+										<img width="768" height="305" class="attachment-full size-full wp-image-8655" alt="" srcset="/wp-content/uploads/2024/06/13-utopia-logo-012.png 1691w, /wp-content/uploads/2024/06/13-utopia-logo-012-350x139.png 350w, /wp-content/uploads/2024/06/13-utopia-logo-012-300x119.png 300w, /wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png 768w, /wp-content/uploads/2024/06/13-utopia-logo-012-1024x406.png 1024w, /wp-content/uploads/2024/06/13-utopia-logo-012-1536x609.png 1536w" sizes="(max-width: 768px) 48vw, 220px" src="/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png">										</a>
 																		</div>
 						</div>
 				</div>

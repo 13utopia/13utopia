@@ -1,16 +1,8 @@
 /*! Permanent image hydration for Elementor scrapes under Lenis.
-   - Force eager load (native lazy + transform scroll = blank imgs)
-   - Localize AirLift / bv paths
-   - Retry zero-size / error loads
-   - Mark .e-lazyloaded so Elementor stops stripping bg images
-   - Unstick WCF starter-animation opacity:0 on image widgets
+   v4: above-fold / critical = eager; below-fold = lazy + IO (no blank Lenis imgs).
    Re-runnable: window.__PIXEL_LAZY_RUN() after SPA navigations. */
 (function () {
-  // Allow re-bind of runners across soft nav / HMR; only one observer set
-  if (window.__PIXEL_LAZY_BOOT_V3) {
-    // Still refresh runners in case an older mark() was left behind
-  }
-  window.__PIXEL_LAZY_BOOT_V3 = true;
+  window.__PIXEL_LAZY_BOOT_V4 = true;
 
   function localizeUpload(url) {
     if (!url || url.indexOf('data:') === 0) return url;
@@ -37,7 +29,41 @@
     host.querySelectorAll('.wcf--image, img, figure').forEach(forceVisible);
   }
 
-  function promoteImg(img) {
+  function isCritical(img) {
+    if (!img) return false;
+    if (img.getAttribute('fetchpriority') === 'high') return true;
+    if (img.classList.contains('wp-image-8655')) return true; // site logo
+    if (img.classList.contains('pixel-route-veil-logo')) return true;
+    if (img.closest('.elementor-element-01ec82b, .elementor-element-9e2c1c7, .elementor-element-481a75a'))
+      return true;
+    // Home hero titles stage + first Zeus/god blocks
+    if (
+      img.closest(
+        '.elementor-element-479c805, .elementor-element-4b3ef8a, .elementor-element-b23dc44, .elementor-element-f61769e, .elementor-element-e5f1a6a'
+      )
+    )
+      return true;
+    var r = img.getBoundingClientRect();
+    var vh = window.innerHeight || 800;
+    return r.top < vh * 1.35 && r.bottom > -80;
+  }
+
+  var io =
+    'IntersectionObserver' in window
+      ? new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (en) {
+              if (!en.isIntersecting) return;
+              var img = en.target;
+              io.unobserve(img);
+              promoteImg(img, true);
+            });
+          },
+          { rootMargin: '320px 0px', threshold: 0.01 }
+        )
+      : null;
+
+  function promoteImg(img, forceEager) {
     if (!img || img.tagName !== 'IMG') return;
 
     var real =
@@ -51,7 +77,6 @@
     var cur = img.getAttribute('src') || '';
 
     if (real && real.indexOf('data:') !== 0) {
-      // data-srcset may be a full srcset string — take first URL if so
       var candidate = real.split(',')[0].trim().split(/\s+/)[0];
       img.src = localizeUpload(candidate);
       img.removeAttribute('bv-data-src');
@@ -63,13 +88,23 @@
       img.src = localizeUpload(cur);
     }
 
-    // Lenis + loading=lazy leaves icons blank until a "real" scroll IO fires
-    img.loading = 'eager';
-    img.removeAttribute('loading');
-    img.decoding = 'async';
-    img.setAttribute('fetchpriority', img.getAttribute('fetchpriority') || 'auto');
+    var critical = forceEager || isCritical(img);
+    if (critical) {
+      img.loading = 'eager';
+      img.removeAttribute('loading');
+      if (!img.getAttribute('fetchpriority') && img.classList.contains('wp-image-8655')) {
+        img.setAttribute('fetchpriority', 'high');
+      }
+    } else {
+      img.loading = 'lazy';
+      if (io && img.dataset.pixelIo !== '1') {
+        img.dataset.pixelIo = '1';
+        io.observe(img);
+      }
+    }
 
-    // Localize srcset entries too
+    img.decoding = 'async';
+
     var ss = img.getAttribute('srcset');
     if (ss && (ss.indexOf('al_opt_content') !== -1 || ss.indexOf('13utopia.com') !== -1)) {
       img.setAttribute(
@@ -85,36 +120,39 @@
       );
     }
 
+    // Logo: never request 1536w for a ~200px header mark
+    if (img.classList.contains('wp-image-8655')) {
+      var logo = '/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png';
+      if ((img.getAttribute('src') || '').indexOf('1536x609') !== -1 || (img.getAttribute('src') || '').indexOf('13-utopia-logo-012.png') !== -1) {
+        img.src = logo;
+      }
+      img.setAttribute('sizes', '(max-width: 768px) 48vw, 220px');
+      img.width = 768;
+      img.height = 305;
+    }
+
     forceVisible(img);
     var wrap = img.closest('.wcf--image, .elementor-widget-wcf--image, .elementor-widget-image');
     if (wrap) unstickImageWidget(wrap.closest('.elementor-element') || wrap);
 
-    // Retry blank / broken loads (race with SPA swap or aborted fetch)
     if (img.dataset.pixelImgBound === '1') return;
     img.dataset.pixelImgBound = '1';
 
-    function retry(reason) {
+    function retry() {
       if (img.dataset.pixelImgRetried === '1') return;
       img.dataset.pixelImgRetried = '1';
       var s = localizeUpload(img.currentSrc || img.getAttribute('src') || '');
       if (!s || s.indexOf('data:') === 0) return;
-      var bust = s + (s.indexOf('?') >= 0 ? '&' : '?') + 'pixel-retry=1';
-      img.src = bust;
-      if (typeof img.decode === 'function') {
-        img.decode().catch(function () {});
-      }
+      img.src = s + (s.indexOf('?') >= 0 ? '&' : '?') + 'pixel-retry=1';
+      if (typeof img.decode === 'function') img.decode().catch(function () {});
     }
 
-    img.addEventListener('error', function () {
-      retry('error');
-    });
-
+    img.addEventListener('error', retry);
     if (img.complete && img.naturalWidth === 0 && (img.currentSrc || img.src)) {
-      retry('zero');
-    } else if (!img.complete && img.src) {
-      // Soft nudge after settle — covers Lenis first-paint races
+      retry();
+    } else if (!img.complete && img.src && critical) {
       window.setTimeout(function () {
-        if (img.naturalWidth === 0 && img.isConnected) retry('timeout');
+        if (img.naturalWidth === 0 && img.isConnected) retry();
       }, 1200);
     }
   }
@@ -123,18 +161,13 @@
     document.querySelectorAll('.e-con:not(.e-lazyloaded)').forEach(function (el) {
       el.classList.add('e-lazyloaded');
     });
-
     document
       .querySelectorAll(
         '.elementor-widget-wcf--image, .elementor-widget-image, .elementor-widget-wcf--image-box-slider'
       )
       .forEach(unstickImageWidget);
-
-    document.querySelectorAll('img').forEach(promoteImg);
-
-    // Background images that Elementor deferred via lazy class
-    document.querySelectorAll('[style*="background"], .elementor-background-overlay').forEach(function (el) {
-      // no-op placeholder — e-lazyloaded above restores Elementor bg rules
+    document.querySelectorAll('img').forEach(function (img) {
+      promoteImg(img, false);
     });
   }
 
@@ -145,7 +178,6 @@
     window.setTimeout(mark, 200);
     window.setTimeout(mark, 800);
     window.setTimeout(mark, 2000);
-    window.setTimeout(mark, 4500);
   }
 
   if (!window.__PIXEL_LAZY_OBSERVER) {
@@ -153,8 +185,7 @@
       var mo = new MutationObserver(function (mutations) {
         var need = false;
         for (var i = 0; i < mutations.length; i++) {
-          var m = mutations[i];
-          if (m.addedNodes && m.addedNodes.length) {
+          if (mutations[i].addedNodes && mutations[i].addedNodes.length) {
             need = true;
             break;
           }
