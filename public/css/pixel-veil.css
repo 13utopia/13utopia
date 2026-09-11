@@ -298,16 +298,21 @@ html.pixel-route-enter main {
 }
 
 @media (max-width: 767px) {
-  /* Hide desktop-only blocks on small screens before Elementor cascade arrives */
-  .elementor .elementor-hidden-mobile,
+  /* Elementor: hidden-mobile only — do NOT hide mobile_extra here
+     (mobile_extra is 768–880; hiding it kills the mobile home hero). */
+  .elementor .elementor-hidden-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 880px) {
   .elementor .elementor-hidden-mobile_extra {
     display: none !important;
   }
 }
 
-@media (min-width: 768px) {
-  /* Only the mobile header shell — do NOT hide elementor-hidden-mobile*
-     (those classes mean “hide on mobile”, i.e. they are desktop content). */
+@media (min-width: 881px) {
+  /* Mobile header shell is visible through mobile_extra (≤880); hide from tablet up */
   .elementor-element-9e2c1c7 {
     display: none !important;
   }
