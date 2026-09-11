@@ -21,7 +21,7 @@ export const DEFERRED_PIXEL_SHEETS = [
 
 export const PIXEL_SHEETS = [...CRITICAL_PIXEL_SHEETS, ...DEFERRED_PIXEL_SHEETS] as const;
 
-export const SHEET_VERSION = 'pixel-cube-41';
+export const SHEET_VERSION = 'pixel-cube-42';
 
 function sheetUrl(href: string) {
   return `${href}${href.includes('?') ? '&' : '?'}v=${SHEET_VERSION}`;
@@ -47,8 +47,10 @@ function injectSheet(href: string, defer: boolean) {
     )
   ) as HTMLLinkElement[];
 
-  // Keep one stylesheet tag; drop duplicates (SSR + client inject race).
-  const existing = matches.find((l) => l.getAttribute('data-pixel-href') === href) || matches[0] || null;
+  // Prefer the tagged pixel sheet; drop bare duplicates (noscript / CDN rewrites)
+  // that would re-block paint after we deferred them.
+  const existing =
+    matches.find((l) => l.getAttribute('data-pixel-href') === href) || matches[0] || null;
   for (const l of matches) {
     if (existing && l !== existing) l.remove();
   }
@@ -89,5 +91,19 @@ export function ensurePixelSheets() {
   document.documentElement.classList.add('pixel-exact');
   for (const href of CRITICAL_PIXEL_SHEETS) injectSheet(href, false);
   for (const href of DEFERRED_PIXEL_SHEETS) injectSheet(href, true);
+
+  // Drop CDN/noscript duplicate stylesheets that bypass data-pixel-href tagging
+  for (const href of PIXEL_SHEETS) {
+    const tagged = document.querySelector(
+      `link[data-pixel-href="${href}"]`
+    ) as HTMLLinkElement | null;
+    if (!tagged) continue;
+    document
+      .querySelectorAll(`link[rel="stylesheet"][href*="${href}"]`)
+      .forEach((node) => {
+        const l = node as HTMLLinkElement;
+        if (l !== tagged && !l.getAttribute('data-pixel-href')) l.remove();
+      });
+  }
 }
 

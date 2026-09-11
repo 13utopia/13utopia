@@ -219,16 +219,16 @@ export default function Page() {
     const loadLiveJs = () => {
       if (!document.querySelector('script[data-pixel-live-loader]')) {
         const s = document.createElement('script');
-        s.src = '/js/live-js-loader.js?v=live-js-11';
+        s.src = '/js/live-js-loader.js?v=live-js-12';
         s.async = true;
         s.dataset.pixelLiveLoader = '1';
         document.head.appendChild(s);
       }
     };
     if (typeof requestIdleCallback === 'function') {
-      requestIdleCallback(loadLiveJs, { timeout: 4000 });
+      requestIdleCallback(loadLiveJs, { timeout: 2000 });
     } else {
-      window.setTimeout(loadLiveJs, 2500);
+      window.setTimeout(loadLiveJs, 1200);
     }
     if (!document.querySelector('script[data-pixel-swiper-boot]')) {
       const s2 = document.createElement('script');
