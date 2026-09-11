@@ -21,30 +21,65 @@ export const DEFERRED_PIXEL_SHEETS = [
 
 export const PIXEL_SHEETS = [...CRITICAL_PIXEL_SHEETS, ...DEFERRED_PIXEL_SHEETS] as const;
 
-export const SHEET_VERSION = 'pixel-cube-36';
+export const SHEET_VERSION = 'pixel-cube-37';
 
 function sheetUrl(href: string) {
   return `${href}${href.includes('?') ? '&' : '?'}v=${SHEET_VERSION}`;
 }
 
-function injectSheet(href: string, defer: boolean) {
-  const want = sheetUrl(href);
-  const existing = document.querySelector(
-    `link[data-pixel-href="${href}"]`
-  ) as HTMLLinkElement | null;
-  if (existing) {
-    if (!existing.href.includes(`v=${SHEET_VERSION}`)) existing.href = want;
+function armDeferred(link: HTMLLinkElement) {
+  const go = () => {
+    link.media = 'all';
+  };
+  if (link.sheet) {
+    go();
     return;
   }
+  link.addEventListener('load', go, { once: true });
+  link.onload = go;
+}
+
+function injectSheet(href: string, defer: boolean) {
+  const want = sheetUrl(href);
+  const matches = Array.from(
+    document.querySelectorAll(
+      `link[data-pixel-href="${href}"], link[rel="stylesheet"][href*="${href}"]`
+    )
+  ) as HTMLLinkElement[];
+
+  // Keep one stylesheet tag; drop duplicates (SSR + client inject race).
+  const existing = matches.find((l) => l.getAttribute('data-pixel-href') === href) || matches[0] || null;
+  for (const l of matches) {
+    if (existing && l !== existing) l.remove();
+  }
+
+  if (existing) {
+    if (!existing.href.includes(`v=${SHEET_VERSION}`)) existing.href = want;
+    existing.setAttribute('data-pixel-href', href);
+    if (defer) {
+      if (existing.media !== 'all') {
+        existing.setAttribute('data-pixel-defer', '');
+        if (existing.sheet) existing.media = 'all';
+        else {
+          existing.media = 'print';
+          armDeferred(existing);
+        }
+      }
+    } else {
+      existing.media = 'all';
+      existing.removeAttribute('data-pixel-defer');
+    }
+    return;
+  }
+
   const link = document.createElement('link');
   link.rel = 'stylesheet';
   link.href = want;
   link.setAttribute('data-pixel-href', href);
   if (defer) {
+    link.setAttribute('data-pixel-defer', '');
     link.media = 'print';
-    link.onload = () => {
-      link.media = 'all';
-    };
+    armDeferred(link);
   }
   document.head.appendChild(link);
 }
