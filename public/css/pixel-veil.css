@@ -297,14 +297,18 @@ html.pixel-route-enter main {
   display: none !important;
 }
 
+@media (max-width: 767px) {
+  /* Hide desktop-only blocks on small screens before Elementor cascade arrives */
+  .elementor .elementor-hidden-mobile,
+  .elementor .elementor-hidden-mobile_extra {
+    display: none !important;
+  }
+}
+
 @media (min-width: 768px) {
-  .elementor-element-9e2c1c7,
-  .elementor .elementor-hidden-mobile_extra,
-  .elementor .elementor-hidden-tablet,
-  .elementor .elementor-hidden-tablet_extra,
-  .elementor .elementor-hidden-laptop,
-  .elementor .elementor-hidden-desktop,
-  .elementor .elementor-hidden-widescreen {
+  /* Only the mobile header shell — do NOT hide elementor-hidden-mobile*
+     (those classes mean “hide on mobile”, i.e. they are desktop content). */
+  .elementor-element-9e2c1c7 {
     display: none !important;
   }
 
