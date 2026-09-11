@@ -219,7 +219,7 @@ export default function Page() {
     const loadLiveJs = () => {
       if (!document.querySelector('script[data-pixel-live-loader]')) {
         const s = document.createElement('script');
-        s.src = '/js/live-js-loader.js?v=live-js-12';
+        s.src = '/js/live-js-loader.js?v=live-js-10';
         s.async = true;
         s.dataset.pixelLiveLoader = '1';
         document.head.appendChild(s);

@@ -33,6 +33,11 @@ export default function PixelCriticalLinks() {
         />
       ))}
       <script dangerouslySetInnerHTML={{ __html: deferScript }} />
+      <noscript>
+        {DEFERRED_PIXEL_SHEETS.map((href) => (
+          <link key={`ns-${href}`} rel="stylesheet" href={sheetUrl(href)} />
+        ))}
+      </noscript>
     </>
   );
 }
