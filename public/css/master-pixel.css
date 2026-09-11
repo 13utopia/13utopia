@@ -1081,3 +1081,16 @@ html.pixel-exact body {
 }
 
 /* Do NOT globally force .elementor-invisible â€” let Elementor animate; JS fallback reveals stuck ones */
+
+/* ---- Mobile FOUC correction (Elementor breakpoints) ----
+   pixel-veil briefly hid .elementor-hidden-mobile_extra under 767px.
+   That class is ONLY for 768–880; hiding it blanks the home mobile hero. */
+@media (max-width: 767px) {
+  html.pixel-exact .elementor .e-con.elementor-hidden-mobile_extra:not(.elementor-hidden-mobile),
+  html.pixel-exact .elementor .elementor-element.elementor-hidden-mobile_extra:not(.elementor-hidden-mobile) {
+    display: var(--display, flex) !important;
+  }
+  html.pixel-exact .elementor .elementor-widget.elementor-hidden-mobile_extra:not(.elementor-hidden-mobile) {
+    display: block !important;
+  }
+}
