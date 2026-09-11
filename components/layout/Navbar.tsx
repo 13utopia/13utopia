@@ -47,20 +47,31 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1340px] mx-auto px-6 sm:px-10 flex items-center justify-between">
-          {/* Brand Logo — same asset as live */}
-          <Link href="/" className="flex items-center z-50 shrink-0">
+          {/* Live mobile: burger left, logo right. Desktop: logo left, nav center, CTA right. */}
+          <button
+            onClick={toggleMobileMenu}
+            className="lg:hidden order-1 p-2 text-white hover:text-white/80 transition-colors z-50 focus:outline-none"
+            aria-label="Toggle navigation menu"
+          >
+            {isMobileOpen ? <X className="w-7 h-7 text-white" /> : <Menu className="w-7 h-7" />}
+          </button>
+
+          <Link
+            href="/"
+            className="flex items-center z-50 shrink-0 order-2 lg:order-1 ml-auto lg:ml-0"
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png"
               alt="13 UTOPiA"
               width={160}
               height={64}
-              className="h-10 sm:h-12 w-auto object-contain"
+              className="h-9 sm:h-11 lg:h-12 w-auto object-contain"
             />
           </Link>
 
           {/* Desktop Navigation Menu */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8 order-2">
             <Link
               href="/"
               className={`text-sm uppercase font-medium tracking-wider transition-colors ${
@@ -154,24 +165,15 @@ export default function Navbar() {
             </Link>
           </nav>
 
-          {/* Right Action Button & Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          {/* Right Action Button (desktop). Mobile burger moved to left to match live. */}
+          <div className="hidden lg:flex items-center gap-4 order-3">
             <Link
               href="/contact-us"
-              className="hidden sm:inline-flex items-center gap-2 border border-white/70 hover:border-[#C8F31D] hover:bg-[#C8F31D] hover:text-black text-white px-6 py-2.5 rounded-[10px] text-xs font-semibold uppercase tracking-wider transition-all duration-300"
+              className="inline-flex items-center gap-2 border border-white/70 hover:border-[#C8F31D] hover:bg-[#C8F31D] hover:text-black text-white px-6 py-2.5 rounded-[10px] text-xs font-semibold uppercase tracking-wider transition-all duration-300"
             >
               Let&apos;s Talk
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
-
-            {/* Mobile Hamburger Button */}
-            <button
-              onClick={toggleMobileMenu}
-              className="lg:hidden p-2 text-white hover:text-white/80 transition-colors z-50 focus:outline-none"
-              aria-label="Toggle navigation menu"
-            >
-              {isMobileOpen ? <X className="w-7 h-7 text-white" /> : <Menu className="w-7 h-7" />}
-            </button>
           </div>
         </div>
       </header>
