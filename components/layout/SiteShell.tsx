@@ -8,24 +8,7 @@ import WhatsAppButton from '@/components/layout/WhatsAppButton';
 import SmoothScroll from '@/components/motion/SmoothScroll';
 import TransitionProvider from '@/components/motion/TransitionProvider';
 import { ensurePixelSheets } from '@/lib/ensurePixelSheets';
-
-/** Pixel-exact scrape pages include their own Elementor header/footer. */
-const PIXEL_ROUTES = new Set([
-  '/',
-  '/about-us',
-  '/digital-marketing',
-  '/search-engine-optimization',
-  '/web-development',
-  '/email-marketing',
-  '/cgi-videos',
-  '/online-reputation-management',
-  '/portfolio',
-  '/blog',
-  '/contact-us',
-  '/privacy-policy',
-  '/terms-and-condition',
-  '/refund-and-return',
-]);
+import { isPixelRoute } from '@/lib/routeMode';
 
 const SERVICE_SLIDER_ROUTES = new Set([
   '/digital-marketing',
@@ -90,13 +73,12 @@ function whenIdle(run: () => void, timeoutMs = 1800) {
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() || '/';
-  const usePixelChrome = PIXEL_ROUTES.has(pathname);
+  const usePixelChrome = isPixelRoute(pathname);
 
   useEffect(() => {
     if (!usePixelChrome) return;
     ensurePixelSheets();
 
-    // Above-fold / chrome — keep early
     loadScriptVersioned('/js/pixel-lazy-boot.js?v=lazy-4', 'pixel-lazy-boot-v4', [
       'data-pixel-lazy-boot',
     ]);
@@ -113,7 +95,6 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       ]);
     }
 
-    // Below-fold / third-party — after idle so LCP/TBT improve
     const idleId = whenIdle(() => {
       loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-2', 'pixel-ctc-boot-v2', ['data-pixel-ctc-boot'], {
         async: true,
@@ -149,7 +130,6 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     };
   }, [usePixelChrome, pathname]);
 
-  // Prefetch only a few high-traffic routes; skip on slow connections
   useEffect(() => {
     const nav = navigator as Navigator & {
       connection?: { saveData?: boolean; effectiveType?: string };

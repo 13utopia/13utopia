@@ -12,6 +12,7 @@ import {
 } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { ensurePixelSheets } from '@/lib/ensurePixelSheets';
+import { isPixelRoute } from '@/lib/routeMode';
 import { bindScrollAwaken, choreographPageEnter } from '@/lib/pixelChoreography';
 import {
   HERO_AFTER_REVEAL_MS,
@@ -101,9 +102,9 @@ export default function TransitionProvider({ children }: { children: ReactNode }
   }, []);
 
   useLayoutEffect(() => {
-    ensurePixelSheets();
-    document.documentElement.classList.add('pixel-exact');
-  }, []);
+    if (isPixelRoute(pathname)) ensurePixelSheets();
+    document.documentElement.classList.toggle('pixel-exact', isPixelRoute(pathname));
+  }, [pathname]);
 
   const navigate = useCallback(
     (href: string) => {
@@ -122,7 +123,7 @@ export default function TransitionProvider({ children }: { children: ReactNode }
       if (navigating.current) return;
       navigating.current = true;
 
-      ensurePixelSheets();
+      if (isPixelRoute(targetPath)) ensurePixelSheets();
       document.documentElement.classList.add('pixel-route-exit');
       document.documentElement.classList.remove('pixel-route-enter');
       stampDesktopNav();
@@ -144,7 +145,7 @@ export default function TransitionProvider({ children }: { children: ReactNode }
   useLayoutEffect(() => {
     document.documentElement.classList.remove('pixel-route-exit');
     document.documentElement.classList.add('pixel-route-enter');
-    ensurePixelSheets();
+    if (isPixelRoute(pathname)) ensurePixelSheets();
     setVeil('hold');
     stampDesktopNav();
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });

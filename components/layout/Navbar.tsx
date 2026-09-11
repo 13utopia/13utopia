@@ -47,11 +47,16 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1340px] mx-auto px-6 sm:px-10 flex items-center justify-between">
-          {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-1.5 z-50">
-            <span className="font-teko text-3xl sm:text-4xl font-bold tracking-wider text-white">
-              13 <span className="text-[#C8F31D]">UTOPiA</span>
-            </span>
+          {/* Brand Logo — same asset as live */}
+          <Link href="/" className="flex items-center z-50 shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png"
+              alt="13 UTOPiA"
+              width={160}
+              height={64}
+              className="h-10 sm:h-12 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation Menu */}

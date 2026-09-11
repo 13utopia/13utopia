@@ -15,9 +15,14 @@ export default function Footer() {
           {/* Column 1: Brand Logo & Socials & Legal */}
           <div className="space-y-6">
             <Link href="/" className="inline-block">
-              <span className="font-teko text-4xl font-bold tracking-wider text-white">
-                13 <span className="text-[#C8F31D]">UTOPiA</span>
-              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/wp-content/uploads/2024/06/13-utopia-logo-012-768x305.png"
+                alt="13 UTOPiA"
+                width={180}
+                height={72}
+                className="h-12 w-auto object-contain"
+              />
             </Link>
 
             {/* Social Icons */}

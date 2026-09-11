@@ -4,7 +4,7 @@ import './globals.css';
 import './veil-motion.css';
 import JsonLd from '@/components/seo/JsonLd';
 import SiteShell from '@/components/layout/SiteShell';
-import PixelCriticalLinks from '@/components/layout/PixelCriticalLinks';
+import PixelCriticalLinksGate from '@/components/layout/PixelCriticalLinksGate';
 import { OG_IMAGE, PAGE_SEO, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 const roboto = Roboto({
@@ -139,10 +139,10 @@ export default function RootLayout({
     <html
       lang="en-IN"
       suppressHydrationWarning
-      className={`${roboto.variable} ${teko.variable} ${titan.variable} ${kanit.variable} pixel-exact`}
+      className={`${roboto.variable} ${teko.variable} ${titan.variable} ${kanit.variable}`}
     >
       <head>
-        <PixelCriticalLinks />
+        <PixelCriticalLinksGate />
         <link
           rel="preload"
           as="image"
