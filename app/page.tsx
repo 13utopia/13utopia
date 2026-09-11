@@ -253,7 +253,7 @@ export default function Page() {
     }
     if (!document.querySelector('script[data-pixel-lazy-boot]')) {
       const s5 = document.createElement('script');
-      s5.src = '/js/pixel-lazy-boot.js?v=lazy-3';
+      s5.src = '/js/pixel-lazy-boot.js?v=lazy-4';
       s5.async = false;
       s5.dataset.pixelLazyBoot = '1';
       document.head.appendChild(s5);
