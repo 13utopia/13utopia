@@ -3,14 +3,14 @@
 /** Must block first paint (layout / FOUC / chrome). */
 export const CRITICAL_PIXEL_SHEETS = [
   '/css/pixel-veil.css',
-  '/css/live-cascade.css',
-  // original-styles is large theme chrome — load after first paint (veil covers FOUC)
+  // live-cascade (~850KB) downloads deferred under the black veil — same CSS, non-blocking FCP
   '/cdn/google-fonts/DM_Sans_3A300_2C400_3B500_2C600_2C700_2C800_2C900_7CPT_Serif_3A400_3B500_2C600_2C700.css',
   '/css/master-pixel.css',
 ] as const;
 
 /** Widget/page CSS — defer so it does not block first paint. */
 export const DEFERRED_PIXEL_SHEETS = [
+  '/css/live-cascade.css',
   '/css/original-styles.css',
   '/css/live-timeline.min.css',
   '/css/live-widget-posts.min.css',
@@ -21,7 +21,7 @@ export const DEFERRED_PIXEL_SHEETS = [
 
 export const PIXEL_SHEETS = [...CRITICAL_PIXEL_SHEETS, ...DEFERRED_PIXEL_SHEETS] as const;
 
-export const SHEET_VERSION = 'pixel-cube-39';
+export const SHEET_VERSION = 'pixel-cube-40';
 
 function sheetUrl(href: string) {
   return `${href}${href.includes('?') ? '&' : '?'}v=${SHEET_VERSION}`;
@@ -89,4 +89,36 @@ export function ensurePixelSheets() {
   document.documentElement.classList.add('pixel-exact');
   for (const href of CRITICAL_PIXEL_SHEETS) injectSheet(href, false);
   for (const href of DEFERRED_PIXEL_SHEETS) injectSheet(href, true);
+}
+
+/** Resolve when a pixel sheet has loaded (or after maxWaitMs). Used to avoid FOUC under the veil. */
+export function whenPixelSheetReady(href: string, maxWaitMs = 2000): Promise<void> {
+  if (typeof document === 'undefined') return Promise.resolve();
+  return new Promise((resolve) => {
+    const link =
+      (document.querySelector(`link[data-pixel-href="${href}"]`) as HTMLLinkElement | null) ||
+      (document.querySelector(`link[rel="stylesheet"][href*="${href}"]`) as HTMLLinkElement | null);
+
+    const done = () => resolve();
+    const timer = window.setTimeout(done, maxWaitMs);
+
+    if (!link) {
+      window.clearTimeout(timer);
+      done();
+      return;
+    }
+
+    // Deferred sheets use media=print until load; .sheet means CSSOM is ready either way.
+    if (link.sheet) {
+      window.clearTimeout(timer);
+      done();
+      return;
+    }
+
+    const onLoad = () => {
+      window.clearTimeout(timer);
+      done();
+    };
+    link.addEventListener('load', onLoad, { once: true });
+  });
 }

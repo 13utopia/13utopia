@@ -11,7 +11,7 @@ import {
   type ReactNode,
 } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { ensurePixelSheets } from '@/lib/ensurePixelSheets';
+import { ensurePixelSheets, whenPixelSheetReady } from '@/lib/ensurePixelSheets';
 import { bindScrollAwaken, choreographPageEnter } from '@/lib/pixelChoreography';
 import {
   HERO_AFTER_REVEAL_MS,
@@ -212,12 +212,7 @@ export default function TransitionProvider({ children }: { children: ReactNode }
     firstPaint.current = false;
 
     const onHome = pathname === '/' || pathname === '';
-    const holdMs = softFirst ? FIRST_HOLD_MS : ENTER_HOLD_MS;
-    const heroAt = onHome ? holdMs + HERO_AFTER_REVEAL_MS : 0;
-    const cleanupMs = Math.max(
-      softFirst ? FIRST_CLEANUP_MS : ENTER_CLEANUP_MS,
-      heroAt ? heroAt + 80 : 0
-    );
+    const baseHoldMs = softFirst ? FIRST_HOLD_MS : ENTER_HOLD_MS;
 
     // Ensure hold sticks even if a child re-render raced
     setVeil('hold');
@@ -229,31 +224,57 @@ export default function TransitionProvider({ children }: { children: ReactNode }
       if (onHome) prepareHomeHeroEntrance();
     }, 32);
 
-    const tHold = window.setTimeout(() => {
-      setVeil('reveal');
-    }, holdMs);
-
-    // After curtain clears + a short settle beat → full Dynamic / Solutions on screen
-    const tHero = onHome
-      ? window.setTimeout(() => {
-          playHomeHeroEntrance();
-        }, heroAt)
-      : 0;
-
+    let cancelled = false;
+    let tHold = 0;
+    let tHero = 0;
+    let tScroll = 0;
+    let tIdle = 0;
     let unbindScroll = () => {};
-    const tScroll = window.setTimeout(() => {
-      unbindScroll = bindScrollAwaken();
-    }, holdMs + 200);
+
+    // First visit: cascade is deferred for FCP — keep veil until sheet is ready (or cap).
+    const gate =
+      softFirst
+        ? whenPixelSheetReady('/css/live-cascade.css', 2000)
+        : Promise.resolve();
+
+    const start = performance.now();
+    gate.then(() => {
+      if (cancelled) return;
+      const elapsed = performance.now() - start;
+      const holdMs = Math.max(baseHoldMs, Math.ceil(elapsed));
+      const heroAt = onHome ? holdMs + HERO_AFTER_REVEAL_MS : 0;
+      const cleanupMs = Math.max(
+        softFirst ? FIRST_CLEANUP_MS : ENTER_CLEANUP_MS,
+        heroAt ? heroAt + 80 : 0,
+        holdMs + 200
+      );
+
+      tHold = window.setTimeout(() => {
+        setVeil('reveal');
+      }, Math.max(0, holdMs - elapsed));
+
+      if (onHome) {
+        tHero = window.setTimeout(() => {
+          playHomeHeroEntrance();
+        }, Math.max(0, heroAt - elapsed));
+      }
+
+      tScroll = window.setTimeout(() => {
+        unbindScroll = bindScrollAwaken();
+      }, Math.max(0, holdMs + 200 - elapsed));
+
+      tIdle = window.setTimeout(() => {
+        setVeil('idle');
+        document.documentElement.classList.remove('pixel-route-enter');
+      }, Math.max(0, cleanupMs - elapsed));
+    });
 
     const t1 = window.setTimeout(rerun, 120);
     const t2 = window.setTimeout(rerun, 500);
     const t3 = window.setTimeout(rerun, 1400);
-    const tIdle = window.setTimeout(() => {
-      setVeil('idle');
-      document.documentElement.classList.remove('pixel-route-enter');
-    }, cleanupMs);
 
     return () => {
+      cancelled = true;
       window.clearTimeout(tHold);
       window.clearTimeout(tAwaken);
       window.clearTimeout(tHero);
