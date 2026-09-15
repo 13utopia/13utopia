@@ -1617,28 +1617,182 @@ html.pixel-exact body {
     max-width: 100% !important;
   }
 
-  /* Home mobile hero — fill first viewport; clients start on next scroll */
+  /* Force hide all mobile-hidden containers */
+  html.pixel-exact .elementor-hidden-mobile,
+  html.pixel-exact .elementor-element.elementor-hidden-mobile,
+  html.pixel-exact .e-con.elementor-hidden-mobile,
+  html.pixel-exact .elementor-widget.elementor-hidden-mobile {
+    display: none !important;
+  }
+
+  /* Mobile Header (elementor-6033) layout & overflow kill */
+  html.pixel-exact .elementor-6033,
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-9e2c1c7 {
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 10px 18px !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
+    background: #000000 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-7b46e1c {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-481a75a {
+    width: auto !important;
+    max-width: auto !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-481a75a .elementor-menu-toggle,
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-a587e79 .elementor-menu-toggle,
+  html.pixel-exact .wcf-menu-hamburger {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-481a75a .elementor-menu-toggle svg,
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-a587e79 .elementor-menu-toggle svg,
+  html.pixel-exact .wcf-menu-hamburger svg {
+    width: 22px !important;
+    height: 22px !important;
+    fill: #ffffff !important;
+    color: #ffffff !important;
+  }
+  /* Fix double icon (open + close showing together) */
+  html.pixel-exact .elementor-6033 .elementor-menu-toggle svg.elementor-menu-toggle__icon--close,
+  html.pixel-exact .elementor-menu-toggle svg.elementor-menu-toggle__icon--close {
+    display: none !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-menu-toggle svg.elementor-menu-toggle__icon--open,
+  html.pixel-exact .elementor-menu-toggle svg.elementor-menu-toggle__icon--open {
+    display: block !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-menu-toggle.elementor-active svg.elementor-menu-toggle__icon--close,
+  html.pixel-exact .elementor-menu-toggle.elementor-active svg.elementor-menu-toggle__icon--close {
+    display: block !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-menu-toggle.elementor-active svg.elementor-menu-toggle__icon--open,
+  html.pixel-exact .elementor-menu-toggle.elementor-active svg.elementor-menu-toggle__icon--open {
+    display: none !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-c0803bd,
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-ba91d1b,
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-003b0ba,
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-4428926,
+  html.pixel-exact .elementor-17959 .elementor-element.elementor-element-6b5a46f,
+  html.pixel-exact .elementor-element-6b5a46f,
+  html.pixel-exact .elementor-widget-wcf--site-logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    text-align: right !important;
+    width: auto !important;
+    max-width: 120px !important;
+    margin: 0 0 0 auto !important;
+    padding: 0 !important;
+    inset: auto !important;
+    flex: 0 0 auto !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-ba91d1b,
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-003b0ba {
+    display: none !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-c0803bd > .elementor-widget-container,
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-4428926 > .elementor-widget-container,
+  html.pixel-exact .elementor-17959 .elementor-element.elementor-element-6b5a46f > .elementor-widget-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+  }
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-c0803bd img,
+  html.pixel-exact .elementor-6033 .elementor-element.elementor-element-4428926 img,
+  html.pixel-exact .elementor-17959 .elementor-element.elementor-element-6b5a46f img,
+  html.pixel-exact .elementor-element-6b5a46f img,
+  html.pixel-exact .elementor-widget-wcf--site-logo img,
+  html.pixel-exact img.wp-image-8655,
+  html.pixel-exact img[src*='13-utopia-logo']:not(.pixel-route-veil-logo) {
+    width: auto !important;
+    max-width: 110px !important;
+    height: 28px !important;
+    max-height: 28px !important;
+    object-fit: contain !important;
+    display: inline-block !important;
+    margin: 0 !important;
+  }
+
+  /* Home mobile hero — clean vertical sequence filling full mobile screen */
   html.pixel-exact .elementor-element-7c0e130 {
-    overflow: visible !important;
-    min-height: calc(100svh - var(--pixel-header-h, 64px) - 132px) !important;
+    position: relative !important;
+    background: #000000 !important;
+    overflow: hidden !important;
+    min-height: calc(100svh - 136px) !important;
     height: auto !important;
-    padding: calc(var(--pixel-header-h, 64px) + 14px) 18px 4px !important;
-    --padding-top: calc(var(--pixel-header-h, 64px) + 14px) !important;
+    padding: 64px 16px 4px !important;
+    --padding-top: 64px !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-start !important;
+    justify-content: space-between !important;
     align-items: center !important;
     gap: 0 !important;
     box-sizing: border-box !important;
     text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   html.pixel-exact .elementor-element-fd3b049 {
-    display: contents !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    gap: 0 !important;
   }
   html.pixel-exact .elementor-element-b23dc44,
   html.pixel-exact .elementor-element-f61769e,
   html.pixel-exact .elementor-element-75d3b2a,
   html.pixel-exact .elementor-element-f0574ce,
+  html.pixel-exact .elementor-element-b23dc44.pixel-hero-wait,
+  html.pixel-exact .elementor-element-f61769e.pixel-hero-wait,
   html.pixel-exact .elementor-element-b23dc44.elementor-invisible,
   html.pixel-exact .elementor-element-f61769e.elementor-invisible,
   html.pixel-exact .elementor-element-75d3b2a.elementor-invisible,
@@ -1664,92 +1818,58 @@ html.pixel-exact body {
     visibility: visible !important;
     animation: none !important;
   }
-  /* Mobile Header Upper-Right Logo Sizing */
-  html.pixel-exact .elementor-17959 .elementor-element.elementor-element-6b5a46f,
-  html.pixel-exact .elementor-element-6b5a46f,
-  html.pixel-exact .elementor-widget-wcf--site-logo {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    text-align: right !important;
-    width: auto !important;
-  }
-  html.pixel-exact .elementor-17959 .elementor-element.elementor-element-6b5a46f img,
-  html.pixel-exact .elementor-element-6b5a46f img,
-  html.pixel-exact .elementor-widget-wcf--site-logo img,
-  html.pixel-exact img.wp-image-8655,
-  html.pixel-exact img[src*='13-utopia-logo']:not(.pixel-route-veil-logo) {
-    width: auto !important;
-    max-width: 105px !important;
-    height: 28px !important;
-    max-height: 28px !important;
-    object-fit: contain !important;
-    display: inline-block !important;
-  }
-
-  /* Mobile Hero Section — Clean Authentic Colors Matching Desktop */
-  html.pixel-exact .elementor-element-7c0e130 {
-    position: relative !important;
-    background: #000000 !important;
-    overflow: hidden !important;
-    padding-top: 8px !important;
-  }
 
   html.pixel-exact .elementor-element-b23dc44 {
-    order: 1 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
   html.pixel-exact .elementor-element-f61769e {
-    order: 2 !important;
-    margin-top: -6px !important;
+    margin-top: -3px !important;
+    margin-bottom: 0 !important;
   }
   html.pixel-exact .elementor-element-75d3b2a {
-    order: 3 !important;
-    margin-top: 4px !important;
+    margin-top: 6px !important;
     margin-bottom: 4px !important;
   }
   html.pixel-exact .elementor-element-dddd85c,
   html.pixel-exact .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-    order: 4 !important;
-    min-height: 250px !important;
-    max-height: 280px !important;
-    height: 260px !important;
+    min-height: 270px !important;
+    max-height: 42vh !important;
+    height: clamp(270px, 38vh, 390px) !important;
     background-size: contain !important;
-    background-position: center center !important;
+    background-position: center bottom !important;
     background-repeat: no-repeat !important;
     flex: 1 1 auto !important;
-    margin: 4px auto !important;
+    margin: 6px auto 4px !important;
     width: 100% !important;
+    max-width: 340px !important;
     --min-height: 0 !important;
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9)) !important;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.95)) !important;
     -webkit-mask-image: linear-gradient(
       to bottom,
       #000 0%,
-      #000 75%,
-      rgba(0, 0, 0, 0.6) 90%,
+      #000 82%,
+      rgba(0, 0, 0, 0.5) 94%,
       transparent 100%
     ) !important;
     mask-image: linear-gradient(
       to bottom,
       #000 0%,
-      #000 75%,
-      rgba(0, 0, 0, 0.6) 90%,
+      #000 82%,
+      rgba(0, 0, 0, 0.5) 94%,
       transparent 100%
     ) !important;
   }
-  html.pixel-exact .elementor-element-dddd85c {
-    order: 4 !important;
-  }
   html.pixel-exact .elementor-element-f0574ce {
-    order: 5 !important;
-    margin: 2px 0 10px !important;
+    margin: 4px auto 12px !important;
   }
   html.pixel-exact .elementor-element-b23dc44 .elementor-heading-title,
   html.pixel-exact .elementor-element-f61769e .elementor-heading-title {
-    font-size: clamp(2.15rem, 10.5vw, 2.85rem) !important;
-    font-weight: 700 !important;
-    line-height: 0.92 !important;
+    font-size: clamp(2.45rem, 11.2vw, 3.25rem) !important;
+    font-weight: 800 !important;
+    line-height: 0.90 !important;
     text-align: center !important;
-    letter-spacing: -0.03em !important;
+    letter-spacing: -0.035em !important;
     text-transform: uppercase !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
@@ -1758,18 +1878,16 @@ html.pixel-exact body {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
   }
   html.pixel-exact .elementor-element-75d3b2a .elementor-heading-title {
-    font-size: 0.8rem !important;
+    font-size: clamp(0.75rem, 3.4vw, 0.88rem) !important;
     line-height: 1 !important;
     text-align: center !important;
     padding: 0 !important;
-    /* letter-spacing shifts glyphs right — compensate so FOR sits on center axis */
-    letter-spacing: 0.36em !important;
-    text-indent: 0 !important;
-    padding-left: 0.36em !important;
+    letter-spacing: 0.35em !important;
+    text-indent: 0.35em !important;
     box-sizing: border-box !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
-    opacity: 0.65 !important;
+    opacity: 0.72 !important;
     font-weight: 600 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -1777,11 +1895,11 @@ html.pixel-exact body {
     text-transform: uppercase !important;
   }
   html.pixel-exact .elementor-element-f0574ce .elementor-heading-title {
-    font-size: clamp(1.65rem, 8vw, 2.15rem) !important;
-    font-weight: 700 !important;
-    line-height: 1.05 !important;
+    font-size: clamp(2.15rem, 9.6vw, 2.85rem) !important;
+    font-weight: 800 !important;
+    line-height: 0.95 !important;
     text-align: center !important;
-    letter-spacing: -0.02em !important;
+    letter-spacing: -0.03em !important;
     text-transform: uppercase !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
@@ -1791,27 +1909,27 @@ html.pixel-exact body {
 
   /* Hero CTAs — Clean High-End Original Colors Matching Desktop */
   html.pixel-exact .elementor-element-42cd37c {
-    padding-bottom: 16px !important;
+    padding-bottom: 20px !important;
     margin-bottom: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   html.pixel-exact .elementor-element-86592fa {
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 360px !important;
     --width: 100% !important;
     flex-direction: column !important;
     --flex-direction: column !important;
     align-items: stretch !important;
     justify-content: center !important;
     gap: 12px !important;
-    padding: 4px 20px 16px !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    padding: 0 16px 16px !important;
+    margin: 0 auto !important;
     box-sizing: border-box !important;
   }
   html.pixel-exact .elementor-element-8b1fffb,
   html.pixel-exact .elementor-element-99ab04e {
-    /* JS fitHomeFirstViewport sets margin-top so this lands on next scroll */
-    scroll-margin-top: calc(var(--pixel-header-h, 64px) + 8px) !important;
+    scroll-margin-top: 64px !important;
   }
   html.pixel-exact .elementor-element-88502ac,
   html.pixel-exact .elementor-element-205514f {
@@ -1848,7 +1966,7 @@ html.pixel-exact body {
     margin: 0 !important;
     float: none !important;
     border-radius: 8px !important;
-    font-size: 0.9rem !important;
+    font-size: clamp(0.82rem, 3.6vw, 0.92rem) !important;
     font-weight: 600 !important;
     letter-spacing: 0.01em !important;
     line-height: 1.25 !important;
@@ -1858,7 +1976,7 @@ html.pixel-exact body {
     background: #ffffff !important;
     color: #000000 !important;
     border: 1px solid #ffffff !important;
-    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.12) !important;
   }
   html.pixel-exact .elementor-element-88502ac .elementor-button:hover,
   html.pixel-exact .elementor-element-88502ac .elementor-button:focus,
@@ -1879,6 +1997,224 @@ html.pixel-exact body {
     border-color: #ffffff !important;
     color: #ffffff !important;
     transform: scale(0.985) !important;
+  }
+
+  /* Meet Digital Marketing Gods Section */
+  html.pixel-exact .elementor-element-b7abec5 {
+    background: #000000 !important;
+    padding: 44px 20px 32px !important;
+    text-align: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  html.pixel-exact .elementor-element-147489e,
+  html.pixel-exact .elementor-element-147489e .elementor-heading-title {
+    font-size: clamp(1.85rem, 8vw, 2.4rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
+    color: #ffffff !important;
+    text-transform: uppercase !important;
+    margin: 0 auto 14px !important;
+    text-align: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-2847e79,
+  html.pixel-exact .elementor-element-2847e79 p {
+    font-size: 0.94rem !important;
+    line-height: 1.6 !important;
+    color: #b0b0b0 !important;
+    max-width: 360px !important;
+    margin: 0 auto 22px !important;
+    text-align: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-b25d36c {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  html.pixel-exact .elementor-element-b25d36c .elementor-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+    padding: 13px 26px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 8px !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    border: 1px solid #ffffff !important;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.12) !important;
+  }
+
+  /* WHO WE ARE Mobile Section */
+  html.pixel-exact .elementor-element-79b2fcd {
+    background: #000000 !important;
+    padding: 44px 18px 52px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-a980562 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-bottom: 28px !important;
+  }
+  html.pixel-exact .elementor-element-229bd1f,
+  html.pixel-exact .elementor-element-229bd1f .wcf--title,
+  html.pixel-exact .elementor-element-79b2fcd h2.wcf--title {
+    font-size: clamp(2.4rem, 10.5vw, 3.1rem) !important;
+    font-weight: 800 !important;
+    font-family: "Roboto", "Kanit", sans-serif !important;
+    text-transform: uppercase !important;
+    color: #ffffff !important;
+    letter-spacing: -0.025em !important;
+    margin: 0 auto 10px !important;
+    text-align: center !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-2b7077e,
+  html.pixel-exact .elementor-element-2b7077e p {
+    font-size: clamp(0.92rem, 3.8vw, 1.05rem) !important;
+    line-height: 1.45 !important;
+    color: #d0d0d0 !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  /* Counters 2x2 Clean Grid */
+  html.pixel-exact .elementor-element-3f51a50 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px 12px !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 0 auto 32px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-02a67ff,
+  html.pixel-exact .elementor-element-3f51a50 > .elementor-hidden-mobile {
+    display: none !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-22ec7f0,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-5adc6a4,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-b73823d {
+    display: contents !important;
+  }
+  html.pixel-exact .elementor-element-a772474,
+  html.pixel-exact .elementor-element-5034567,
+  html.pixel-exact .elementor-element-72ed7f7,
+  html.pixel-exact .elementor-element-ce4b409 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    padding: 12px 6px !important;
+    box-sizing: border-box !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .wcf--counter {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .wcf--counter .count {
+    font-size: clamp(2.4rem, 10vw, 3.2rem) !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    line-height: 1 !important;
+    font-family: "Roboto", "Kanit", sans-serif !important;
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: center !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .wcf--counter-number-suffix {
+    font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin-left: 2px !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .wcf--counter .title {
+    font-size: clamp(0.72rem, 3vw, 0.8rem) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    color: #9a9a9a !important;
+    letter-spacing: 0.06em !important;
+    line-height: 1.3 !important;
+    margin-top: 6px !important;
+    text-align: center !important;
+  }
+  /* Description and About Us button */
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-a1f2f8a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  html.pixel-exact .elementor-element-016b3ca,
+  html.pixel-exact .elementor-element-016b3ca p {
+    font-size: clamp(0.85rem, 3.5vw, 0.92rem) !important;
+    line-height: 1.6 !important;
+    color: #a0a0a0 !important;
+    text-align: center !important;
+    margin-bottom: 24px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-d9f2b27,
+  html.pixel-exact .elementor-element-d9f2b27 .wc-btn-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  html.pixel-exact .elementor-element-d9f2b27 a,
+  html.pixel-exact .elementor-element-d9f2b27 .wc-btn-primary {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+    padding: 13px 34px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 8px !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.12) !important;
   }
 
   /* OUR CLIENTS — kill EVERY grey plate (99ab04e / 371f1f5 + motion layers) */
@@ -2388,4 +2724,116 @@ html.pixel-exact .elementor-element-12416249 .swiper-slide img {
   margin-left: auto !important;
   margin-right: auto !important;
   max-height: min(52svh, 420px) !important;
+}
+
+/* ========== Phone-only pass (never applies at 1025px+) ========== */
+@media (max-width: 1024px) {
+  html.pixel-exact,
+  html.pixel-exact body {
+    overflow-x: hidden !important;
+    scrollbar-width: none !important;
+  }
+  html.pixel-exact body {
+    overflow-y: visible !important;
+  }
+  html.pixel-exact::-webkit-scrollbar,
+  html.pixel-exact body::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+  }
+
+  html.pixel-exact .elementor-element-9e2c1c7 .elementor-element-c0803bd {
+    max-width: 118px !important;
+    overflow: hidden !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+  html.pixel-exact .elementor-element-9e2c1c7 .elementor-element-c0803bd img {
+    height: 30px !important;
+    max-height: 30px !important;
+    max-width: 118px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    object-position: right center !important;
+    transform: scale(1.28);
+    transform-origin: right center;
+  }
+
+  html.pixel-exact .elementor-element-dddd85c,
+  html.pixel-exact .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    background-size: contain !important;
+    background-position: 50% 100% !important;
+    background-repeat: no-repeat !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    filter: none !important;
+    min-height: min(42svh, 340px) !important;
+    height: min(42svh, 340px) !important;
+    max-height: 46svh !important;
+  }
+  html.pixel-exact .elementor-element-f0574ce {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    position: relative !important;
+    z-index: 3 !important;
+  }
+
+  html.pixel-exact .hero-section .elementor-image-carousel-wrapper.swiper,
+  html.pixel-exact .hero-section .elementor-widget-image-carousel .swiper,
+  html.pixel-exact .elementor-element-2fda67d .swiper {
+    overflow: hidden !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  html.pixel-exact .hero-section .elementor-image-carousel-wrapper .swiper-wrapper,
+  html.pixel-exact .elementor-element-2fda67d .swiper-wrapper {
+    overflow: hidden !important;
+  }
+  html.pixel-exact .hero-section .swiper-slide img,
+  html.pixel-exact .elementor-element-12416249 .swiper-slide img,
+  html.pixel-exact .elementor-element-2fda67d .swiper-slide img {
+    object-fit: contain !important;
+    object-position: 58% top !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-height: min(58svh, 460px) !important;
+  }
+
+  html.pixel-exact .wcf--brand-slider-wrapper,
+  html.pixel-exact .wcf--brand-slider-wrapper .swiper {
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+  html.pixel-exact .wcf--brand-slider-wrapper .swiper-slide {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  html.pixel-exact .wcf--brand-slider-wrapper .swiper-slide img,
+  html.pixel-exact .elementor-widget-wcf--brand-slider img {
+    max-height: 40px !important;
+    max-width: 100px !important;
+    margin: 0 auto !important;
+    opacity: 1 !important;
+  }
+
+  html.pixel-exact #ht-ctc-chat {
+    left: 14px !important;
+    right: auto !important;
+    bottom: max(16px, env(safe-area-inset-bottom)) !important;
+  }
+
+  html.pixel-exact .elementor-element-86592fa {
+    padding-bottom: 28px !important;
+  }
+
+  html.pixel-exact .elementor-element-be5d338,
+  html.pixel-exact .elementor-1386 .elementor-element-be5d338 {
+    overflow: visible !important;
+  }
 }

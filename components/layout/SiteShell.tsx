@@ -82,7 +82,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     loadScriptVersioned('/js/pixel-lazy-boot.js?v=lazy-4', 'pixel-lazy-boot-v4', [
       'data-pixel-lazy-boot',
     ]);
-    loadScriptOnce('/js/pixel-sticky-boot.js?v=sticky-pin-12', 'pixel-sticky-boot-v12', [
+    loadScriptVersioned('/js/pixel-sticky-boot.js?v=sticky-pin-13', 'pixel-sticky-boot-v13', [
       'data-pixel-sticky-boot',
     ]);
     loadScriptVersioned('/js/pixel-menu-boot.js?v=menu-5', 'pixel-menu-boot-v5', [
@@ -96,7 +96,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     requestAnimationFrame(menuRebind);
     const menuT = window.setTimeout(menuRebind, 200);
     const menuT2 = window.setTimeout(menuRebind, 800);
-    loadScriptVersioned('/js/pixel-swiper-boot.js?v=swiper-5', 'pixel-swiper-boot-v5', [
+    loadScriptVersioned('/js/pixel-swiper-boot.js?v=swiper-6', 'pixel-swiper-boot-v6', [
       'data-pixel-swiper-boot',
     ]);
     const swiperRun = () => {
@@ -114,7 +114,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     }
 
     const idleId = whenIdle(() => {
-      loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-2', 'pixel-ctc-boot-v2', ['data-pixel-ctc-boot'], {
+      loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-3', 'pixel-ctc-boot-v3', ['data-pixel-ctc-boot'], {
         async: true,
       });
       loadScriptOnce('/js/pixel-counter-boot.js?v=counter-4', 'pixel-counter-boot-v4', [

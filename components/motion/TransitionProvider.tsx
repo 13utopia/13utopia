@@ -328,7 +328,14 @@ export default function TransitionProvider({ children }: { children: ReactNode }
             draggable={false}
             style={{ width: 'min(52vw, 340px)', maxWidth: 'min(52vw, 340px)', height: 'auto' }}
           />
-          <span className="pixel-route-veil-rule" aria-hidden="true" />
+          <div className="pixel-route-veil-sign">
+            <span className="pixel-route-veil-rule" aria-hidden="true" />
+            <p className="pixel-route-veil-tagline">
+              <span>be unreal</span>
+              <span className="pixel-route-veil-dot" aria-hidden="true" />
+              <span>be unreasonable</span>
+            </p>
+          </div>
         </div>
       </div>
       {children}

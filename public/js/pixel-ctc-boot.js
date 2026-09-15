@@ -45,8 +45,15 @@
 
     chat.style.setProperty('display', 'block', 'important');
     chat.style.setProperty('position', 'fixed', 'important');
-    chat.style.setProperty('bottom', '50px', 'important');
-    chat.style.setProperty('right', '20px', 'important');
+    if (window.matchMedia && window.matchMedia('(max-width: 1024px)').matches) {
+      chat.style.setProperty('left', '14px', 'important');
+      chat.style.setProperty('right', 'auto', 'important');
+      chat.style.setProperty('bottom', '18px', 'important');
+    } else {
+      chat.style.removeProperty('left');
+      chat.style.setProperty('bottom', '50px', 'important');
+      chat.style.setProperty('right', '20px', 'important');
+    }
     chat.style.setProperty('z-index', '99999999', 'important');
     chat.style.setProperty('cursor', 'pointer', 'important');
     chat.style.setProperty('opacity', '1', 'important');

@@ -5,8 +5,8 @@
    transform/will-change:transform (see PageEnter / globals.css).
    v8: publish --pixel-header-h from the visible mobile bar so heroes clear it. */
 (function () {
-  if (window.__PIXEL_STICKY_BOOT_V12) return;
-  window.__PIXEL_STICKY_BOOT_V12 = true;
+  if (window.__PIXEL_STICKY_BOOT_V13) return;
+  window.__PIXEL_STICKY_BOOT_V13 = true;
 
   function parseSettings(el) {
     try {
@@ -114,12 +114,7 @@
         root.style.setProperty('float', 'none', 'important');
         if (root.swiper) {
           try {
-            // Soft-nav / resize often leaves translate on a non-first slide — Poseidon off-screen
-            root.swiper.slideTo(0, 0);
             root.swiper.update();
-            if (typeof root.swiper.translateTo === 'function') {
-              root.swiper.translateTo(0, 0, false, true);
-            }
           } catch (e) {}
         } else {
           var wrap = root.querySelector('.swiper-wrapper');
@@ -157,17 +152,12 @@
     var clients = document.querySelector('.elementor-element-8b1fffb');
     var cta = document.querySelector('.elementor-element-86592fa');
     if (!clients || !cta) return;
-    // Reset then measure so CTAs end at/near fold and clients start on next scroll
     clients.style.removeProperty('margin-top');
     var ctaBottom = cta.getBoundingClientRect().bottom;
-    var need = window.innerHeight - 8;
-    if (ctaBottom < need - 40) {
-      // Stretch gap between CTAs and clients so clients clear the fold
+    var need = window.innerHeight;
+    if (ctaBottom < need - 12) {
       var gap = Math.max(0, need - ctaBottom);
       clients.style.setProperty('margin-top', gap + 'px', 'important');
-    } else if (clients.getBoundingClientRect().top < need) {
-      var push = Math.max(0, need - clients.getBoundingClientRect().top);
-      clients.style.setProperty('margin-top', push + 'px', 'important');
     }
   }
 

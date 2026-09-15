@@ -133,8 +133,8 @@
         waitForTransition: true,
       },
       breakpoints: {
-        0: { slidesPerView: 2.4, spaceBetween: 24 },
-        400: { slidesPerView: 2.6, spaceBetween: 28 },
+        0: { slidesPerView: 3.4, spaceBetween: 12 },
+        400: { slidesPerView: 3.6, spaceBetween: 14 },
         640: { slidesPerView: 3.2, spaceBetween: 32 },
         880: { slidesPerView: 4, spaceBetween: 36 },
         1024: { slidesPerView: 4.5, spaceBetween: 40 },
@@ -146,6 +146,10 @@
     };
   }
 
+  function isPhone() {
+    return window.matchMedia && window.matchMedia('(max-width: 1024px)').matches;
+  }
+
   function brandLooksWrong(inst, root) {
     if (!inst || !inst.params) return true;
     var spv = Number(inst.params.slidesPerView);
@@ -153,6 +157,9 @@
     var space = Number(inst.params.spaceBetween);
     if (window.innerWidth < 768 && space > 45) return true;
     if (Number(inst.params.speed) < 3000) return true;
+    if (isPhone() && inst.autoplay && inst.autoplay.running && root && root.getAttribute('data-pixel-brand-ok') === '5') {
+      return false;
+    }
     return !root || root.getAttribute('data-pixel-brand-ok') !== '5';
   }
 
@@ -174,7 +181,7 @@
     }
     brandMotion.set(root, prev);
     ensureAutoplay(root);
-    if (prev.misses >= 3 && !inst.animating) {
+    if (prev.misses >= 3 && !inst.animating && !isPhone()) {
       brandMotion.set(root, { tf: '', misses: 0 });
       bootBrandSlider(root, true);
     }
@@ -198,6 +205,13 @@
       target.__pixelSwiper = new window.Swiper(target, brandOpts());
       ensureLinear(target);
       ensureAutoplay(target);
+      if (isPhone()) {
+        try {
+          var inst = target.swiper || target.__pixelSwiper;
+          if (inst && typeof inst.slideToLoop === 'function') inst.slideToLoop(0, 0, false);
+          else if (inst) inst.slideTo(0, 0);
+        } catch (eSnap) {}
+      }
       target.setAttribute('data-pixel-brand-ok', '5');
       brandMotion.set(target, { tf: '', misses: 0 });
       return true;
