@@ -71,6 +71,14 @@ function stampDesktopNav() {
       nav.classList.remove('mobile-menu-active', 'wcf-nav-is-toggled');
     }
   });
+  document.body.classList.remove('utopia-menu-open');
+  document.documentElement.classList.remove('utopia-menu-open');
+  document.querySelectorAll('.utopia-nav-open, .elementor-menu-toggle.elementor-active').forEach((el) => {
+    el.classList.remove('utopia-nav-open', 'elementor-active');
+    if (el instanceof HTMLElement && el.classList.contains('elementor-menu-toggle')) {
+      el.setAttribute('aria-expanded', 'false');
+    }
+  });
 }
 
 /** Polished curtain timings (post-logo / no-neon — the approved sequence). */

@@ -103,6 +103,9 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     loadScriptOnce('/js/pixel-sticky-boot.js?v=sticky-pin-7', 'pixel-sticky-boot-v7', [
       'data-pixel-sticky-boot',
     ]);
+    loadScriptOnce('/js/pixel-menu-boot.js?v=menu-2', 'pixel-menu-boot-v2', [
+      'data-pixel-menu-boot',
+    ]);
     loadScriptOnce('/js/pixel-swiper-boot.js?v=swiper-4', 'pixel-swiper-boot-v4', [
       'data-pixel-swiper-boot',
     ]);
