@@ -1658,15 +1658,26 @@ html.pixel-exact body {
     text-align: center !important;
   }
   /* Mobile Header Upper-Right Logo Sizing */
-  img.wp-image-8655,
-  .elementor-widget-wcf--site-logo img,
-  img[src*='13-utopia-logo']:not(.pixel-route-veil-logo) {
-    max-height: 32px !important;
-    height: auto !important;
+  html.pixel-exact .elementor-17959 .elementor-element.elementor-element-6b5a46f,
+  html.pixel-exact .elementor-element-6b5a46f,
+  html.pixel-exact .elementor-widget-wcf--site-logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    text-align: right !important;
     width: auto !important;
-    max-width: 110px !important;
-    display: inline-block !important;
+  }
+  html.pixel-exact .elementor-17959 .elementor-element.elementor-element-6b5a46f img,
+  html.pixel-exact .elementor-element-6b5a46f img,
+  html.pixel-exact .elementor-widget-wcf--site-logo img,
+  html.pixel-exact img.wp-image-8655,
+  html.pixel-exact img[src*='13-utopia-logo']:not(.pixel-route-veil-logo) {
+    width: auto !important;
+    max-width: 105px !important;
+    height: 28px !important;
+    max-height: 28px !important;
     object-fit: contain !important;
+    display: inline-block !important;
   }
 
   /* Mobile Hero Section — Clean Authentic Colors Matching Desktop */
@@ -1674,6 +1685,7 @@ html.pixel-exact body {
     position: relative !important;
     background: #000000 !important;
     overflow: hidden !important;
+    padding-top: 8px !important;
   }
 
   html.pixel-exact .elementor-element-b23dc44 {
@@ -1685,35 +1697,35 @@ html.pixel-exact body {
   }
   html.pixel-exact .elementor-element-75d3b2a {
     order: 3 !important;
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
   }
   html.pixel-exact .elementor-element-dddd85c,
   html.pixel-exact .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
     order: 4 !important;
-    min-height: min(38svh, 300px) !important;
-    max-height: 42svh !important;
-    height: min(38svh, 300px) !important;
-    background-size: min(76vw, 300px) !important;
-    background-position: 50% 40% !important;
+    min-height: 250px !important;
+    max-height: 280px !important;
+    height: 260px !important;
+    background-size: contain !important;
+    background-position: center center !important;
     background-repeat: no-repeat !important;
     flex: 1 1 auto !important;
-    margin: 0 auto 0 !important;
+    margin: 4px auto !important;
     width: 100% !important;
     --min-height: 0 !important;
     filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9)) !important;
     -webkit-mask-image: linear-gradient(
       to bottom,
       #000 0%,
-      #000 72%,
-      rgba(0, 0, 0, 0.6) 88%,
+      #000 75%,
+      rgba(0, 0, 0, 0.6) 90%,
       transparent 100%
     ) !important;
     mask-image: linear-gradient(
       to bottom,
       #000 0%,
-      #000 72%,
-      rgba(0, 0, 0, 0.6) 88%,
+      #000 75%,
+      rgba(0, 0, 0, 0.6) 90%,
       transparent 100%
     ) !important;
   }
@@ -1722,7 +1734,7 @@ html.pixel-exact body {
   }
   html.pixel-exact .elementor-element-f0574ce {
     order: 5 !important;
-    margin: 4px 0 10px !important;
+    margin: 2px 0 10px !important;
   }
   html.pixel-exact .elementor-element-b23dc44 .elementor-heading-title,
   html.pixel-exact .elementor-element-f61769e .elementor-heading-title {
