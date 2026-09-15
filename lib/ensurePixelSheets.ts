@@ -21,7 +21,7 @@ export const DEFERRED_PIXEL_SHEETS = [
 
 export const PIXEL_SHEETS = [...CRITICAL_PIXEL_SHEETS, ...DEFERRED_PIXEL_SHEETS] as const;
 
-export const SHEET_VERSION = 'pixel-cube-49';
+export const SHEET_VERSION = 'pixel-cube-50';
 
 function sheetUrl(href: string) {
   return `${href}${href.includes('?') ? '&' : '?'}v=${SHEET_VERSION}`;
