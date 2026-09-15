@@ -39,7 +39,7 @@ export default function ServiceTemplate({
   faqs,
 }: ServiceTemplateProps) {
   return (
-    <div className="bg-black text-white selection:bg-[#C8F31D] selection:text-black min-h-screen pt-28 pb-20">
+    <div className="bg-black text-white min-h-screen pt-28 pb-20">
       <section className="relative py-16 overflow-hidden">
         <div className="absolute top-20 right-0 w-[420px] h-[420px] bg-[#C8F31D]/[0.05] blur-[120px] rounded-full pointer-events-none" />
         <div className="max-w-[1340px] mx-auto px-6 sm:px-10 relative z-10">
