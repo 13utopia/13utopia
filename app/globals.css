@@ -42,8 +42,13 @@
     font-family: var(--font-roboto), system-ui, -apple-system, sans-serif;
   }
 
+  /* Site palette only — no neon lime highlight on text select */
   ::selection {
-    background-color: #C8F31D;
+    background-color: #ffffff;
+    color: #000000;
+  }
+  ::-moz-selection {
+    background-color: #ffffff;
     color: #000000;
   }
 
