@@ -728,13 +728,16 @@ ul.elementor-nav-menu ul.sub-menu {
     padding: 10px 16px !important;
     padding-left: max(16px, env(safe-area-inset-left)) !important;
     padding-right: max(16px, env(safe-area-inset-right)) !important;
-    background: rgba(0, 0, 0, 0.96) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
+    /* Solid black — rgba let white form fields show through as a bar */
+    background: #000000 !important;
+    background-color: #000000 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     --min-height: 0 !important;
+    isolation: isolate !important;
   }
   /* Empty Elementor spacer that was bloating the bar to ~170px */
   .elementor-element-9e2c1c7 > .elementor-element-ba91d1b {
@@ -874,7 +877,7 @@ ul.elementor-nav-menu ul.sub-menu {
     text-indent: 0.18em !important;
     text-transform: uppercase !important;
     color: #fff !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: none !important;
     background: transparent !important;
     background-color: transparent !important;
   }
@@ -886,7 +889,8 @@ ul.elementor-nav-menu ul.sub-menu {
     color: #ffffff !important;
   }
   .elementor-element-9e2c1c7 nav.elementor-nav-menu--dropdown li:not(:last-child) {
-    border-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: transparent !important;
+    border-bottom: none !important;
   }
 
   .elementor-element-9e2c1c7 nav.elementor-nav-menu--dropdown .elementor-item:hover,
@@ -1504,8 +1508,8 @@ html.pixel-exact body {
     overflow: visible !important;
     min-height: 0 !important;
     height: auto !important;
-    padding: calc(var(--pixel-header-h, 64px) + 16px) 18px 8px !important;
-    --padding-top: calc(var(--pixel-header-h, 64px) + 16px) !important;
+    padding: calc(var(--pixel-header-h, 64px) + 22px) 18px 8px !important;
+    --padding-top: calc(var(--pixel-header-h, 64px) + 22px) !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
@@ -1909,7 +1913,7 @@ html.pixel-exact body {
     right: auto !important;
     position: relative !important;
     transform: none !important;
-    overflow: visible !important;
+    overflow: hidden !important;
     float: none !important;
   }
   html.pixel-exact .hero-section .elementor-image-carousel-wrapper .swiper-wrapper,
@@ -1921,7 +1925,7 @@ html.pixel-exact body {
     display: flex !important;
     justify-content: center !important;
     align-items: flex-start !important;
-    overflow: visible !important;
+    overflow: hidden !important;
     height: auto !important;
   }
   html.pixel-exact .hero-section .elementor-image-carousel-wrapper .swiper-slide img,
@@ -1930,7 +1934,7 @@ html.pixel-exact body {
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    max-height: none !important;
+    max-height: min(52svh, 420px) !important;
     object-fit: contain !important;
     object-position: center top !important;
     margin: 0 auto !important;
@@ -1997,6 +2001,58 @@ html.pixel-exact body {
     align-items: center !important;
     --align-items: center !important;
     text-align: center !important;
+  }
+  /* Newsletter column widgets shrink-wrap left — force full-width center */
+  html.pixel-exact .elementor-element-827339d > .elementor-element,
+  html.pixel-exact .elementor-element-18bfa81,
+  html.pixel-exact .elementor-element-f301f1b,
+  html.pixel-exact .elementor-element-38c77ca {
+    width: 100% !important;
+    max-width: 100% !important;
+    --width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    align-self: center !important;
+    text-align: center !important;
+  }
+  html.pixel-exact .elementor-element-f301f1b .elementor-icon-list-items,
+  html.pixel-exact .elementor-element-f301f1b .elementor-widget-container {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  html.pixel-exact .elementor-element-f301f1b .elementor-icon-list-item,
+  html.pixel-exact .elementor-element-f301f1b .elementor-icon-list-item a {
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  html.pixel-exact .elementor-element-38c77ca,
+  html.pixel-exact .elementor-element-38c77ca .elementor-widget-container,
+  html.pixel-exact .elementor-element-38c77ca .wcf--social-icons,
+  html.pixel-exact .elementor-element-38c77ca .wcf-social-icons,
+  html.pixel-exact .elementor-element-38c77ca ul,
+  html.pixel-exact .elementor-element-38c77ca .elementor-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    gap: 12px !important;
+  }
+  html.pixel-exact .elementor-element-38c77ca a,
+  html.pixel-exact .elementor-element-38c77ca i,
+  html.pixel-exact .elementor-element-38c77ca svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
   }
   html.pixel-exact .elementor-1386 .elementor-heading-title,
   html.pixel-exact .elementor-6033 .elementor-heading-title,
@@ -2137,5 +2193,5 @@ html.pixel-exact .elementor-element-12416249 .swiper-slide img {
   object-position: center top !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  max-height: none !important;
+  max-height: min(52svh, 420px) !important;
 }
