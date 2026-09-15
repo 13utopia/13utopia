@@ -1638,7 +1638,11 @@ html.pixel-exact body {
   html.pixel-exact .elementor-element-b23dc44,
   html.pixel-exact .elementor-element-f61769e,
   html.pixel-exact .elementor-element-75d3b2a,
-  html.pixel-exact .elementor-element-f0574ce {
+  html.pixel-exact .elementor-element-f0574ce,
+  html.pixel-exact .elementor-element-b23dc44.elementor-invisible,
+  html.pixel-exact .elementor-element-f61769e.elementor-invisible,
+  html.pixel-exact .elementor-element-75d3b2a.elementor-invisible,
+  html.pixel-exact .elementor-element-f0574ce.elementor-invisible {
     position: relative !important;
     inset: auto !important;
     top: auto !important;
@@ -1656,6 +1660,9 @@ html.pixel-exact body {
     justify-content: center !important;
     align-items: center !important;
     text-align: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
   }
   /* Mobile Header Upper-Right Logo Sizing */
   html.pixel-exact .elementor-17959 .elementor-element.elementor-element-6b5a46f,
