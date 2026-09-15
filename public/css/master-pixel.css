@@ -752,7 +752,7 @@ ul.elementor-nav-menu ul.sub-menu {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    justify-content: space-between !important;
     width: 100% !important;
     max-width: 100% !important;
     min-height: 48px !important;
@@ -760,6 +760,7 @@ ul.elementor-nav-menu ul.sub-menu {
     --flex-direction: row !important;
     --flex-wrap: nowrap !important;
     --align-items: center !important;
+    --justify-content: space-between !important;
   }
   .elementor-element-9e2c1c7 .elementor-element-481a75a {
     width: 44px !important;
@@ -770,22 +771,26 @@ ul.elementor-nav-menu ul.sub-menu {
     margin: 0 !important;
     z-index: 2 !important;
   }
+  /* Logo upper-right (original mobile placement) — not centered */
   .elementor-element-9e2c1c7 .elementor-element-c0803bd {
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
     width: auto !important;
-    max-width: min(58vw, 220px) !important;
+    max-width: min(52vw, 200px) !important;
     --width: auto !important;
-    margin: 0 !important;
+    margin: 0 0 0 auto !important;
+    margin-left: auto !important;
     z-index: 1 !important;
     pointer-events: auto !important;
+    flex: 0 0 auto !important;
   }
   .elementor-element-9e2c1c7 .elementor-element-c0803bd .elementor-widget-container,
   .elementor-element-9e2c1c7 .elementor-element-c0803bd a {
     display: flex !important;
-    justify-content: center !important;
+    justify-content: flex-end !important;
     align-items: center !important;
     width: auto !important;
   }
@@ -793,7 +798,7 @@ ul.elementor-nav-menu ul.sub-menu {
     height: 40px !important;
     max-height: 40px !important;
     width: auto !important;
-    max-width: min(58vw, 200px) !important;
+    max-width: min(52vw, 180px) !important;
     object-fit: contain !important;
   }
 
@@ -1503,13 +1508,13 @@ html.pixel-exact body {
     max-width: 100% !important;
   }
 
-  /* Home mobile hero — larger Zeus, optically centered DYNAMIC / SOLUTIONS / FOR */
+  /* Home mobile hero — fill first viewport; clients start on next scroll */
   html.pixel-exact .elementor-element-7c0e130 {
     overflow: visible !important;
-    min-height: 0 !important;
+    min-height: calc(100svh - var(--pixel-header-h, 64px) - 132px) !important;
     height: auto !important;
-    padding: calc(var(--pixel-header-h, 64px) + 22px) 18px 8px !important;
-    --padding-top: calc(var(--pixel-header-h, 64px) + 22px) !important;
+    padding: calc(var(--pixel-header-h, 64px) + 14px) 18px 4px !important;
+    --padding-top: calc(var(--pixel-header-h, 64px) + 14px) !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
@@ -1552,20 +1557,20 @@ html.pixel-exact body {
   }
   html.pixel-exact .elementor-element-75d3b2a {
     order: 3 !important;
-    margin-top: 12px !important;
-    margin-bottom: 16px !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
   }
   html.pixel-exact .elementor-element-dddd85c,
   html.pixel-exact .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
     order: 4 !important;
-    min-height: min(46svh, 360px) !important;
-    max-height: 50svh !important;
-    height: min(46svh, 360px) !important;
-    background-size: min(88vw, 340px) !important;
-    background-position: 50% 40% !important;
+    min-height: min(36svh, 280px) !important;
+    max-height: 40svh !important;
+    height: min(36svh, 280px) !important;
+    background-size: min(72vw, 280px) !important;
+    background-position: 50% 35% !important;
     background-repeat: no-repeat !important;
-    flex: 0 0 auto !important;
-    margin: 0 auto 4px !important;
+    flex: 1 1 auto !important;
+    margin: 0 auto 0 !important;
     width: 100% !important;
     --min-height: 0 !important;
     -webkit-mask-image: linear-gradient(
@@ -1588,7 +1593,7 @@ html.pixel-exact body {
   }
   html.pixel-exact .elementor-element-f0574ce {
     order: 5 !important;
-    margin: -4px 0 12px !important;
+    margin: 0 0 8px !important;
   }
   html.pixel-exact .elementor-element-b23dc44 .elementor-heading-title,
   html.pixel-exact .elementor-element-f61769e .elementor-heading-title {
@@ -1625,7 +1630,11 @@ html.pixel-exact body {
     width: 100% !important;
   }
 
-  /* Hero CTAs ÃÂ¢ÃÂÃÂ primary solid + secondary outline */
+  /* Hero CTAs — keep in first viewport; clients start after */
+  html.pixel-exact .elementor-element-42cd37c {
+    padding-bottom: 12px !important;
+    margin-bottom: 0 !important;
+  }
   html.pixel-exact .elementor-element-86592fa {
     width: 100% !important;
     max-width: 100% !important;
@@ -1635,9 +1644,15 @@ html.pixel-exact body {
     align-items: stretch !important;
     justify-content: center !important;
     gap: 10px !important;
-    padding: 0 22px 28px !important;
+    padding: 4px 22px 16px !important;
     margin-top: 0 !important;
+    margin-bottom: 0 !important;
     box-sizing: border-box !important;
+  }
+  html.pixel-exact .elementor-element-8b1fffb,
+  html.pixel-exact .elementor-element-99ab04e {
+    /* JS fitHomeFirstViewport sets margin-top so this lands on next scroll */
+    scroll-margin-top: calc(var(--pixel-header-h, 64px) + 8px) !important;
   }
   html.pixel-exact .elementor-element-88502ac,
   html.pixel-exact .elementor-element-205514f {
@@ -2156,10 +2171,10 @@ html.pixel-exact body {
 @media (max-width: 480px) {
   html.pixel-exact .elementor-element-dddd85c,
   html.pixel-exact .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-    background-size: min(90vw, 320px) !important;
-    min-height: min(44svh, 320px) !important;
-    max-height: 48svh !important;
-    height: min(44svh, 320px) !important;
+    background-size: min(70vw, 260px) !important;
+    min-height: min(34svh, 260px) !important;
+    max-height: 38svh !important;
+    height: min(34svh, 260px) !important;
   }
   html.pixel-exact .wcf--brand-slider-wrapper .swiper-slide img,
   html.pixel-exact .elementor-widget-wcf--brand-slider img {

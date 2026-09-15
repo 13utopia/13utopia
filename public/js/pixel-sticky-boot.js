@@ -5,8 +5,8 @@
    transform/will-change:transform (see PageEnter / globals.css).
    v8: publish --pixel-header-h from the visible mobile bar so heroes clear it. */
 (function () {
-  if (window.__PIXEL_STICKY_BOOT_V10) return;
-  window.__PIXEL_STICKY_BOOT_V10 = true;
+  if (window.__PIXEL_STICKY_BOOT_V11) return;
+  window.__PIXEL_STICKY_BOOT_V11 = true;
 
   function parseSettings(el) {
     try {
@@ -130,12 +130,47 @@
     document.documentElement.style.setProperty('--pixel-header-h', hh + 'px');
   }
 
+  function syncFooterAddress() {
+    // Mobile footer uses Ashram; desktop uses Shyamal — keep them identical.
+    var desktop = document.querySelector('.elementor-element-ef3e567 .wcf--text');
+    var mobile = document.querySelector('.elementor-element-53ba325 .wcf--text');
+    if (mobile && desktop && desktop.innerHTML) {
+      mobile.innerHTML = desktop.innerHTML;
+      return;
+    }
+    if (mobile) {
+      mobile.innerHTML =
+        '<p><span class="LrzXr">1123, iconic Shyamal Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015</span></p>';
+    }
+  }
+
+  function fitHomeFirstViewport() {
+    if (isDesktop()) return;
+    var clients = document.querySelector('.elementor-element-8b1fffb');
+    var cta = document.querySelector('.elementor-element-86592fa');
+    if (!clients || !cta) return;
+    // Reset then measure so CTAs end at/near fold and clients start on next scroll
+    clients.style.removeProperty('margin-top');
+    var ctaBottom = cta.getBoundingClientRect().bottom;
+    var need = window.innerHeight - 8;
+    if (ctaBottom < need - 40) {
+      // Stretch gap between CTAs and clients so clients clear the fold
+      var gap = Math.max(0, need - ctaBottom);
+      clients.style.setProperty('margin-top', gap + 'px', 'important');
+    } else if (clients.getBoundingClientRect().top < need) {
+      var push = Math.max(0, need - clients.getBoundingClientRect().top);
+      clients.style.setProperty('margin-top', push + 'px', 'important');
+    }
+  }
+
   function killClientsGrey() {
-      document.querySelectorAll('.elementor-element-99ab04e, .elementor-element-371f1f5, .elementor-element-49f74ea').forEach(function (el) {
-      el.style.setProperty('background', '#000000', 'important');
-      el.style.setProperty('background-color', '#000000', 'important');
-      el.style.setProperty('background-image', 'none', 'important');
-    });
+    document
+      .querySelectorAll('.elementor-element-99ab04e, .elementor-element-371f1f5, .elementor-element-49f74ea')
+      .forEach(function (el) {
+        el.style.setProperty('background', '#000000', 'important');
+        el.style.setProperty('background-color', '#000000', 'important');
+        el.style.setProperty('background-image', 'none', 'important');
+      });
     document
       .querySelectorAll(
         '.elementor-element-8b1fffb > .elementor-motion-effects-container > .elementor-motion-effects-layer, .elementor-element-81f7890 > .elementor-motion-effects-container > .elementor-motion-effects-layer, .elementor-element-861127f > .elementor-motion-effects-container > .elementor-motion-effects-layer'
@@ -164,7 +199,9 @@
       if (!isDesktop()) {
         publishMobileHeaderHeight();
         killClientsGrey();
+        syncFooterAddress();
         centerServiceHeroes();
+        fitHomeFirstViewport();
       }
       return;
     }
@@ -185,11 +222,14 @@
       // Measure the compact mobile bar so hero padding clears logo + burger.
       publishMobileHeaderHeight();
       killClientsGrey();
+      syncFooterAddress();
       centerServiceHeroes();
+      fitHomeFirstViewport();
       return;
     }
     document.documentElement.style.removeProperty('--pixel-header-h');
     killClientsGrey();
+    syncFooterAddress();
 
     var primary = headers[0];
     var h = Math.max(primary.getBoundingClientRect().height || 0, 100);
