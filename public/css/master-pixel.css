@@ -1577,7 +1577,7 @@ html.pixel-exact body {
     max-width: 100% !important;
   }
 
-  html.pixel-exact img,
+  html.pixel-exact img:not(.swiper-slide-image),
   html.pixel-exact video,
   html.pixel-exact iframe {
     max-width: 100% !important;
@@ -1617,14 +1617,14 @@ html.pixel-exact body {
     max-width: 100% !important;
   }
 
-  /* Home mobile hero — stack copy + Zeus + CTAs, no empty viewport stretch */
+  /* Home mobile hero — poster stack: type, Zeus, CTAs */
   html.pixel-exact .elementor-element-7c0e130 {
     overflow: visible !important;
     min-height: 0 !important;
     height: auto !important;
     --min-height: 0px !important;
-    padding: calc(var(--pixel-header-h, 64px) + 8px) 18px 0 !important;
-    --padding-top: calc(var(--pixel-header-h, 64px) + 8px) !important;
+    padding: calc(var(--pixel-header-h, 64px) + 4px) 16px 0 !important;
+    --padding-top: calc(var(--pixel-header-h, 64px) + 4px) !important;
     --padding-bottom: 0px !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1695,70 +1695,85 @@ html.pixel-exact body {
     background: #000000 !important;
     overflow: visible !important;
   }
+  html.pixel-exact .elementor-element-7c0e130::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    width: min(88vw, 340px);
+    height: min(46svh, 360px);
+    transform: translate(-50%, -18%);
+    background: radial-gradient(ellipse at 50% 45%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 42%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
 
   html.pixel-exact .elementor-element-b23dc44 {
     order: 1 !important;
   }
   html.pixel-exact .elementor-element-f61769e {
     order: 2 !important;
-    margin-top: -6px !important;
+    margin-top: -4px !important;
   }
   html.pixel-exact .elementor-element-75d3b2a {
     order: 3 !important;
-    margin-top: 4px !important;
-    margin-bottom: 4px !important;
+    margin-top: 2px !important;
+    margin-bottom: 0 !important;
   }
   html.pixel-exact .elementor-element-dddd85c,
   html.pixel-exact .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
     order: 4 !important;
-    min-height: min(34svh, 280px) !important;
-    max-height: 300px !important;
-    height: min(34svh, 280px) !important;
+    min-height: min(46svh, 380px) !important;
+    max-height: 420px !important;
+    height: min(46svh, 380px) !important;
     background-size: contain !important;
-    background-position: center top !important;
+    background-position: center 8% !important;
     background-repeat: no-repeat !important;
     flex: 0 0 auto !important;
-    margin: 2px auto 0 !important;
+    margin: -8px auto -18px !important;
     width: 100% !important;
     --min-height: 0 !important;
+    --margin-top: 0px !important;
     filter: none !important;
     -webkit-mask-image: none !important;
     mask-image: none !important;
+    z-index: 2 !important;
   }
   html.pixel-exact .elementor-element-dddd85c {
     order: 4 !important;
+    position: relative !important;
   }
   html.pixel-exact .elementor-element-f0574ce {
     order: 5 !important;
-    margin: 2px 0 10px !important;
+    margin: 0 0 6px !important;
+    z-index: 3 !important;
   }
   html.pixel-exact .elementor-element-b23dc44 .elementor-heading-title,
   html.pixel-exact .elementor-element-f61769e .elementor-heading-title {
-    font-size: clamp(2.15rem, 10.5vw, 2.85rem) !important;
+    font-size: clamp(2.35rem, 11.4vw, 3.15rem) !important;
     font-weight: 700 !important;
-    line-height: 0.92 !important;
+    line-height: 0.88 !important;
     text-align: center !important;
-    letter-spacing: -0.03em !important;
+    letter-spacing: -0.04em !important;
     text-transform: uppercase !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     width: 100% !important;
     margin: 0 auto !important;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+    text-shadow: 0 4px 28px rgba(0, 0, 0, 0.55) !important;
   }
   html.pixel-exact .elementor-element-75d3b2a .elementor-heading-title {
-    font-size: 0.8rem !important;
+    font-size: 0.72rem !important;
     line-height: 1 !important;
     text-align: center !important;
     padding: 0 !important;
-    /* letter-spacing shifts glyphs right — compensate so FOR sits on center axis */
-    letter-spacing: 0.36em !important;
+    letter-spacing: 0.42em !important;
     text-indent: 0 !important;
-    padding-left: 0.36em !important;
+    padding-left: 0.42em !important;
     box-sizing: border-box !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
-    opacity: 0.65 !important;
+    opacity: 0.55 !important;
     font-weight: 600 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -1766,16 +1781,16 @@ html.pixel-exact body {
     text-transform: uppercase !important;
   }
   html.pixel-exact .elementor-element-f0574ce .elementor-heading-title {
-    font-size: clamp(1.65rem, 8vw, 2.15rem) !important;
+    font-size: clamp(1.85rem, 9.2vw, 2.45rem) !important;
     font-weight: 700 !important;
-    line-height: 1.05 !important;
+    line-height: 1.02 !important;
     text-align: center !important;
-    letter-spacing: -0.02em !important;
+    letter-spacing: -0.03em !important;
     text-transform: uppercase !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     width: 100% !important;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+    text-shadow: 0 6px 24px rgba(0, 0, 0, 0.65) !important;
   }
 
   /* Hero CTAs — Clean High-End Original Colors Matching Desktop */
@@ -1875,17 +1890,29 @@ html.pixel-exact body {
     transform: scale(0.985) !important;
   }
 
-  /* WHO WE ARE — 2x2 counters (Elementor nested columns otherwise stack 5 / 200 then 750 | 108) */
+  /* WHO WE ARE — two stacked 1x2 rows (nested Elementor --width 44–69% otherwise overlaps) */
   html.pixel-exact .elementor-element-79b2fcd {
     background: #000000 !important;
-    padding: 36px 18px 44px !important;
+    padding: 28px 16px 40px !important;
     display: flex !important;
+    --display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
+    --flex-direction: column !important;
+    align-items: stretch !important;
     text-align: center !important;
     width: 100% !important;
+    --width: 100% !important;
     max-width: 100vw !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-b99bf00,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-4453f43 {
+    width: 100% !important;
+    --width: 100% !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-4453f43:empty {
+    display: none !important;
   }
   html.pixel-exact .elementor-element-79b2fcd .elementor-element-a980562 {
     display: flex !important;
@@ -1893,7 +1920,8 @@ html.pixel-exact body {
     align-items: center !important;
     text-align: center !important;
     width: 100% !important;
-    margin-bottom: 20px !important;
+    --width: 100% !important;
+    margin-bottom: 18px !important;
   }
   html.pixel-exact .elementor-element-229bd1f,
   html.pixel-exact .elementor-element-229bd1f .wcf--title,
@@ -1921,12 +1949,17 @@ html.pixel-exact body {
     visibility: visible !important;
   }
   html.pixel-exact .elementor-element-3f51a50 {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 14px 12px !important;
+    display: flex !important;
+    --display: flex !important;
+    flex-direction: column !important;
+    --flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    gap: 12px !important;
     width: 100% !important;
-    max-width: 360px !important;
-    margin: 0 auto 28px !important;
+    max-width: 100% !important;
+    --width: 100% !important;
+    margin: 0 auto 20px !important;
     padding: 0 !important;
     box-sizing: border-box !important;
   }
@@ -1934,29 +1967,89 @@ html.pixel-exact body {
   html.pixel-exact .elementor-element-3f51a50 > .elementor-hidden-mobile {
     display: none !important;
   }
-  html.pixel-exact .elementor-element-79b2fcd .elementor-element-22ec7f0,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-22ec7f0 {
+    display: flex !important;
+    --display: flex !important;
+    flex-direction: column !important;
+    --flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    --width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
   html.pixel-exact .elementor-element-79b2fcd .elementor-element-5adc6a4,
   html.pixel-exact .elementor-element-79b2fcd .elementor-element-b73823d {
-    display: contents !important;
+    display: grid !important;
+    --display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    --width: 100% !important;
+    --flex-direction: unset !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 0 !important;
   }
   html.pixel-exact .elementor-element-a772474,
   html.pixel-exact .elementor-element-5034567,
   html.pixel-exact .elementor-element-72ed7f7,
   html.pixel-exact .elementor-element-ce4b409 {
     display: flex !important;
+    --display: flex !important;
     flex-direction: column !important;
+    --flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    float: none !important;
     width: 100% !important;
+    max-width: 100% !important;
     min-width: 0 !important;
-    padding: 12px 6px !important;
+    --width: 100% !important;
+    flex: 0 0 auto !important;
+    --flex-grow: 0 !important;
+    --container-widget-width: 100% !important;
+    --container-widget-flex-grow: 0 !important;
+    padding: 16px 8px !important;
     box-sizing: border-box !important;
     background: rgba(255, 255, 255, 0.03) !important;
-    border-radius: 10px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     opacity: 1 !important;
     visibility: visible !important;
+    transform: none !important;
+    min-height: 112px !important;
+    overflow: hidden !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-widget-wcf--counter,
+  html.pixel-exact .elementor-element-cd88ee6,
+  html.pixel-exact .elementor-element-a419fc7,
+  html.pixel-exact .elementor-element-f357726,
+  html.pixel-exact .elementor-element-550296d {
+    width: 100% !important;
+    max-width: 100% !important;
+    --container-widget-width: 100% !important;
+    --width: 100% !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 1 !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-widget-wcf--counter > .elementor-widget-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
   }
   html.pixel-exact .elementor-element-79b2fcd .wcf--counter {
     text-align: center !important;
@@ -1969,7 +2062,7 @@ html.pixel-exact body {
     visibility: visible !important;
   }
   html.pixel-exact .elementor-element-79b2fcd .wcf--counter .count {
-    font-size: clamp(2.2rem, 9vw, 3rem) !important;
+    font-size: clamp(2.1rem, 8.6vw, 2.75rem) !important;
     font-weight: 800 !important;
     color: #ffffff !important;
     line-height: 1 !important;
@@ -1978,14 +2071,18 @@ html.pixel-exact body {
     justify-content: center !important;
     flex-wrap: wrap !important;
   }
+  html.pixel-exact .elementor-element-79b2fcd .wcf--counter-number {
+    font-size: inherit !important;
+    color: #ffffff !important;
+  }
   html.pixel-exact .elementor-element-79b2fcd .wcf--counter-number-suffix {
-    font-size: clamp(1.4rem, 6vw, 2rem) !important;
+    font-size: clamp(1.3rem, 5.5vw, 1.8rem) !important;
     font-weight: 700 !important;
     color: #ffffff !important;
     margin-left: 2px !important;
   }
   html.pixel-exact .elementor-element-79b2fcd .wcf--counter .title {
-    font-size: clamp(0.68rem, 2.8vw, 0.78rem) !important;
+    font-size: clamp(0.62rem, 2.6vw, 0.74rem) !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
     color: #9a9a9a !important;
@@ -1996,19 +2093,17 @@ html.pixel-exact body {
     overflow: hidden !important;
     max-width: 100% !important;
   }
-  html.pixel-exact .elementor-element-3f51a50 > .elementor-element-a1f2f8a {
-    grid-column: 1 / -1 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
+  html.pixel-exact .elementor-element-3f51a50 > .elementor-element-a1f2f8a,
   html.pixel-exact .elementor-element-79b2fcd .elementor-element-a1f2f8a {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
     width: 100% !important;
-    max-width: 360px !important;
-    margin: 0 auto !important;
+    max-width: 100% !important;
+    --width: 100% !important;
+    grid-column: auto !important;
+    margin: 8px auto 0 !important;
     padding: 0 !important;
   }
   html.pixel-exact .elementor-element-016b3ca,
@@ -2151,12 +2246,94 @@ html.pixel-exact body {
     opacity: 1 !important;
   }
   html.pixel-exact .elementor-element-81f7890 .elementor-heading-title,
-  html.pixel-exact .elementor-element-8b1fffb .elementor-heading-title {
-    letter-spacing: 0.2em !important;
-    font-size: 0.75rem !important;
-    opacity: 0.75 !important;
+  html.pixel-exact .elementor-element-8b1fffb .elementor-heading-title,
+  html.pixel-exact .elementor-element-49f687e .elementor-heading-title {
+    letter-spacing: 0.28em !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    opacity: 0.7 !important;
     text-align: center !important;
-    color: #ffffff !important;
+    color: #c6c6c6 !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Desktop “OUR CLIENTS” rail + brand-shape overlay — hide on phones */
+  html.pixel-exact .elementor-element-b913b7f,
+  html.pixel-exact .elementor-element-2171108 {
+    display: none !important;
+    width: 0 !important;
+    --width: 0% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+  html.pixel-exact .elementor-element-b913b7f::before,
+  html.pixel-exact .elementor-element-d8485bf {
+    background-image: none !important;
+  }
+  html.pixel-exact .elementor-element-d8485bf {
+    display: flex !important;
+    --display: flex !important;
+    flex-direction: column !important;
+    --flex-direction: column !important;
+    width: 100% !important;
+    --width: 100% !important;
+  }
+  html.pixel-exact .elementor-element-371f1f5,
+  html.pixel-exact .elementor-element-99ab04e {
+    width: 100% !important;
+    --width: 100% !important;
+    overflow: hidden !important;
+    --overflow: hidden !important;
+    padding: 0 !important;
+    --padding-bottom: 0px !important;
+  }
+  html.pixel-exact .elementor-element-99ab04e .wcf--brand-slider-wrapper .swiper-button-next,
+  html.pixel-exact .elementor-element-99ab04e .wcf--brand-slider-wrapper .swiper-button-prev,
+  html.pixel-exact .elementor-element-8b1fffb .swiper-button-next,
+  html.pixel-exact .elementor-element-8b1fffb .swiper-button-prev,
+  html.pixel-exact .wcf--brand-slider-wrapper .swiper-pagination {
+    display: none !important;
+  }
+
+  html.pixel-exact .elementor-element-b7abec5,
+  html.pixel-exact .elementor-element-148d2b3 {
+    width: 100% !important;
+    --width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  html.pixel-exact .elementor-element-147489e,
+  html.pixel-exact .elementor-element-2847e79,
+  html.pixel-exact .elementor-element-b25d36c {
+    width: 100% !important;
+    max-width: 100% !important;
+    --width: 100% !important;
+    --container-widget-width: 100% !important;
+    text-align: center !important;
+  }
+  html.pixel-exact .elementor-element-b0617ee,
+  html.pixel-exact .elementor-element-64acaf5 {
+    flex-direction: column !important;
+    --flex-direction: column !important;
+    width: 100% !important;
+    --width: 100% !important;
+  }
+  html.pixel-exact .elementor-16636 .service-box {
+    width: 100% !important;
+    --width: 100% !important;
+    flex-direction: column !important;
+    --flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 18px 4px 22px !important;
+    margin: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
   /* Inner / service pages Ã¢ÂÂ readable hero + solid CTA */
@@ -2509,10 +2686,10 @@ html.pixel-exact body {
 @media (max-width: 480px) {
   html.pixel-exact .elementor-element-dddd85c,
   html.pixel-exact .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
-    background-size: min(70vw, 260px) !important;
-    min-height: min(34svh, 260px) !important;
-    max-height: 38svh !important;
-    height: min(34svh, 260px) !important;
+    background-size: contain !important;
+    min-height: min(44svh, 340px) !important;
+    max-height: 48svh !important;
+    height: min(44svh, 340px) !important;
   }
   html.pixel-exact .wcf--brand-slider-wrapper .swiper-slide img,
   html.pixel-exact .elementor-widget-wcf--brand-slider img {
@@ -2567,5 +2744,30 @@ html.pixel-exact .elementor-element-12416249 .swiper-slide img {
     min-height: 0 !important;
     overflow: hidden !important;
     pointer-events: none !important;
+  }
+}
+
+/* Phone homepage — last-win overrides for Elementor --width / overlay rail */
+@media (max-width: 767px) {
+  html.pixel-exact .elementor-16636 .elementor-element-a772474,
+  html.pixel-exact .elementor-16636 .elementor-element-5034567,
+  html.pixel-exact .elementor-16636 .elementor-element-72ed7f7,
+  html.pixel-exact .elementor-16636 .elementor-element-ce4b409 {
+    --width: 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative !important;
+    transform: none !important;
+  }
+  html.pixel-exact .elementor-16636 .elementor-element-b913b7f,
+  html.pixel-exact .elementor-16636 .elementor-element-2171108 {
+    display: none !important;
+  }
+  html.pixel-exact .elementor-16636 .elementor-element-8b1fffb,
+  html.pixel-exact .elementor-16636 .elementor-element-99ab04e,
+  html.pixel-exact .elementor-16636 .elementor-element-371f1f5 {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
   }
 }

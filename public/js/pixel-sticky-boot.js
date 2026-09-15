@@ -5,8 +5,8 @@
    transform/will-change:transform (see PageEnter / globals.css).
    v8: publish --pixel-header-h from the visible mobile bar so heroes clear it. */
 (function () {
-  if (window.__PIXEL_STICKY_BOOT_V14) return;
-  window.__PIXEL_STICKY_BOOT_V14 = true;
+  if (window.__PIXEL_STICKY_BOOT_V15) return;
+  window.__PIXEL_STICKY_BOOT_V15 = true;
 
   function parseSettings(el) {
     try {
@@ -155,7 +155,7 @@
 
   function killClientsGrey() {
     document
-      .querySelectorAll('.elementor-element-99ab04e, .elementor-element-371f1f5, .elementor-element-49f74ea')
+      .querySelectorAll('.elementor-element-99ab04e, .elementor-element-371f1f5, .elementor-element-49f74ea, .elementor-element-8b1fffb')
       .forEach(function (el) {
         el.style.setProperty('background', '#000000', 'important');
         el.style.setProperty('background-color', '#000000', 'important');
@@ -170,6 +170,11 @@
         layer.style.setProperty('background-color', 'transparent', 'important');
         layer.style.setProperty('background-image', 'none', 'important');
       });
+    if (!isDesktop()) {
+      document.querySelectorAll('.elementor-element-b913b7f, .elementor-element-2171108').forEach(function (el) {
+        el.style.setProperty('display', 'none', 'important');
+      });
+    }
   }
 
   function run() {
