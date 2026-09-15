@@ -72,13 +72,25 @@ function stampDesktopNav() {
       nav.classList.remove('mobile-menu-active', 'wcf-nav-is-toggled');
     }
   });
-  document.body.classList.remove('utopia-menu-open');
-  document.documentElement.classList.remove('utopia-menu-open');
-  document.querySelectorAll('.utopia-nav-open, .elementor-menu-toggle.elementor-active').forEach((el) => {
-    el.classList.remove('utopia-nav-open', 'elementor-active');
-    if (el instanceof HTMLElement && el.classList.contains('elementor-menu-toggle')) {
-      el.setAttribute('aria-expanded', 'false');
-    }
+  const w = window as Window & {
+    __PIXEL_MENU_SET_OPEN?: (open: boolean) => void;
+    __PIXEL_MENU_REBIND?: () => void;
+  };
+  if (w.__PIXEL_MENU_SET_OPEN) {
+    w.__PIXEL_MENU_SET_OPEN(false);
+  } else {
+    document.body.classList.remove('utopia-menu-open');
+    document.documentElement.classList.remove('utopia-menu-open');
+    document.querySelectorAll('.utopia-nav-open, .elementor-menu-toggle.elementor-active').forEach((el) => {
+      el.classList.remove('utopia-nav-open', 'elementor-active');
+      if (el instanceof HTMLElement && el.classList.contains('elementor-menu-toggle')) {
+        el.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  // Soft nav replaces header HTML — rebind after paint so the new toggle works.
+  requestAnimationFrame(() => {
+    w.__PIXEL_MENU_REBIND?.();
   });
 }
 

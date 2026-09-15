@@ -85,9 +85,17 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     loadScriptOnce('/js/pixel-sticky-boot.js?v=sticky-pin-7', 'pixel-sticky-boot-v7', [
       'data-pixel-sticky-boot',
     ]);
-    loadScriptOnce('/js/pixel-menu-boot.js?v=menu-3', 'pixel-menu-boot-v3', [
+    loadScriptVersioned('/js/pixel-menu-boot.js?v=menu-5', 'pixel-menu-boot-v5', [
       'data-pixel-menu-boot',
     ]);
+    const menuRebind = () => {
+      const w = window as Window & { __PIXEL_MENU_REBIND?: () => void };
+      w.__PIXEL_MENU_REBIND?.();
+    };
+    // Rebind after soft nav so toggles from the new page HTML work immediately.
+    requestAnimationFrame(menuRebind);
+    const menuT = window.setTimeout(menuRebind, 200);
+    const menuT2 = window.setTimeout(menuRebind, 800);
     loadScriptOnce('/js/pixel-swiper-boot.js?v=swiper-4', 'pixel-swiper-boot-v4', [
       'data-pixel-swiper-boot',
     ]);
@@ -126,6 +134,8 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
       window.clearTimeout(t3);
+      window.clearTimeout(menuT);
+      window.clearTimeout(menuT2);
       const cancel = (window as Window & { cancelIdleCallback?: (id: number) => void })
         .cancelIdleCallback;
       if (cancel) cancel(idleId as number);
