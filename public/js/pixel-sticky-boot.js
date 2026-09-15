@@ -5,8 +5,8 @@
    transform/will-change:transform (see PageEnter / globals.css).
    v8: publish --pixel-header-h from the visible mobile bar so heroes clear it. */
 (function () {
-  if (window.__PIXEL_STICKY_BOOT_V11) return;
-  window.__PIXEL_STICKY_BOOT_V11 = true;
+  if (window.__PIXEL_STICKY_BOOT_V12) return;
+  window.__PIXEL_STICKY_BOOT_V12 = true;
 
   function parseSettings(el) {
     try {
@@ -114,8 +114,16 @@
         root.style.setProperty('float', 'none', 'important');
         if (root.swiper) {
           try {
+            // Soft-nav / resize often leaves translate on a non-first slide — Poseidon off-screen
+            root.swiper.slideTo(0, 0);
             root.swiper.update();
+            if (typeof root.swiper.translateTo === 'function') {
+              root.swiper.translateTo(0, 0, false, true);
+            }
           } catch (e) {}
+        } else {
+          var wrap = root.querySelector('.swiper-wrapper');
+          if (wrap) wrap.style.transform = 'translate3d(0px, 0px, 0px)';
         }
       });
   }
