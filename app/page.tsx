@@ -978,12 +978,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="elementor-widget-container">
 					<h2 class="elementor-heading-title elementor-size-default">FOR</h2>				</div>
 				</div>
-				</div>
-		<div class="elementor-element elementor-element-dddd85c e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="dddd85c" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;,&quot;background_motion_fx_motion_fx_scrolling&quot;:&quot;yes&quot;,&quot;background_motion_fx_devices&quot;:[&quot;widescreen&quot;,&quot;desktop&quot;,&quot;laptop&quot;,&quot;tablet_extra&quot;,&quot;tablet&quot;,&quot;mobile_extra&quot;,&quot;mobile&quot;]}">
-				</div>
 				<div class="elementor-element elementor-element-f0574ce elementor-absolute wcf-starter-animations-none elementor-widget elementor-widget-heading" data-id="f0574ce" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation_mobile&quot;:&quot;fadeIn&quot;,&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
 					<h1 class="elementor-heading-title elementor-size-default">Digital  Success</h1>				</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-dddd85c e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="dddd85c" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;,&quot;background_motion_fx_motion_fx_scrolling&quot;:&quot;yes&quot;,&quot;background_motion_fx_devices&quot;:[&quot;widescreen&quot;,&quot;desktop&quot;,&quot;laptop&quot;,&quot;tablet_extra&quot;,&quot;tablet&quot;,&quot;mobile_extra&quot;,&quot;mobile&quot;]}">
 				</div>
 				</div>
 		<div class="elementor-element elementor-element-42cd37c e-con-full elementor-hidden-widescreen elementor-hidden-desktop elementor-hidden-laptop elementor-hidden-tablet_extra elementor-hidden-tablet e-flex wcf-starter-animations-none e-con e-parent" data-id="42cd37c" data-element_type="container" data-e-type="container" data-settings="{&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
@@ -1099,8 +1099,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<span class="wcf--counter-number-prefix"></span>
 				<span  class="wcf--counter-number" data-duration="2000" data-to-value="5" data-from-value="0" data-delimiter=",">0</span>
 				<span class="wcf--counter-number-suffix">+</span>
-			</div>
-							<div class="title">
+									<div class="title">
 					Years Of<br> Experience				</div>
 					</div>
 						</div>
@@ -1157,7 +1156,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					Team <br> Members				</div>
 					</div>
 						</div>
-				</div>
 				</div>
 				</div>
 				</div>
