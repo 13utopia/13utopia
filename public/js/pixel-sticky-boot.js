@@ -2,10 +2,11 @@
    Do NOT run Elementor's sticky handler (inset/--effects fight fixed + Lenis).
    Do NOT portal the header out of .elementor-17959 — that kills descendant CSS
    (nav links go bootstrap-dark). Keep header in-tree; page wrappers must not use
-   transform/will-change:transform (see PageEnter / globals.css). */
+   transform/will-change:transform (see PageEnter / globals.css).
+   v8: publish --pixel-header-h from the visible mobile bar so heroes clear it. */
 (function () {
-  if (window.__PIXEL_STICKY_BOOT_V7) return;
-  window.__PIXEL_STICKY_BOOT_V7 = true;
+  if (window.__PIXEL_STICKY_BOOT_V8) return;
+  window.__PIXEL_STICKY_BOOT_V8 = true;
 
   function parseSettings(el) {
     try {
@@ -94,6 +95,41 @@
     });
   }
 
+  function centerServiceHeroes() {
+    document
+      .querySelectorAll(
+        '.hero-section .elementor-image-carousel-wrapper.swiper, .hero-section .elementor-widget-image-carousel .swiper, .elementor-element-2fda67d .swiper'
+      )
+      .forEach(function (root) {
+        var widget = root.closest('.elementor-widget, .elementor-element-2fda67d');
+        if (widget) {
+          widget.style.setProperty('display', 'flex', 'important');
+          widget.style.setProperty('justify-content', 'center', 'important');
+          widget.style.setProperty('width', '100%', 'important');
+          widget.style.setProperty('margin-left', 'auto', 'important');
+          widget.style.setProperty('margin-right', 'auto', 'important');
+        }
+        root.style.setProperty('margin-left', 'auto', 'important');
+        root.style.setProperty('margin-right', 'auto', 'important');
+        root.style.setProperty('float', 'none', 'important');
+        if (root.swiper) {
+          try {
+            root.swiper.update();
+          } catch (e) {}
+        }
+      });
+  }
+
+  function publishMobileHeaderHeight() {
+    var mobileBar = document.querySelector('.elementor-element-9e2c1c7');
+    var hh = 64;
+    if (mobileBar) {
+      var rect = mobileBar.getBoundingClientRect();
+      hh = Math.max(Math.round(rect.height) || 0, 52);
+    }
+    document.documentElement.style.setProperty('--pixel-header-h', hh + 'px');
+  }
+
   function run() {
     ensureDesktopNav();
     // Clean legacy portal leftovers from older sticky-boot versions
@@ -107,7 +143,13 @@
     var headers = collectHeaders().filter(function (el) {
       return el.parentElement !== document.body;
     });
-    if (!headers.length) return;
+    if (!headers.length) {
+      if (!isDesktop()) {
+        publishMobileHeaderHeight();
+        centerServiceHeroes();
+      }
+      return;
+    }
 
     if (!isDesktop()) {
       headers.forEach(function (el) {
@@ -122,8 +164,12 @@
       document.querySelectorAll('.pixel-sticky-spacer').forEach(function (sp) {
         sp.remove();
       });
+      // Measure the compact mobile bar so hero padding clears logo + burger.
+      publishMobileHeaderHeight();
+      centerServiceHeroes();
       return;
     }
+    document.documentElement.style.removeProperty('--pixel-header-h');
 
     var primary = headers[0];
     var h = Math.max(primary.getBoundingClientRect().height || 0, 100);
