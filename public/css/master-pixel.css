@@ -1,5 +1,5 @@
 /**
- * master-pixel.css ÃÂ¢ÃÂÃÂ local-only overrides for live Elementor scrapes.
+ * master-pixel.css ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ local-only overrides for live Elementor scrapes.
  * Keep this file lean. Never force width:auto on brand Swiper slides.
  */
 
@@ -64,9 +64,9 @@ body.arolax-preloader-active {
   max-height: none !important;
 }
 
-/* Hero Zeus VR bust ÃÂ¢ÃÂÃÂ only force the image URL (scrape may leave AirLift SVG stub).
-   Do NOT lock height to 729px ÃÂ¢ÃÂÃÂ live uses Elementor --min-height:81vh so Zeus
-   scales with the viewport. Locking height breaks hero composition at ÃÂ¢ÃÂÃÂ 900px. */
+/* Hero Zeus VR bust ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ only force the image URL (scrape may leave AirLift SVG stub).
+   Do NOT lock height to 729px ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ live uses Elementor --min-height:81vh so Zeus
+   scales with the viewport. Locking height breaks hero composition at ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 900px. */
 .elementor-element-4526561:not(.elementor-motion-effects-element-type-background),
 .elementor-element-4526561 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
   background-image: url('/wp-content/uploads/2024/09/Zeus-With-Search-Engine-Optimization-1.webp') !important;
@@ -74,7 +74,7 @@ body.arolax-preloader-active {
   background-repeat: no-repeat !important;
   background-size: contain !important;
 }
-/* Mobile hero Zeus Ã¢ÂÂ scale with viewport (424px overflows phones <424 wide) */
+/* Mobile hero Zeus ÃÂ¢ÃÂÃÂ scale with viewport (424px overflows phones <424 wide) */
 .elementor-element-dddd85c:not(.elementor-motion-effects-element-type-background),
 .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
   background-image: url('/wp-content/uploads/2024/09/Zeus-With-Search-Engine-Optimization.webp') !important;
@@ -90,7 +90,7 @@ body.arolax-preloader-active {
   }
 }
 
-/* Click-to-Chat FAB ÃÂ¢ÃÂÃÂ plugin JS is excluded from the cascade; scrape ships display:none */
+/* Click-to-Chat FAB ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ plugin JS is excluded from the cascade; scrape ships display:none */
 #ht-ctc-chat {
   display: block !important;
   position: fixed !important;
@@ -111,7 +111,7 @@ body.arolax-preloader-active {
   max-width: none !important;
 }
 
-/* Who We Are Zeus ÃÂ¢ÃÂÃÂ live desktop uses object-fit:fill at ~505ÃÂÃÂ729 */
+/* Who We Are Zeus ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ live desktop uses object-fit:fill at ~505ÃÂÃÂÃÂÃÂ729 */
 @media (min-width: 1025px) {
   .elementor-element-da7f073,
   .elementor-element-da7f073 .elementor-widget-container,
@@ -128,7 +128,7 @@ body.arolax-preloader-active {
   }
 }
 
-/* Brand logos: Swiper owns slide width ÃÂ¢ÃÂÃÂ never width:auto !important */
+/* Brand logos: Swiper owns slide width ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ never width:auto !important */
 .wcf--brand-slider-wrapper,
 .elementor-widget-wcf--brand-slider .wcf__slider-wrapper {
   overflow: hidden !important;
@@ -156,7 +156,7 @@ body.arolax-preloader-active {
   visibility: visible !important;
   filter: none !important;
 }
-/* Client logos Ã¢ÂÂ live WP kept ~48px tall; slide width alone made them huge on phones */
+/* Client logos ÃÂ¢ÃÂÃÂ live WP kept ~48px tall; slide width alone made them huge on phones */
 @media (max-width: 1024px) {
   .wcf--brand-slider-wrapper .swiper-slide img,
   .elementor-widget-wcf--brand-slider img {
@@ -175,8 +175,8 @@ body.arolax-preloader-active {
 
 /* Desktop: never flash the WCF hamburger / white off-canvas drawer.
    Our older rule forced .wcf-nav-menu-container visible while mobile-menu-active
-   still applied ÃÂ¢ÃÂÃÂ that painted the 250px #fff drawer + item border-bottoms
-   (hairline under HomeÃÂ¢ÃÂÃÂBlog, not Contact). Neutralize drawer chrome fully. */
+   still applied ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ that painted the 250px #fff drawer + item border-bottoms
+   (hairline under HomeÃÂÃÂ¢ÃÂÃÂÃÂÃÂBlog, not Contact). Neutralize drawer chrome fully. */
 @media (min-width: 768px) {
   .wcf__nav-menu .wcf-menu-hamburger,
   .wcf__nav-menu .wcf-menu-close,
@@ -280,12 +280,12 @@ html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned::before,
 html.pixel-exact .elementor-element-01ec82b.pixel-header-pinned::after,
 html.pixel-exact .elementor-element-143806d::before,
 html.pixel-exact .elementor-element-143806d::after {
-  /* Keep Elementor bg overlay if needed ÃÂ¢ÃÂÃÂ only kill border/shadow hairlines */
+  /* Keep Elementor bg overlay if needed ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ only kill border/shadow hairlines */
   border: 0 !important;
   box-shadow: none !important;
 }
 
-/* Desktop header nav ÃÂ¢ÃÂÃÂ force readable white on black (all header variants) */
+/* Desktop header nav ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ force readable white on black (all header variants) */
 @media (min-width: 768px) {
   .ehf-header .elementor-nav-menu--main,
   .elementor-location-header .elementor-nav-menu--main,
@@ -347,7 +347,7 @@ html.pixel-exact .elementor-element-143806d::after {
   }
 }
 
-/* Counters ÃÂ¢ÃÂÃÂ live Elementor uses white, not lime; only ensure visibility */
+/* Counters ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ live Elementor uses white, not lime; only ensure visibility */
 .wcf--counter .count,
 .wcf--counter-number,
 .wcf--counter-number-prefix,
@@ -360,7 +360,7 @@ html.pixel-exact .elementor-element-143806d::after {
   visibility: visible !important;
 }
 
-/* Site logo ÃÂ¢ÃÂÃÂ live ~136ÃÂÃÂ54 on desktop; mobile uses Elementor width:83%/40% ÃÂ¢ÃÂÃÂ do not override */
+/* Site logo ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ live ~136ÃÂÃÂÃÂÃÂ54 on desktop; mobile uses Elementor width:83%/40% ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ do not override */
 @media (min-width: 768px) {
   img.wp-image-8655,
   img[src*='13-utopia-logo']:not(.pixel-route-veil-logo) {
@@ -371,8 +371,8 @@ html.pixel-exact .elementor-element-143806d::after {
   }
 }
 
-/* Tiny Elementor icon SVGs (nav chevrons etc.) ÃÂ¢ÃÂÃÂ do NOT clamp menu-toggle /
-   social brand icons; live hamburger SVG is 1em (~27px) ÃÂ¢ÃÂÃÂ 40.5px toggle. */
+/* Tiny Elementor icon SVGs (nav chevrons etc.) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ do NOT clamp menu-toggle /
+   social brand icons; live hamburger SVG is 1em (~27px) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 40.5px toggle. */
 .elementor-widget-heading svg[viewBox='0 0 1000 1000'],
 .elementor-widget-icon-list svg[viewBox='0 0 1000 1000'],
 .elementor-widget-icon svg[viewBox='0 0 1000 1000'].e-font-icon-svg {
@@ -389,7 +389,7 @@ html.pixel-exact .elementor-element-143806d::after {
   max-height: none !important;
 }
 
-/* Testimonials ÃÂ¢ÃÂÃÂ live: feedback is #555 on #f9f9f9 cards; do NOT force white on .feedback */
+/* Testimonials ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ live: feedback is #555 on #f9f9f9 cards; do NOT force white on .feedback */
 .arolax_testimonial_wrapper .feedback,
 .arolax__testimonial-4 .feedback {
   color: #555555 !important;
@@ -403,7 +403,7 @@ html.pixel-exact .elementor-element-143806d::after {
   opacity: 1 !important;
   visibility: visible !important;
 }
-/* Quote glyph ÃÂ¢ÃÂÃÂ match live arolax (text-align:right; img 40ÃÂÃÂ30, object-fit:cover, display:inline) */
+/* Quote glyph ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ match live arolax (text-align:right; img 40ÃÂÃÂÃÂÃÂ30, object-fit:cover, display:inline) */
 .arolax__testimonial-4 .quote,
 .arolax_testimonial_wrapper .quote {
   text-align: right !important;
@@ -416,12 +416,12 @@ html.pixel-exact .elementor-element-143806d::after {
   max-width: 100% !important;
   object-fit: cover !important;
 }
-/* Cards stack ÃÂ¢ÃÂÃÂ keep overflow visible so deck peeks like live */
+/* Cards stack ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ keep overflow visible so deck peeks like live */
 .arolax_testimonial_slider.swiper-cards {
   overflow: visible !important;
 }
 
-/* Flexible Plans CTA ÃÂ¢ÃÂÃÂ circle graphic (Elementor lazy-bg strips until e-lazyloaded) */
+/* Flexible Plans CTA ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ circle graphic (Elementor lazy-bg strips until e-lazyloaded) */
 .elementor-16636 .e-con.e-parent .elementor-element-b149d74:not(.elementor-motion-effects-element-type-background),
 .elementor-16636 .e-con.e-parent.e-lazyloaded .elementor-element-b149d74:not(.elementor-motion-effects-element-type-background),
 .elementor-element-b149d74:not(.elementor-motion-effects-element-type-background),
@@ -433,7 +433,7 @@ html.pixel-exact .elementor-element-143806d::after {
   background-size: contain !important;
 }
 
-/* Newsletter / wpforms ÃÂ¢ÃÂÃÂ match live white email field; hide honeypot + its label */
+/* Newsletter / wpforms ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ match live white email field; hide honeypot + its label */
 .wpforms-field-text:has(#wpforms-23882-field_1),
 .wpforms-field:has(#wpforms-23882-field_1) {
   position: absolute !important;
@@ -460,7 +460,7 @@ label[for='wpforms-23882-field_1'],
   pointer-events: none !important;
 }
 
-/* Contact form honeypot (field_8) ÃÂ¢ÃÂÃÂ live WPForms hides container as 1ÃÂÃÂ1 absolute */
+/* Contact form honeypot (field_8) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ live WPForms hides container as 1ÃÂÃÂÃÂÃÂ1 absolute */
 #wpforms-16813-field_8-container,
 .wpforms-field:has(#wpforms-16813-field_8) {
   position: absolute !important;
@@ -497,7 +497,7 @@ label[for='wpforms-16813-field_8'],
   opacity: 1 !important;
   visibility: visible !important;
 }
-/* hCaptcha ÃÂ¢ÃÂÃÂ show container like live (86px); real widget replaced by pixel-hcaptcha-boot stub */
+/* hCaptcha ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ show container like live (86px); real widget replaced by pixel-hcaptcha-boot stub */
 .wpforms-recaptcha-container.wpforms-is-hcaptcha {
   display: block !important;
   height: auto !important;
@@ -529,7 +529,7 @@ label[for='wpforms-16813-field_8'],
   user-select: none !important;
   pointer-events: none !important;
 }
-/* Real hCaptcha iframe present ÃÂ¢ÃÂÃÂ kill stub so container stays ~86px like live */
+/* Real hCaptcha iframe present ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ kill stub so container stays ~86px like live */
 .wpforms-recaptcha-container:has(iframe) .pixel-hcaptcha-stub,
 .h-captcha:has(iframe) .pixel-hcaptcha-stub {
   display: none !important;
@@ -580,7 +580,7 @@ label[for='wpforms-16813-field_8'],
   letter-spacing: 0.01em !important;
 }
 
-/* Testimonials ÃÂ¢ÃÂÃÂ let stacked cards peek (live cards effect); include service-page ids */
+/* Testimonials ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ let stacked cards peek (live cards effect); include service-page ids */
 .elementor-element-ce87f17,
 .elementor-element-fa5fed6,
 .elementor-element-f9f21d5,
@@ -592,7 +592,7 @@ label[for='wpforms-16813-field_8'],
   overflow: visible !important;
 }
 
-/* Progress bars ÃÂ¢ÃÂÃÂ live shows title above + % on the fill; avoid double paint */
+/* Progress bars ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ live shows title above + % on the fill; avoid double paint */
 html.pixel-exact .elementor-progress-wrapper {
   overflow: hidden !important;
 }
@@ -604,7 +604,7 @@ html.pixel-exact .elementor-progress-percentage {
   white-space: nowrap;
 }
 
-/* Sticky header must keep 3-column flex (logo | nav | social) ÃÂ¢ÃÂÃÂ DESKTOP ONLY.
+/* Sticky header must keep 3-column flex (logo | nav | social) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ DESKTOP ONLY.
    On mobile Elementor hides .01ec82b (elementor-hidden-mobile) and shows .9e2c1c7.
    Forcing display:flex here was un-hiding the desktop header and adding ~140px. */
 @media (min-width: 1025px) {
@@ -630,7 +630,7 @@ html.pixel-exact .elementor-progress-percentage {
   .elementor-element-01ec82b.pixel-header-pinned {
     position: fixed !important;
     z-index: 10000 !important;
-    /* Solid bar while pinned ÃÂ¢ÃÂÃÂ Elementor's fade-to-transparent gradient lets
+    /* Solid bar while pinned ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Elementor's fade-to-transparent gradient lets
        service rows (CGI VIDEOS etc.) show through the nav and look "stuck". */
     background-color: #000000 !important;
     background-image: none !important;
@@ -655,7 +655,7 @@ html.pixel-exact .elementor-progress-percentage {
   }
   .elementor-element-01ec82b > .elementor-element-11563fa {
     flex: 0 0 auto !important;
-    /* Keep Elementor --width (ÃÂ¢ÃÂÃÂ14%); width:auto shrinks to the img and shifts socials */
+    /* Keep Elementor --width (ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ14%); width:auto shrinks to the img and shifts socials */
     width: var(--width, auto) !important;
     max-width: none !important;
   }
@@ -680,8 +680,8 @@ html.pixel-exact .elementor-progress-percentage {
 }
 
 /* Never override Elementor responsive visibility for the DESKTOP header only.
-   Do NOT blanket-hide .elementor-hidden-mobile_extra ÃÂ¢ÃÂÃÂ that class means
-   "hide between 768ÃÂ¢ÃÂÃÂ880px", and those sections must show on phones. */
+   Do NOT blanket-hide .elementor-hidden-mobile_extra ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ that class means
+   "hide between 768ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ880px", and those sections must show on phones. */
 @media (max-width: 1024px) {
   .elementor-element-01ec82b.elementor-hidden-mobile,
   .elementor-element-01ec82b.elementor-hidden-mobile_extra {
@@ -693,7 +693,7 @@ html.pixel-exact .elementor-progress-percentage {
   }
 }
 
-/* Nested Services accordion only â never hide the mobile dropdown PANEL
+/* Nested Services accordion only Ã¢ÂÂ never hide the mobile dropdown PANEL
    (nav.elementor-nav-menu--dropdown.elementor-nav-menu__container). */
 .elementor-nav-menu .menu-item-has-children > .sub-menu,
 .elementor-nav-menu--dropdown .menu-item-has-children > .sub-menu,
@@ -714,7 +714,7 @@ ul.elementor-nav-menu ul.sub-menu {
   pointer-events: auto !important;
 }
 
-/* ========== Mobile hamburger â fullscreen overlay ========== */
+/* ========== Mobile hamburger Ã¢ÂÂ fullscreen overlay ========== */
 @media (max-width: 1024px) {
   .elementor-element-9e2c1c7 {
     position: fixed !important;
@@ -729,7 +729,7 @@ ul.elementor-nav-menu ul.sub-menu {
     -webkit-backdrop-filter: blur(16px) !important;
   }
 
-  /* Closed panel: Elementor uses max-height:0 + scaleY(0) â keep that default */
+  /* Closed panel: Elementor uses max-height:0 + scaleY(0) Ã¢ÂÂ keep that default */
   .elementor-element-9e2c1c7 nav.elementor-nav-menu--dropdown.elementor-nav-menu__container {
     position: fixed !important;
     inset: 0 !important;
@@ -751,7 +751,7 @@ ul.elementor-nav-menu ul.sub-menu {
     transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease, max-height 0s linear 0.35s !important;
   }
 
-  /* Open â pixel-menu-boot adds .utopia-nav-open / body.utopia-menu-open */
+  /* Open Ã¢ÂÂ pixel-menu-boot adds .utopia-nav-open / body.utopia-menu-open */
   body.utopia-menu-open .elementor-element-9e2c1c7 nav.elementor-nav-menu--dropdown.elementor-nav-menu__container,
   .elementor-element-9e2c1c7 nav.elementor-nav-menu--dropdown.elementor-nav-menu__container.utopia-nav-open,
   .elementor-element-9e2c1c7 nav.elementor-nav-menu--dropdown.elementor-nav-menu__container.elementor-active,
@@ -831,7 +831,7 @@ ul.elementor-nav-menu ul.sub-menu {
   }
 }
 
-/* Open menu panel may be reparented to <body> â style without header ancestor */
+/* Open menu panel may be reparented to <body> Ã¢ÂÂ style without header ancestor */
 nav.elementor-nav-menu--dropdown.utopia-nav-open,
 nav.elementor-nav-menu--dropdown.elementor-nav-menu__container.utopia-nav-open {
   display: block !important;
@@ -905,7 +905,7 @@ html.pixel-exact .elementor [class*='bg-token-main-surface'] p {
   height: auto !important;
 }
 
-/* Image-box gods ÃÂ¢ÃÂÃÂ match live framing: ~73% width so full figure fits in viewport */
+/* Image-box gods ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ match live framing: ~73% width so full figure fits in viewport */
 html.pixel-exact .swiper-cube {
   overflow: hidden !important;
 }
@@ -924,7 +924,7 @@ html.pixel-exact .img-box-wrap-center.elementor-widget-wcf--image-box-slider {
   width: 100% !important;
   max-width: 100% !important;
 }
-/* Keep Elementor's -4vw pull (live) ÃÂ¢ÃÂÃÂ only kill % height locks that squash/crop */
+/* Keep Elementor's -4vw pull (live) ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ only kill % height locks that squash/crop */
 html.pixel-exact .elementor-widget-wcf--image-box-slider > .elementor-widget-container {
   overflow: visible !important;
   max-height: none !important;
@@ -932,7 +932,7 @@ html.pixel-exact .elementor-widget-wcf--image-box-slider > .elementor-widget-con
 }
 /*
   Live uses .wcf__slider { max-width:73% } once. Do NOT also cap .wcf--image-box
-  or the god shrinks to ~73%ÃÂÃÂ² (~233px) and looks cropped/tiny.
+  or the god shrinks to ~73%ÃÂÃÂÃÂÃÂ² (~233px) and looks cropped/tiny.
 */
 html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf__slider,
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper,
@@ -1008,7 +1008,7 @@ html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper:not(.swiper-ini
   pointer-events: auto !important;
   inset: auto !important;
 }
-/* Fit whole god in first viewport ÃÂ¢ÃÂÃÂ fill the 73% slider like live (~392ÃÂÃÂ574) */
+/* Fit whole god in first viewport ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ fill the 73% slider like live (~392ÃÂÃÂÃÂÃÂ574) */
 html.pixel-exact .elementor-widget-wcf--image-box-slider .wcf--image-box .thumb img,
 html.pixel-exact .elementor-widget-wcf--image-box-slider img.swiper-slide-image {
   display: block !important;
@@ -1059,7 +1059,7 @@ html.pixel-exact .swiper-cube.swiper-animating .swiper-slide-duplicate-prev {
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-cube:not(.swiper-initialized) .swiper-slide:not(:first-child) {
   visibility: hidden !important;
 }
-/* Fade ÃÂ¢ÃÂÃÂ only the live face; hide others so overflow:visible doesn't ghost */
+/* Fade ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ only the live face; hide others so overflow:visible doesn't ghost */
 html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .swiper-slide {
   visibility: hidden !important;
   pointer-events: none !important;
@@ -1070,7 +1070,7 @@ html.pixel-exact .elementor-widget-wcf--image-box-slider .swiper-fade .swiper-sl
   pointer-events: auto !important;
   visibility: visible !important;
 }
-/* Advance posters ÃÂ¢ÃÂÃÂ before EffectPoster boots, don't let slides sit in a row */
+/* Advance posters ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ before EffectPoster boots, don't let slides sit in a row */
 html.pixel-exact .advance_slider_wrapper .swiper-poster:not(.swiper-initialized) {
   overflow: hidden !important;
 }
@@ -1092,8 +1092,8 @@ html.pixel-exact .advance_slider_wrapper .swiper-poster:not(.swiper-initialized)
 }
 
 /*
-  Posters are designed as portrait step-cards (~550ÃÂÃÂ680).
-  Kill Elementor's sticky-layout offsets (margin-left 18ÃÂ¢ÃÂÃÂ31%, padding-left 21ÃÂ¢ÃÂÃÂ29vw)
+  Posters are designed as portrait step-cards (~550ÃÂÃÂÃÂÃÂ680).
+  Kill Elementor's sticky-layout offsets (margin-left 18ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ31%, padding-left 21ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ29vw)
   that shoved the card to the right with a huge empty left void.
 */
 html.pixel-exact .elementor-widget-wcf--advance-slider.title-position-before,
@@ -1199,7 +1199,7 @@ html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-button-ne
 html.pixel-exact .advance_slider_wrapper.pixel-poster-carousel .swiper-button-prev {
   display: none !important;
 }
-/* Legacy sticky-stack class ÃÂ¢ÃÂÃÂ neutralize if still present */
+/* Legacy sticky-stack class ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ neutralize if still present */
 html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-poster,
 html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide {
   max-height: min(680px, 78vh);
@@ -1219,7 +1219,7 @@ html.pixel-exact .advance_slider_wrapper.pixel-poster-full .swiper-slide {
 }
 
 /* Tailwind preflight sets img/svg { display:block }. Live Elementor keeps
-   replaced elements inline-block ÃÂ¢ÃÂÃÂ critical for RTL timeline thumbs (odd items)
+   replaced elements inline-block ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ critical for RTL timeline thumbs (odd items)
    where block+rtl right-shifts the image ~104px inside .thumb. */
 html.pixel-exact .elementor img {
   display: inline-block;
@@ -1231,7 +1231,7 @@ html.pixel-exact .wcf--timeline .thumb img {
   display: inline !important;
 }
 
-/* Portfolio timeline ÃÂ¢ÃÂÃÂ clamp icon SVG if widget CSS loads late */
+/* Portfolio timeline ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ clamp icon SVG if widget CSS loads late */
 html.pixel-exact .wcf--timeline .step-box .icon {
   display: flex !important;
   align-items: center !important;
@@ -1251,7 +1251,7 @@ html.pixel-exact .wcf--timeline .step-box .icon .e-font-icon-svg {
   max-height: 100% !important;
 }
 
-/* Elementor spacer ÃÂ¢ÃÂÃÂ page CSS sets --spacer-size; base height rule often missing from scrapes */
+/* Elementor spacer ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ page CSS sets --spacer-size; base height rule often missing from scrapes */
 html.pixel-exact .elementor-spacer-inner {
   height: var(--spacer-size, 0px);
 }
@@ -1263,11 +1263,11 @@ html.pixel-exact body {
   font-family: var(--font-primary, "DM Sans", sans-serif) !important;
 }
 
-/* Do NOT globally force .elementor-invisible ÃÂ¢ÃÂÃÂ let Elementor animate; JS fallback reveals stuck ones */
+/* Do NOT globally force .elementor-invisible ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ let Elementor animate; JS fallback reveals stuck ones */
 
 /* ---- Mobile FOUC correction (Elementor breakpoints) ----
    pixel-veil briefly hid .elementor-hidden-mobile_extra under 767px.
-   That class is ONLY for 768ÃÂ880; hiding it blanks the home mobile hero. */
+   That class is ONLY for 768ÃÂÃÂ880; hiding it blanks the home mobile hero. */
 @media (max-width: 767px) {
   html.pixel-exact .elementor .e-con.elementor-hidden-mobile_extra:not(.elementor-hidden-mobile),
   html.pixel-exact .elementor .elementor-element.elementor-hidden-mobile_extra:not(.elementor-hidden-mobile) {
@@ -1302,7 +1302,7 @@ html.pixel-exact body {
     height: auto;
   }
 
-  /* Contact / WPForms Ã¢ÂÂ stack .wpforms-one-half columns full-bleed */
+  /* Contact / WPForms ÃÂ¢ÃÂÃÂ stack .wpforms-one-half columns full-bleed */
   html.pixel-exact .wpforms-one-half,
   html.pixel-exact .wpforms-one-third,
   html.pixel-exact .wpforms-two-thirds,
@@ -1335,64 +1335,149 @@ html.pixel-exact body {
     max-width: 100% !important;
   }
 
-  /* Home mobile hero â clearer stack: title â Zeus â Digital Success â CTAs */
+  /* Home mobile hero — one centered composition:
+     DYNAMIC → SOLUTIONS → FOR → Zeus → DIGITAL SUCCESS → CTAs
+     (desktop Absolute titles break phones; flatten with display:contents) */
   html.pixel-exact .elementor-element-7c0e130 {
     overflow: hidden !important;
     min-height: 100svh !important;
-    padding-top: 72px !important;
-    padding-bottom: 28px !important;
+    padding: 64px 20px 24px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    box-sizing: border-box !important;
+  }
+  html.pixel-exact .elementor-element-fd3b049 {
+    display: contents !important;
+  }
+  html.pixel-exact .elementor-element-b23dc44,
+  html.pixel-exact .elementor-element-f61769e,
+  html.pixel-exact .elementor-element-75d3b2a,
+  html.pixel-exact .elementor-element-f0574ce {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    --width: 100% !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 2 !important;
+  }
+  html.pixel-exact .elementor-element-b23dc44 {
+    order: 1 !important;
+  }
+  html.pixel-exact .elementor-element-f61769e {
+    order: 2 !important;
+  }
+  html.pixel-exact .elementor-element-75d3b2a {
+    order: 3 !important;
+    margin-top: 6px !important;
+    margin-bottom: 4px !important;
   }
   html.pixel-exact .elementor-element-dddd85c {
-    min-height: min(48svh, 420px) !important;
-    max-height: 52svh !important;
-    background-size: min(78vw, 320px) !important;
-    background-position: center bottom !important;
-    flex: 1 1 auto !important;
-    margin-top: 8px !important;
+    order: 4 !important;
+    min-height: min(42svh, 340px) !important;
+    max-height: 46svh !important;
+    background-size: min(72vw, 280px) !important;
+    background-position: center center !important;
+    flex: 0 0 auto !important;
+    margin: 4px 0 8px !important;
+    width: 100% !important;
+  }
+  html.pixel-exact .elementor-element-f0574ce {
+    order: 5 !important;
+    margin: 4px 0 8px !important;
   }
   html.pixel-exact .elementor-element-b23dc44 .elementor-heading-title,
   html.pixel-exact .elementor-element-f61769e .elementor-heading-title {
-    font-size: clamp(2.25rem, 11vw, 3.1rem) !important;
-    line-height: 0.92 !important;
+    font-size: clamp(2.1rem, 10.5vw, 2.85rem) !important;
+    line-height: 0.95 !important;
     text-align: center !important;
+    letter-spacing: -0.02em !important;
+    width: 100% !important;
   }
   html.pixel-exact .elementor-element-75d3b2a .elementor-heading-title {
-    font-size: clamp(1.25rem, 6.5vw, 1.75rem) !important;
-    text-align: right !important;
-    padding-right: 8% !important;
-  }
-  html.pixel-exact .elementor-element-f0574ce {
-    margin-top: 4px !important;
-    margin-bottom: 12px !important;
-    position: relative !important;
-    z-index: 2 !important;
+    font-size: clamp(0.95rem, 4.2vw, 1.15rem) !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    padding: 0 !important;
+    letter-spacing: 0.28em !important;
+    opacity: 0.88 !important;
+    width: 100% !important;
   }
   html.pixel-exact .elementor-element-f0574ce .elementor-heading-title {
-    font-size: clamp(1.6rem, 8vw, 2.2rem) !important;
+    font-size: clamp(1.55rem, 7.5vw, 2.05rem) !important;
     line-height: 1.05 !important;
     text-align: center !important;
+    letter-spacing: -0.01em !important;
     text-shadow: 0 2px 18px rgba(0, 0, 0, 0.85) !important;
-  }
-  html.pixel-exact .elementor-element-7c0e130 .elementor-button {
-    max-width: 100% !important;
     width: 100% !important;
-    white-space: normal !important;
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
-  }
-  html.pixel-exact .elementor-element-7c0e130 .elementor-widget-button {
-    width: 100% !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
   }
 
-  /* Footer — stack Services / Contact / Newsletter (live footer is elementor-1386) */
+  /* Hero CTAs — full-bleed centered stack (Elementor used 85%/65% + text-align:right) */
+  html.pixel-exact .elementor-element-86592fa {
+    width: 100% !important;
+    max-width: 100% !important;
+    --width: 100% !important;
+    flex-direction: column !important;
+    --flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    padding: 8px 20px 28px !important;
+    box-sizing: border-box !important;
+  }
+  html.pixel-exact .elementor-element-88502ac,
+  html.pixel-exact .elementor-element-205514f {
+    width: 100% !important;
+    max-width: 100% !important;
+    --width: 100% !important;
+    --container-widget-width: 100% !important;
+    --container-widget-max-width: 100% !important;
+    align-self: stretch !important;
+    margin: 0 !important;
+    left: auto !important;
+    right: auto !important;
+  }
+  html.pixel-exact .elementor-element-88502ac .elementor-widget-container,
+  html.pixel-exact .elementor-element-205514f .elementor-widget-container,
+  html.pixel-exact .elementor-element-88502ac .elementor-button-wrapper,
+  html.pixel-exact .elementor-element-205514f .elementor-button-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+  html.pixel-exact .elementor-element-88502ac .elementor-button,
+  html.pixel-exact .elementor-element-205514f .elementor-button {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+    min-height: 48px !important;
+    padding: 14px 18px !important;
+    margin: 0 !important;
+    float: none !important;
+  }
+
+  /* Header breathing room on phones */
+  html.pixel-exact .ehf-header .e-con.e-parent,
+  html.pixel-exact .elementor-location-header .e-con.e-parent {
+    padding-left: max(18px, env(safe-area-inset-left)) !important;
+    padding-right: max(18px, env(safe-area-inset-right)) !important;
+  }
+
+  /* Footer â stack Services / Contact / Newsletter (live footer is elementor-1386) */
   html.pixel-exact .elementor-element-be5d338,
   html.pixel-exact .elementor-1386 .elementor-element-be5d338,
   html.pixel-exact .elementor-6033 .elementor-element-be5d338,
@@ -1425,7 +1510,7 @@ html.pixel-exact body {
   html.pixel-exact .elementor-6033 .elementor-icon-list-items {
     padding-left: 0 !important;
   }
-  /* Newsletter Send — visible on black footer */
+  /* Newsletter Send â visible on black footer */
   html.pixel-exact .elementor-1386 .wpforms-submit,
   html.pixel-exact .elementor-1386 button[type='submit'],
   html.pixel-exact .elementor-1386 .wpforms-submit-container button,
@@ -1445,7 +1530,7 @@ html.pixel-exact body {
     min-height: 44px !important;
   }
 
-  /* Sections â consistent horizontal breathing room */
+  /* Sections Ã¢ÂÂ consistent horizontal breathing room */
   html.pixel-exact .e-con.e-parent > .e-con-inner,
   html.pixel-exact .elementor-section > .elementor-container {
     padding-left: max(16px, env(safe-area-inset-left)) !important;
@@ -1464,13 +1549,18 @@ html.pixel-exact body {
 
 @media (max-width: 480px) {
   html.pixel-exact .elementor-element-dddd85c {
-    background-size: min(88vw, 300px) !important;
-    min-height: min(44svh, 360px) !important;
+    background-size: min(70vw, 260px) !important;
+    min-height: min(38svh, 300px) !important;
+    max-height: 42svh !important;
   }
   html.pixel-exact .wcf--brand-slider-wrapper .swiper-slide img,
   html.pixel-exact .elementor-widget-wcf--brand-slider img {
-    max-height: 44px !important;
-    max-width: 120px !important;
+    max-height: 56px !important;
+    max-width: 140px !important;
+  }
+  html.pixel-exact .elementor-element-8b1fffb .swiper-slide,
+  html.pixel-exact .elementor-element-8b1fffb .wcf--brand-slider-wrapper {
+    min-height: 64px !important;
   }
 }
 
