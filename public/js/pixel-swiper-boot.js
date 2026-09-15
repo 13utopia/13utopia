@@ -1,8 +1,15 @@
 /*! Boot Swiper for brand logos + testimonials.
-   Re-runnable: window.__PIXEL_SWIPER_RUN() after SPA navigations. */
+   Re-runnable: window.__PIXEL_SWIPER_RUN() after SPA navigations.
+   Brand logos use one canonical continuous reel so every page matches. */
 (function () {
-  if (window.__PIXEL_SWIPER_BOOT_V2) return;
-  window.__PIXEL_SWIPER_BOOT_V2 = true;
+  // Allow versioned reloads to replace older boots
+  if (window.__PIXEL_SWIPER_UNBIND) {
+    try {
+      window.__PIXEL_SWIPER_UNBIND();
+    } catch (e) {}
+  }
+
+  var reviveTimer = null;
 
   function parseSettings(el) {
     if (!el || !el.getAttribute) return null;
@@ -56,6 +63,7 @@
       } catch (e) {}
     }
     root.__pixelSwiper = null;
+    root.removeAttribute('data-pixel-brand-ok');
     root.classList.remove(
       'swiper-initialized',
       'swiper-horizontal',
@@ -84,6 +92,7 @@
         if (typeof inst.params.autoplay === 'object' && inst.params.autoplay) {
           inst.params.autoplay.disableOnInteraction = false;
           inst.params.autoplay.pauseOnMouseEnter = false;
+          inst.params.autoplay.delay = 1;
         } else if (!inst.params.autoplay) {
           inst.params.autoplay = {
             delay: isBrandSlider(root) ? 1 : 3000,
@@ -92,11 +101,9 @@
           };
         }
       }
-      // paused===true is normal during the long linear transition (speed:5000)
       if (!inst.autoplay.running && typeof inst.autoplay.start === 'function') {
         inst.autoplay.start();
       } else if (typeof inst.autoplay.start === 'function' && !inst.animating) {
-        // Nudge — recovers after disableOnInteraction stop without fighting in-flight slides
         inst.autoplay.start();
       }
       return !!inst.autoplay.running;
@@ -107,44 +114,18 @@
 
   var brandMotion = new WeakMap();
 
-  function reviveBrand(root) {
-    if (!root || !root.isConnected || !window.Swiper) return;
-    ensureLinear(root);
-    var inst = root.swiper || root.__pixelSwiper;
-    var wrap = root.querySelector('.swiper-wrapper');
-    var tf = wrap ? wrap.style.transform || '' : '';
-    var prev = brandMotion.get(root) || { tf: '', ts: 0, misses: 0 };
-    var now = Date.now();
-
-    if (inst && Number(inst.params && inst.params.slidesPerView) >= 2) {
-      ensureAutoplay(root);
-      if (tf && tf === prev.tf) {
-        prev.misses += 1;
-      } else {
-        prev.misses = 0;
-        prev.tf = tf;
-        prev.ts = now;
-      }
-      brandMotion.set(root, prev);
-      // ~5s/slide; if transform unchanged ~3 intervals (~18s) while in DOM → hard reset
-      if (prev.misses >= 3 && !(inst.animating)) {
-        brandMotion.set(root, { tf: '', ts: now, misses: 0 });
-        bootBrandSlider(root, true);
-      }
-      return;
-    }
-    bootBrandSlider(root, true);
-  }
-
   function brandOpts() {
+    // One reel for every page — dense, linear, continuous
     return {
       slidesPerView: 5,
-      spaceBetween: 80,
+      spaceBetween: 40,
       loop: true,
-      speed: 5000,
+      loopAdditionalSlides: 6,
+      speed: 4500,
       allowTouchMove: false,
       grabCursor: false,
       watchSlidesProgress: true,
+      resistanceRatio: 0,
       autoplay: {
         delay: 1,
         disableOnInteraction: false,
@@ -152,40 +133,73 @@
         waitForTransition: true,
       },
       breakpoints: {
-        0: { slidesPerView: 2, spaceBetween: 80 },
-        767: { slidesPerView: 2, spaceBetween: 80 },
-        880: { slidesPerView: 4, spaceBetween: 80 },
-        1024: { slidesPerView: 3, spaceBetween: 80 },
-        1200: { slidesPerView: 5, spaceBetween: 80 },
-        1366: { slidesPerView: 5, spaceBetween: 80 },
-        2400: { slidesPerView: 5, spaceBetween: 80 },
+        0: { slidesPerView: 2.4, spaceBetween: 24 },
+        400: { slidesPerView: 2.6, spaceBetween: 28 },
+        640: { slidesPerView: 3.2, spaceBetween: 32 },
+        880: { slidesPerView: 4, spaceBetween: 36 },
+        1024: { slidesPerView: 4.5, spaceBetween: 40 },
+        1200: { slidesPerView: 5, spaceBetween: 44 },
+        1366: { slidesPerView: 5.5, spaceBetween: 48 },
       },
       observer: true,
       observeParents: true,
     };
   }
 
+  function brandLooksWrong(inst, root) {
+    if (!inst || !inst.params) return true;
+    var spv = Number(inst.params.slidesPerView);
+    if (!(spv >= 2)) return true;
+    var space = Number(inst.params.spaceBetween);
+    if (window.innerWidth < 768 && space > 45) return true;
+    if (Number(inst.params.speed) < 3000) return true;
+    return !root || root.getAttribute('data-pixel-brand-ok') !== '5';
+  }
+
+  function reviveBrand(root) {
+    if (!root || !root.isConnected || !window.Swiper) return;
+    ensureLinear(root);
+    var inst = root.swiper || root.__pixelSwiper;
+    if (!inst || brandLooksWrong(inst, root)) {
+      bootBrandSlider(root, true);
+      return;
+    }
+    var wrap = root.querySelector('.swiper-wrapper');
+    var tf = wrap ? wrap.style.transform || '' : '';
+    var prev = brandMotion.get(root) || { tf: '', misses: 0 };
+    if (tf && tf === prev.tf) prev.misses += 1;
+    else {
+      prev.misses = 0;
+      prev.tf = tf;
+    }
+    brandMotion.set(root, prev);
+    ensureAutoplay(root);
+    if (prev.misses >= 3 && !inst.animating) {
+      brandMotion.set(root, { tf: '', misses: 0 });
+      bootBrandSlider(root, true);
+    }
+  }
+
   function bootBrandSlider(root, force) {
     if (!window.Swiper || !root || !root.isConnected) return false;
     var inst = root.swiper || root.__pixelSwiper;
-    if (inst && !force) {
-      var spv = Number(inst.params && inst.params.slidesPerView);
-      if (spv >= 2) {
-        ensureLinear(root);
-        ensureAutoplay(root);
-        return false;
-      }
-      destroySwiper(root);
-    } else if (inst && force) {
-      destroySwiper(root);
-    }
-
-    try {
-      ensureLinear(root);
-      root.__pixelSwiper = new window.Swiper(root, brandOpts());
+    if (inst && !force && !brandLooksWrong(inst, root)) {
       ensureLinear(root);
       ensureAutoplay(root);
-      brandMotion.set(root, { tf: '', ts: Date.now(), misses: 0 });
+      return false;
+    }
+    if (inst) destroySwiper(root);
+
+    try {
+      var target = root.classList.contains('swiper')
+        ? root
+        : root.querySelector('.swiper') || root;
+      ensureLinear(target);
+      target.__pixelSwiper = new window.Swiper(target, brandOpts());
+      ensureLinear(target);
+      ensureAutoplay(target);
+      target.setAttribute('data-pixel-brand-ok', '5');
+      brandMotion.set(target, { tf: '', misses: 0 });
       return true;
     } catch (e) {
       console.warn('[pixel-swiper] brand init failed', e);
@@ -239,9 +253,7 @@
         };
       });
     }
-    var pagSel =
-      (settings.pagination && settings.pagination.el) ||
-      null;
+    var pagSel = (settings.pagination && settings.pagination.el) || null;
     var pagEl = pagSel
       ? document.querySelector(pagSel)
       : root.querySelector('.swiper-pagination') ||
@@ -251,14 +263,12 @@
     try {
       root.__pixelSwiper = new window.Swiper(root, opts);
       ensureAutoplay(root);
-      // Don't permanently trap Lenis — SmoothScroll sets prevent only while dragging
       try {
         root.removeAttribute('data-lenis-prevent');
       } catch (e2) {}
       return true;
     } catch (e) {
       console.warn('[pixel-swiper] testimonial init failed', e);
-      // Retry without cards if module missing
       try {
         delete opts.effect;
         delete opts.cardsEffect;
@@ -274,7 +284,7 @@
   function bootOne(host) {
     if (!window.Swiper) return false;
     if (isBrandSlider(host)) {
-      return bootBrandSlider(findSwiperRoot(host) || host.querySelector('.swiper'));
+      return bootBrandSlider(findSwiperRoot(host) || host.querySelector('.swiper') || host);
     }
     if (isTestimonial(host)) {
       return bootTestimonial(host);
@@ -284,7 +294,6 @@
     if (root.classList.contains('swiper-initialized') || root.__pixelSwiper || root.swiper) {
       return false;
     }
-    // Skip advance/poster/cube / image-box — other boots own those
     if (
       root.closest('.advance_slider_wrapper') ||
       root.closest('.wcf__image-box-slider') ||
@@ -360,11 +369,11 @@
   function run() {
     if (!window.Swiper) return;
 
-    // Prefer Elementor/WCF handlers when available (SPA remounts)
     runElementorHooks();
 
-    document.querySelectorAll('.wcf--brand-slider-wrapper .swiper').forEach(function (root) {
-      bootBrandSlider(root, false);
+    document.querySelectorAll('.wcf--brand-slider-wrapper').forEach(function (wrap) {
+      var root = wrap.classList.contains('swiper') ? wrap : wrap.querySelector('.swiper') || wrap;
+      bootBrandSlider(root, brandLooksWrong(root.swiper || root.__pixelSwiper, root));
     });
 
     document
@@ -385,10 +394,11 @@
         if (host) bootOne(host);
       });
 
-    // Keep brand autoplay alive (interaction / SPA can pause it)
-    document.querySelectorAll('.wcf--brand-slider-wrapper .swiper').forEach(function (root) {
-      reviveBrand(root);
-    });
+    document
+      .querySelectorAll('.wcf--brand-slider-wrapper .swiper, .wcf--brand-slider-wrapper.swiper')
+      .forEach(function (root) {
+        reviveBrand(root);
+      });
     document.querySelectorAll('.arolax_testimonial_slider.swiper').forEach(function (root) {
       if (!ensureAutoplay(root) && !(root.swiper || root.__pixelSwiper)) {
         var host = root.closest('.arolax_testimonial_wrapper') || root.parentElement;
@@ -400,26 +410,13 @@
   window.__PIXEL_SWIPER_RUN = run;
 
   function patchSwiperCtor() {
-    if (!window.Swiper || window.Swiper.__pixelBrandPatched) return;
+    if (!window.Swiper || window.Swiper.__pixelBrandPatched5) return;
     var Orig = window.Swiper;
     function PatchedSwiper(el, opts) {
       try {
         var node = el && el.jquery ? el[0] : el;
-        if (node && isBrandSlider(node) && opts) {
-          opts = Object.assign({}, opts);
-          if (opts.autoplay && typeof opts.autoplay === 'object') {
-            opts.autoplay = Object.assign({}, opts.autoplay, {
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            });
-          } else if (!opts.autoplay) {
-            opts.autoplay = {
-              delay: 1,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-              waitForTransition: true,
-            };
-          }
+        if (node && isBrandSlider(node)) {
+          opts = brandOpts();
         }
         if (node && isTestimonial(node) && opts && opts.autoplay && typeof opts.autoplay === 'object') {
           opts = Object.assign({}, opts);
@@ -437,7 +434,7 @@
         PatchedSwiper[k] = Orig[k];
       } catch (e2) {}
     });
-    PatchedSwiper.__pixelBrandPatched = true;
+    PatchedSwiper.__pixelBrandPatched5 = true;
     window.Swiper = PatchedSwiper;
   }
 
@@ -453,16 +450,25 @@
     setTimeout(run, 4500);
   }
 
+  window.__PIXEL_SWIPER_UNBIND = function () {
+    if (reviveTimer) {
+      clearInterval(reviveTimer);
+      reviveTimer = null;
+    }
+    started = false;
+  };
+
   if (window.__PIXEL_LIVE_JS_READY) start();
   else window.addEventListener('pixel-live-js-ready', start);
   window.addEventListener('load', function () {
     setTimeout(start, 200);
   });
-  // Periodic nudge — recovers paused brand autoplay / SPA remounts
-  setInterval(function () {
+  reviveTimer = setInterval(function () {
     if (!window.Swiper) return;
     patchSwiperCtor();
-    document.querySelectorAll('.wcf--brand-slider-wrapper .swiper').forEach(reviveBrand);
+    document
+      .querySelectorAll('.wcf--brand-slider-wrapper .swiper, .wcf--brand-slider-wrapper.swiper')
+      .forEach(reviveBrand);
     document.querySelectorAll('.arolax_testimonial_slider.swiper').forEach(function (root) {
       if (root.swiper || root.__pixelSwiper) ensureAutoplay(root);
       else {
@@ -470,5 +476,5 @@
         if (host) bootTestimonial(host);
       }
     });
-  }, 6000);
+  }, 5000);
 })();

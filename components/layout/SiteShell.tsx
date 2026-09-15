@@ -96,9 +96,16 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     requestAnimationFrame(menuRebind);
     const menuT = window.setTimeout(menuRebind, 200);
     const menuT2 = window.setTimeout(menuRebind, 800);
-    loadScriptOnce('/js/pixel-swiper-boot.js?v=swiper-4', 'pixel-swiper-boot-v4', [
+    loadScriptVersioned('/js/pixel-swiper-boot.js?v=swiper-5', 'pixel-swiper-boot-v5', [
       'data-pixel-swiper-boot',
     ]);
+    const swiperRun = () => {
+      const w = window as Window & { __PIXEL_SWIPER_RUN?: () => void };
+      w.__PIXEL_SWIPER_RUN?.();
+    };
+    requestAnimationFrame(swiperRun);
+    const swiperT = window.setTimeout(swiperRun, 350);
+    const swiperT2 = window.setTimeout(swiperRun, 1200);
 
     if (SERVICE_SLIDER_ROUTES.has(pathname)) {
       loadScriptOnce('/js/pixel-advance-slider-boot.js?v=poster-orch-25', 'pixel-advance-slider-boot-v25', [
@@ -136,6 +143,8 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       window.clearTimeout(t3);
       window.clearTimeout(menuT);
       window.clearTimeout(menuT2);
+      window.clearTimeout(swiperT);
+      window.clearTimeout(swiperT2);
       const cancel = (window as Window & { cancelIdleCallback?: (id: number) => void })
         .cancelIdleCallback;
       if (cancel) cancel(idleId as number);
