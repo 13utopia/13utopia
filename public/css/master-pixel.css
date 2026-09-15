@@ -1623,8 +1623,8 @@ html.pixel-exact body {
     min-height: 0 !important;
     height: auto !important;
     --min-height: 0px !important;
-    padding: calc(var(--pixel-header-h, 64px) + 4px) 16px 0 !important;
-    --padding-top: calc(var(--pixel-header-h, 64px) + 4px) !important;
+    padding: max(108px, calc(var(--pixel-header-h, 64px) + 28px)) 16px 0 !important;
+    --padding-top: max(108px, calc(var(--pixel-header-h, 64px) + 28px)) !important;
     --padding-bottom: 0px !important;
     display: flex !important;
     flex-direction: column !important;
@@ -1695,17 +1695,11 @@ html.pixel-exact body {
     background: #000000 !important;
     overflow: visible !important;
   }
-  html.pixel-exact .elementor-element-7c0e130::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 42%;
-    width: min(88vw, 340px);
-    height: min(46svh, 360px);
-    transform: translate(-50%, -18%);
-    background: radial-gradient(ellipse at 50% 45%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 42%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
+  html.pixel-exact .elementor-element-b23dc44,
+  html.pixel-exact .elementor-element-f61769e,
+  html.pixel-exact .elementor-element-75d3b2a,
+  html.pixel-exact .elementor-element-f0574ce {
+    z-index: 3 !important;
   }
 
   html.pixel-exact .elementor-element-b23dc44 {
@@ -1723,21 +1717,21 @@ html.pixel-exact body {
   html.pixel-exact .elementor-element-dddd85c,
   html.pixel-exact .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
     order: 4 !important;
-    min-height: min(46svh, 380px) !important;
-    max-height: 420px !important;
-    height: min(46svh, 380px) !important;
+    min-height: min(42svh, 340px) !important;
+    max-height: 360px !important;
+    height: min(42svh, 340px) !important;
     background-size: contain !important;
-    background-position: center 8% !important;
+    background-position: center top !important;
     background-repeat: no-repeat !important;
     flex: 0 0 auto !important;
-    margin: -8px auto -18px !important;
+    margin: 8px auto 0 !important;
     width: 100% !important;
     --min-height: 0 !important;
     --margin-top: 0px !important;
     filter: none !important;
     -webkit-mask-image: none !important;
     mask-image: none !important;
-    z-index: 2 !important;
+    z-index: 1 !important;
   }
   html.pixel-exact .elementor-element-dddd85c {
     order: 4 !important;
@@ -1745,14 +1739,14 @@ html.pixel-exact body {
   }
   html.pixel-exact .elementor-element-f0574ce {
     order: 5 !important;
-    margin: 0 0 6px !important;
+    margin: 8px 0 6px !important;
     z-index: 3 !important;
   }
   html.pixel-exact .elementor-element-b23dc44 .elementor-heading-title,
   html.pixel-exact .elementor-element-f61769e .elementor-heading-title {
     font-size: clamp(2.35rem, 11.4vw, 3.15rem) !important;
     font-weight: 700 !important;
-    line-height: 0.88 !important;
+    line-height: 0.98 !important;
     text-align: center !important;
     letter-spacing: -0.04em !important;
     text-transform: uppercase !important;
@@ -1949,37 +1943,6 @@ html.pixel-exact body {
     visibility: visible !important;
   }
   html.pixel-exact .elementor-element-3f51a50 {
-    display: flex !important;
-    --display: flex !important;
-    flex-direction: column !important;
-    --flex-direction: column !important;
-    flex-wrap: nowrap !important;
-    align-items: stretch !important;
-    gap: 12px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    --width: 100% !important;
-    margin: 0 auto 20px !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-  }
-  html.pixel-exact .elementor-element-79b2fcd .elementor-element-02a67ff,
-  html.pixel-exact .elementor-element-3f51a50 > .elementor-hidden-mobile {
-    display: none !important;
-  }
-  html.pixel-exact .elementor-element-79b2fcd .elementor-element-22ec7f0 {
-    display: flex !important;
-    --display: flex !important;
-    flex-direction: column !important;
-    --flex-direction: column !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    --width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  html.pixel-exact .elementor-element-79b2fcd .elementor-element-5adc6a4,
-  html.pixel-exact .elementor-element-79b2fcd .elementor-element-b73823d {
     display: grid !important;
     --display: grid !important;
     grid-template-columns: 1fr 1fr !important;
@@ -1988,36 +1951,41 @@ html.pixel-exact body {
     max-width: 100% !important;
     --width: 100% !important;
     --flex-direction: unset !important;
-    flex: 0 0 auto !important;
-    margin: 0 !important;
+    margin: 0 auto 20px !important;
     padding: 0 !important;
-    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
-  html.pixel-exact .elementor-element-a772474,
-  html.pixel-exact .elementor-element-5034567,
-  html.pixel-exact .elementor-element-72ed7f7,
-  html.pixel-exact .elementor-element-ce4b409 {
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-02a67ff,
+  html.pixel-exact .elementor-element-3f51a50 > .elementor-hidden-mobile {
+    display: none !important;
+  }
+  /* Flatten nested wraps — 200+ is nested inside the 5+ container in the scrape */
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-22ec7f0,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-5adc6a4,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-a772474,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-5034567,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-b73823d,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-72ed7f7,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-ce4b409 {
+    display: contents !important;
+  }
+  html.pixel-exact .elementor-element-cd88ee6,
+  html.pixel-exact .elementor-element-a419fc7,
+  html.pixel-exact .elementor-element-f357726,
+  html.pixel-exact .elementor-element-550296d {
     display: flex !important;
-    --display: flex !important;
     flex-direction: column !important;
-    --flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
     position: relative !important;
     inset: auto !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
     float: none !important;
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
     --width: 100% !important;
-    flex: 0 0 auto !important;
-    --flex-grow: 0 !important;
     --container-widget-width: 100% !important;
-    --container-widget-flex-grow: 0 !important;
     padding: 16px 8px !important;
     box-sizing: border-box !important;
     background: rgba(255, 255, 255, 0.03) !important;
@@ -2026,24 +1994,9 @@ html.pixel-exact body {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
+    animation: none !important;
     min-height: 112px !important;
     overflow: hidden !important;
-  }
-  html.pixel-exact .elementor-element-79b2fcd .elementor-widget-wcf--counter,
-  html.pixel-exact .elementor-element-cd88ee6,
-  html.pixel-exact .elementor-element-a419fc7,
-  html.pixel-exact .elementor-element-f357726,
-  html.pixel-exact .elementor-element-550296d {
-    width: 100% !important;
-    max-width: 100% !important;
-    --container-widget-width: 100% !important;
-    --width: 100% !important;
-    position: relative !important;
-    inset: auto !important;
-    transform: none !important;
-    animation: none !important;
-    opacity: 1 !important;
-    visibility: visible !important;
     z-index: 1 !important;
   }
   html.pixel-exact .elementor-element-79b2fcd .elementor-widget-wcf--counter > .elementor-widget-container {
@@ -2102,7 +2055,7 @@ html.pixel-exact body {
     width: 100% !important;
     max-width: 100% !important;
     --width: 100% !important;
-    grid-column: auto !important;
+    grid-column: 1 / -1 !important;
     margin: 8px auto 0 !important;
     padding: 0 !important;
   }
@@ -2749,15 +2702,48 @@ html.pixel-exact .elementor-element-12416249 .swiper-slide img {
 
 /* Phone homepage — last-win overrides for Elementor --width / overlay rail */
 @media (max-width: 767px) {
+  html.pixel-exact .elementor-16636 .elementor-element-3f51a50 {
+    display: grid !important;
+    --display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+  html.pixel-exact .elementor-16636 .elementor-element-22ec7f0,
+  html.pixel-exact .elementor-16636 .elementor-element-5adc6a4,
   html.pixel-exact .elementor-16636 .elementor-element-a772474,
   html.pixel-exact .elementor-16636 .elementor-element-5034567,
+  html.pixel-exact .elementor-16636 .elementor-element-b73823d,
   html.pixel-exact .elementor-16636 .elementor-element-72ed7f7,
   html.pixel-exact .elementor-16636 .elementor-element-ce4b409 {
-    --width: 100% !important;
-    width: 100% !important;
-    max-width: 100% !important;
+    display: contents !important;
+  }
+  html.pixel-exact .elementor-16636 .elementor-element-b23dc44,
+  html.pixel-exact .elementor-16636 .elementor-element-f61769e,
+  html.pixel-exact .elementor-16636 .elementor-element-75d3b2a,
+  html.pixel-exact .elementor-16636 .elementor-element-f0574ce {
     position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
     transform: none !important;
+    width: 100% !important;
+  }
+  html.pixel-exact .elementor-16636 .elementor-element-dddd85c {
+    margin-top: 10px !important;
+    --margin-top: 10px !important;
+  }
+  html.pixel-exact .elementor-16636 .elementor-element-a1f2f8a {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    --width: 100% !important;
+    max-width: 100% !important;
+  }
+  html.pixel-exact .elementor-16636 .elementor-element-cd88ee6 .count {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+  }
+  html.pixel-exact .elementor-16636 .elementor-element-cd88ee6 .title {
+    width: 100% !important;
   }
   html.pixel-exact .elementor-16636 .elementor-element-b913b7f,
   html.pixel-exact .elementor-16636 .elementor-element-2171108 {
