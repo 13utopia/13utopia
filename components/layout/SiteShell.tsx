@@ -82,7 +82,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     loadScriptVersioned('/js/pixel-lazy-boot.js?v=lazy-4', 'pixel-lazy-boot-v4', [
       'data-pixel-lazy-boot',
     ]);
-    loadScriptVersioned('/js/pixel-sticky-boot.js?v=sticky-pin-13', 'pixel-sticky-boot-v13', [
+    loadScriptVersioned('/js/pixel-sticky-boot.js?v=sticky-pin-14', 'pixel-sticky-boot-v14', [
       'data-pixel-sticky-boot',
     ]);
     loadScriptVersioned('/js/pixel-menu-boot.js?v=menu-5', 'pixel-menu-boot-v5', [

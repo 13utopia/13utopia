@@ -1617,13 +1617,15 @@ html.pixel-exact body {
     max-width: 100% !important;
   }
 
-  /* Home mobile hero — fill first viewport; clients start on next scroll */
+  /* Home mobile hero — stack copy + Zeus + CTAs, no empty viewport stretch */
   html.pixel-exact .elementor-element-7c0e130 {
     overflow: visible !important;
-    min-height: calc(100svh - var(--pixel-header-h, 64px) - 132px) !important;
+    min-height: 0 !important;
     height: auto !important;
-    padding: calc(var(--pixel-header-h, 64px) + 14px) 18px 4px !important;
-    --padding-top: calc(var(--pixel-header-h, 64px) + 14px) !important;
+    --min-height: 0px !important;
+    padding: calc(var(--pixel-header-h, 64px) + 8px) 18px 0 !important;
+    --padding-top: calc(var(--pixel-header-h, 64px) + 8px) !important;
+    --padding-bottom: 0px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
@@ -1691,8 +1693,7 @@ html.pixel-exact body {
   html.pixel-exact .elementor-element-7c0e130 {
     position: relative !important;
     background: #000000 !important;
-    overflow: hidden !important;
-    padding-top: 8px !important;
+    overflow: visible !important;
   }
 
   html.pixel-exact .elementor-element-b23dc44 {
@@ -1710,31 +1711,19 @@ html.pixel-exact body {
   html.pixel-exact .elementor-element-dddd85c,
   html.pixel-exact .elementor-element-dddd85c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
     order: 4 !important;
-    min-height: 250px !important;
-    max-height: 280px !important;
-    height: 260px !important;
+    min-height: min(34svh, 280px) !important;
+    max-height: 300px !important;
+    height: min(34svh, 280px) !important;
     background-size: contain !important;
-    background-position: center center !important;
+    background-position: center top !important;
     background-repeat: no-repeat !important;
-    flex: 1 1 auto !important;
-    margin: 4px auto !important;
+    flex: 0 0 auto !important;
+    margin: 2px auto 0 !important;
     width: 100% !important;
     --min-height: 0 !important;
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9)) !important;
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      #000 0%,
-      #000 75%,
-      rgba(0, 0, 0, 0.6) 90%,
-      transparent 100%
-    ) !important;
-    mask-image: linear-gradient(
-      to bottom,
-      #000 0%,
-      #000 75%,
-      rgba(0, 0, 0, 0.6) 90%,
-      transparent 100%
-    ) !important;
+    filter: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
   }
   html.pixel-exact .elementor-element-dddd85c {
     order: 4 !important;
@@ -1791,8 +1780,13 @@ html.pixel-exact body {
 
   /* Hero CTAs — Clean High-End Original Colors Matching Desktop */
   html.pixel-exact .elementor-element-42cd37c {
+    min-height: 0 !important;
+    height: auto !important;
+    --min-height: 0px !important;
+    padding-top: 8px !important;
     padding-bottom: 16px !important;
-    margin-bottom: 0 !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
   }
   html.pixel-exact .elementor-element-86592fa {
     width: 100% !important;
@@ -1879,6 +1873,176 @@ html.pixel-exact body {
     border-color: #ffffff !important;
     color: #ffffff !important;
     transform: scale(0.985) !important;
+  }
+
+  /* WHO WE ARE — 2x2 counters (Elementor nested columns otherwise stack 5 / 200 then 750 | 108) */
+  html.pixel-exact .elementor-element-79b2fcd {
+    background: #000000 !important;
+    padding: 36px 18px 44px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-a980562 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+  html.pixel-exact .elementor-element-229bd1f,
+  html.pixel-exact .elementor-element-229bd1f .wcf--title,
+  html.pixel-exact .elementor-element-79b2fcd h2.wcf--title {
+    font-size: clamp(2.4rem, 10.5vw, 3.1rem) !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    color: #ffffff !important;
+    letter-spacing: -0.025em !important;
+    margin: 0 auto 10px !important;
+    text-align: center !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-2b7077e,
+  html.pixel-exact .elementor-element-2b7077e p {
+    font-size: clamp(0.92rem, 3.8vw, 1.05rem) !important;
+    line-height: 1.45 !important;
+    color: #d0d0d0 !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-3f51a50 {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px 12px !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 0 auto 28px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-02a67ff,
+  html.pixel-exact .elementor-element-3f51a50 > .elementor-hidden-mobile {
+    display: none !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-22ec7f0,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-5adc6a4,
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-b73823d {
+    display: contents !important;
+  }
+  html.pixel-exact .elementor-element-a772474,
+  html.pixel-exact .elementor-element-5034567,
+  html.pixel-exact .elementor-element-72ed7f7,
+  html.pixel-exact .elementor-element-ce4b409 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 12px 6px !important;
+    box-sizing: border-box !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .wcf--counter {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .wcf--counter .count {
+    font-size: clamp(2.2rem, 9vw, 3rem) !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .wcf--counter-number-suffix {
+    font-size: clamp(1.4rem, 6vw, 2rem) !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin-left: 2px !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .wcf--counter .title {
+    font-size: clamp(0.68rem, 2.8vw, 0.78rem) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    color: #9a9a9a !important;
+    letter-spacing: 0.06em !important;
+    line-height: 1.3 !important;
+    margin-top: 6px !important;
+    text-align: center !important;
+    overflow: hidden !important;
+    max-width: 100% !important;
+  }
+  html.pixel-exact .elementor-element-3f51a50 > .elementor-element-a1f2f8a {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  html.pixel-exact .elementor-element-79b2fcd .elementor-element-a1f2f8a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  html.pixel-exact .elementor-element-016b3ca,
+  html.pixel-exact .elementor-element-016b3ca p {
+    font-size: clamp(0.85rem, 3.5vw, 0.92rem) !important;
+    line-height: 1.6 !important;
+    color: #a0a0a0 !important;
+    text-align: center !important;
+    margin-bottom: 24px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  html.pixel-exact .elementor-element-d9f2b27,
+  html.pixel-exact .elementor-element-d9f2b27 .wc-btn-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  html.pixel-exact .elementor-element-d9f2b27 a,
+  html.pixel-exact .elementor-element-d9f2b27 .wc-btn-primary {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+    padding: 13px 34px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 8px !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    text-decoration: none !important;
   }
 
   /* OUR CLIENTS — kill EVERY grey plate (99ab04e / 371f1f5 + motion layers) */
@@ -2147,10 +2311,13 @@ html.pixel-exact body {
     width: 100% !important;
   }
 
-  /* WhatsApp FAB Ã¢ÂÂ less overlap with clients strip */
+  /* WhatsApp FAB — keep off CTAs on phones */
   html.pixel-exact #ht-ctc-chat {
     bottom: max(20px, env(safe-area-inset-bottom)) !important;
-    right: 14px !important;
+    left: 14px !important;
+    right: auto !important;
+    transform: none !important;
+    transform-origin: bottom left !important;
   }
   html.pixel-exact #ht-ctc-chat img.own-img,
   html.pixel-exact #ht-ctc-chat #style-99 {
