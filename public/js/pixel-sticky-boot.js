@@ -5,8 +5,8 @@
    transform/will-change:transform (see PageEnter / globals.css).
    v8: publish --pixel-header-h from the visible mobile bar so heroes clear it. */
 (function () {
-  if (window.__PIXEL_STICKY_BOOT_V8) return;
-  window.__PIXEL_STICKY_BOOT_V8 = true;
+  if (window.__PIXEL_STICKY_BOOT_V9) return;
+  window.__PIXEL_STICKY_BOOT_V9 = true;
 
   function parseSettings(el) {
     try {
@@ -130,6 +130,23 @@
     document.documentElement.style.setProperty('--pixel-header-h', hh + 'px');
   }
 
+  function killClientsGrey() {
+    document.querySelectorAll('.elementor-element-99ab04e, .elementor-element-371f1f5').forEach(function (el) {
+      el.style.setProperty('background', '#000000', 'important');
+      el.style.setProperty('background-color', '#000000', 'important');
+      el.style.setProperty('background-image', 'none', 'important');
+    });
+    document
+      .querySelectorAll(
+        '.elementor-element-8b1fffb > .elementor-motion-effects-container > .elementor-motion-effects-layer, .elementor-element-81f7890 > .elementor-motion-effects-container > .elementor-motion-effects-layer, .elementor-element-861127f > .elementor-motion-effects-container > .elementor-motion-effects-layer'
+      )
+      .forEach(function (layer) {
+        layer.style.setProperty('background', 'transparent', 'important');
+        layer.style.setProperty('background-color', 'transparent', 'important');
+        layer.style.setProperty('background-image', 'none', 'important');
+      });
+  }
+
   function run() {
     ensureDesktopNav();
     // Clean legacy portal leftovers from older sticky-boot versions
@@ -146,6 +163,7 @@
     if (!headers.length) {
       if (!isDesktop()) {
         publishMobileHeaderHeight();
+        killClientsGrey();
         centerServiceHeroes();
       }
       return;
@@ -166,10 +184,12 @@
       });
       // Measure the compact mobile bar so hero padding clears logo + burger.
       publishMobileHeaderHeight();
+      killClientsGrey();
       centerServiceHeroes();
       return;
     }
     document.documentElement.style.removeProperty('--pixel-header-h');
+    killClientsGrey();
 
     var primary = headers[0];
     var h = Math.max(primary.getBoundingClientRect().height || 0, 100);

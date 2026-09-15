@@ -1734,6 +1734,15 @@ html.pixel-exact body {
     box-shadow: none !important;
     border: 0 !important;
   }
+  /* Solid black — transparent still let #121212 / #1b1b1b plates read as grey */
+  html.pixel-exact .elementor-element-99ab04e,
+  html.pixel-exact .elementor-element-99ab04e.e-con,
+  html.pixel-exact .elementor-element-371f1f5,
+  html.pixel-exact .elementor-element-371f1f5.e-con {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
+  }
   html.pixel-exact .elementor-element-8b1fffb,
   html.pixel-exact .elementor-element-81f7890,
   html.pixel-exact .elementor-element-861127f {
