@@ -1747,6 +1747,14 @@ html.pixel-exact body {
     background-color: #000000 !important;
     background-image: none !important;
   }
+  /* Footer plate #121212 */
+  html.pixel-exact .elementor-element-49f74ea,
+  html.pixel-exact .elementor-element-49f74ea.e-con,
+  html.pixel-exact .elementor-1386 .elementor-element-49f74ea {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
+  }
   html.pixel-exact .elementor-element-8b1fffb,
   html.pixel-exact .elementor-element-81f7890,
   html.pixel-exact .elementor-element-861127f {
