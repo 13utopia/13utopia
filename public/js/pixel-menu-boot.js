@@ -66,11 +66,20 @@
     var toggles = qsa('.elementor-element-9e2c1c7 .elementor-menu-toggle');
     if (!toggles.length) toggles = qsa('.ehf-header .elementor-menu-toggle');
 
+    // One physical panel only — duplicate header widgets must not overwrite
+    // the park placeholder or close leaves an orphan overlay on <body>.
+    var drop = null;
+    for (var i = 0; i < toggles.length; i++) {
+      drop = dropdownFor(toggles[i]);
+      if (drop) break;
+    }
+
     toggles.forEach(function (btn) {
-      var drop = dropdownFor(btn);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.classList.toggle('elementor-active', open);
-      if (!drop) return;
+    });
+
+    if (drop) {
       drop.setAttribute('aria-hidden', open ? 'false' : 'true');
       drop.classList.toggle('elementor-active', open);
       drop.classList.toggle('utopia-nav-open', open);
@@ -80,6 +89,20 @@
       } else {
         applyOpenStyles(drop, false);
         restoreHome(drop);
+      }
+    }
+
+    // Safety: hide any stray reparented panels from a prior buggy open.
+    qsa('body > nav.elementor-nav-menu--dropdown').forEach(function (orphan) {
+      if (open && orphan === drop) return;
+      applyOpenStyles(orphan, false);
+      orphan.classList.remove('elementor-active', 'utopia-nav-open');
+      orphan.setAttribute('aria-hidden', 'true');
+      if (placeholder && placeholder.parentNode) {
+        restoreHome(orphan);
+      } else if (orphan.parentElement === document.body) {
+        orphan.style.cssText =
+          'display:none!important;max-height:0!important;pointer-events:none!important;';
       }
     });
 
