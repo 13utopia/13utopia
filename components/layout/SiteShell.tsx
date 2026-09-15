@@ -8,24 +8,7 @@ import WhatsAppButton from '@/components/layout/WhatsAppButton';
 import SmoothScroll from '@/components/motion/SmoothScroll';
 import TransitionProvider from '@/components/motion/TransitionProvider';
 import { ensurePixelSheets } from '@/lib/ensurePixelSheets';
-
-/** Pixel-exact scrape pages include their own Elementor header/footer. */
-const PIXEL_ROUTES = new Set([
-  '/',
-  '/about-us',
-  '/digital-marketing',
-  '/search-engine-optimization',
-  '/web-development',
-  '/email-marketing',
-  '/cgi-videos',
-  '/online-reputation-management',
-  '/portfolio',
-  '/blog',
-  '/contact-us',
-  '/privacy-policy',
-  '/terms-and-condition',
-  '/refund-and-return',
-]);
+import { isPixelRoute } from '@/lib/routeMode';
 
 const SERVICE_SLIDER_ROUTES = new Set([
   '/digital-marketing',
@@ -90,22 +73,29 @@ function whenIdle(run: () => void, timeoutMs = 1800) {
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() || '/';
-  const usePixelChrome = PIXEL_ROUTES.has(pathname);
+  const usePixelChrome = isPixelRoute(pathname);
 
   useEffect(() => {
     if (!usePixelChrome) return;
     ensurePixelSheets();
 
-    // Above-fold / chrome — keep early
     loadScriptVersioned('/js/pixel-lazy-boot.js?v=lazy-4', 'pixel-lazy-boot-v4', [
       'data-pixel-lazy-boot',
     ]);
     loadScriptOnce('/js/pixel-sticky-boot.js?v=sticky-pin-7', 'pixel-sticky-boot-v7', [
       'data-pixel-sticky-boot',
     ]);
-    loadScriptOnce('/js/pixel-menu-boot.js?v=menu-3', 'pixel-menu-boot-v3', [
+    loadScriptVersioned('/js/pixel-menu-boot.js?v=menu-5', 'pixel-menu-boot-v5', [
       'data-pixel-menu-boot',
     ]);
+    const menuRebind = () => {
+      const w = window as Window & { __PIXEL_MENU_REBIND?: () => void };
+      w.__PIXEL_MENU_REBIND?.();
+    };
+    // Rebind after soft nav so toggles from the new page HTML work immediately.
+    requestAnimationFrame(menuRebind);
+    const menuT = window.setTimeout(menuRebind, 200);
+    const menuT2 = window.setTimeout(menuRebind, 800);
     loadScriptOnce('/js/pixel-swiper-boot.js?v=swiper-4', 'pixel-swiper-boot-v4', [
       'data-pixel-swiper-boot',
     ]);
@@ -116,7 +106,6 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       ]);
     }
 
-    // Below-fold / third-party — after idle so LCP/TBT improve
     const idleId = whenIdle(() => {
       loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-2', 'pixel-ctc-boot-v2', ['data-pixel-ctc-boot'], {
         async: true,
@@ -145,6 +134,8 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
       window.clearTimeout(t3);
+      window.clearTimeout(menuT);
+      window.clearTimeout(menuT2);
       const cancel = (window as Window & { cancelIdleCallback?: (id: number) => void })
         .cancelIdleCallback;
       if (cancel) cancel(idleId as number);
@@ -152,7 +143,6 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     };
   }, [usePixelChrome, pathname]);
 
-  // Prefetch only a few high-traffic routes; skip on slow connections
   useEffect(() => {
     const nav = navigator as Navigator & {
       connection?: { saveData?: boolean; effectiveType?: string };

@@ -12,6 +12,7 @@ import {
 } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { ensurePixelSheets } from '@/lib/ensurePixelSheets';
+import { isPixelRoute } from '@/lib/routeMode';
 import { bindScrollAwaken, choreographPageEnter } from '@/lib/pixelChoreography';
 import {
   HERO_AFTER_REVEAL_MS,
@@ -71,13 +72,25 @@ function stampDesktopNav() {
       nav.classList.remove('mobile-menu-active', 'wcf-nav-is-toggled');
     }
   });
-  document.body.classList.remove('utopia-menu-open');
-  document.documentElement.classList.remove('utopia-menu-open');
-  document.querySelectorAll('.utopia-nav-open, .elementor-menu-toggle.elementor-active').forEach((el) => {
-    el.classList.remove('utopia-nav-open', 'elementor-active');
-    if (el instanceof HTMLElement && el.classList.contains('elementor-menu-toggle')) {
-      el.setAttribute('aria-expanded', 'false');
-    }
+  const w = window as Window & {
+    __PIXEL_MENU_SET_OPEN?: (open: boolean) => void;
+    __PIXEL_MENU_REBIND?: () => void;
+  };
+  if (w.__PIXEL_MENU_SET_OPEN) {
+    w.__PIXEL_MENU_SET_OPEN(false);
+  } else {
+    document.body.classList.remove('utopia-menu-open');
+    document.documentElement.classList.remove('utopia-menu-open');
+    document.querySelectorAll('.utopia-nav-open, .elementor-menu-toggle.elementor-active').forEach((el) => {
+      el.classList.remove('utopia-nav-open', 'elementor-active');
+      if (el instanceof HTMLElement && el.classList.contains('elementor-menu-toggle')) {
+        el.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  // Soft nav replaces header HTML — rebind after paint so the new toggle works.
+  requestAnimationFrame(() => {
+    w.__PIXEL_MENU_REBIND?.();
   });
 }
 
@@ -109,9 +122,9 @@ export default function TransitionProvider({ children }: { children: ReactNode }
   }, []);
 
   useLayoutEffect(() => {
-    ensurePixelSheets();
-    document.documentElement.classList.add('pixel-exact');
-  }, []);
+    if (isPixelRoute(pathname)) ensurePixelSheets();
+    document.documentElement.classList.toggle('pixel-exact', isPixelRoute(pathname));
+  }, [pathname]);
 
   const navigate = useCallback(
     (href: string) => {
@@ -130,7 +143,7 @@ export default function TransitionProvider({ children }: { children: ReactNode }
       if (navigating.current) return;
       navigating.current = true;
 
-      ensurePixelSheets();
+      if (isPixelRoute(targetPath)) ensurePixelSheets();
       document.documentElement.classList.add('pixel-route-exit');
       document.documentElement.classList.remove('pixel-route-enter');
       stampDesktopNav();
@@ -152,7 +165,7 @@ export default function TransitionProvider({ children }: { children: ReactNode }
   useLayoutEffect(() => {
     document.documentElement.classList.remove('pixel-route-exit');
     document.documentElement.classList.add('pixel-route-enter');
-    ensurePixelSheets();
+    if (isPixelRoute(pathname)) ensurePixelSheets();
     setVeil('hold');
     stampDesktopNav();
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
@@ -220,8 +233,9 @@ export default function TransitionProvider({ children }: { children: ReactNode }
     firstPaint.current = false;
 
     const onHome = pathname === '/' || pathname === '';
+    const pixel = isPixelRoute(pathname);
     const holdMs = softFirst ? FIRST_HOLD_MS : ENTER_HOLD_MS;
-    const heroAt = onHome ? holdMs + HERO_AFTER_REVEAL_MS : 0;
+    const heroAt = onHome && pixel ? holdMs + HERO_AFTER_REVEAL_MS : 0;
     const cleanupMs = Math.max(
       softFirst ? FIRST_CLEANUP_MS : ENTER_CLEANUP_MS,
       heroAt ? heroAt + 80 : 0
@@ -230,27 +244,28 @@ export default function TransitionProvider({ children }: { children: ReactNode }
     // Ensure hold sticks even if a child re-render raced
     setVeil('hold');
 
-    // Run stagger UNDER the curtain (content is visibility:hidden on hold).
-    // Home hero titles are excluded — they play after unveil so the user sees them fully.
+    // Elementor stagger only on pixel routes — native pages use their own Reveal motion.
     const tAwaken = window.setTimeout(() => {
-      choreographPageEnter();
-      if (onHome) prepareHomeHeroEntrance();
+      if (pixel) {
+        choreographPageEnter();
+        if (onHome) prepareHomeHeroEntrance();
+      }
     }, 32);
 
     const tHold = window.setTimeout(() => {
       setVeil('reveal');
     }, holdMs);
 
-    // After curtain clears + a short settle beat → full Dynamic / Solutions on screen
-    const tHero = onHome
-      ? window.setTimeout(() => {
-          playHomeHeroEntrance();
-        }, heroAt)
-      : 0;
+    const tHero =
+      onHome && pixel
+        ? window.setTimeout(() => {
+            playHomeHeroEntrance();
+          }, heroAt)
+        : 0;
 
     let unbindScroll = () => {};
     const tScroll = window.setTimeout(() => {
-      unbindScroll = bindScrollAwaken();
+      if (pixel) unbindScroll = bindScrollAwaken();
     }, holdMs + 200);
 
     const t1 = window.setTimeout(rerun, 120);
