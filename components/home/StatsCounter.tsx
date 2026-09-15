@@ -5,10 +5,10 @@ import Image from 'next/image';
 import Reveal from '@/components/ui/Reveal';
 
 const stats = [
-  { value: 5, suffix: '+', label: 'YEARS OF', sub: 'EXPERIENCES' },
+  { value: 5, suffix: '+', label: 'YEARS OF', sub: 'EXPERIENCE' },
   { value: 200, suffix: '+', label: 'HAPPY', sub: 'CUSTOMERS' },
-  { value: 750, suffix: '+', label: 'PROJECT', sub: 'COMPLETED' },
-  { value: 108, suffix: '', label: 'TEAM', sub: 'MEMBER' },
+  { value: 750, suffix: '+', label: 'PROJECTS', sub: 'COMPLETED' },
+  { value: 108, suffix: '', label: 'TEAM', sub: 'MEMBERS' },
 ];
 
 function AnimatedStat({ value, suffix }: { value: number; suffix: string }) {
@@ -71,7 +71,7 @@ export default function StatsCounter() {
             </h2>
 
             <p className="text-white/90 text-sm font-medium leading-relaxed">
-              Have a brilliant idea boost the Growth development Agency your branding!
+              Have a brilliant idea? Boost your brand&apos;s growth with our creative development agency!
             </p>
 
             <p className="text-white/70 text-sm sm:text-base leading-relaxed font-light">

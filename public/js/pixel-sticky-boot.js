@@ -148,7 +148,7 @@
     }
     if (mobile) {
       mobile.innerHTML =
-        '<p><span class="LrzXr">1123, iconic Shyamal Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015</span></p>';
+        '<p><span class="LrzXr">1123, Iconic Shyamal, Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015</span></p>';
     }
   }
 

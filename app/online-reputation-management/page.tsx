@@ -2490,7 +2490,7 @@ Guide Public Perception through Your Brand Story.
 								<li class="elementor-icon-list-item">
 											<a href="/terms-and-condition/">
 
-											<span class="elementor-icon-list-text">Terms and Condition</span>
+											<span class="elementor-icon-list-text">Terms and Conditions</span>
 											</a>
 									</li>
 								<li class="elementor-icon-list-item">
@@ -2590,7 +2590,7 @@ Guide Public Perception through Your Brand Story.
 				</div>
 				<div class="elementor-element elementor-element-ef3e567 elementor-widget__width-initial wcf-starter-animations-none elementor-widget elementor-widget-wcf--text" data-id="ef3e567" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="wcf--text.default">
 				<div class="elementor-widget-container">
-					<div class="wcf--text"><p><span class="LrzXr">1123, iconic Shyamal Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015</span></p></div>				</div>
+					<div class="wcf--text"><p><span class="LrzXr">1123, Iconic Shyamal, Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015</span></p></div>				</div>
 				</div>
 				<div class="elementor-element elementor-element-4f0c2c9e elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="4f0c2c9e" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
@@ -2632,6 +2632,10 @@ Guide Public Perception through Your Brand Story.
 				</div>
 				</div>
 		<div class="elementor-element elementor-element-e34a3a5 e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="e34a3a5" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;}">
+				<div class="elementor-element elementor-element-9adfccc elementor-widget__width-initial wcf-starter-animations-none elementor-widget elementor-widget-wcf--title" data-id="9adfccc" data-element_type="widget" data-e-type="widget" data-widget_type="wcf--title.default">
+				<div class="elementor-widget-container">
+					<h4 class="wcf--title" style="text-align: center">Newsletter</h4>				</div>
+				</div>
 				<div class="elementor-element elementor-element-9adfccc elementor-widget__width-initial wcf-starter-animations-none elementor-widget elementor-widget-wcf--text" data-id="9adfccc" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="wcf--text.default">
 				<div class="elementor-widget-container">
 					<div class="wcf--text"><p style="text-align: center">Digital moves that matter — join the journey.</p></div>				</div>
@@ -2745,7 +2749,7 @@ Guide Public Perception through Your Brand Story.
 		<div class="elementor-element elementor-element-827339d e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="827339d" data-element_type="container" data-e-type="container" data-settings="{&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;}">
 				<div class="elementor-element elementor-element-18bfa81 wcf-starter-animations-none elementor-widget elementor-widget-wcf--title" data-id="18bfa81" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="wcf--title.default">
 				<div class="elementor-widget-container">
-					<h4 class="wcf--title">Newsletter</h4>				</div>
+					<h4 class="wcf--title">Legal</h4>				</div>
 				</div>
 				<div class="elementor-element elementor-element-f301f1b elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="f301f1b" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
@@ -2759,7 +2763,7 @@ Guide Public Perception through Your Brand Story.
 								<li class="elementor-icon-list-item">
 											<a href="/terms-and-condition/">
 
-											<span class="elementor-icon-list-text">Terms and Condition</span>
+											<span class="elementor-icon-list-text">Terms and Conditions</span>
 											</a>
 									</li>
 								<li class="elementor-icon-list-item">

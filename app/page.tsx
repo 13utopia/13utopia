@@ -1099,11 +1099,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<span class="wcf--counter-number-prefix"></span>
 				<span  class="wcf--counter-number" data-duration="2000" data-to-value="5" data-from-value="0" data-delimiter=",">0</span>
 				<span class="wcf--counter-number-suffix">+</span>
-			</div>
-
-			
-							<div class="title">
-					Years Of<br> Experiences				</div>
+									<div class="title">
+					Years Of<br> Experience				</div>
 					</div>
 						</div>
 				</div>
@@ -1127,7 +1124,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				</div>
 		<div class="elementor-element elementor-element-b73823d e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="b73823d" data-element_type="container" data-e-type="container" data-settings="{&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;}">
-		<div class="elementor-element elementor-element-72ed7f7 e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="72ed7f7" data-element_type="container" data-e-type="container" data-settings="{&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;}">
+				<div class="elementor-element elementor-element-72ed7f7 e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="72ed7f7" data-element_type="container" data-e-type="container" data-settings="{&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;}">
 				<div class="elementor-element elementor-element-f357726 elementor-widget__width-inherit wcf-position-column elementor-invisible elementor-widget elementor-widget-wcf--counter" data-id="f357726" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;}" data-widget_type="wcf--counter.default">
 				<div class="elementor-widget-container">
 							<div class="wcf--counter">
@@ -1139,7 +1136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 			
 							<div class="title">
-					Project <br> Completed				</div>
+					Projects <br> Completed				</div>
 					</div>
 						</div>
 				</div>
@@ -1156,7 +1153,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 			
 							<div class="title">
-					Team <br> Member				</div>
+					Team <br> Members				</div>ber				</div>
 					</div>
 						</div>
 				</div>
@@ -1205,7 +1202,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				<div class="elementor-element elementor-element-0d349ae wcf-starter-animations-none elementor-widget elementor-widget-text-editor" data-id="0d349ae" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-									<p>Have a brilliant idea boost the Growth development Agency your branding!</p>								</div>
+									<p>Have a brilliant idea? Boost your brand’s growth with our creative development agency!</p>								</div>
 				</div>
 				</div>
 		<div class="elementor-element elementor-element-dfff290 e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="dfff290" data-element_type="container" data-e-type="container" data-settings="{&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;}">
@@ -1227,7 +1224,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 			
 							<div class="title">
-					Years Of<br> Experiences				</div>
+					Years Of<br> Experience				</div>
 					</div>
 						</div>
 				</div>
@@ -1261,7 +1258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 			
 							<div class="title">
-					Project <br> Completed				</div>
+					Projects <br> Completed				</div>
 					</div>
 						</div>
 				</div>
@@ -1278,7 +1275,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 			
 							<div class="title">
-					Team <br> Member				</div>
+					Team <br> Members				</div>
 					</div>
 						</div>
 				</div>
@@ -1314,7 +1311,7 @@ SEARCH ENGINE OPTIMIZATION</a></h2>				</div>
 		<div class="elementor-element elementor-element-aac43e5 e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="aac43e5" data-element_type="container" data-e-type="container" data-settings="{&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;}">
 				<div class="elementor-element elementor-element-9650e77 wcf-starter-animations-none elementor-widget elementor-widget-text-editor" data-id="9650e77" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-									<p>SEO OR Search Engine Optimization is the process of enhancing a website position in Google rankings.</p>								</div>
+									<p>Search Engine Optimization (SEO) is the process of enhancing a website position in Google search rankings.</p>								</div>
 				</div>
 				</div>
 				</div>
@@ -1683,7 +1680,7 @@ SEARCH ENGINE OPTIMIZATION</a></h2>				</div>
 				</div>
 				<div class="elementor-element elementor-element-ef3e567 elementor-widget__width-initial wcf-starter-animations-none elementor-widget elementor-widget-wcf--text" data-id="ef3e567" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="wcf--text.default">
 				<div class="elementor-widget-container">
-					<div class="wcf--text"><p><span class="LrzXr">1123, iconic Shyamal Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015</span></p></div>				</div>
+					<div class="wcf--text"><p><span class="LrzXr">1123, Iconic Shyamal, Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015</span></p></div>				</div>
 				</div>
 				<div class="elementor-element elementor-element-4f0c2c9e elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="4f0c2c9e" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
@@ -1725,6 +1722,10 @@ SEARCH ENGINE OPTIMIZATION</a></h2>				</div>
 				</div>
 				</div>
 		<div class="elementor-element elementor-element-e34a3a5 e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="e34a3a5" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;}">
+				<div class="elementor-element elementor-element-9adfccc elementor-widget__width-initial wcf-starter-animations-none elementor-widget elementor-widget-wcf--title" data-id="9adfccc" data-element_type="widget" data-e-type="widget" data-widget_type="wcf--title.default">
+				<div class="elementor-widget-container">
+					<h4 class="wcf--title" style="text-align: center">Newsletter</h4>				</div>
+				</div>
 				<div class="elementor-element elementor-element-9adfccc elementor-widget__width-initial wcf-starter-animations-none elementor-widget elementor-widget-wcf--text" data-id="9adfccc" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="wcf--text.default">
 				<div class="elementor-widget-container">
 					<div class="wcf--text"><p style="text-align: center">Digital moves that matter — join the journey.</p></div>				</div>
@@ -1838,7 +1839,7 @@ SEARCH ENGINE OPTIMIZATION</a></h2>				</div>
 		<div class="elementor-element elementor-element-827339d e-con-full e-flex wcf-starter-animations-none e-con e-child" data-id="827339d" data-element_type="container" data-e-type="container" data-settings="{&quot;wcf_enable_cursor_hover_effect_text&quot;:&quot;View&quot;}">
 				<div class="elementor-element elementor-element-18bfa81 wcf-starter-animations-none elementor-widget elementor-widget-wcf--title" data-id="18bfa81" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="wcf--title.default">
 				<div class="elementor-widget-container">
-					<h4 class="wcf--title">Newsletter</h4>				</div>
+					<h4 class="wcf--title">Legal</h4>				</div>
 				</div>
 				<div class="elementor-element elementor-element-f301f1b elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="f301f1b" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
@@ -1852,7 +1853,7 @@ SEARCH ENGINE OPTIMIZATION</a></h2>				</div>
 								<li class="elementor-icon-list-item">
 											<a href="/terms-and-condition/">
 
-											<span class="elementor-icon-list-text">Terms and Condition</span>
+											<span class="elementor-icon-list-text">Terms and Conditions</span>
 											</a>
 									</li>
 								<li class="elementor-icon-list-item">
