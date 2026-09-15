@@ -1099,7 +1099,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<span class="wcf--counter-number-prefix"></span>
 				<span  class="wcf--counter-number" data-duration="2000" data-to-value="5" data-from-value="0" data-delimiter=",">0</span>
 				<span class="wcf--counter-number-suffix">+</span>
-									<div class="title">
+			</div>
+							<div class="title">
 					Years Of<br> Experience				</div>
 					</div>
 						</div>
@@ -1153,9 +1154,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 			
 							<div class="title">
-					Team <br> Members				</div>ber				</div>
+					Team <br> Members				</div>
 					</div>
 						</div>
+				</div>
 				</div>
 				</div>
 				</div>

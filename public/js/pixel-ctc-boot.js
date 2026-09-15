@@ -49,6 +49,8 @@
       chat.style.setProperty('left', '14px', 'important');
       chat.style.setProperty('right', 'auto', 'important');
       chat.style.setProperty('bottom', '18px', 'important');
+      chat.style.setProperty('transform', 'none', 'important');
+      chat.style.setProperty('transform-origin', 'bottom left', 'important');
     } else {
       chat.style.removeProperty('left');
       chat.style.setProperty('bottom', '50px', 'important');

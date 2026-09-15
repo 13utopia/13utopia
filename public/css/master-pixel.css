@@ -2170,6 +2170,13 @@ html.pixel-exact body {
     line-height: 1.3 !important;
     margin-top: 6px !important;
     text-align: center !important;
+    overflow: hidden !important;
+    max-width: 100% !important;
+  }
+  html.pixel-exact .elementor-element-3f51a50 > .elementor-element-a1f2f8a {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   /* Description and About Us button */
   html.pixel-exact .elementor-element-79b2fcd .elementor-element-a1f2f8a {
@@ -2483,10 +2490,13 @@ html.pixel-exact body {
     width: 100% !important;
   }
 
-  /* WhatsApp FAB Ã¢ÂÂ less overlap with clients strip */
+  /* WhatsApp FAB — keep off CTAs on phones */
   html.pixel-exact #ht-ctc-chat {
     bottom: max(20px, env(safe-area-inset-bottom)) !important;
-    right: 14px !important;
+    left: 14px !important;
+    right: auto !important;
+    transform: none !important;
+    transform-origin: bottom left !important;
   }
   html.pixel-exact #ht-ctc-chat img.own-img,
   html.pixel-exact #ht-ctc-chat #style-99 {
@@ -2767,14 +2777,14 @@ html.pixel-exact .elementor-element-12416249 .swiper-slide img {
     margin-left: auto !important;
     margin-right: auto !important;
     background-size: contain !important;
-    background-position: 50% 100% !important;
+    background-position: 50% 12% !important;
     background-repeat: no-repeat !important;
     -webkit-mask-image: none !important;
     mask-image: none !important;
     filter: none !important;
-    min-height: min(42svh, 340px) !important;
-    height: min(42svh, 340px) !important;
-    max-height: 46svh !important;
+    min-height: min(38svh, 320px) !important;
+    height: min(38svh, 320px) !important;
+    max-height: 40svh !important;
   }
   html.pixel-exact .elementor-element-f0574ce {
     margin-top: 8px !important;
@@ -2804,10 +2814,36 @@ html.pixel-exact .elementor-element-12416249 .swiper-slide img {
     max-height: min(58svh, 460px) !important;
   }
 
+  html.pixel-exact .elementor-element-8b1fffb,
+  html.pixel-exact .elementor-element-8b1fffb.e-con {
+    min-height: 0 !important;
+    height: auto !important;
+    flex: 0 0 auto !important;
+    padding-top: 8px !important;
+    padding-bottom: 0 !important;
+    --padding-top: 8px !important;
+    --padding-bottom: 0px !important;
+  }
+  html.pixel-exact .elementor-element-99ab04e,
+  html.pixel-exact .elementor-element-99ab04e.e-con,
+  html.pixel-exact .elementor-element-d8485bf,
+  html.pixel-exact .elementor-element-b913b7f,
+  html.pixel-exact .elementor-element-371f1f5 {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    padding-bottom: 8px !important;
+    --padding-top: 0px !important;
+    --padding-bottom: 8px !important;
+    --min-height: 0px !important;
+  }
   html.pixel-exact .wcf--brand-slider-wrapper,
   html.pixel-exact .wcf--brand-slider-wrapper .swiper {
     overflow: hidden !important;
     width: 100% !important;
+    min-height: 52px !important;
+    max-height: 64px !important;
+    height: 56px !important;
   }
   html.pixel-exact .wcf--brand-slider-wrapper .swiper-slide {
     display: flex !important;

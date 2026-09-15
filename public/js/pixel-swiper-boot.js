@@ -133,8 +133,8 @@
         waitForTransition: true,
       },
       breakpoints: {
-        0: { slidesPerView: 3.4, spaceBetween: 12 },
-        400: { slidesPerView: 3.6, spaceBetween: 14 },
+        0: { slidesPerView: 3.8, spaceBetween: 10 },
+        400: { slidesPerView: 4, spaceBetween: 12 },
         640: { slidesPerView: 3.2, spaceBetween: 32 },
         880: { slidesPerView: 4, spaceBetween: 36 },
         1024: { slidesPerView: 4.5, spaceBetween: 40 },
@@ -154,8 +154,9 @@
     if (!inst || !inst.params) return true;
     var spv = Number(inst.params.slidesPerView);
     if (!(spv >= 2)) return true;
+    if (isPhone() && spv < 3.2) return true;
     var space = Number(inst.params.spaceBetween);
-    if (window.innerWidth < 768 && space > 45) return true;
+    if (window.innerWidth < 768 && space > 24) return true;
     if (Number(inst.params.speed) < 3000) return true;
     if (isPhone() && inst.autoplay && inst.autoplay.running && root && root.getAttribute('data-pixel-brand-ok') === '5') {
       return false;
@@ -207,9 +208,8 @@
       ensureAutoplay(target);
       if (isPhone()) {
         try {
-          var inst = target.swiper || target.__pixelSwiper;
-          if (inst && typeof inst.slideToLoop === 'function') inst.slideToLoop(0, 0, false);
-          else if (inst) inst.slideTo(0, 0);
+          var instPhone = target.swiper || target.__pixelSwiper;
+          if (instPhone && typeof instPhone.update === 'function') instPhone.update();
         } catch (eSnap) {}
       }
       target.setAttribute('data-pixel-brand-ok', '5');
