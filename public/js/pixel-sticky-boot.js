@@ -161,7 +161,7 @@
 
     var phoneText = isCa ? '+1 437-603-9004' : '+91 9924131397';
     var phoneRaw = isCa ? '+14376039004' : '+919924131397';
-    var emailText = isCa ? 'info@13utopia.ca' : 'info@13utopia.com';
+    var emailText = 'info@13utopia.com';
 
     document.querySelectorAll('.elementor-element-4f0c2c9e .elementor-icon-list-text, .elementor-element-687b393 .elementor-icon-list-text').forEach(function (el) {
       el.textContent = phoneText;

@@ -74,8 +74,7 @@ export async function POST(req: Request) {
 
     const host = (req.headers.get('host') || '').toLowerCase();
     const isCa = host.endsWith('.ca');
-    const defaultTo = isCa ? 'info@13utopia.ca' : 'info@13utopia.com';
-    const to = (isCa ? process.env.CONTACT_TO_EMAIL_CA : process.env.CONTACT_TO_EMAIL_COM) || process.env.CONTACT_TO_EMAIL || defaultTo;
+    const to = process.env.CONTACT_TO_EMAIL || 'info@13utopia.com';
     const from = process.env.CONTACT_FROM_EMAIL || 'onboarding@resend.dev';
     const apiKey = process.env.RESEND_API_KEY;
 

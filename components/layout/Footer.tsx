@@ -154,8 +154,8 @@ export default function Footer() {
                     </a>
                   </p>
                   <p>
-                    <a href="mailto:info@13utopia.ca" className="hover:text-white transition-colors">
-                      info@13utopia.ca
+                    <a href="mailto:info@13utopia.com" className="hover:text-white transition-colors">
+                      info@13utopia.com
                     </a>
                   </p>
                 </>
