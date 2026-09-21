@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_IN',
+    locale: 'en_CA',
     url: SITE_URL,
     siteName: SITE_NAME,
     title: `${home.title} | ${SITE_NAME}`,
@@ -123,10 +123,10 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
   },
   other: {
-    'geo.region': 'IN-GJ',
-    'geo.placename': 'Ahmedabad',
-    'geo.position': '23.0225;72.5714',
-    ICBM: '23.0225, 72.5714',
+    'geo.region': 'CA-ON',
+    'geo.placename': 'Scarborough, Toronto',
+    'geo.position': '43.7915;-79.2427',
+    ICBM: '43.7915, -79.2427',
   },
 };
 
@@ -137,7 +137,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en-IN"
+      lang="en-CA"
       suppressHydrationWarning
       className={`${roboto.variable} ${teko.variable} ${titan.variable} ${kanit.variable} pixel-exact`}
     >

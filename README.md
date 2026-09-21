@@ -1,6 +1,6 @@
 # 13 UTOPiA
 
-Production Next.js site for [13utopia.com](https://13utopia.com) — digital marketing, SEO, web development, CGI video, ORM, and email marketing agency in Ahmedabad, India.
+Production Next.js site for [13utopia.ca](https://13utopia.ca) — digital marketing, SEO, web development, CGI video, ORM, and email marketing agency in Toronto, Canada.
 
 ## Repository
 
@@ -29,9 +29,9 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Variable | Required | Purpose |
 |----------|----------|---------|
-| `NEXT_PUBLIC_SITE_URL` | Yes (prod) | Canonical site URL (`https://13utopia.com`) |
+| `NEXT_PUBLIC_SITE_URL` | Yes (prod) | Canonical site URL (`https://13utopia.ca`) |
 | `RESEND_API_KEY` | Yes (prod forms) | Send contact / newsletter email |
-| `CONTACT_TO_EMAIL` | Optional | Inbox for leads (default `info@13utopia.com`) |
+| `CONTACT_TO_EMAIL` | Optional | Inbox for leads (default `info@13utopia.ca`) |
 | `CONTACT_FROM_EMAIL` | Yes (prod) | Verified Resend from-address |
 
 ## Scripts
@@ -61,7 +61,7 @@ docs/CUTOVER.md      DNS + go-live checklist
 - Organization + LocalBusiness + Service JSON-LD (`lib/schema.ts`)
 - `sitemap.xml`, `robots.txt` (incl. major AI crawlers), `manifest.webmanifest`
 - `llms.txt` + `llms-full.txt` for answer-engine discovery
-- Canonical URLs, Open Graph, Twitter cards, `en-IN` locale, geo meta
+- Canonical URLs, Open Graph, Twitter cards, `en-CA` locale, geo meta
 
 ## Deploy (Vercel)
 

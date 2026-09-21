@@ -57,6 +57,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: '13utopia.ca',
+      },
+      {
+        protocol: 'https',
         hostname: '*.wp.com',
       },
     ],

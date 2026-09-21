@@ -72,7 +72,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Message is too short or too long.' }, { status: 400 });
     }
 
-    const to = process.env.CONTACT_TO_EMAIL || 'info@13utopia.com';
+    const to = process.env.CONTACT_TO_EMAIL || 'info@13utopia.ca';
     const from = process.env.CONTACT_FROM_EMAIL || 'onboarding@resend.dev';
     const apiKey = process.env.RESEND_API_KEY;
 

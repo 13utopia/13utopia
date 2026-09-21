@@ -6,12 +6,12 @@ export default function manifest(): MetadataRoute.Manifest {
     name: SITE_NAME,
     short_name: '13UTOPiA',
     description:
-      'Digital marketing, SEO, web development, CGI, ORM, and email marketing agency in Ahmedabad.',
+      'Digital marketing, SEO, web development, CGI, ORM, and email marketing agency in Canada.',
     start_url: '/',
     display: 'standalone',
     background_color: '#000000',
     theme_color: '#000000',
-    lang: 'en-IN',
+    lang: 'en-CA',
     icons: [
       {
         src: '/wp-content/uploads/2025/11/cropped-13-1-192x192.png',

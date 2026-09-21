@@ -134,7 +134,6 @@
   }
 
   function syncFooterAddress() {
-    // Mobile footer uses Ashram; desktop uses Shyamal — keep them identical.
     var desktop = document.querySelector('.elementor-element-ef3e567 .wcf--text');
     var mobile = document.querySelector('.elementor-element-53ba325 .wcf--text');
     if (mobile && desktop && desktop.innerHTML) {
@@ -143,7 +142,7 @@
     }
     if (mobile) {
       mobile.innerHTML =
-        '<p><span class="LrzXr">1123, Iconic Shyamal, Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015</span></p>';
+        '<p><span class="LrzXr">30 Kimbercroft Ct, Scarborough, ON M1S 4K9, Canada (Markham Corners)</span></p>';
     }
   }
 

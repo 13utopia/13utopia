@@ -120,7 +120,7 @@ export default function MobileMenu({ isOpen, onClose, services }: MobileMenuProp
           </div>
           <div className="flex items-center gap-2">
             <Phone className="w-3.5 h-3.5 text-[#C8F31D]" />
-            <a href="tel:+918469999013" className="hover:text-white">+91 84699 99013</a>
+            <a href="tel:+14376039004" className="hover:text-white">+1 437-603-9004</a>
           </div>
         </div>
 

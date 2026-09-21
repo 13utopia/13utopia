@@ -35,7 +35,7 @@ export function usePageTransition() {
 function normalizePath(path: string) {
   if (!path) return '/';
   try {
-    const u = new URL(path, typeof window !== 'undefined' ? window.location.origin : 'https://13utopia.com');
+    const u = new URL(path, typeof window !== 'undefined' ? window.location.origin : 'https://13utopia.ca');
     const p = u.pathname.replace(/\/+$/, '') || '/';
     return p + u.search + u.hash;
   } catch {
@@ -331,9 +331,9 @@ export default function TransitionProvider({ children }: { children: ReactNode }
           <div className="pixel-route-veil-sign">
             <span className="pixel-route-veil-rule" aria-hidden="true" />
             <p className="pixel-route-veil-tagline">
-              <span>be unreal</span>
+              <span>Be Unreal</span>
               <span className="pixel-route-veil-dot" aria-hidden="true" />
-              <span>be unreasonable</span>
+              <span>Be Unreasonable</span>
             </p>
           </div>
         </div>

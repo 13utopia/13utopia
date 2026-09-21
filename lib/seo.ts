@@ -1,28 +1,20 @@
 import type { Metadata } from 'next';
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://13utopia.com';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://13utopia.ca';
 export const SITE_NAME = '13 UTOPiA';
 export const SITE_LEGAL = '13 Utopia';
 
 export const NAP = {
-  phoneDisplay: '+91 99241 31397',
-  phoneE164: '+919924131397',
+  phoneDisplay: '+1 437-603-9004',
+  phoneE164: '+14376039004',
   email: 'info@13utopia.com',
   addresses: [
     {
-      streetAddress:
-        '1123, Iconic Shyamal, Shyamal Cross Roads, 132 Feet Ring Rd, Nehru Nagar, Shyamal',
-      addressLocality: 'Ahmedabad',
-      addressRegion: 'Gujarat',
-      postalCode: '380015',
-      addressCountry: 'IN',
-    },
-    {
-      streetAddress: '405- Ashram Avenue, Paldi Cross Road, Paldi',
-      addressLocality: 'Ahmedabad',
-      addressRegion: 'Gujarat',
-      postalCode: '380007',
-      addressCountry: 'IN',
+      streetAddress: '30 Kimbercroft Ct, Markham Corners',
+      addressLocality: 'Scarborough',
+      addressRegion: 'Ontario',
+      postalCode: 'M1S 4K9',
+      addressCountry: 'CA',
     },
   ],
 } as const;
@@ -50,43 +42,43 @@ export type PageSeo = {
 export const PAGE_SEO: Record<string, PageSeo> = {
   '/': {
     path: '/',
-    title: 'Digital Marketing, SEO & Web Development Agency in Ahmedabad',
+    title: 'Digital Marketing, SEO & Web Development Agency in Toronto, Canada',
     description:
-      '13 UTOPiA is an Ahmedabad digital marketing agency delivering SEO, paid ads, web development, CGI video, ORM, and email marketing that grow measurable revenue.',
+      '13 UTOPiA is a Canadian digital marketing agency delivering SEO, paid ads, web development, CGI video, ORM, and email marketing that grow measurable revenue.',
     answer:
-      '13 UTOPiA is a digital marketing and web development agency in Ahmedabad, India, offering SEO, performance marketing, custom websites, CGI advertising videos, online reputation management, and email campaigns.',
+      '13 UTOPiA is a digital marketing and web development agency located in Scarborough (Toronto), Ontario, Canada, offering SEO, performance marketing, custom websites, CGI advertising videos, online reputation management, and email campaigns.',
   },
   '/about-us': {
     path: '/about-us',
-    title: 'About 13 UTOPiA — Digital Marketing Agency in Ahmedabad',
+    title: 'About 13 UTOPiA — Digital Marketing Agency in Canada',
     description:
-      'Meet 13 UTOPiA: an Ahmedabad-based team of strategists, designers, and engineers building SEO, ads, websites, and CGI that elevate brands across India.',
+      'Meet 13 UTOPiA: a Toronto-based team of strategists, designers, and engineers building SEO, ads, websites, and CGI that elevate brands across Canada.',
     answer:
-      '13 UTOPiA is a full-service digital agency based in Ahmedabad, Gujarat, with multi-year experience delivering SEO, digital marketing, web development, and creative production for businesses across India.',
+      '13 UTOPiA is a full-service digital agency based in Scarborough, Ontario, Canada, delivering SEO, digital marketing, web development, and creative production for businesses across Canada.',
   },
   '/search-engine-optimization': {
     path: '/search-engine-optimization',
-    title: 'SEO Company in Ahmedabad — Rank Higher with Proven SEO',
+    title: 'SEO Company in Toronto, Canada — Rank Higher with Proven SEO',
     description:
-      'Technical SEO, content strategy, and link authority from 13 UTOPiA — an SEO company in Ahmedabad helping brands win high-intent Google traffic and conversions.',
+      'Technical SEO, content strategy, and link authority from 13 UTOPiA — an SEO company in Canada helping brands win high-intent Google traffic and conversions.',
     answer:
-      '13 UTOPiA provides search engine optimization in Ahmedabad covering keyword research, on-page SEO, technical audits, content, and authority building to improve organic rankings and qualified traffic.',
+      '13 UTOPiA provides search engine optimization in Canada covering keyword research, on-page SEO, technical audits, content, and authority building to improve organic rankings and qualified traffic.',
   },
   '/digital-marketing': {
     path: '/digital-marketing',
-    title: 'Digital Marketing Agency in Ahmedabad — Ads That Convert',
+    title: 'Digital Marketing Agency in Toronto, Canada — Ads That Convert',
     description:
-      'Full-funnel digital marketing in Ahmedabad: Google Ads, Meta ads, analytics, and creative testing from 13 UTOPiA to scale leads and sales efficiently.',
+      'Full-funnel digital marketing in Canada: Google Ads, Meta ads, analytics, and creative testing from 13 UTOPiA to scale leads and sales efficiently.',
     answer:
-      '13 UTOPiA runs digital marketing campaigns in Ahmedabad including paid search, social ads, funnel creative, and conversion tracking so brands acquire customers with measurable ROI.',
+      '13 UTOPiA runs digital marketing campaigns in Canada including paid search, social ads, funnel creative, and conversion tracking so brands acquire customers with measurable ROI.',
   },
   '/web-development': {
     path: '/web-development',
-    title: 'Web Development Company in Ahmedabad — Fast Conversion Sites',
+    title: 'Web Development Company in Toronto, Canada — Fast Conversion Sites',
     description:
-      'Custom, fast, SEO-ready websites and web apps from 13 UTOPiA in Ahmedabad — built for performance, accessibility, and conversion.',
+      'Custom, fast, SEO-ready websites and web apps from 13 UTOPiA in Canada — built for performance, accessibility, and conversion.',
     answer:
-      '13 UTOPiA designs and develops high-performance websites in Ahmedabad with responsive UX, SEO architecture, and conversion-focused page structure for businesses that need to grow online.',
+      '13 UTOPiA designs and develops high-performance websites in Canada with responsive UX, SEO architecture, and conversion-focused page structure for businesses that need to grow online.',
   },
   '/cgi-videos': {
     path: '/cgi-videos',
@@ -98,11 +90,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
   '/online-reputation-management': {
     path: '/online-reputation-management',
-    title: 'Online Reputation Management (ORM) Services in Ahmedabad',
+    title: 'Online Reputation Management (ORM) Services in Canada',
     description:
       'Protect and improve your brand’s search reputation with 13 UTOPiA ORM — monitoring, review strategy, content defense, and crisis response.',
     answer:
-      '13 UTOPiA offers online reputation management in Ahmedabad to monitor brand mentions, strengthen positive SERP presence, and respond to negative feedback with structured PR and content tactics.',
+      '13 UTOPiA offers online reputation management in Canada to monitor brand mentions, strengthen positive SERP presence, and respond to negative feedback with structured PR and content tactics.',
   },
   '/email-marketing': {
     path: '/email-marketing',
@@ -124,7 +116,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     path: '/blog',
     title: 'Blog — SEO, Marketing & Growth Insights from 13 UTOPiA',
     description:
-      'Practical articles on SEO, digital marketing, web performance, and brand growth from the 13 UTOPiA team in Ahmedabad.',
+      'Practical articles on SEO, digital marketing, web performance, and brand growth from the 13 UTOPiA team in Canada.',
     answer:
       'The 13 UTOPiA blog publishes actionable guidance on SEO, digital marketing, reputation, and web strategy for business owners and marketers.',
   },
@@ -132,19 +124,19 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     path: '/contact-us',
     title: 'Contact 13 UTOPiA — Start Your Growth Project',
     description:
-      'Talk to 13 UTOPiA in Ahmedabad about SEO, ads, websites, CGI, or ORM. Call +91 99241 31397 or email info@13utopia.com.',
+      'Talk to 13 UTOPiA in Canada about SEO, ads, websites, CGI, or ORM. Call +1 437-603-9004 or email info@13utopia.com.',
     answer:
-      'Contact 13 UTOPiA at +91 99241 31397 or info@13utopia.com, or visit offices in Shyamal and Paldi, Ahmedabad, to discuss digital marketing and web projects.',
+      'Contact 13 UTOPiA at +1 437-603-9004 or info@13utopia.com, or visit our office at Markham Corners in Scarborough, ON, Canada, to discuss digital marketing and web projects.',
   },
   '/privacy-policy': {
     path: '/privacy-policy',
     title: 'Privacy Policy',
-    description: 'How 13 UTOPiA collects, uses, and protects personal information on 13utopia.com.',
+    description: 'How 13 UTOPiA collects, uses, and protects personal information on 13utopia.ca.',
   },
   '/terms-and-condition': {
     path: '/terms-and-condition',
     title: 'Terms and Conditions',
-    description: 'Terms governing use of 13utopia.com and services provided by 13 UTOPiA.',
+    description: 'Terms governing use of 13utopia.ca and services provided by 13 UTOPiA.',
   },
   '/refund-and-return': {
     path: '/refund-and-return',
@@ -169,7 +161,7 @@ export function buildPageMetadata(path: string): Metadata {
     alternates: { canonical: page.path },
     openGraph: {
       type: page.type === 'article' ? 'article' : 'website',
-      locale: 'en_IN',
+      locale: 'en_CA',
       url,
       siteName: SITE_NAME,
       title: `${page.title} | ${SITE_NAME}`,

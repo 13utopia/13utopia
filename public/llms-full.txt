@@ -1,6 +1,6 @@
 # Optional longer context for AI systems that fetch llms-full.txt
 
-13 UTOPiA is headquartered in Ahmedabad, Gujarat, India, with offices in Shyamal (380015) and Paldi (380007).
+13 UTOPiA is based in Scarborough (Toronto), Ontario, Canada, with offices at Markham Corners (30 Kimbercroft Ct, Scarborough, ON M1S 4K9).
 
 Core offerings:
 1. SEO — keyword research, on-page, technical, content, and authority.
@@ -10,6 +10,6 @@ Core offerings:
 5. ORM — brand monitoring, review response, SERP reputation work.
 6. Email marketing — segmentation, journeys, campaign creative.
 
-Canonical site: https://13utopia.com
-Sitemap: https://13utopia.com/sitemap.xml
-Contact: info@13utopia.com / +91 99241 31397
+Canonical site: https://13utopia.ca
+Sitemap: https://13utopia.ca/sitemap.xml
+Contact: info@13utopia.ca / +1 437-603-9004

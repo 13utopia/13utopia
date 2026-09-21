@@ -137,19 +137,16 @@ export default function Footer() {
             </h4>
             <div className="space-y-2.5 text-xs text-white/60 leading-relaxed font-light">
               <p>
-                1123, Iconic Shyamal, Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015
-              </p>
-              <p>
-                405- Ashram Avenue, Paldi Cross Road, Paldi, Ahmedabad – 380007
+                30 Kimbercroft Ct, Scarborough, ON M1S 4K9, Canada (Markham Corners)
               </p>
               <p className="pt-1">
-                <a href="tel:+919924131397" className="hover:text-white transition-colors">
-                  +91 9924131397
+                <a href="tel:+14376039004" className="hover:text-white transition-colors">
+                  +1 437-603-9004
                 </a>
               </p>
               <p>
-                <a href="mailto:info@13utopia.com" className="hover:text-white transition-colors">
-                  info@13utopia.com
+                <a href="mailto:info@13utopia.ca" className="hover:text-white transition-colors">
+                  info@13utopia.ca
                 </a>
               </p>
             </div>

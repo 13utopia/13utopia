@@ -1869,7 +1869,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<svg aria-hidden="true" class="e-font-icon-svg e-fab-instagram" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>					</a>
 				</span>
 							<span class="elementor-grid-item" role="listitem">
-					<a class="elementor-icon elementor-social-icon elementor-social-icon-whatsapp elementor-animation-grow elementor-repeater-item-9799ce0" href="tel:9924131397" target="_blank">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-whatsapp elementor-animation-grow elementor-repeater-item-9799ce0" href="tel:+14376039004" target="_blank">
 						<span class="elementor-screen-only">Whatsapp</span>
 						<svg aria-hidden="true" class="e-font-icon-svg e-fab-whatsapp" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>					</a>
 				</span>
@@ -1890,7 +1890,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				<div class="elementor-element elementor-element-ac7b969 wcf-starter-animations-none elementor-widget elementor-widget-text-editor" data-id="ac7b969" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-									<p>At 13 Utopia, we value the trust you place in us and are committed to delivering exceptional digital services including digital marketing, SEO, web development, CGI video production, online reputation management, and email marketing. We understand that the nature of custom digital work can sometimes lead to questions about refunds or revisions, and we handle each situation with care and consideration.</p><p>Our approach is centered on open communication and ensuring your satisfaction throughout the project. If you have concerns about the services provided, we encourage you to contact us as soon as possible. We assess each request individually, taking into account the scope of work, the stage of the project, and any feedback you have shared during the process. If a refund is deemed appropriate under our internal guidelines—which may include adjustments based on work already completed or expenses incurred—your refund will be processed and a credit will automatically be applied to your original method of payment within 7-10 business days.</p><p>Because many of our services involve substantial customization and are delivered upon completion, once you have approved the final work, refunds or returns may not be available. Our goal is to address any issues promptly and to work with you to find a solution that aligns with your expectations while maintaining the integrity of the creative process.</p><p>If you need further clarification or wish to discuss any concerns regarding our refund and return practices, please feel free to reach out to us at <a href="mailto:info@13utopia.Com"><span class="elementor-icon-list-text">info@13utopia.com</span></a> or Message us at +91 9924131397. We are here to support you and ensure that your experience with 13 Utopia is both positive and productive.</p>								</div>
+									<p>At 13 Utopia, we value the trust you place in us and are committed to delivering exceptional digital services including digital marketing, SEO, web development, CGI video production, online reputation management, and email marketing. We understand that the nature of custom digital work can sometimes lead to questions about refunds or revisions, and we handle each situation with care and consideration.</p><p>Our approach is centered on open communication and ensuring your satisfaction throughout the project. If you have concerns about the services provided, we encourage you to contact us as soon as possible. We assess each request individually, taking into account the scope of work, the stage of the project, and any feedback you have shared during the process. If a refund is deemed appropriate under our internal guidelines—which may include adjustments based on work already completed or expenses incurred—your refund will be processed and a credit will automatically be applied to your original method of payment within 7-10 business days.</p><p>Because many of our services involve substantial customization and are delivered upon completion, once you have approved the final work, refunds or returns may not be available. Our goal is to address any issues promptly and to work with you to find a solution that aligns with your expectations while maintaining the integrity of the creative process.</p><p>If you need further clarification or wish to discuss any concerns regarding our refund and return practices, please feel free to reach out to us at <a href="mailto:info@13utopia.ca"><span class="elementor-icon-list-text">info@13utopia.ca</span></a> or Message us at +1 437-603-9004. We are here to support you and ensure that your experience with 13 Utopia is both positive and productive.</p>								</div>
 				</div>
 				</div>
 				</div>
@@ -1935,7 +1935,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<svg class="e-font-icon-svg e-fab-linkedin" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>						</a>
 					</li>
 										<li>
-						<a class="elementor-icon wcf-social-icon social-icon- elementor-repeater-item-9cf7620" href="tel:9924131397" target="_blank">
+						<a class="elementor-icon wcf-social-icon social-icon- elementor-repeater-item-9cf7620" href="tel:+14376039004" target="_blank">
 							<span class="elementor-screen-only">Whatsapp</span>
 							<svg class="e-font-icon-svg e-fab-whatsapp" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>						</a>
 					</li>
@@ -2055,15 +2055,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				<div class="elementor-element elementor-element-ef3e567 elementor-widget__width-initial wcf-starter-animations-none elementor-widget elementor-widget-wcf--text" data-id="ef3e567" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="wcf--text.default">
 				<div class="elementor-widget-container">
-					<div class="wcf--text"><p><span class="LrzXr">1123, Iconic Shyamal, Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal, Ahmedabad, Gujarat 380015</span></p></div>				</div>
+					<div class="wcf--text"><p><span class="LrzXr">30 Kimbercroft Ct, Scarborough, ON M1S 4K9, Canada (Markham Corners)</span></p></div>				</div>
 				</div>
 				<div class="elementor-element elementor-element-4f0c2c9e elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="4f0c2c9e" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="tel:+919924131305">
+											<a href="tel:+14376039004">
 
-											<span class="elementor-icon-list-text">+91 9924131397</span>
+											<span class="elementor-icon-list-text">+1 437-603-9004</span>
 											</a>
 									</li>
 						</ul>
@@ -2073,9 +2073,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="mailto:info@13utopia.Com">
+											<a href="mailto:info@13utopia.ca">
 
-											<span class="elementor-icon-list-text">info@13utopia.com</span>
+											<span class="elementor-icon-list-text">info@13utopia.ca</span>
 											</a>
 									</li>
 						</ul>
@@ -2184,15 +2184,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				<div class="elementor-element elementor-element-53ba325 elementor-widget__width-initial wcf-starter-animations-none elementor-widget elementor-widget-wcf--text" data-id="53ba325" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="wcf--text.default">
 				<div class="elementor-widget-container">
-					<div class="wcf--text"><p>405- Ashram Avenue,</p><p>Paldi Cross Road, Paldi,</p><p>Ahmedabad &#8211; 380007</p></div>				</div>
+					<div class="wcf--text"><p>30 Kimbercroft Ct,</p><p>Markham Corners, Scarborough,</p><p>ON M1S 4K9, Canada</p></div>				</div>
 				</div>
 				<div class="elementor-element elementor-element-687b393 elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="687b393" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="tel:+919924131305">
+											<a href="tel:+14376039004">
 
-											<span class="elementor-icon-list-text">+91 9924131397</span>
+											<span class="elementor-icon-list-text">+1 437-603-9004</span>
 											</a>
 									</li>
 						</ul>
@@ -2202,9 +2202,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="mailto:info@13utopia.Com">
+											<a href="mailto:info@13utopia.ca">
 
-											<span class="elementor-icon-list-text">info@13utopia.com</span>
+											<span class="elementor-icon-list-text">info@13utopia.ca</span>
 											</a>
 									</li>
 						</ul>
@@ -2260,7 +2260,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<svg class="e-font-icon-svg e-fab-linkedin" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>						</a>
 					</li>
 										<li>
-						<a class="elementor-icon wcf-social-icon social-icon- elementor-repeater-item-9cf7620" href="tel:9924131397" target="_blank">
+						<a class="elementor-icon wcf-social-icon social-icon- elementor-repeater-item-9cf7620" href="tel:+14376039004" target="_blank">
 							<span class="elementor-screen-only">Whatsapp</span>
 							<svg class="e-font-icon-svg e-fab-whatsapp" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>						</a>
 					</li>
@@ -2292,7 +2292,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <img class="own-img ctc-analytics ctc_s_99 ctc_cta" title="WhatsApp us" id="style-99" style="height: 50px; " alt="whatsapp-logo" src="/wp-content/plugins/click-to-chat-for-whatsapp/./new/inc/assets/img/whatsapp-logo.svg">
 								</div>
 							</div>
-							<span class="ht_ctc_chat_data" data-settings="{&quot;number&quot;:&quot;919924131397&quot;,&quot;pre_filled&quot;:&quot;&quot;,&quot;dis_m&quot;:&quot;show&quot;,&quot;dis_d&quot;:&quot;show&quot;,&quot;css&quot;:&quot;cursor: pointer; z-index: 99999999;&quot;,&quot;pos_d&quot;:&quot;position: fixed; bottom: 50px; right: 20px;&quot;,&quot;pos_m&quot;:&quot;position: fixed; bottom: 50px; right: 20px;&quot;,&quot;side_d&quot;:&quot;right&quot;,&quot;side_m&quot;:&quot;right&quot;,&quot;schedule&quot;:&quot;no&quot;,&quot;se&quot;:150,&quot;ani&quot;:&quot;ht_ctc_an_bounce&quot;,&quot;page_id&quot;:17313,&quot;url_target_d&quot;:&quot;popup&quot;,&quot;ga&quot;:&quot;yes&quot;,&quot;gtm&quot;:&quot;1&quot;,&quot;fb&quot;:&quot;yes&quot;,&quot;g_init&quot;:&quot;default&quot;,&quot;g_an_event_name&quot;:&quot;click to chat&quot;,&quot;gtm_event_name&quot;:&quot;Click to Chat&quot;,&quot;pixel_event_name&quot;:&quot;Click to Chat by HoliThemes&quot;}" data-rest="93f936c613"></span>
+							<span class="ht_ctc_chat_data" data-settings="{&quot;number&quot;:&quot;14376039004&quot;,&quot;pre_filled&quot;:&quot;&quot;,&quot;dis_m&quot;:&quot;show&quot;,&quot;dis_d&quot;:&quot;show&quot;,&quot;css&quot;:&quot;cursor: pointer; z-index: 99999999;&quot;,&quot;pos_d&quot;:&quot;position: fixed; bottom: 50px; right: 20px;&quot;,&quot;pos_m&quot;:&quot;position: fixed; bottom: 50px; right: 20px;&quot;,&quot;side_d&quot;:&quot;right&quot;,&quot;side_m&quot;:&quot;right&quot;,&quot;schedule&quot;:&quot;no&quot;,&quot;se&quot;:150,&quot;ani&quot;:&quot;ht_ctc_an_bounce&quot;,&quot;page_id&quot;:17313,&quot;url_target_d&quot;:&quot;popup&quot;,&quot;ga&quot;:&quot;yes&quot;,&quot;gtm&quot;:&quot;1&quot;,&quot;fb&quot;:&quot;yes&quot;,&quot;g_init&quot;:&quot;default&quot;,&quot;g_an_event_name&quot;:&quot;click to chat&quot;,&quot;gtm_event_name&quot;:&quot;Click to Chat&quot;,&quot;pixel_event_name&quot;:&quot;Click to Chat by HoliThemes&quot;}" data-rest="93f936c613"></span>
 				        <div class="wcf-image-generator-popup">
             <div class="wcf-image-generator-popup-wrapper">
                 <div class="image-generator-post-wrapper">
