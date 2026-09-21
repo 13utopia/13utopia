@@ -10,6 +10,13 @@ export const NAP = {
   email: 'info@13utopia.com',
   addresses: [
     {
+      streetAddress: '1123, Iconic Shyamal, Shyamal Cross Roads, 132 Feet Ring Rd, Swinagar Society, Nehru Nagar, Shyamal',
+      addressLocality: 'Ahmedabad',
+      addressRegion: 'Gujarat',
+      postalCode: '380015',
+      addressCountry: 'IN',
+    },
+    {
       streetAddress: '30 Kimbercroft Ct, Markham Corners',
       addressLocality: 'Scarborough',
       addressRegion: 'Ontario',
