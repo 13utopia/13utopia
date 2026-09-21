@@ -2764,3 +2764,23 @@ html.pixel-exact .elementor-invisible:not([data-id='479c805']):not([data-id='4b3
   visibility: visible !important;
   opacity: 1 !important;
 }
+
+/* Homepage desktop hero container & graphic layout fix */
+@media (min-width: 768px) {
+  html.pixel-exact .elementor-16636 .elementor-element-e5f1a6a {
+    min-height: 85vh !important;
+    --min-height: 85vh !important;
+    overflow: visible !important;
+    --overflow: visible !important;
+    display: flex !important;
+    --display: flex !important;
+  }
+  html.pixel-exact .elementor-16636 .elementor-element-4526561 {
+    min-height: 85vh !important;
+    --min-height: 85vh !important;
+    background-image: url(/wp-content/uploads/2024/09/Zeus-With-Search-Engine-Optimization-1.webp) !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+  }
+}
