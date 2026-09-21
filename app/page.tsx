@@ -83,18 +83,21 @@ export default function Page() {
       img.setAttribute('sizes', '(max-width: 768px) 48vw, 220px');
     });
 
-    // Let Elementor / CSS own entrance; late safety only for stuck in-view nodes
+    // Reveal all sections and widgets; don't skip elements below the viewport
     const revealStuck = () => {
       document.querySelectorAll<HTMLElement>('.elementor-invisible').forEach((el) => {
-        const r = el.getBoundingClientRect();
-        if (r.top >= window.innerHeight || r.bottom <= 0) return;
+        const id = el.dataset.id || '';
+        if (['479c805', '4b3ef8a', 'b23dc44', 'f61769e'].includes(id)) return;
         el.classList.remove('elementor-invisible');
         el.style.opacity = '1';
         el.style.visibility = 'visible';
       });
     };
-    window.setTimeout(revealStuck, 6000);
-    window.setTimeout(revealStuck, 12000);
+    revealStuck();
+    window.setTimeout(revealStuck, 400);
+    window.setTimeout(revealStuck, 1500);
+    window.setTimeout(revealStuck, 4000);
+    window.addEventListener('scroll', revealStuck, { passive: true });
 
     const serviceLabel = (v: string) => {
       const map: Record<string, string> = {
@@ -1698,9 +1701,9 @@ SEARCH ENGINE OPTIMIZATION</a></h2>				</div>
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="mailto:info@13utopia.ca">
+											<a href="mailto:info@13utopia.com">
 
-											<span class="elementor-icon-list-text">info@13utopia.ca</span>
+											<span class="elementor-icon-list-text">info@13utopia.com</span>
 											</a>
 									</li>
 						</ul>
@@ -1827,9 +1830,9 @@ SEARCH ENGINE OPTIMIZATION</a></h2>				</div>
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="mailto:info@13utopia.ca">
+											<a href="mailto:info@13utopia.com">
 
-											<span class="elementor-icon-list-text">info@13utopia.ca</span>
+											<span class="elementor-icon-list-text">info@13utopia.com</span>
 											</a>
 									</li>
 						</ul>

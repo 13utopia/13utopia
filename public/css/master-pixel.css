@@ -2757,3 +2757,10 @@ html.pixel-exact .elementor-element-12416249 .swiper-slide img {
     background-image: none !important;
   }
 }
+
+
+/* Ensure all Elementor sections and widgets are visible */
+html.pixel-exact .elementor-invisible:not([data-id='479c805']):not([data-id='4b3ef8a']):not([data-id='b23dc44']):not([data-id='f61769e']) {
+  visibility: visible !important;
+  opacity: 1 !important;
+}

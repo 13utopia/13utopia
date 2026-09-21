@@ -176,9 +176,8 @@
 
   function revealStuckInvisible() {
     document.querySelectorAll('.elementor-invisible').forEach(function (el) {
-      var r = el.getBoundingClientRect();
-      var inView = r.top < window.innerHeight && r.bottom > 0;
-      if (!inView) return;
+      var id = el.getAttribute('data-id') || '';
+      if (['479c805', '4b3ef8a', 'b23dc44', 'f61769e'].includes(id)) return;
       el.classList.remove('elementor-invisible');
       el.style.opacity = '1';
       el.style.visibility = 'visible';
@@ -195,6 +194,9 @@
         console.warn('[pixel-live-js] step failed', step.id || step.href, e);
       }
     }
+    // Reveal all sections immediately
+    revealStuckInvisible();
+    window.addEventListener("scroll", revealStuckInvisible, { passive: true });
     // Give Elementor a tick to bind widgets
     setTimeout(triggerElementor, 100);
     setTimeout(triggerElementor, 600);

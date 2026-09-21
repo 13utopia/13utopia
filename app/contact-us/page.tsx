@@ -2013,7 +2013,7 @@ Contact us today to explore creative, data-driven solutions that deliver real re
 					Contact 				</h3>
 			
 							<div class="desc">
-					<p>Phone: +1 437-603-9004</p><p>Mail: info@13utopia.ca</p>				</div>
+					<p>Phone: +1 437-603-9004</p><p>Mail: info@13utopia.com</p>				</div>
 			
 			
 		</div>
@@ -2083,7 +2083,7 @@ Contact us today to explore creative, data-driven solutions that deliver real re
 					Contact 				</h3>
 			
 							<div class="desc">
-					<p>Phone : <span style="color: #ffffff;"><a style="color: #ffffff;" href="tel:+14376039004">+1 437-603-9004</a></span></p><p>Mail : <span style="color: #ffffff;"><a style="color: #ffffff;" href="mailto:info@13utopia.ca">info@13utopia.ca</a></span></p>				</div>
+					<p>Phone : <span style="color: #ffffff;"><a style="color: #ffffff;" href="tel:+14376039004">+1 437-603-9004</a></span></p><p>Mail : <span style="color: #ffffff;"><a style="color: #ffffff;" href="mailto:info@13utopia.com">info@13utopia.com</a></span></p>				</div>
 			
 			
 		</div>
@@ -2290,9 +2290,9 @@ Contact us today to explore creative, data-driven solutions that deliver real re
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="mailto:info@13utopia.ca">
+											<a href="mailto:info@13utopia.com">
 
-											<span class="elementor-icon-list-text">info@13utopia.ca</span>
+											<span class="elementor-icon-list-text">info@13utopia.com</span>
 											</a>
 									</li>
 						</ul>
@@ -2419,9 +2419,9 @@ Contact us today to explore creative, data-driven solutions that deliver real re
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="mailto:info@13utopia.ca">
+											<a href="mailto:info@13utopia.com">
 
-											<span class="elementor-icon-list-text">info@13utopia.ca</span>
+											<span class="elementor-icon-list-text">info@13utopia.com</span>
 											</a>
 									</li>
 						</ul>

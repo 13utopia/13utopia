@@ -1890,7 +1890,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				<div class="elementor-element elementor-element-ac7b969 wcf-starter-animations-none elementor-widget elementor-widget-text-editor" data-id="ac7b969" data-element_type="widget" data-e-type="widget" data-settings="{&quot;wcf_starter_animations&quot;:&quot;none&quot;,&quot;wcf_anim_duration&quot;:1000,&quot;wcf_anim_delay&quot;:0,&quot;wcf_anim_ease&quot;:&quot;ease&quot;}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-									<p>At 13 Utopia, we value the trust you place in us and are committed to delivering exceptional digital services including digital marketing, SEO, web development, CGI video production, online reputation management, and email marketing. We understand that the nature of custom digital work can sometimes lead to questions about refunds or revisions, and we handle each situation with care and consideration.</p><p>Our approach is centered on open communication and ensuring your satisfaction throughout the project. If you have concerns about the services provided, we encourage you to contact us as soon as possible. We assess each request individually, taking into account the scope of work, the stage of the project, and any feedback you have shared during the process. If a refund is deemed appropriate under our internal guidelines—which may include adjustments based on work already completed or expenses incurred—your refund will be processed and a credit will automatically be applied to your original method of payment within 7-10 business days.</p><p>Because many of our services involve substantial customization and are delivered upon completion, once you have approved the final work, refunds or returns may not be available. Our goal is to address any issues promptly and to work with you to find a solution that aligns with your expectations while maintaining the integrity of the creative process.</p><p>If you need further clarification or wish to discuss any concerns regarding our refund and return practices, please feel free to reach out to us at <a href="mailto:info@13utopia.ca"><span class="elementor-icon-list-text">info@13utopia.ca</span></a> or Message us at +1 437-603-9004. We are here to support you and ensure that your experience with 13 Utopia is both positive and productive.</p>								</div>
+									<p>At 13 Utopia, we value the trust you place in us and are committed to delivering exceptional digital services including digital marketing, SEO, web development, CGI video production, online reputation management, and email marketing. We understand that the nature of custom digital work can sometimes lead to questions about refunds or revisions, and we handle each situation with care and consideration.</p><p>Our approach is centered on open communication and ensuring your satisfaction throughout the project. If you have concerns about the services provided, we encourage you to contact us as soon as possible. We assess each request individually, taking into account the scope of work, the stage of the project, and any feedback you have shared during the process. If a refund is deemed appropriate under our internal guidelines—which may include adjustments based on work already completed or expenses incurred—your refund will be processed and a credit will automatically be applied to your original method of payment within 7-10 business days.</p><p>Because many of our services involve substantial customization and are delivered upon completion, once you have approved the final work, refunds or returns may not be available. Our goal is to address any issues promptly and to work with you to find a solution that aligns with your expectations while maintaining the integrity of the creative process.</p><p>If you need further clarification or wish to discuss any concerns regarding our refund and return practices, please feel free to reach out to us at <a href="mailto:info@13utopia.com"><span class="elementor-icon-list-text">info@13utopia.com</span></a> or Message us at +1 437-603-9004. We are here to support you and ensure that your experience with 13 Utopia is both positive and productive.</p>								</div>
 				</div>
 				</div>
 				</div>
@@ -2073,9 +2073,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="mailto:info@13utopia.ca">
+											<a href="mailto:info@13utopia.com">
 
-											<span class="elementor-icon-list-text">info@13utopia.ca</span>
+											<span class="elementor-icon-list-text">info@13utopia.com</span>
 											</a>
 									</li>
 						</ul>
@@ -2202,9 +2202,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="mailto:info@13utopia.ca">
+											<a href="mailto:info@13utopia.com">
 
-											<span class="elementor-icon-list-text">info@13utopia.ca</span>
+											<span class="elementor-icon-list-text">info@13utopia.com</span>
 											</a>
 									</li>
 						</ul>

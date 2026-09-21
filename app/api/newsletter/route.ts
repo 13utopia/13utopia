@@ -48,7 +48,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Valid email is required.' }, { status: 400 });
     }
 
-    const to = process.env.CONTACT_TO_EMAIL || 'info@13utopia.ca';
+    const to = process.env.CONTACT_TO_EMAIL || 'info@13utopia.com';
     const from = process.env.CONTACT_FROM_EMAIL || 'onboarding@resend.dev';
     const apiKey = process.env.RESEND_API_KEY;
 

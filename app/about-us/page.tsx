@@ -2379,9 +2379,9 @@ ABOU<span class="highlight">T</span> <br>US</h1>				</div>
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="mailto:info@13utopia.ca">
+											<a href="mailto:info@13utopia.com">
 
-											<span class="elementor-icon-list-text">info@13utopia.ca</span>
+											<span class="elementor-icon-list-text">info@13utopia.com</span>
 											</a>
 									</li>
 						</ul>
@@ -2508,9 +2508,9 @@ ABOU<span class="highlight">T</span> <br>US</h1>				</div>
 				<div class="elementor-widget-container">
 							<ul class="elementor-icon-list-items">
 							<li class="elementor-icon-list-item">
-											<a href="mailto:info@13utopia.ca">
+											<a href="mailto:info@13utopia.com">
 
-											<span class="elementor-icon-list-text">info@13utopia.ca</span>
+											<span class="elementor-icon-list-text">info@13utopia.com</span>
 											</a>
 									</li>
 						</ul>
