@@ -134,16 +134,76 @@
   }
 
   function syncFooterAddress() {
+    var isCa = false;
+    try {
+      if (typeof window !== 'undefined' && window.location && window.location.hostname) {
+        isCa = window.location.hostname.toLowerCase().endsWith('.ca');
+      }
+    } catch (e) {}
+
+    var caHtml = '<p><span class="LrzXr">30 Kimbercroft Ct, Scarborough, ON M1S 4K9, Canada (Markham Corners)</span></p>';
+    var inHtml = '<p><span class="LrzXr">1123, Iconic Shyamal, Shyamal Cross Roads, 132 Feet Ring Rd, Ahmedabad, Gujarat 380015</span></p>';
+    var targetAddressHtml = isCa ? caHtml : inHtml;
+
     var desktop = document.querySelector('.elementor-element-ef3e567 .wcf--text');
     var mobile = document.querySelector('.elementor-element-53ba325 .wcf--text');
-    if (mobile && desktop && desktop.innerHTML) {
-      mobile.innerHTML = desktop.innerHTML;
-      return;
+    if (desktop) desktop.innerHTML = targetAddressHtml;
+    if (mobile) mobile.innerHTML = targetAddressHtml;
+
+    // Contact page specific widgets
+    var contactCaHtml = '<p>30 Kimbercroft Ct, Markham Corners,</p><p>Scarborough, ON M1S 4K9, Canada</p>';
+    var contactInHtml = '<p>1123, Iconic Shyamal, Shyamal Cross Roads,</p><p>132 Feet Ring Rd, Ahmedabad, Gujarat 380015</p>';
+    var contactTargetHtml = isCa ? contactCaHtml : contactInHtml;
+
+    document.querySelectorAll('.elementor-element-cac6b4e .desc, .elementor-element-dd475ba .desc').forEach(function (el) {
+      el.innerHTML = contactTargetHtml;
+    });
+
+    var phoneText = isCa ? '+1 437-603-9004' : '+91 9924131397';
+    var phoneRaw = isCa ? '+14376039004' : '+919924131397';
+    var emailText = isCa ? 'info@13utopia.ca' : 'info@13utopia.com';
+
+    document.querySelectorAll('.elementor-element-4f0c2c9e .elementor-icon-list-text, .elementor-element-687b393 .elementor-icon-list-text').forEach(function (el) {
+      el.textContent = phoneText;
+    });
+    document.querySelectorAll('.elementor-element-4f0c2c9e a, .elementor-element-687b393 a').forEach(function (a) {
+      a.setAttribute('href', 'tel:' + phoneRaw);
+    });
+
+    document.querySelectorAll('.elementor-element-4858f99f .elementor-icon-list-text, .elementor-element-0bea3e6 .elementor-icon-list-text').forEach(function (el) {
+      el.textContent = emailText;
+    });
+    document.querySelectorAll('.elementor-element-4858f99f a, .elementor-element-0bea3e6 a').forEach(function (a) {
+      a.setAttribute('href', 'mailto:' + emailText);
+    });
+
+    // Also update contact page contact info box
+    var contactBoxDesc = document.querySelector('.elementor-element-c78e401 .desc');
+    if (contactBoxDesc) {
+      contactBoxDesc.innerHTML =
+        '<p>Phone : <span style="color: #ffffff;"><a style="color: #ffffff;" href="tel:' +
+        phoneRaw +
+        '">' +
+        phoneText +
+        '</a></span></p><p>Mail : <span style="color: #ffffff;"><a style="color: #ffffff;" href="mailto:' +
+        emailText +
+        '">' +
+        emailText +
+        '</a></span></p>';
     }
-    if (mobile) {
-      mobile.innerHTML =
-        '<p><span class="LrzXr">30 Kimbercroft Ct, Scarborough, ON M1S 4K9, Canada (Markham Corners)</span></p>';
+
+    // Preloader veil failsafe: never let veil stay in hold mode
+    var veil = document.getElementById('pixel-route-veil');
+    if (veil && veil.getAttribute('data-mode') === 'hold') {
+      veil.setAttribute('data-mode', 'reveal');
+      window.setTimeout(function () {
+        if (veil.getAttribute('data-mode') === 'reveal') {
+          veil.setAttribute('data-mode', 'idle');
+        }
+      }, 700);
     }
+    document.body.classList.remove('wcf-preloader-active', 'arolax-preloader-active');
+    document.documentElement.classList.remove('wcf-preloader-active', 'arolax-preloader-active');
   }
 
   function fitHomeFirstViewport() {

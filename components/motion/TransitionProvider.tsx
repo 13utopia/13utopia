@@ -98,9 +98,9 @@ function stampDesktopNav() {
 const EXIT_MS = 680;
 const ENTER_HOLD_MS = 420;
 const ENTER_CLEANUP_MS = 1650;
-/** First visit: hold long enough for pixel sheets; cleanup after hero intro can start. */
-const FIRST_HOLD_MS = 720;
-const FIRST_CLEANUP_MS = 2100;
+/** First visit: hold briefly for initial layout; cleanup after hero intro can start. */
+const FIRST_HOLD_MS = 450;
+const FIRST_CLEANUP_MS = 1400;
 
 /**
  * Soft client-side nav — cinematic black veil + centered logo + staggered content awaken.

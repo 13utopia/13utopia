@@ -206,6 +206,26 @@ html.pixel-route-enter body {
   clip-path: inset(0 0 0 0);
   pointer-events: none;
   transition: none;
+  animation: pixel-veil-hold-failsafe 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pixel-veil-hold-failsafe {
+  0%, 75% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    visibility: visible;
+  }
+  92% {
+    opacity: 1;
+    clip-path: inset(0 0 100% 0);
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 .pixel-route-veil[data-mode='hold'] .pixel-route-veil-halo {
