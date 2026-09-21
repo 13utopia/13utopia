@@ -40,38 +40,44 @@
   }
 
   function boot() {
-    var chat = document.getElementById('ht-ctc-chat');
-    if (!chat) return;
+    var chats = document.querySelectorAll('#ht-ctc-chat, .ht-ctc-chat');
+    if (!chats.length) return;
 
-    chat.style.setProperty('display', 'block', 'important');
-    chat.style.setProperty('position', 'fixed', 'important');
-    if (window.matchMedia && window.matchMedia('(max-width: 1024px)').matches) {
-      chat.style.setProperty('left', '14px', 'important');
-      chat.style.setProperty('right', 'auto', 'important');
-      chat.style.setProperty('bottom', '18px', 'important');
+    chats.forEach(function (chat, index) {
+      if (index > 0) {
+        chat.remove();
+        return;
+      }
+      chat.style.setProperty('display', 'block', 'important');
+      chat.style.setProperty('position', 'fixed', 'important');
+      if (window.matchMedia && window.matchMedia('(max-width: 1024px)').matches) {
+        chat.style.setProperty('left', '14px', 'important');
+        chat.style.setProperty('right', 'auto', 'important');
+        chat.style.setProperty('bottom', '18px', 'important');
+        chat.style.setProperty('transform', 'none', 'important');
+        chat.style.setProperty('transform-origin', 'bottom left', 'important');
+      } else {
+        chat.style.removeProperty('left');
+        chat.style.setProperty('bottom', '50px', 'important');
+        chat.style.setProperty('right', '20px', 'important');
+      }
+      chat.style.setProperty('z-index', '99999999', 'important');
+      chat.style.setProperty('cursor', 'pointer', 'important');
+      chat.style.setProperty('opacity', '1', 'important');
+      chat.style.setProperty('visibility', 'visible', 'important');
       chat.style.setProperty('transform', 'none', 'important');
-      chat.style.setProperty('transform-origin', 'bottom left', 'important');
-    } else {
-      chat.style.removeProperty('left');
-      chat.style.setProperty('bottom', '50px', 'important');
-      chat.style.setProperty('right', '20px', 'important');
-    }
-    chat.style.setProperty('z-index', '99999999', 'important');
-    chat.style.setProperty('cursor', 'pointer', 'important');
-    chat.style.setProperty('opacity', '1', 'important');
-    chat.style.setProperty('visibility', 'visible', 'important');
-    chat.style.setProperty('transform', 'none', 'important');
-    chat.setAttribute('role', 'link');
-    chat.setAttribute('aria-label', 'WhatsApp us');
-    chat.setAttribute('title', 'WhatsApp us');
-    fixLogo(chat);
+      chat.setAttribute('role', 'link');
+      chat.setAttribute('aria-label', 'WhatsApp us');
+      chat.setAttribute('title', 'WhatsApp us');
+      fixLogo(chat);
 
-    if (chat.dataset.pixelCtcBound === '1') return;
-    chat.dataset.pixelCtcBound = '1';
-    chat.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      window.open(waUrl(), '_blank', 'noopener,noreferrer');
+      if (chat.dataset.pixelCtcBound === '1') return;
+      chat.dataset.pixelCtcBound = '1';
+      chat.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(waUrl(), '_blank', 'noopener,noreferrer');
+      });
     });
   }
 

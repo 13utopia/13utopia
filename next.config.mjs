@@ -78,10 +78,16 @@ const nextConfig = {
         value: 'public, max-age=2592000, stale-while-revalidate=86400',
       },
     ];
+    const htmlCache = [
+      {
+        key: 'Cache-Control',
+        value: 'public, max-age=0, must-revalidate',
+      },
+    ];
     return [
       {
         source: '/:path*',
-        headers: securityHeaders,
+        headers: [...securityHeaders, ...htmlCache],
       },
       { source: '/css/:path*', headers: longCache },
       { source: '/js/:path*', headers: longCache },
