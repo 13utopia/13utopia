@@ -176,8 +176,6 @@
 
   function revealStuckInvisible() {
     document.querySelectorAll('.elementor-invisible').forEach(function (el) {
-      var id = el.getAttribute('data-id') || '';
-      if (['479c805', '4b3ef8a', 'b23dc44', 'f61769e'].includes(id)) return;
       el.classList.remove('elementor-invisible');
       el.style.opacity = '1';
       el.style.visibility = 'visible';

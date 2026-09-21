@@ -2760,7 +2760,7 @@ html.pixel-exact .elementor-element-12416249 .swiper-slide img {
 
 
 /* Ensure all Elementor sections and widgets are visible */
-html.pixel-exact .elementor-invisible:not([data-id='479c805']):not([data-id='4b3ef8a']):not([data-id='b23dc44']):not([data-id='f61769e']) {
+html.pixel-exact .elementor-invisible {
   visibility: visible !important;
   opacity: 1 !important;
 }
@@ -2783,4 +2783,24 @@ html.pixel-exact .elementor-invisible:not([data-id='479c805']):not([data-id='4b3
     background-repeat: no-repeat !important;
     background-size: contain !important;
   }
+  html.pixel-exact .elementor-16636 .elementor-element-44542dc,
+  html.pixel-exact .elementor-16636 .elementor-element-64acaf5,
+  html.pixel-exact .elementor-16636 .elementor-element-ce87f17,
+  html.pixel-exact .elementor-16636 .elementor-element-fcea044 {
+    display: flex !important;
+    --display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
 }
+
+@media (min-width: 1025px) {
+  html.pixel-exact .elementor-16636 .elementor-element-7c0e130,
+  html.pixel-exact .elementor-16636 .elementor-element-42cd37c,
+  html.pixel-exact .elementor-16636 .elementor-element-8b1fffb,
+  html.pixel-exact .elementor-16636 .elementor-element-79b2fcd,
+  html.pixel-exact .elementor-element-49f74ea {
+    display: none !important;
+  }
+}
+

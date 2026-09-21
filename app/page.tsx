@@ -86,8 +86,6 @@ export default function Page() {
     // Reveal all sections and widgets; don't skip elements below the viewport
     const revealStuck = () => {
       document.querySelectorAll<HTMLElement>('.elementor-invisible').forEach((el) => {
-        const id = el.dataset.id || '';
-        if (['479c805', '4b3ef8a', 'b23dc44', 'f61769e'].includes(id)) return;
         el.classList.remove('elementor-invisible');
         el.style.opacity = '1';
         el.style.visibility = 'visible';
@@ -309,9 +307,9 @@ export default function Page() {
 
   return (
     <>
-      <link rel="stylesheet" href="/css/page-home-inline.css?v=page-css-2" data-pixel-page-css="home" />
-      <link rel="stylesheet" href="/css/elementor-post-6033.css?v=page-css-2" data-pixel-page-css="elementor-post-6033" />
-      <link rel="stylesheet" href="/css/elementor-post-1386.css?v=page-css-2" data-pixel-page-css="elementor-post-1386" />
+      <link rel="stylesheet" href="/css/page-home-inline.css?v=page-css-3" data-pixel-page-css="home" />
+      <link rel="stylesheet" href="/css/elementor-post-6033.css?v=page-css-3" data-pixel-page-css="elementor-post-6033" />
+      <link rel="stylesheet" href="/css/elementor-post-1386.css?v=page-css-3" data-pixel-page-css="elementor-post-1386" />
       <div
         className={"home wp-singular page-template page-template-elementor_header_footer page page-id-16636 wp-theme-arolax wp-child-theme-arolax-child theme-arolax woocommerce-no-js ehf-header ehf-template-arolax ehf-stylesheet-arolax-child joya-gl-blog arolax-base elementor-default elementor-template-full-width elementor-kit-3 elementor-page elementor-page-16636"}
         suppressHydrationWarning
