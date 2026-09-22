@@ -20,7 +20,14 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ isOpen, onClose, services }: MobileMenuProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [isCa, setIsCa] = useState(false);
   const pathname = usePathname();
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hostname.toLowerCase().endsWith('.ca')) {
+      setIsCa(true);
+    }
+  }, []);
 
   if (!isOpen) return null;
 
@@ -116,11 +123,15 @@ export default function MobileMenu({ isOpen, onClose, services }: MobileMenuProp
         <div className="flex items-center justify-between text-xs text-white/50">
           <div className="flex items-center gap-2">
             <Mail className="w-3.5 h-3.5 text-[#C8F31D]" />
-            <a href="mailto:info@13utopia.com" className="hover:text-white">info@13utopia.com</a>
+            <a href={isCa ? "mailto:info@13utopia.ca" : "mailto:info@13utopia.com"} className="hover:text-white">
+              {isCa ? "info@13utopia.ca" : "info@13utopia.com"}
+            </a>
           </div>
           <div className="flex items-center gap-2">
             <Phone className="w-3.5 h-3.5 text-[#C8F31D]" />
-            <a href="tel:+14376039004" className="hover:text-white">+1 437-603-9004</a>
+            <a href={isCa ? "tel:+14376039004" : "tel:+919924131397"} className="hover:text-white">
+              {isCa ? "+1 437-603-9004" : "+91 9924131397"}
+            </a>
           </div>
         </div>
 
@@ -153,7 +164,7 @@ export default function MobileMenu({ isOpen, onClose, services }: MobileMenuProp
             <FacebookIcon className="w-4 h-4" />
           </a>
           <a
-            href="https://api.whatsapp.com/send?phone=14376039004"
+            href={isCa ? "https://api.whatsapp.com/send?phone=14376039004" : "https://api.whatsapp.com/send?phone=919924131397"}
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-black hover:bg-[#C8F31D] hover:border-[#C8F31D] transition-all"

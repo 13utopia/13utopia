@@ -161,7 +161,7 @@
 
     var phoneText = isCa ? '+1 437-603-9004' : '+91 9924131397';
     var phoneRaw = isCa ? '+14376039004' : '+919924131397';
-    var emailText = 'info@13utopia.com';
+    var emailText = isCa ? 'info@13utopia.ca' : 'info@13utopia.com';
 
     document.querySelectorAll('.elementor-element-4f0c2c9e .elementor-icon-list-text, .elementor-element-687b393 .elementor-icon-list-text').forEach(function (el) {
       el.textContent = phoneText;
@@ -177,15 +177,23 @@
       a.setAttribute('href', 'mailto:' + emailText);
     });
 
-    // WhatsApp links: ensure they open WhatsApp URL rather than tel:
-    var waNumber = isCa ? '14376039004' : '14376039004';
+    // WhatsApp links: ensure they open WhatsApp URL with respective country code
+    var waNumber = isCa ? '14376039004' : '919924131397';
     var waUrl = 'https://api.whatsapp.com/send?phone=' + waNumber;
-    document.querySelectorAll('.elementor-repeater-item-9cf7620, .elementor-repeater-item-9799ce0, .elementor-social-icon-whatsapp, .social-icon-whatsapp').forEach(function (a) {
+    document.querySelectorAll('.elementor-repeater-item-9cf7620, .elementor-repeater-item-9799ce0, .elementor-social-icon-whatsapp, .social-icon-whatsapp, a[href*="whatsapp.com"], a[href*="wa.me"]').forEach(function (a) {
       if (a.tagName === 'A') {
         a.setAttribute('href', waUrl);
         a.setAttribute('target', '_blank');
         a.setAttribute('rel', 'noopener noreferrer');
       }
+    });
+
+    // Instant copyright guarantee for all screens
+    document.querySelectorAll('.elementor-element-a4cd6b5, .elementor-element-23b11d2, .elementor-element-44fb7d3').forEach(function (el) {
+      el.style.setProperty('opacity', '1', 'important');
+      el.style.setProperty('visibility', 'visible', 'important');
+      el.style.setProperty('display', 'flex', 'important');
+      el.classList.remove('elementor-invisible');
     });
 
     // Also update contact page contact info box

@@ -2645,7 +2645,9 @@ html.pixel-exact [class*='wcf-starter-animations-']:not(.wcf-played) {
 }
 
 html.pixel-exact .elementor-element-a4cd6b5 p,
-html.pixel-exact .elementor-element-a4cd6b5 * {
+html.pixel-exact .elementor-element-a4cd6b5 *,
+html.pixel-exact .elementor-element-23b11d2 p,
+html.pixel-exact .elementor-element-23b11d2 * {
   opacity: 1 !important;
   visibility: visible !important;
 }

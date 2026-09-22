@@ -194,13 +194,11 @@
     }
     // Reveal all sections immediately
     revealStuckInvisible();
-    window.addEventListener("scroll", revealStuckInvisible, { passive: true });
     // Give Elementor a tick to bind widgets
     setTimeout(triggerElementor, 100);
     setTimeout(triggerElementor, 600);
-    // Only force-reveal in-view nodes still stuck after Elementor should have animated
-    setTimeout(revealStuckInvisible, 5000);
-    setTimeout(revealStuckInvisible, 10000);
+    setTimeout(revealStuckInvisible, 1500);
+    setTimeout(revealStuckInvisible, 4000);
     window.__PIXEL_LIVE_JS_READY = true;
     window.__PIXEL_LIVE_JS_LOADING = false;
     window.__PIXEL_ELEMENTOR_RERUN = triggerElementor;

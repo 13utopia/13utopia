@@ -57,16 +57,6 @@ function LenisGuards() {
     document.addEventListener('pointerup', clearPointerPrevent, { passive: true, capture: true });
     document.addEventListener('pointercancel', clearPointerPrevent, { passive: true, capture: true });
 
-    const stopNativeAnim = () => {
-      try {
-        // @ts-expect-error jquery optional
-        if (window.jQuery) window.jQuery('html, body').stop(true);
-      } catch {
-        /* ignore */
-      }
-    };
-    lenis.on('scroll', stopNativeAnim);
-
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
@@ -74,7 +64,6 @@ function LenisGuards() {
       document.removeEventListener('pointerdown', onPointerDown, true);
       document.removeEventListener('pointerup', clearPointerPrevent, true);
       document.removeEventListener('pointercancel', clearPointerPrevent, true);
-      lenis.off('scroll', stopNativeAnim);
     };
   }, [lenis]);
 
@@ -98,11 +87,11 @@ export default function SmoothScroll({ children }: Props) {
       root
       options={{
         autoRaf: true,
-        lerp: 0.1,
-        duration: 1.05,
+        lerp: 0.12,
+        duration: 0.95,
         smoothWheel: true,
-        wheelMultiplier: 0.9,
-        touchMultiplier: 1.1,
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.0,
         syncTouch: false,
         anchors: false,
         autoResize: true,

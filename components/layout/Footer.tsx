@@ -56,7 +56,7 @@ export default function Footer() {
                 <LinkedInIcon className="w-4 h-4" />
               </a>
               <a
-                href={isCa ? "https://api.whatsapp.com/send?phone=14376039004" : "https://api.whatsapp.com/send?phone=14376039004"}
+                href={isCa ? "https://api.whatsapp.com/send?phone=14376039004" : "https://api.whatsapp.com/send?phone=919924131397"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-white/5 border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white transition-all"
@@ -153,8 +153,8 @@ export default function Footer() {
                     </a>
                   </p>
                   <p>
-                    <a href="mailto:info@13utopia.com" className="hover:text-white transition-colors">
-                      info@13utopia.com
+                    <a href="mailto:info@13utopia.ca" className="hover:text-white transition-colors">
+                      info@13utopia.ca
                     </a>
                   </p>
                 </>

@@ -95,7 +95,6 @@ export default function Page() {
     window.setTimeout(revealStuck, 400);
     window.setTimeout(revealStuck, 1500);
     window.setTimeout(revealStuck, 4000);
-    window.addEventListener('scroll', revealStuck, { passive: true });
 
     const serviceLabel = (v: string) => {
       const map: Record<string, string> = {

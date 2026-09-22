@@ -3,9 +3,20 @@
   if (window.__PIXEL_CTC_BOOTED) return;
   window.__PIXEL_CTC_BOOTED = true;
 
+  function isCaHost() {
+    try {
+      if (typeof window !== 'undefined' && window.location && window.location.hostname) {
+        return window.location.hostname.toLowerCase().endsWith('.ca');
+      }
+    } catch (e) {}
+    return false;
+  }
+
   function settings() {
+    var isCa = isCaHost();
+    var defaultNum = isCa ? '14376039004' : '919924131397';
+    var out = { number: defaultNum, pre_filled: '' };
     var data = document.querySelector('.ht_ctc_chat_data');
-    var out = { number: '14376039004', pre_filled: '' };
     if (!data) return out;
     try {
       var s = JSON.parse(
@@ -14,7 +25,16 @@
           .replace(/&#039;/g, "'")
           .replace(/&amp;/g, '&')
       );
-      if (s.number) out.number = String(s.number);
+      if (s.number) {
+        // Enforce region domain rules over stale markup numbers
+        if (isCa && String(s.number).includes('9924131397')) {
+          out.number = '14376039004';
+        } else if (!isCa && String(s.number).includes('4376039004')) {
+          out.number = '919924131397';
+        } else {
+          out.number = String(s.number);
+        }
+      }
       if (s.pre_filled) out.pre_filled = String(s.pre_filled);
     } catch (e) {}
     return out;
