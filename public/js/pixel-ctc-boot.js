@@ -41,10 +41,9 @@
   }
 
   function waUrl() {
-    var s = settings();
-    var url = 'https://api.whatsapp.com/send?phone=' + encodeURIComponent(s.number);
-    if (s.pre_filled) url += '&text=' + encodeURIComponent(s.pre_filled);
-    return url;
+    var isCa = typeof window !== 'undefined' && window.location && window.location.hostname && window.location.hostname.toLowerCase().endsWith('.ca');
+    var num = isCa ? '14376039004' : '919924131397';
+    return 'https://api.whatsapp.com/send?phone=' + num;
   }
 
   function fixLogo(chat) {
@@ -91,13 +90,11 @@
       chat.setAttribute('title', 'WhatsApp us');
       fixLogo(chat);
 
-      if (chat.dataset.pixelCtcBound === '1') return;
-      chat.dataset.pixelCtcBound = '1';
-      chat.addEventListener('click', function (e) {
+      chat.onclick = function (e) {
         e.preventDefault();
         e.stopPropagation();
         window.open(waUrl(), '_blank', 'noopener,noreferrer');
-      });
+      };
     });
   }
 
@@ -106,6 +103,7 @@
   } else {
     boot();
   }
-  window.setTimeout(boot, 400);
-  window.setTimeout(boot, 1500);
+  window.setTimeout(boot, 200);
+  window.setTimeout(boot, 800);
+  window.setTimeout(boot, 2000);
 })();

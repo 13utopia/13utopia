@@ -111,7 +111,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
 
     const idleId = whenIdle(() => {
       rebindAll();
-      loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-4', 'pixel-ctc-boot-v4', ['data-pixel-ctc-boot'], {
+      loadScriptVersioned('/js/pixel-ctc-boot.js?v=ctc-pin-7', 'pixel-ctc-boot-v7', ['data-pixel-ctc-boot'], {
         async: true,
       });
       loadScriptOnce('/js/pixel-counter-boot.js?v=counter-4', 'pixel-counter-boot-v4', [
