@@ -2,8 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { MessageSquare } from 'lucide-react';
-import { FacebookIcon, InstagramIcon, LinkedInIcon } from '@/components/ui/SocialIcons';
+import { FacebookIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon } from '@/components/ui/SocialIcons';
 import NewsletterForm from '@/components/layout/NewsletterForm';
 
 export default function Footer() {
@@ -57,13 +56,13 @@ export default function Footer() {
                 <LinkedInIcon className="w-4 h-4" />
               </a>
               <a
-                href="https://api.whatsapp.com/send?phone=918469999013"
+                href={isCa ? "https://api.whatsapp.com/send?phone=14376039004" : "https://api.whatsapp.com/send?phone=14376039004"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-white/5 border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white transition-all"
                 aria-label="WhatsApp"
               >
-                <MessageSquare className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4" />
               </a>
             </div>
 

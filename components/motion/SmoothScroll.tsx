@@ -32,28 +32,30 @@ function LenisGuards() {
     window.addEventListener('pixel-live-js-ready', clearScrollTraps);
 
     // Only trap Lenis while the user is dragging cube / testimonial cards
+    let activeTrap: Element | null = null;
     const onPointerDown = (e: Event) => {
       const t = e.target as Element | null;
       const trap = t?.closest?.(
         '.swiper-cube, .arolax_testimonial_slider, .arolax__testimonial-4 .swiper'
       );
-      if (trap) trap.setAttribute('data-lenis-prevent', '');
+      if (trap) {
+        trap.setAttribute('data-lenis-prevent', '');
+        activeTrap = trap;
+      }
     };
     const clearPointerPrevent = () => {
-      document
-        .querySelectorAll(
-          '.swiper-cube[data-lenis-prevent], .arolax_testimonial_slider[data-lenis-prevent], .arolax__testimonial-4 .swiper[data-lenis-prevent]'
-        )
-        .forEach((el) => el.removeAttribute('data-lenis-prevent'));
+      if (!activeTrap) return;
+      activeTrap.removeAttribute('data-lenis-prevent');
+      activeTrap = null;
       try {
         lenis.start();
       } catch {
         /* ignore */
       }
     };
-    document.addEventListener('pointerdown', onPointerDown, true);
-    document.addEventListener('pointerup', clearPointerPrevent, true);
-    document.addEventListener('pointercancel', clearPointerPrevent, true);
+    document.addEventListener('pointerdown', onPointerDown, { passive: true, capture: true });
+    document.addEventListener('pointerup', clearPointerPrevent, { passive: true, capture: true });
+    document.addEventListener('pointercancel', clearPointerPrevent, { passive: true, capture: true });
 
     const stopNativeAnim = () => {
       try {

@@ -88,24 +88,20 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     loadScriptVersioned('/js/pixel-menu-boot.js?v=menu-5', 'pixel-menu-boot-v5', [
       'data-pixel-menu-boot',
     ]);
-    const menuRebind = () => {
-      const w = window as Window & { __PIXEL_MENU_REBIND?: () => void };
+    const rebindAll = () => {
+      const w = window as Window & {
+        __PIXEL_MENU_REBIND?: () => void;
+        __PIXEL_SWIPER_RUN?: () => void;
+        __PIXEL_LAZY_RUN?: () => void;
+      };
       w.__PIXEL_MENU_REBIND?.();
-    };
-    // Rebind after soft nav so toggles from the new page HTML work immediately.
-    requestAnimationFrame(menuRebind);
-    const menuT = window.setTimeout(menuRebind, 200);
-    const menuT2 = window.setTimeout(menuRebind, 800);
-    loadScriptVersioned('/js/pixel-swiper-boot.js?v=swiper-7', 'pixel-swiper-boot-v7', [
-      'data-pixel-swiper-boot',
-    ]);
-    const swiperRun = () => {
-      const w = window as Window & { __PIXEL_SWIPER_RUN?: () => void };
       w.__PIXEL_SWIPER_RUN?.();
+      w.__PIXEL_LAZY_RUN?.();
     };
-    requestAnimationFrame(swiperRun);
-    const swiperT = window.setTimeout(swiperRun, 350);
-    const swiperT2 = window.setTimeout(swiperRun, 1200);
+
+    // Rebind immediately upon DOM mount
+    requestAnimationFrame(rebindAll);
+    const rebindTimer = window.setTimeout(rebindAll, 250);
 
     if (SERVICE_SLIDER_ROUTES.has(pathname)) {
       loadScriptOnce('/js/pixel-advance-slider-boot.js?v=poster-orch-25', 'pixel-advance-slider-boot-v25', [
@@ -114,6 +110,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     }
 
     const idleId = whenIdle(() => {
+      rebindAll();
       loadScriptOnce('/js/pixel-ctc-boot.js?v=ctc-4', 'pixel-ctc-boot-v4', ['data-pixel-ctc-boot'], {
         async: true,
       });
@@ -129,22 +126,10 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       if (pathname === '/contact-us') {
         loadScriptOnce('/js/pixel-hcaptcha-boot.js', 'pixel-hcaptcha-boot', [], { async: true });
       }
-    });
+    }, 1200);
 
-    const w = window as Window & { __PIXEL_LAZY_RUN?: () => void };
-    const run = () => w.__PIXEL_LAZY_RUN?.();
-    run();
-    const t1 = window.setTimeout(run, 100);
-    const t2 = window.setTimeout(run, 600);
-    const t3 = window.setTimeout(run, 1800);
     return () => {
-      window.clearTimeout(t1);
-      window.clearTimeout(t2);
-      window.clearTimeout(t3);
-      window.clearTimeout(menuT);
-      window.clearTimeout(menuT2);
-      window.clearTimeout(swiperT);
-      window.clearTimeout(swiperT2);
+      window.clearTimeout(rebindTimer);
       const cancel = (window as Window & { cancelIdleCallback?: (id: number) => void })
         .cancelIdleCallback;
       if (cancel) cancel(idleId as number);

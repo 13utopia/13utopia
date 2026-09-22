@@ -177,6 +177,17 @@
       a.setAttribute('href', 'mailto:' + emailText);
     });
 
+    // WhatsApp links: ensure they open WhatsApp URL rather than tel:
+    var waNumber = isCa ? '14376039004' : '14376039004';
+    var waUrl = 'https://api.whatsapp.com/send?phone=' + waNumber;
+    document.querySelectorAll('.elementor-repeater-item-9cf7620, .elementor-repeater-item-9799ce0, .elementor-social-icon-whatsapp, .social-icon-whatsapp').forEach(function (a) {
+      if (a.tagName === 'A') {
+        a.setAttribute('href', waUrl);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+
     // Also update contact page contact info box
     var contactBoxDesc = document.querySelector('.elementor-element-c78e401 .desc');
     if (contactBoxDesc) {

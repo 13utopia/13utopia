@@ -202,11 +202,6 @@
 
   if (!window.__PIXEL_LAZY_SCROLL_BOUND) {
     window.__PIXEL_LAZY_SCROLL_BOUND = true;
-    var scrollMark = function () {
-      window.clearTimeout(window.__PIXEL_LAZY_SCROLL_T);
-      window.__PIXEL_LAZY_SCROLL_T = window.setTimeout(mark, 120);
-    };
-    window.addEventListener('scroll', scrollMark, { passive: true });
     window.addEventListener('pixel-live-js-ready', mark);
     window.addEventListener('lenis-ready', mark);
     document.addEventListener('visibilitychange', function () {

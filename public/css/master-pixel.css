@@ -2625,16 +2625,31 @@ html.pixel-exact body {
     padding-left: max(16px, env(safe-area-inset-left)) !important;
     padding-right: max(16px, env(safe-area-inset-right)) !important;
   }
-
-  /* Never leave WCF reveal stuck translucent on mobile */
-  html.pixel-exact .wcf-animate:not(.wcf-played),
-  html.pixel-exact [class*='wcf-starter-animations-']:not(.wcf-played) {
-    opacity: 1 !important;
-    visibility: visible !important;
-    filter: none !important;
-    transform: none !important;
-  }
 }
+
+/* Ensure footer copyright and bottom section load instantaneously on all screen sizes */
+html.pixel-exact .elementor-element-a4cd6b5,
+html.pixel-exact .elementor-element-23b11d2,
+html.pixel-exact .elementor-element-44fb7d3,
+html.pixel-exact .elementor-1386 .elementor-element-a4cd6b5,
+html.pixel-exact .elementor-1386 .elementor-element-23b11d2,
+html.pixel-exact .elementor-1386 .elementor-element-44fb7d3,
+html.pixel-exact .elementor-widget-text-editor.elementor-element-a4cd6b5,
+html.pixel-exact .wcf-animate:not(.wcf-played),
+html.pixel-exact [class*='wcf-starter-animations-']:not(.wcf-played) {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+html.pixel-exact .elementor-element-a4cd6b5 p,
+html.pixel-exact .elementor-element-a4cd6b5 * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 
 @media (max-width: 480px) {
   html.pixel-exact .elementor-element-dddd85c,

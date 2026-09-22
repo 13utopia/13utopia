@@ -60,6 +60,10 @@
 
     if (!wrapper.className.includes("wcf-starter-animations-")) return;
 
+    if (wrapper.classList.contains("wcf-starter-animations-none")) {
+      wrapper.classList.add("wcf-played", "wcf-animate");
+      return;
+    }
 
     if (!wrapper.dataset.wcfInit) {
 

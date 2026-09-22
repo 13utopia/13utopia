@@ -34,6 +34,8 @@ const LEGACY_BLOG_SLUGS = [
 
 const nextConfig = {
   reactStrictMode: true,
+  compress: true,
+  poweredByHeader: false,
   // Hide the floating Next.js "N" dev indicator
   devIndicators: false,
   // Next 16: empty turbopack block silences webpack/turbopack mismatch

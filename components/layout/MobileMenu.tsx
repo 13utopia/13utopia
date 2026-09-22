@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, ArrowUpRight, MessageCircle, Phone, Mail } from 'lucide-react';
-import { InstagramIcon, LinkedInIcon, FacebookIcon } from '@/components/ui/SocialIcons';
+import { ChevronDown, ArrowUpRight, Phone, Mail } from 'lucide-react';
+import { InstagramIcon, LinkedInIcon, FacebookIcon, WhatsAppIcon } from '@/components/ui/SocialIcons';
 
 interface ServiceItem {
   name: string;
@@ -153,13 +153,13 @@ export default function MobileMenu({ isOpen, onClose, services }: MobileMenuProp
             <FacebookIcon className="w-4 h-4" />
           </a>
           <a
-            href="https://api.whatsapp.com/send?phone=918469999013"
+            href="https://api.whatsapp.com/send?phone=14376039004"
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-black hover:bg-[#C8F31D] hover:border-[#C8F31D] transition-all"
             aria-label="WhatsApp"
           >
-            <MessageCircle className="w-4 h-4" />
+            <WhatsAppIcon className="w-4 h-4" />
           </a>
         </div>
       </div>
